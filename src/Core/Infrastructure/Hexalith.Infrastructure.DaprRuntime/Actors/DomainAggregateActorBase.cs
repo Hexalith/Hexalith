@@ -17,7 +17,6 @@ using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
@@ -36,14 +35,11 @@ using Hexalith.PolymorphicSerialization;
 public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDomainAggregateActor
 {
     private readonly IDomainAggregateFactory _aggregateFactory;
-    private readonly ICommandBus _commandBus;
     private readonly IDomainCommandDispatcher _commandDispatcher;
     private readonly TimeProvider _dateTimeService;
     private readonly TimeSpan _defaultTimerDueTime = TimeSpan.FromMilliseconds(1);
     private readonly IEventBus _eventBus;
-    private readonly ActorHost _host;
     private readonly TimeSpan _maxTimerDueTime = new(0, 1, 0);
-    private readonly IRequestBus _requestBus;
     private readonly IResiliencyPolicyProvider _resiliencyPolicyProvider;
     private IDomainAggregate? _aggregate;
     private MessageStore<MessageState>? _commandStore;
@@ -60,8 +56,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="aggregateFactory">The aggregate factory.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="eventBus">The event bus.</param>
-    /// <param name="commandBus">The command bus.</param>
-    /// <param name="requestBus">The request bus.</param>
     /// <param name="resiliencyPolicyProvider">The resiliency policy provider.</param>
     /// <param name="actorStateManager">The actor state manager.</param>
     /// <exception cref="ArgumentNullException">null.</exception>
@@ -71,27 +65,19 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         IDomainAggregateFactory aggregateFactory,
         TimeProvider dateTimeService,
         IEventBus eventBus,
-        ICommandBus commandBus,
-        IRequestBus requestBus,
         IResiliencyPolicyProvider resiliencyPolicyProvider,
         IActorStateManager? actorStateManager = null)
        : base(host)
     {
-        ArgumentNullException.ThrowIfNull(host);
         ArgumentNullException.ThrowIfNull(commandDispatcher);
         ArgumentNullException.ThrowIfNull(aggregateFactory);
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(eventBus);
-        ArgumentNullException.ThrowIfNull(commandBus);
-        ArgumentNullException.ThrowIfNull(requestBus);
         ArgumentNullException.ThrowIfNull(resiliencyPolicyProvider);
-        _host = host;
         _commandDispatcher = commandDispatcher;
         _aggregateFactory = aggregateFactory;
         _dateTimeService = dateTimeService;
         _eventBus = eventBus;
-        _commandBus = commandBus;
-        _requestBus = requestBus;
         _resiliencyPolicyProvider = resiliencyPolicyProvider;
         if (actorStateManager is not null)
         {
