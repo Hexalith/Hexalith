@@ -130,7 +130,7 @@ public static partial class HexalithWebApi
             .AddOrganizations(builder.Configuration)
             .AddPartitions(builder.Configuration)
             .AddScoped<ISessionService, ApiServerSessionService>()
-            .AddSessions();
+            .AddSessionsServices(); // Hexalith Session Actor
 
         return builder;
     }

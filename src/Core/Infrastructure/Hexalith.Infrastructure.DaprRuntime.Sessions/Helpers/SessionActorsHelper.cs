@@ -27,7 +27,7 @@ public static class SessionActorsHelper
     /// <param name="services">The IServiceCollection to add services to.</param>
     /// <returns>The updated IServiceCollection.</returns>
     /// <exception cref="ArgumentNullException">Thrown when services is null.</exception>
-    public static IServiceCollection AddSessions(this IServiceCollection services)
+    public static IServiceCollection AddSessionsServices(this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
         _ = services.AddSingleton<IUserIdentityService, UserIdentityService>();

@@ -83,7 +83,7 @@ public static class ServerSideClientAppHelper
             .AddScoped<ISessionService, WebServerSessionService>()
             .AddScoped<IRequestProcessor, DependencyInjectionRequestProcessor>()
             .AddPartitions(configuration)
-            .AddSessions();
+            .AddSessionsServices();
         _ = services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         services.TryAddScoped<IDomainCommandDispatcher, DependencyInjectionDomainCommandDispatcher>();
@@ -190,7 +190,7 @@ public static class ServerSideClientAppHelper
             .AddSession(options =>
             {
                 options.Cookie.Name = sessionCookieName;
-                options.IdleTimeout = TimeSpan.FromHours(1);
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
@@ -313,13 +313,13 @@ public static class ServerSideClientAppHelper
         _ = app
             .MapStaticAssets();
         _ = app
-            .UseRouting();
+            .UseRouting()
+            .UseSession();
         app.UseHexalithSecurity();
         _ = app.UseAntiforgery();
         _ = app
             .UseSwagger()
-            .UseSwaggerUI()
-            .UseSession();
+            .UseSwaggerUI();
         _ = app.MapControllers();
         _ = app.MapSubscribeHandler();
         RazorComponentsEndpointConventionBuilder razor = app
