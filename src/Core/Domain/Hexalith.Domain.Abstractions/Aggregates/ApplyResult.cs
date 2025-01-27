@@ -1,4 +1,4 @@
-// <copyright file="ApplyResult.cs" company="ITANEO">
+﻿// <copyright file="ApplyResult.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -29,6 +29,22 @@ public record ApplyResult(
     /// <returns>An ApplyResult indicating failure due to unimplemented event.</returns>
     public static ApplyResult NotImplemented(IDomainAggregate aggregate)
         => new(aggregate, [], true, "Event not implemented");
+
+    /// <summary>
+    /// Creates an ApplyResult indicating that the aggregate is not initialized.
+    /// </summary>
+    /// <param name="aggregate">The domain aggregate.</param>
+    /// <returns>An ApplyResult indicating failure due to uninitialized aggregate.</returns>
+    public static ApplyResult NotInitialized(IDomainAggregate aggregate)
+        => new(aggregate, [], true, $"Cannot apply changes to an uninitialized manhole element ({aggregate.AggregateName}).");
+
+    /// <summary>
+    /// Creates an ApplyResult indicating that the aggregate is not enabled.
+    /// </summary>
+    /// <param name="aggregate">The domain aggregate.</param>
+    /// <returns>An ApplyResult indicating failure due to disabled aggregate.</returns>
+    public static ApplyResult NotEnabled(IDomainAggregate aggregate)
+        => new(aggregate, [], true, $"Cannot change a disabled manhole element ({aggregate.AggregateName}).");
 
     /// <summary>
     /// Creates an ApplyResult indicating that an invalid event was applied.
