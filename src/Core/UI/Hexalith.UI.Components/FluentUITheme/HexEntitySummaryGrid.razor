@@ -21,7 +21,7 @@
         @if (ShowDisabledColumn)
         {
             <TemplateColumn Title="@Labels.Disabled">
-                <FluentCheckbox Value="@(context.Disabled)" ValueChanged="@(c => DisabledChanged(context.Id))" />
+                <FluentCheckbox Value="@(context.Disabled)" ValueChanged="@(async (c) => await DisabledChanged(context.Id))" />
             </TemplateColumn>
         }
 
