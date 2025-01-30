@@ -20,7 +20,7 @@
 
 
 <FluentStack Orientation="Orientation.Vertical" Width="100%" Style="padding:10px;padding-right:20px;">
-    <HexPageTitle>@(CreateMode ? AddTitle : string.Format(EditTitle, EntityId))</HexPageTitle>
+    <HexPageTitle HideTitle="@HideTitle">@(CreateMode ? AddTitle : string.Format(EditTitle, EntityId))</HexPageTitle>
     @if (ViewModel is not null)
     {
         <FluentGrid Style="width:100%;">
@@ -130,6 +130,10 @@
     [Parameter]
     [EditorRequired]
     public EventCallback OnLoadData { get; set; }
+
+    [Parameter]
+    public bool HideTitle { get; set; }
+
 
     bool _descriptionExpanded = true;
 

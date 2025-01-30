@@ -3,22 +3,26 @@
 @inherits FluentLabel
 
 <PageTitle>@ChildContent</PageTitle>
-<FluentLabel 
-    AdditionalAttributes="@AdditionalAttributes"
-             Alignment="@Alignment"
-             ChildContent="@(ChildContent!)"            
-             Class="@Class"
-             Color="@Color"
-             CustomColor="@CustomColor"
-             Data="@Data"
-             Disabled="@Disabled"
-             Id="@Id"
-             MarginBlock="@MarginBlock"
-             ParentReference="@ParentReference"
-             Style="@Style"
-             Typo="Typography.PaneHeader"             
-             Weight="@Weight" >
-</FluentLabel>
+@if (!HideTitle)
+{
+	<FluentLabel AdditionalAttributes="@AdditionalAttributes"
+				 Alignment="@Alignment"
+				 ChildContent="@(ChildContent!)"
+				 Class="@Class"
+				 Color="@Color"
+				 CustomColor="@CustomColor"
+				 Data="@Data"
+				 Disabled="@Disabled"
+				 Id="@Id"
+				 MarginBlock="@MarginBlock"
+				 ParentReference="@ParentReference"
+				 Style="@Style"
+				 Typo="Typography.PaneHeader"
+				 Weight="@Weight">
+	</FluentLabel>
+}
 @code {
+	[Parameter]
+	public bool HideTitle { get; set; }
 
 }
