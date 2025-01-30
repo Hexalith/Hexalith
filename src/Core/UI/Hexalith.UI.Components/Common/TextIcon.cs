@@ -16,4 +16,11 @@ using Microsoft.FluentUI.AspNetCore.Components;
 /// <param name="character">The character to be displayed as an icon.</param>
 public class TextIcon(string character) : Icon(character, IconVariant.Regular, IconSize.Custom, $"<span style=\"padding: 0px; margin: 0px;width: 20px;font-size: 20px;color: var(--accent-fill-rest);\">{character}</span>")
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TextIcon"/> class.
+    /// </summary>
+    public TextIcon()
+        : this(string.Empty)
+    {
+    }
 }
