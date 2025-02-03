@@ -64,7 +64,7 @@ internal class PartitionService : IPartitionService
     /// <inheritdoc/>
     public async IAsyncEnumerable<Partition> GetAllAsync([EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        await foreach (Partition id in GetPartitionsAsync(await _actorProxyFactory.CreateAllPartitionsProxy().AllAsync(), cancellationToken))
+        await foreach (Partition id in GetPartitionsAsync(await _actorProxyFactory.CreateAllPartitionsProxy().AllAsync(0, 0), cancellationToken))
         {
             yield return id;
         }
@@ -73,7 +73,7 @@ internal class PartitionService : IPartitionService
     /// <inheritdoc/>
     public async Task<IEnumerable<string>> GetAllIdsAsync(CancellationToken cancellationToken)
         => await _actorProxyFactory.CreateAllPartitionsProxy()
-            .AllAsync();
+            .AllAsync(0, 0);
 
     private IPartitionActor GetPartitionActor(string partitionId)
         => _actorProxyFactory.CreateActorProxy<IPartitionActor>(partitionId.ToActorId(), IPartitionActor.ActorName);

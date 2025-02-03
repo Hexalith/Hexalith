@@ -47,8 +47,27 @@ public class KeyHashActor : Actor, IKeyHashActor
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<string>> AllAsync()
-        => _state ??= await GetStateAsync();
+    public async Task<IEnumerable<string>> AllAsync(int skip, int take)
+    {
+        _state ??= await GetStateAsync();
+        if (_state is null || _state.Count == 0)
+        {
+            return [];
+        }
+
+        IQueryable<string> query = _state.AsQueryable();
+        if (skip > 0)
+        {
+            query = query.Skip(skip);
+        }
+
+        if (take > 0)
+        {
+            query = query.Take(take);
+        }
+
+        return [.. query];
+    }
 
     /// <inheritdoc/>
     public async Task<bool> ExistsAsync(string value)

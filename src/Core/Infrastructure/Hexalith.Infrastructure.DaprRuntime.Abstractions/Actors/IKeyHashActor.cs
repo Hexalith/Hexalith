@@ -29,10 +29,12 @@ public interface IKeyHashActor : IActor
     /// Retrieves all values from the list asynchronously. The values are returned
     /// in the order they were added.
     /// </summary>
+    /// <param name="skip">The number of items to skip before starting to take the values.</param>
+    /// <param name="take">The number of items to take from the list after skipping.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains
     /// an enumerable collection of strings representing all values currently stored in the list.
     /// Returns an empty collection if no values exist.</returns>
-    Task<IEnumerable<string>> AllAsync();
+    Task<IEnumerable<string>> AllAsync(int skip, int take);
 
     /// <summary>
     /// Checks if a specific value exists in the list asynchronously.

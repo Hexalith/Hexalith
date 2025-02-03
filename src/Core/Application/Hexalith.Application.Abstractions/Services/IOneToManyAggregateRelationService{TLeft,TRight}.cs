@@ -51,5 +51,17 @@ public interface IOneToManyAggregateRelationService<TLeft, TRight>
     /// <param name="aggregateId">The ID of the left aggregate.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the list of related aggregate global IDs.</returns>
-    Task<IEnumerable<string>> GetAsync(string partitionId, string aggregateId, CancellationToken cancellationToken);
+    Task<IEnumerable<string>> GetAsync(string partitionId, string aggregateId, CancellationToken cancellationToken)
+        => GetAsync(partitionId, aggregateId, 0, 0, cancellationToken);
+
+    /// <summary>
+    /// Gets the related aggregates for a given aggregate with pagination.
+    /// </summary>
+    /// <param name="partitionId">The partition ID.</param>
+    /// <param name="aggregateId">The ID of the left aggregate.</param>
+    /// <param name="skip">The number of records to skip.</param>
+    /// <param name="take">The number of records to take.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the list of related aggregate global IDs.</returns>
+    Task<IEnumerable<string>> GetAsync(string partitionId, string aggregateId, int skip, int take, CancellationToken cancellationToken);
 }

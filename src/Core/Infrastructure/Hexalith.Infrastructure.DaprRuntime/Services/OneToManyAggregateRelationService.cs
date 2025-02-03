@@ -36,8 +36,8 @@ public class OneToManyAggregateRelationService<TLeft, TRight>(IActorProxyFactory
         => await GetActor(partitionId, aggregateId).AddAsync(relationAggregateId);
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<string>> GetAsync(string partitionId, string aggregateId, CancellationToken cancellationToken)
-        => await GetActor(partitionId, aggregateId).AllAsync();
+    public async Task<IEnumerable<string>> GetAsync(string partitionId, string aggregateId, int skip, int take, CancellationToken cancellationToken)
+        => await GetActor(partitionId, aggregateId).AllAsync(skip, take);
 
     private IKeyHashActor GetActor(string partitionId, string aggregateId)
         => _actorProxyFactory.CreateActorProxy<IKeyHashActor>(
