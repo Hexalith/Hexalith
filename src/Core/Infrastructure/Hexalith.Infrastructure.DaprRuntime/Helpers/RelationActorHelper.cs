@@ -55,6 +55,6 @@ public static class RelationActorHelper
             return;
         }
 
-        actorRegistrationCollection.RegisterActor<KeyValueActor>(actorName);
+        actorRegistrationCollection.RegisterActor<KeyHashActor>(actorName);
     }
 }

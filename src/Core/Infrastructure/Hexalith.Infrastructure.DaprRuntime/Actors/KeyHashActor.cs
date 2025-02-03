@@ -1,17 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime
-// Author           : Jérôme Piquot
-// Created          : 10-28-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 10-28-2023
-// ***********************************************************************
-// <copyright file="KeyHashActor.cs" company="ITANEO">
+﻿// <copyright file="KeyHashActor.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
@@ -23,12 +13,8 @@ using Dapr.Actors.Runtime;
 using Hexalith.Application;
 
 /// <summary>
-/// Key value actor class.
-/// Implements the <see cref="Actor" />
-/// Implements the <see cref="Actors.IKeyValueActor" />.
+/// Actor that manages a set of unique keys.
 /// </summary>
-/// <seealso cref="Actor" />
-/// <seealso cref="Actors.IKeyValueActor" />
 public class KeyHashActor : Actor, IKeyHashActor
 {
     private HashSet<string>? _state;
@@ -78,9 +64,17 @@ public class KeyHashActor : Actor, IKeyHashActor
         }
     }
 
+    /// <summary>
+    /// Gets the current state of the actor.
+    /// </summary>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the state.</returns>
     private async Task<HashSet<string>> GetStateAsync()
         => [.. await StateManager.GetOrAddStateAsync(ApplicationConstants.StateName, Array.Empty<string>())];
 
+    /// <summary>
+    /// Saves the current state of the actor.
+    /// </summary>
+    /// <returns>A task that represents the asynchronous operation.</returns>
     private new async Task SaveStateAsync()
     {
         await StateManager.SetStateAsync(ApplicationConstants.StateName, _state?.ToArray() ?? [], CancellationToken.None);
