@@ -27,7 +27,7 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
     where TViewModel : class, IIdDescription
 {
     private readonly IIdCollectionFactory _collectionFactory;
-    private readonly ILogger<GetFilteredCollectionHandler<TRequest, TViewModel>> _logger;
+    private readonly ILogger _logger;
     private readonly IProjectionFactory<TViewModel> _projectionFactory;
 
     /// <summary>
@@ -48,6 +48,17 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
         _projectionFactory = projectionFactory;
         _logger = logger;
     }
+
+    /// <summary>
+    /// Logs an error message indicating missing results for aggregate identifiers in a request.
+    /// </summary>
+    /// <param name="logger"></param>
+    /// <param name="messageName">The name of the message.</param>
+    /// <param name="messageId">The ID of the message.</param>
+    /// <param name="correlationId">The correlation ID of the context.</param>
+    /// <param name="aggregateIds">The aggregate identifiers that are missing results.</param>
+    [LoggerMessage(EventId = 0, Level = LogLevel.Error, Message = "Missing results for aggregate identifiers in request {MessageName} : {AggregateIds}. MessageId={MessageId}; CorrelationId={CorrelationId}")]
+    public static partial void LogMissingResults(ILogger logger, string messageName, string messageId, string correlationId, IEnumerable<string> aggregateIds);
 
     /// <summary>
     /// Executes the request asynchronously.
@@ -71,6 +82,7 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
             if (results.Count != request.Ids.Count())
             {
                 LogMissingResults(
+                    _logger,
                     metadata.Message.Name,
                     metadata.Message.Id,
                     metadata.Context.CorrelationId,
@@ -99,6 +111,11 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
         List<TViewModel> searchResults = [];
         int chunkTake = 100;
         int chunkSkip = 0;
+
+        // Split and normalize words
+        string[] splittedWords = request.Filter?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? [];
+        string[] normalizedWords = [.. splittedWords.Select(w => w.Normalize(System.Text.NormalizationForm.FormD))];
+
         while (true)
         {
             chunkResults = [..await GetProjectionChunkAsync(
@@ -108,9 +125,19 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
                     cancellationToken)
                 .ConfigureAwait(false)];
             chunkSkip += chunkTake;
+
+            // Filter projections using pre-normalized words:
             searchResults.AddRange(chunkResults.Where(
-                p => p.Description.Contains(request.Filter, StringComparison.OrdinalIgnoreCase) ||
-                p.Id.Contains(request.Filter, StringComparison.OrdinalIgnoreCase)));
+                p =>
+                {
+                    string normalizedDescription = p.Description.Normalize(System.Text.NormalizationForm.FormD);
+                    string normalizedId = p.Id.Normalize(System.Text.NormalizationForm.FormD);
+                    return normalizedWords.All(nw =>
+                        normalizedDescription.Contains(nw, StringComparison.OrdinalIgnoreCase)
+                        || normalizedId.Contains(nw, StringComparison.OrdinalIgnoreCase));
+                }));
+
+            // Break if enough results have been found or fewer items remain
             if (searchResults.Count >= request.Skip + request.Take || chunkResults.Count < chunkTake)
             {
                 break;
@@ -129,16 +156,6 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
 
         return (TRequest)request.CreateResults(searchResults);
     }
-
-    /// <summary>
-    /// Logs an error message indicating missing results for aggregate identifiers in a request.
-    /// </summary>
-    /// <param name="messageName">The name of the message.</param>
-    /// <param name="messageId">The ID of the message.</param>
-    /// <param name="correlationId">The correlation ID of the context.</param>
-    /// <param name="aggregateIds">The aggregate identifiers that are missing results.</param>
-    [LoggerMessage(EventId = 0, Level = LogLevel.Error, Message = "Missing results for aggregate identifiers in request {MessageName} : {AggregateIds}. MessageId={MessageId}; CorrelationId={CorrelationId}")]
-    public partial void LogMissingResults(string messageName, string messageId, string correlationId, IEnumerable<string> aggregateIds);
 
     private async Task<IDictionary<string, TViewModel>> GetIdsProjectionsAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
     {
