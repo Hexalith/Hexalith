@@ -40,5 +40,7 @@ public class OneToManyAggregateRelationService<TLeft, TRight>(IActorProxyFactory
         => await GetActor(partitionId, aggregateId).AllAsync();
 
     private IKeyHashActor GetActor(string partitionId, string aggregateId)
-        => _actorProxyFactory.CreateActorProxy<IKeyHashActor>($"{partitionId}-{aggregateId}".ToActorId(), IOneToManyAggregateRelationService<TLeft, TRight>.RelationName);
+        => _actorProxyFactory.CreateActorProxy<IKeyHashActor>(
+            $"{partitionId}-{aggregateId}".ToActorId(),
+            IOneToManyAggregateRelationService<TLeft, TRight>.RelationName);
 }
