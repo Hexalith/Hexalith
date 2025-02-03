@@ -30,7 +30,6 @@ public class OneToManyAggregateRelationService<TLeft, TRight>(IActorProxyFactory
     where TLeft : IDomainAggregate, new()
 {
     private readonly IActorProxyFactory _actorProxyFactory = actorProxyFactory;
-    private IKeyHashActor? _actor;
 
     /// <inheritdoc/>
     public async Task AddAsync(string partitionId, string aggregateId, string relationAggregateId, CancellationToken cancellationToken)
@@ -41,8 +40,5 @@ public class OneToManyAggregateRelationService<TLeft, TRight>(IActorProxyFactory
         => await GetActor(partitionId, aggregateId).AllAsync();
 
     private IKeyHashActor GetActor(string partitionId, string aggregateId)
-    {
-        _actor = _actorProxyFactory.CreateActorProxy<IKeyHashActor>($"{partitionId}-{aggregateId}".ToActorId(), IOneToManyAggregateRelationService<TLeft, TRight>.RelationName);
-        return _actor;
-    }
+        => _actorProxyFactory.CreateActorProxy<IKeyHashActor>($"{partitionId}-{aggregateId}".ToActorId(), IOneToManyAggregateRelationService<TLeft, TRight>.RelationName);
 }
