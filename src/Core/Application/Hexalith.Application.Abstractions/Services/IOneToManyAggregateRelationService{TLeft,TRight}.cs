@@ -16,9 +16,24 @@ using Hexalith.Domain.Aggregates;
 /// <typeparam name="TLeft">The type of the left aggregate service.</typeparam>
 /// <typeparam name="TRight">The type of the right aggregate service.</typeparam>
 public interface IOneToManyAggregateRelationService<TLeft, TRight>
-    where TLeft : IDomainAggregate
-    where TRight : IDomainAggregate
+    where TLeft : IDomainAggregate, new()
+    where TRight : IDomainAggregate, new()
 {
+    /// <summary>
+    /// Gets the relation name by combining the left and right names.
+    /// </summary>
+    static string RelationName
+    {
+        get
+        {
+            {
+                TLeft l = new();
+                TRight r = new();
+                return $"{l.AggregateName}{r.AggregateName}";
+            }
+        }
+    }
+
     /// <summary>
     /// Adds a relation between two aggregates.
     /// </summary>

@@ -42,9 +42,7 @@ public class OneToManyAggregateRelationService<TLeft, TRight>(IActorProxyFactory
 
     private IKeyHashActor GetActor(string partitionId, string aggregateId)
     {
-        TLeft l = new();
-        TRight r = new();
-        _actor = _actorProxyFactory.CreateActorProxy<IKeyHashActor>($"{partitionId}-{aggregateId}".ToActorId(), $"{l.AggregateName}{r.AggregateName}");
+        _actor = _actorProxyFactory.CreateActorProxy<IKeyHashActor>($"{partitionId}-{aggregateId}".ToActorId(), IOneToManyAggregateRelationService<TLeft, TRight>.RelationName);
         return _actor;
     }
 }
