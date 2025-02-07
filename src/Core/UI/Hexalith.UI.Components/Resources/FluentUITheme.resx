@@ -222,4 +222,7 @@
   <data name="SaveButtonTitle" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
 </root>
