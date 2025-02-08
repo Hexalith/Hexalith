@@ -1,4 +1,4 @@
-﻿// <copyright file="IFilteredRequest.cs" company="ITANEO">
+﻿// <copyright file="IByIdsRequest.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -6,17 +6,12 @@
 namespace Hexalith.Application.Requests;
 
 /// <summary>
-/// Represents a request that can be searched.
+/// Interface for requests that retrieve results by a list of identifiers.
 /// </summary>
-public interface IFilteredRequest : ICollectionRequest
+public interface IByIdsRequest : ICollectionRequest
 {
     /// <summary>
-    /// Gets the result for a list of identifiers.
+    /// Gets the list of identifiers.
     /// </summary>
     IEnumerable<string> Ids { get; }
-
-    /// <summary>
-    /// Gets the search step.
-    /// </summary>
-    string? Search { get; }
 }

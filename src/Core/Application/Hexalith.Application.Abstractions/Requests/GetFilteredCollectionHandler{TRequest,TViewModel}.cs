@@ -23,7 +23,7 @@ using Microsoft.Extensions.Logging;
 /// <typeparam name="TRequest">The type of the request.</typeparam>
 /// <typeparam name="TViewModel">The type of the view model.</typeparam>
 public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : RequestHandlerBase<TRequest>
-    where TRequest : class, IFilteredChunkableRequest
+    where TRequest : class, ISearchChunkableRequest
     where TViewModel : class, IIdDescription
 {
     private readonly IIdCollectionFactory _collectionFactory;
