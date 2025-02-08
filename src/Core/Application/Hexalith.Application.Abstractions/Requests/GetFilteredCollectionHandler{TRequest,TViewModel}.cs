@@ -95,7 +95,7 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
         IIdCollectionService service = _collectionFactory.CreateService(
                 IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Aggregate.Name),
                 metadata.Context.PartitionId);
-        if (request.Filter is null)
+        if (request.Search is null)
         {
             return (TRequest)request.CreateResults(
                 await GetProjectionChunkAsync(
@@ -106,14 +106,14 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
                 .ConfigureAwait(false));
         }
 
-        // Search with filter
+        // Search with search
         List<TViewModel> chunkResults;
         List<TViewModel> searchResults = [];
         int chunkTake = 100;
         int chunkSkip = 0;
 
         // Split and normalize words
-        string[] splittedWords = request.Filter?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? [];
+        string[] splittedWords = request.Search?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? [];
         string[] normalizedWords = [.. splittedWords.Select(w => w.Normalize(System.Text.NormalizationForm.FormD))];
 
         while (true)

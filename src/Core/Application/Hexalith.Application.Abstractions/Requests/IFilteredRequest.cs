@@ -6,17 +6,17 @@
 namespace Hexalith.Application.Requests;
 
 /// <summary>
-/// Represents a request that can be filtered.
+/// Represents a request that can be searched.
 /// </summary>
 public interface IFilteredRequest : ICollectionRequest
 {
     /// <summary>
-    /// Gets the filter string.
-    /// </summary>
-    string? Filter { get; }
-
-    /// <summary>
     /// Gets the result for a list of identifiers.
     /// </summary>
     IEnumerable<string> Ids { get; }
+
+    /// <summary>
+    /// Gets the search step.
+    /// </summary>
+    string? Search { get; }
 }
