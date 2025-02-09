@@ -35,6 +35,7 @@ using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Services;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
+using Hexalith.Infrastructure.GraphQLServer.Helpers;
 using Hexalith.Infrastructure.WebApis.Services;
 
 using Microsoft.AspNetCore.Authentication;
@@ -123,6 +124,7 @@ public static partial class HexalithWebApi
             s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
 
         _ = builder.Services.AddActorProjectionFactory<IdDescription>();
+        _ = builder.AddHexalithGraphQL();
 
         HexalithApplication.AddApiServerServices(builder.Services, builder.Configuration);
 
@@ -171,6 +173,7 @@ public static partial class HexalithWebApi
 
         _ = app.UseRouting();
         _ = app.MapActorsHandlers();
+        _ = app.UseHexalithGraphQL();
         _ = app.UseSwagger();
         _ = app.UseSwaggerUI();
 

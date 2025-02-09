@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="HotChocolate.AspNetCore" Version="$(HotChocolateVersion)" />
+      <PackageReference Include="HotChocolate.Types.Analyzers" Version="$(HotChocolateVersion)">
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        <PrivateAssets>all</PrivateAssets>
+      </PackageReference>
+      <PackageReference Include="HotChocolate.Types.Json" Version="$(HotChocolateVersion)" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Hexalith.Infrastructure.Emails.Abstractions\Hexalith.Infrastructure.Emails.Abstractions.csproj" />
+    </ItemGroup>
+</Project>

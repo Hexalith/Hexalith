@@ -37,6 +37,7 @@ using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Services;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
+using Hexalith.Infrastructure.GraphQLServer.Helpers;
 using Hexalith.Infrastructure.WebApis.Controllers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.PolymorphicSerialization;
@@ -194,6 +195,7 @@ public static class ServerSideClientAppHelper
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+        _ = builder.AddHexalithGraphQL();
         HexalithApplication.AddWebServerServices(builder.Services, builder.Configuration);
         return builder;
     }
@@ -341,6 +343,7 @@ public static class ServerSideClientAppHelper
         }
 
         _ = app.MapActorsHandlers();
+        _ = app.UseHexalithGraphQL();
 
         app.UseHexalithModules();
 

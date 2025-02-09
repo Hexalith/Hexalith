@@ -26,6 +26,7 @@
     <GoogleApiVersion>5.4.2</GoogleApiVersion>
     <GrpcVersion>2.67.0</GrpcVersion>
     <ISO3166Version>1.0.4</ISO3166Version>
+    <HotChocolateVersion>15.0.3</HotChocolateVersion>
     <HumanizerVersion>2.14.1</HumanizerVersion>
     <MailKitVersion>4.10.0</MailKitVersion>
     <MicrosoftAzureCosmosVersion>3.46.1</MicrosoftAzureCosmosVersion>

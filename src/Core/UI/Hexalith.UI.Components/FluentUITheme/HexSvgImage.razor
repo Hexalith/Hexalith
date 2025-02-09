@@ -1,6 +1,5 @@
 ﻿@using Hexalith.Extensions.Helpers
 @inherits FluentComponentBase
-@typeparam TDrawingData
 <FluentCard AdditionalAttributes="@AdditionalAttributes"
             Class="@Class"
             Data="@Data"
@@ -21,7 +20,7 @@
     [Parameter]
     public string? Drawing { get; set; }
     [Parameter]
-    public TDrawingData? DrawingData { get; set; }
+    public object? DrawingData { get; set; }
     [Parameter]
     public string? Height { get; set; }
     [Parameter]
