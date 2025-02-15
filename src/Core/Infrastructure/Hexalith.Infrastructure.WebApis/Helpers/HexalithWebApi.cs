@@ -80,6 +80,7 @@ public static partial class HexalithWebApi
         builder
             .Services
             .AddEndpointsApiExplorer()
+            .AddLocalization()
             .AddSwaggerGen(c => c.SwaggerDoc(
                 "v1",
                 new()

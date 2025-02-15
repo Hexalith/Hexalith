@@ -141,7 +141,7 @@ public static class ServerSideClientAppHelper
         _ = builder
             .AddServiceDefaults()
             .Services
-            .AddLocalization(options => options.ResourcesPath = "Resources")
+            .AddLocalization()
             .AddProblemDetails()
             .AddHexalithServerSideClientApp(builder.Configuration)
             .AddEndpointsApiExplorer()
