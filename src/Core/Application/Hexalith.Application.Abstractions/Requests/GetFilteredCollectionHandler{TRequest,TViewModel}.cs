@@ -61,6 +61,16 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
     public static partial void LogMissingResults(ILogger logger, string messageName, string messageId, string correlationId, IEnumerable<string> aggregateIds);
 
     /// <summary>
+    /// Logs a warning message indicating that the request contains both ids and a filter or search.
+    /// </summary>
+    /// <param name="logger">The logger.</param>
+    /// <param name="messageName">The name of the message.</param>
+    /// <param name="messageId">The ID of the message.</param>
+    /// <param name="correlationId">The correlation ID of the context.</param>
+    [LoggerMessage(EventId = 1, Level = LogLevel.Warning, Message = "Request contains both ids and a filter or search in request {MessageName}. MessageId={MessageId}; CorrelationId={CorrelationId}")]
+    public static partial void LogWarningForIdsWithFilterOrSearch(ILogger logger, string messageName, string messageId, string correlationId);
+
+    /// <summary>
     /// Executes the request asynchronously.
     /// </summary>
     /// <param name="request">The request.</param>
@@ -71,31 +81,21 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(metadata);
-
+        IFilteredRequest? filtered = request as IFilteredRequest;
         if (request.Ids.Any())
         {
-            IEnumerable<string> globalIds = request.Ids.Select(metadata.CreateAggregateGlobalId);
-            IDictionary<string, TViewModel> r = await GetIdsProjectionsAsync(globalIds, cancellationToken);
-            List<TViewModel> results = [.. r.Values];
-
-            // If the request result does not contain all the requested ids, we need to log an error
-            if (results.Count != request.Ids.Count())
+            if (!string.IsNullOrWhiteSpace(request.Search) || filtered?.Filter is not null)
             {
-                LogMissingResults(
-                    _logger,
-                    metadata.Message.Name,
-                    metadata.Message.Id,
-                    metadata.Context.CorrelationId,
-                    request.Ids.Except(r.Keys));
+                LogWarningForIdsWithFilterOrSearch(_logger, metadata.Message.Name, metadata.Message.Id, metadata.Context.CorrelationId);
             }
 
-            return (TRequest)request.CreateResults(results);
+            return await GetFromIdsAsync(request, metadata, cancellationToken);
         }
 
         IIdCollectionService service = _collectionFactory.CreateService(
                 IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Aggregate.Name),
                 metadata.Context.PartitionId);
-        if (request.Search is null)
+        if (request.Search is null && filtered?.Filter is null)
         {
             return (TRequest)request.CreateResults(
                 await GetProjectionChunkAsync(
@@ -134,7 +134,8 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
                     string normalizedId = p.Id.Normalize(System.Text.NormalizationForm.FormD);
                     return normalizedWords.All(nw =>
                         normalizedDescription.Contains(nw, StringComparison.OrdinalIgnoreCase)
-                        || normalizedId.Contains(nw, StringComparison.OrdinalIgnoreCase));
+                        || normalizedId.Contains(nw, StringComparison.OrdinalIgnoreCase)) &&
+                        CompliesWithFilter(p, filtered);
                 }));
 
             // Break if enough results have been found or fewer items remain
@@ -155,6 +156,29 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
         }
 
         return (TRequest)request.CreateResults(searchResults);
+    }
+
+    private bool CompliesWithFilter(TViewModel p, IFilteredRequest? filtered)
+        => filtered?.Filter is null || filtered.Filter.CompliesToFilter(p);
+
+    private async Task<TRequest> GetFromIdsAsync(TRequest request, Metadata metadata, CancellationToken cancellationToken)
+    {
+        IEnumerable<string> globalIds = request.Ids.Select(metadata.CreateAggregateGlobalId);
+        IDictionary<string, TViewModel> r = await GetIdsProjectionsAsync(globalIds, cancellationToken);
+        List<TViewModel> results = [.. r.Values];
+
+        // If the request result does not contain all the requested ids, we need to log an error
+        if (results.Count != request.Ids.Count())
+        {
+            LogMissingResults(
+                _logger,
+                metadata.Message.Name,
+                metadata.Message.Id,
+                metadata.Context.CorrelationId,
+                request.Ids.Except(r.Keys));
+        }
+
+        return (TRequest)request.CreateResults(results);
     }
 
     private async Task<IDictionary<string, TViewModel>> GetIdsProjectionsAsync(IEnumerable<string> ids, CancellationToken cancellationToken)
