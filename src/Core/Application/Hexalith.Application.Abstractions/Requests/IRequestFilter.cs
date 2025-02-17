@@ -14,6 +14,7 @@ public interface IRequestFilter
     /// Determines whether the specified value complies with the filter.
     /// </summary>
     /// <param name="value">The value to check against the filter.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns><c>true</c> if the value complies with the filter; otherwise, <c>false</c>.</returns>
-    bool CompliesToFilter(object? value);
+    Task<bool> CompliesToFilterAsync(object? value, CancellationToken cancellationToken);
 }

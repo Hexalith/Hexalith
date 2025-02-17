@@ -125,18 +125,13 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
                     cancellationToken)
                 .ConfigureAwait(false)];
             chunkSkip += chunkTake;
-
-            // Filter projections using pre-normalized words:
-            searchResults.AddRange(chunkResults.Where(
-                p =>
+            foreach (TViewModel chunkResult in chunkResults)
+            {
+                if (await CompliesWithFilterAndSearchAsync(normalizedWords, chunkResult, filtered, cancellationToken))
                 {
-                    string normalizedDescription = p.Description.Normalize(System.Text.NormalizationForm.FormD);
-                    string normalizedId = p.Id.Normalize(System.Text.NormalizationForm.FormD);
-                    return normalizedWords.All(nw =>
-                        normalizedDescription.Contains(nw, StringComparison.OrdinalIgnoreCase)
-                        || normalizedId.Contains(nw, StringComparison.OrdinalIgnoreCase)) &&
-                        CompliesWithFilter(p, filtered);
-                }));
+                    searchResults.Add(chunkResult);
+                }
+            }
 
             // Break if enough results have been found or fewer items remain
             if (searchResults.Count >= request.Skip + request.Take || chunkResults.Count < chunkTake)
@@ -158,8 +153,16 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
         return (TRequest)request.CreateResults(searchResults);
     }
 
-    private bool CompliesWithFilter(TViewModel p, IFilteredRequest? filtered)
-        => filtered?.Filter is null || filtered.Filter.CompliesToFilter(p);
+    private static async Task<bool> CompliesWithFilterAndSearchAsync(string[] normalizedWords, TViewModel p, IFilteredRequest? filtered, CancellationToken cancellationToken)
+    {
+        // Filter projections using pre-normalized words:
+        string normalizedDescription = p.Description.Normalize(System.Text.NormalizationForm.FormD);
+        string normalizedId = p.Id.Normalize(System.Text.NormalizationForm.FormD);
+        bool compliesToSearch = normalizedWords.All(
+                nw => normalizedDescription.Contains(nw, StringComparison.OrdinalIgnoreCase)
+                        || normalizedId.Contains(nw, StringComparison.OrdinalIgnoreCase));
+        return compliesToSearch && (filtered?.Filter is null || await filtered.Filter.CompliesToFilterAsync(p, cancellationToken));
+    }
 
     private async Task<TRequest> GetFromIdsAsync(TRequest request, Metadata metadata, CancellationToken cancellationToken)
     {
