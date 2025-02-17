@@ -161,7 +161,8 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
         bool compliesToSearch = normalizedWords.All(
                 nw => normalizedDescription.Contains(nw, StringComparison.OrdinalIgnoreCase)
                         || normalizedId.Contains(nw, StringComparison.OrdinalIgnoreCase));
-        return compliesToSearch && (filtered?.Filter is null || await filtered.Filter.CompliesToFilterAsync(p, cancellationToken));
+        bool compliesToFilter = filtered?.Filter is null || await filtered.Filter.CompliesToFilterAsync(p, cancellationToken);
+        return compliesToSearch && compliesToFilter;
     }
 
     private async Task<TRequest> GetFromIdsAsync(TRequest request, Metadata metadata, CancellationToken cancellationToken)
