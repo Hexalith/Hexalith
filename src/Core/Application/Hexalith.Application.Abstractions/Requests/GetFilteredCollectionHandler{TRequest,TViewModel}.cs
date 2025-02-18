@@ -95,7 +95,7 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
         IIdCollectionService service = _collectionFactory.CreateService(
                 IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Aggregate.Name),
                 metadata.Context.PartitionId);
-        if (request.Search is null && filtered?.Filter is null)
+        if (string.IsNullOrEmpty(request.Search) && filtered?.Filter is null)
         {
             return (TRequest)request.CreateResults(
                 await GetProjectionChunkAsync(
