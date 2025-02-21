@@ -32,10 +32,10 @@ public partial class CommandServiceController : ControllerBase
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandServiceController"/> class.
     /// </summary>
-    /// <param name="application">The application.</param>
-    /// <param name="serviceProvider"></param>
-    /// <param name="commandProcessor">The command bus.</param>
-    /// <param name="logger">The logger.</param>
+    /// <param name="application">The application instance.</param>
+    /// <param name="serviceProvider">The service provider instance.</param>
+    /// <param name="commandProcessor">The command processor instance.</param>
+    /// <param name="logger">The logger instance.</param>
     public CommandServiceController(
         IApplication application,
         IServiceProvider serviceProvider,

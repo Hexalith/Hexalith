@@ -1,4 +1,4 @@
-﻿// <copyright file="ISearchRequest - Copy.cs" company="ITANEO">
+﻿// <copyright file="IRelationalFilterRequest.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
