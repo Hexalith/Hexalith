@@ -20,18 +20,16 @@ using Hexalith.Domain.Events;
 /// Handles export requests for a specific type of request, export model, and aggregate.
 /// </summary>
 /// <typeparam name="TRequest">The type of the request.</typeparam>
-/// <typeparam name="TExportModel">The type of the export model.</typeparam>
 /// <typeparam name="TAggregate">The type of the aggregate.</typeparam>
-public class GetExportsRequestHandler<TRequest, TExportModel, TAggregate> : RequestHandlerBase<TRequest>
+public class GetExportsRequestHandler<TRequest, TAggregate> : RequestHandlerBase<TRequest>
     where TRequest : class, IChunkableRequest
-    where TExportModel : class, IExportModel
     where TAggregate : class, IDomainAggregate
 {
     private readonly IAggregateService _aggregateService;
     private readonly IIdCollectionFactory _collectionFactory;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetExportsRequestHandler{TRequest, TExportModel, TAggregate}"/> class.
+    /// Initializes a new instance of the <see cref="GetExportsRequestHandler{TRequest, TAggregate}"/> class.
     /// </summary>
     /// <param name="collectionFactory">The collection factory.</param>
     /// <param name="aggregateService">The aggregate service.</param>
@@ -74,10 +72,9 @@ public class GetExportsRequestHandler<TRequest, TExportModel, TAggregate> : Requ
 
         SnapshotEvent?[] results = await Task.WhenAll(summaryTasks).ConfigureAwait(false);
 
-        IEnumerable<TExportModel> queryResult = results
-            .Select(p => p?.GetAggregate<TAggregate>())
+        IEnumerable<TAggregate> queryResult = results
             .Where(p => p is not null)
-            .Select(p => (TExportModel)TExportModel.CreateExportModel(p!));
+            .Select(p => p!.GetAggregate<TAggregate>());
 
         return (TRequest)request.CreateResults(queryResult);
     }
