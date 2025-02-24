@@ -36,7 +36,7 @@
     <MicrosoftFluentUIComponentsVersion>4.11.3</MicrosoftFluentUIComponentsVersion>
     <MicrosoftIdentityClientVersion>4.67.2</MicrosoftIdentityClientVersion>
     <MicrosoftIdentityWebVersion>3.6.2</MicrosoftIdentityWebVersion>
-    <MicrosoftNETTestSdkVersion>17.12.0</MicrosoftNETTestSdkVersion>
+    <MicrosoftNETTestSdkVersion>17.13.0</MicrosoftNETTestSdkVersion>
     <MicrosoftSemanticKernelVersion>1.35.0</MicrosoftSemanticKernelVersion>
     <MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
     <MicrosoftTypescriptMSBuild>5.7.1</MicrosoftTypescriptMSBuild>
@@ -65,7 +65,7 @@
     <StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
     <SwashbuckleAspNetCoreVersion>7.2.0</SwashbuckleAspNetCoreVersion>
     <SystemIdentityModelTokensJwtVersion>8.3.1</SystemIdentityModelTokensJwtVersion>
-    <XUnitRunnerVisualStudioVersion>3.0.1</XUnitRunnerVisualStudioVersion>
+    <XUnitRunnerVisualStudioVersion>3.0.2</XUnitRunnerVisualStudioVersion>
     <XUnitVersion>2.9.3</XUnitVersion>
   </PropertyGroup>
 </Project>
