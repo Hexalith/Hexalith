@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Services;
+namespace Hexalith.Domain.ValueObjects;
 
 /// <summary>
 /// Interface for objects that have an ID and a description.

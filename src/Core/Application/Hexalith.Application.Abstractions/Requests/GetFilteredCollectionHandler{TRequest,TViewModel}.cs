@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Services;
+using Hexalith.Domain.ValueObjects;
 
 using Microsoft.Extensions.Logging;
 

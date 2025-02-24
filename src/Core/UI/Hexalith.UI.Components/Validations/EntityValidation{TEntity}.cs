@@ -10,7 +10,7 @@ using System.Text;
 
 using FluentValidation;
 
-using Hexalith.Application.Services;
+using Hexalith.Domain.ValueObjects;
 
 using Labels = Hexalith.UI.Components.Resources.Validations;
 

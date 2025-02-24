@@ -29,6 +29,7 @@ using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Abstractions.Extensions;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.ValueObjects;
 using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;

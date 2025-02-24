@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Services;
+namespace Hexalith.Domain.ValueObjects;
 
 using System.Runtime.Serialization;
 
@@ -16,9 +16,9 @@ using System.Runtime.Serialization;
 /// </remarks>
 [DataContract]
 public record IdDescription(
-    string Id,
-    string Description,
-    bool Disabled) : IIdDescription
+    [property: DataMember(Order = 1)] string Id,
+    [property: DataMember(Order = 2)] string Description,
+    [property: DataMember(Order = 3)] bool Disabled) : IIdDescription
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="IdDescription"/> class.
