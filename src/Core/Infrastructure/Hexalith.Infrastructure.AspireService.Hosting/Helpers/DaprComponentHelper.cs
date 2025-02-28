@@ -9,7 +9,8 @@ using System.Diagnostics.CodeAnalysis;
 
 using Aspire.Hosting;
 using Aspire.Hosting.ApplicationModel;
-using Aspire.Hosting.Dapr;
+
+using CommunityToolkit.Aspire.Hosting.Dapr;
 
 using Hexalith.Application.Buses;
 using Hexalith.Extensions.Helpers;

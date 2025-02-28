@@ -7,7 +7,8 @@ namespace Hexalith.Infrastructure.AspireService.Hosting.Helpers;
 
 using Aspire.Hosting;
 using Aspire.Hosting.ApplicationModel;
-using Aspire.Hosting.Dapr;
+
+using CommunityToolkit.Aspire.Hosting.Dapr;
 
 /// <summary>
 /// Class HexalithProjectHelper.

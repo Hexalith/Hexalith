@@ -6,7 +6,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Aspire.Hosting" Version="$(AspireVersion)" />
-        <PackageReference Include="Aspire.Hosting.Dapr" Version="$(AspireVersion)" />
+        <PackageReference Include="CommunityToolkit.Aspire.Hosting.Dapr" Version="$(AspireDaprVersion)" />
         <PackageReference Include="Aspire.Azure.Messaging.ServiceBus" Version="$(AspireVersion)" />
         <PackageReference Include="Aspire.Azure.Storage.Blobs" Version="$(AspireVersion)" />
         <PackageReference Include="Aspire.Azure.Storage.Queues" Version="$(AspireVersion)" />

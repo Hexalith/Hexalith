@@ -4,6 +4,7 @@
     <AdaptiveCardsVersion>3.1.0</AdaptiveCardsVersion>
     <AdaptiveCardsTemplatingVersion>2.0.2</AdaptiveCardsTemplatingVersion>
     <AspireVersion>9.1.0</AspireVersion>
+    <AspireDaprVersion>9.2.0</AspireDaprVersion>
     <AzureIdentityVersion>1.13.2</AzureIdentityVersion>
     <AzureBicepCoreVersion>0.26.54</AzureBicepCoreVersion>
     <AzureMonitorOpenTelemetryAspNetCoreVersion>1.1.0</AzureMonitorOpenTelemetryAspNetCoreVersion>
