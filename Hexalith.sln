@@ -186,6 +186,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.UI.WebApp", "src\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.UI.WebServer", "src\Core\UI\Hexalith.UI.WebServer\Hexalith.UI.WebServer.csproj", "{8FCC1B58-8314-423E-B5FE-13AC6B1A3898}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Infrastructure.GraphQLServer", "src\Core\Infrastructure\Hexalith.Infrastructure.GraphQLServer\Hexalith.Infrastructure.GraphQLServer.csproj", "{40CDBF50-DBEE-ACD7-5E16-F6B25C01A638}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -380,6 +382,10 @@ Global
 		{8FCC1B58-8314-423E-B5FE-13AC6B1A3898}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FCC1B58-8314-423E-B5FE-13AC6B1A3898}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FCC1B58-8314-423E-B5FE-13AC6B1A3898}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40CDBF50-DBEE-ACD7-5E16-F6B25C01A638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40CDBF50-DBEE-ACD7-5E16-F6B25C01A638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40CDBF50-DBEE-ACD7-5E16-F6B25C01A638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40CDBF50-DBEE-ACD7-5E16-F6B25C01A638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -443,6 +449,7 @@ Global
 		{34C0B2F2-A001-4178-ADF0-5EAF64720CED} = {3D11F14C-AF25-4D09-8182-568B18EB78FC}
 		{0F06EA99-6312-4B2B-9225-123CDDCA1340} = {3D11F14C-AF25-4D09-8182-568B18EB78FC}
 		{8FCC1B58-8314-423E-B5FE-13AC6B1A3898} = {3D11F14C-AF25-4D09-8182-568B18EB78FC}
+		{40CDBF50-DBEE-ACD7-5E16-F6B25C01A638} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}
