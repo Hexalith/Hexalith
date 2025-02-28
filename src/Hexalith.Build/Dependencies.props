@@ -3,7 +3,7 @@
     <!-- Detect if the solution is opened in VS to add local repository for packages -->
     <AdaptiveCardsVersion>3.1.0</AdaptiveCardsVersion>
     <AdaptiveCardsTemplatingVersion>2.0.2</AdaptiveCardsTemplatingVersion>
-    <AspireVersion>9.0.0</AspireVersion>
+    <AspireVersion>9.1.0</AspireVersion>
     <AzureIdentityVersion>1.13.2</AzureIdentityVersion>
     <AzureBicepCoreVersion>0.26.54</AzureBicepCoreVersion>
     <AzureMonitorOpenTelemetryAspNetCoreVersion>1.1.0</AzureMonitorOpenTelemetryAspNetCoreVersion>
@@ -17,9 +17,9 @@
     <CoconaVersion>2.2.0</CoconaVersion>
     <CompareNETObjectsVersion>4.83.0</CompareNETObjectsVersion>
     <CoverletCollectorVersion>6.0.4</CoverletCollectorVersion>
-    <DaprVersion>1.14.*</DaprVersion>
+    <DaprVersion>1.15.*</DaprVersion>
     <DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
-    <FluentAssertionsVersion>8.0.1</FluentAssertionsVersion>
+    <FluentAssertionsVersion>8.1.1</FluentAssertionsVersion>
     <FluentValidationVersion>11.11.0</FluentValidationVersion>
     <FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
     <GitHubActionsTestLoggerVersion>2.4.1</GitHubActionsTestLoggerVersion>
@@ -29,17 +29,17 @@
     <HotChocolateVersion>15.0.3</HotChocolateVersion>
     <HumanizerVersion>2.14.1</HumanizerVersion>
     <MailKitVersion>4.10.0</MailKitVersion>
-    <MicrosoftAzureCosmosVersion>3.46.1</MicrosoftAzureCosmosVersion>
+    <MicrosoftAzureCosmosVersion>3.47.1</MicrosoftAzureCosmosVersion>
     <MicrosoftBotBuilderVersion>4.22.7</MicrosoftBotBuilderVersion>
-    <MicrosoftCodeAnalysisCSharpVersion>4.12.0</MicrosoftCodeAnalysisCSharpVersion>
+    <MicrosoftCodeAnalysisCSharpVersion>4.13.0</MicrosoftCodeAnalysisCSharpVersion>
     <MicrosoftCodeAnalysisAnalyzersVersion>3.11.0</MicrosoftCodeAnalysisAnalyzersVersion>
-    <MicrosoftFluentUIComponentsVersion>4.11.3</MicrosoftFluentUIComponentsVersion>
-    <MicrosoftIdentityClientVersion>4.67.2</MicrosoftIdentityClientVersion>
-    <MicrosoftIdentityWebVersion>3.6.2</MicrosoftIdentityWebVersion>
+    <MicrosoftFluentUIComponentsVersion>4.11.5</MicrosoftFluentUIComponentsVersion>
+    <MicrosoftIdentityClientVersion>4.68.0</MicrosoftIdentityClientVersion>
+    <MicrosoftIdentityWebVersion>3.7.1</MicrosoftIdentityWebVersion>
     <MicrosoftNETTestSdkVersion>17.13.0</MicrosoftNETTestSdkVersion>
-    <MicrosoftSemanticKernelVersion>1.35.0</MicrosoftSemanticKernelVersion>
+    <MicrosoftSemanticKernelVersion>1.40.0</MicrosoftSemanticKernelVersion>
     <MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
-    <MicrosoftTypescriptMSBuild>5.7.1</MicrosoftTypescriptMSBuild>
+    <MicrosoftTypescriptMSBuild>5.7.3</MicrosoftTypescriptMSBuild>
     <MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
     <MicrosoftVisualStudioThreadingAnalyzersVersion>17.13.2</MicrosoftVisualStudioThreadingAnalyzersVersion>
     <MoqVersion>4.20.72</MoqVersion>
@@ -61,10 +61,10 @@
     <SerilogSinksConsoleVersion>6.0.0</SerilogSinksConsoleVersion>
     <SerilogSinksBrowserVersion>8.0.0</SerilogSinksBrowserVersion>
     <SerilogSinksDebugVersion>3.0.*</SerilogSinksDebugVersion>
-    <SonarAnalyzerCSharpVersion>10.6.0.109712</SonarAnalyzerCSharpVersion>
+    <SonarAnalyzerCSharpVersion>10.7.0.110445</SonarAnalyzerCSharpVersion>
     <StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
-    <SwashbuckleAspNetCoreVersion>7.2.0</SwashbuckleAspNetCoreVersion>
-    <SystemIdentityModelTokensJwtVersion>8.3.1</SystemIdentityModelTokensJwtVersion>
+    <SwashbuckleAspNetCoreVersion>7.3.1</SwashbuckleAspNetCoreVersion>
+    <SystemIdentityModelTokensJwtVersion>8.6.0</SystemIdentityModelTokensJwtVersion>
     <XUnitRunnerVisualStudioVersion>3.0.2</XUnitRunnerVisualStudioVersion>
     <XUnitVersion>2.9.3</XUnitVersion>
   </PropertyGroup>
