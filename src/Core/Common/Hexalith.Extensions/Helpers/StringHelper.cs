@@ -13,6 +13,8 @@ using System.Text.RegularExpressions;
 /// </summary>
 public static partial class StringHelper
 {
+    private const string _dash = "-";
+
     /// <summary>
     /// Formats the with named placeholders.
     /// </summary>
@@ -45,6 +47,55 @@ public static partial class StringHelper
             throw new InvalidOperationException(
                 $"Could not format :\nOriginal={value}\nIndexed={format}\nValues={string.Join("\n", argValues)}", e);
         }
+    }
+
+    /// <summary>
+    /// Determines whether the specified hostname is RFC 1123 compliant.
+    /// </summary>
+    /// <param name="hostname">The hostname to check.</param>
+    /// <returns><c>true</c> if the specified hostname is RFC 1123 compliant; otherwise, <c>false</c>.</returns>
+    public static bool IsRfc1123Compliant(this string? hostname)
+    {
+        if (string.IsNullOrEmpty(hostname))
+        {
+            return false;
+        }
+
+        // RFC 1123 compliant hostname must:
+        // - Contain only a-z, A-Z, 0-9, hyphen, and periods
+        // - Cannot start or end with hyphen
+        // - Cannot exceed 255 characters in total length
+        // - Each label (part between dots) cannot exceed 63 characters
+        // - Cannot be empty
+        if (hostname.Length > 255)
+        {
+            return false;
+        }
+
+        // Check each label between dots
+        string[] labels = hostname.Split('.');
+        foreach (string label in labels)
+        {
+            // Each label must be between 1-63 characters
+            if (label.Length is < 1 or > 63)
+            {
+                return false;
+            }
+
+            // Cannot start or end with hyphen
+            if (label.StartsWith(_dash) || label.EndsWith(_dash))
+            {
+                return false;
+            }
+
+            // Can only contain alphanumeric characters and hyphens
+            if (!MyRegex().IsMatch(label))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /// <summary>
@@ -122,4 +173,7 @@ public static partial class StringHelper
     /// <returns>The number.</returns>
     public static long ToLong(this string value)
         => long.Parse(value, CultureInfo.InvariantCulture);
+
+    [GeneratedRegex(@"^[a-zA-Z0-9\-]+$")]
+    private static partial Regex MyRegex();
 }

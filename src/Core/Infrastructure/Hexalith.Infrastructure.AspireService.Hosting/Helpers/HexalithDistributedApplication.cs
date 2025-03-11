@@ -49,15 +49,16 @@ public class HexalithDistributedApplication(string[] args)
             ? AspireApplicationConstants.PublishPath
             : AspireApplicationConstants.RunPath;
         string appId = project.GetAppId(projectName);
-        project = project.WithDaprSidecar(new DaprSidecarOptions
+        DaprSidecarOptions sideCarOptions = new()
         {
             AppId = appId,
-            Config = Path.Combine(Builder.GetApplicationComponentPath(name), "config.yaml"),
+            Config = Path.GetFullPath(Path.Combine(Builder.GetApplicationComponentPath(name), "config.yaml")),
             ResourcesPaths = [
-                Path.Combine(Builder.GetApplicationComponentPath(name), subFolder),
-                Path.Combine(Builder.GetCommonComponentPath(), subFolder),
+                Path.GetFullPath(Path.Combine(Builder.GetApplicationComponentPath(name), subFolder)),
+                Path.GetFullPath(Path.Combine(Builder.GetCommonComponentPath(), subFolder)),
             ],
-        });
+        };
+        project = project.WithDaprSidecar(sideCarOptions);
 
         string environmentName = Builder.GetEnvironmentName();
         project = project

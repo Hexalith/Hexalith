@@ -36,11 +36,16 @@ public static class DaprActorHelper
     public static ActorId ToActorId(this string id)
     {
         ArgumentNullException.ThrowIfNull(id);
-        id = id
+        string sanitizedId = id
             .Replace("!", "!0")
             .Replace(" ", "!1")
             .Replace("/", "!2");
-        return new ActorId(Uri.EscapeDataString(id.Trim()));
+        sanitizedId = Uri.EscapeDataString(sanitizedId.Trim());
+        return new ActorId(sanitizedId);
+
+        // return sanitizedId.IsRfc1123Compliant()
+        //    ? new ActorId(sanitizedId)
+        //    : throw new ArgumentException($"The sanitized identifier '{sanitizedId}' is not RFC 1123 compliant. Original : '{id}'.");
     }
 
     /// <summary>
