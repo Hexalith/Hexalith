@@ -4,7 +4,6 @@
     <AdaptiveCardsVersion>3.1.0</AdaptiveCardsVersion>
     <AdaptiveCardsTemplatingVersion>2.0.2</AdaptiveCardsTemplatingVersion>
     <AspireVersion>9.1.0</AspireVersion>
-    <AspireDaprVersion>9.2.0</AspireDaprVersion>
     <AzureIdentityVersion>1.13.2</AzureIdentityVersion>
     <AzureBicepCoreVersion>0.26.54</AzureBicepCoreVersion>
     <AzureMonitorOpenTelemetryAspNetCoreVersion>1.1.0</AzureMonitorOpenTelemetryAspNetCoreVersion>
@@ -17,30 +16,31 @@
     <AzureStorageBlobsVersion>12.23.0</AzureStorageBlobsVersion>
     <CoconaVersion>2.2.0</CoconaVersion>
     <CompareNETObjectsVersion>4.83.0</CompareNETObjectsVersion>
+    <CommunityToolkitAspireHostingDaprVersion>9.2.1</CommunityToolkitAspireHostingDaprVersion>
     <CoverletCollectorVersion>6.0.4</CoverletCollectorVersion>
-    <DaprVersion>1.15.*</DaprVersion>
+    <DaprVersion>1.15.1</DaprVersion>
     <DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
     <FluentAssertionsVersion>8.1.1</FluentAssertionsVersion>
     <FluentValidationVersion>11.11.0</FluentValidationVersion>
     <FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
     <GitHubActionsTestLoggerVersion>2.4.1</GitHubActionsTestLoggerVersion>
     <GoogleApiVersion>5.4.2</GoogleApiVersion>
-    <GrpcVersion>2.67.0</GrpcVersion>
+    <GrpcVersion>2.70.0</GrpcVersion>
     <ISO3166Version>1.0.4</ISO3166Version>
     <HotChocolateVersion>15.0.3</HotChocolateVersion>
     <HumanizerVersion>2.14.1</HumanizerVersion>
-    <MailKitVersion>4.10.0</MailKitVersion>
-    <MicrosoftAzureCosmosVersion>3.47.1</MicrosoftAzureCosmosVersion>
+    <MailKitVersion>4.11.0</MailKitVersion>
+    <MicrosoftAzureCosmosVersion>3.47.2</MicrosoftAzureCosmosVersion>
     <MicrosoftBotBuilderVersion>4.22.7</MicrosoftBotBuilderVersion>
     <MicrosoftCodeAnalysisCSharpVersion>4.13.0</MicrosoftCodeAnalysisCSharpVersion>
     <MicrosoftCodeAnalysisAnalyzersVersion>3.11.0</MicrosoftCodeAnalysisAnalyzersVersion>
-    <MicrosoftFluentUIComponentsVersion>4.11.5</MicrosoftFluentUIComponentsVersion>
-    <MicrosoftIdentityClientVersion>4.68.0</MicrosoftIdentityClientVersion>
+    <MicrosoftFluentUIComponentsVersion>4.11.6</MicrosoftFluentUIComponentsVersion>
+    <MicrosoftIdentityClientVersion>4.69.1</MicrosoftIdentityClientVersion>
     <MicrosoftIdentityWebVersion>3.7.1</MicrosoftIdentityWebVersion>
     <MicrosoftNETTestSdkVersion>17.13.0</MicrosoftNETTestSdkVersion>
-    <MicrosoftSemanticKernelVersion>1.40.0</MicrosoftSemanticKernelVersion>
+    <MicrosoftSemanticKernelVersion>1.40.1</MicrosoftSemanticKernelVersion>
     <MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
-    <MicrosoftTypescriptMSBuild>5.7.3</MicrosoftTypescriptMSBuild>
+    <MicrosoftTypescriptMSBuild>5.8.1</MicrosoftTypescriptMSBuild>
     <MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
     <MicrosoftVisualStudioThreadingAnalyzersVersion>17.13.2</MicrosoftVisualStudioThreadingAnalyzersVersion>
     <MoqVersion>4.20.72</MoqVersion>
@@ -50,7 +50,7 @@
     <OpenTelemetryBetaVersion>1.8.0-beta.1</OpenTelemetryBetaVersion>
     <OrchardCoreLocalizationCoreVersion>1.8.3</OrchardCoreLocalizationCoreVersion>
     <RadzenBlazorVersion>4.23.4</RadzenBlazorVersion>
-    <ScribanVersion>5.12.1</ScribanVersion>
+    <ScribanVersion>6.0.0</ScribanVersion>
     <SendGridExtensionsDependencyInjectionVersion>1.0.1</SendGridExtensionsDependencyInjectionVersion>
     <SendGridVersion>9.29.3</SendGridVersion>
     <SerilogVersion>9.0.0</SerilogVersion>
@@ -65,7 +65,7 @@
     <SonarAnalyzerCSharpVersion>10.7.0.110445</SonarAnalyzerCSharpVersion>
     <StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
     <SwashbuckleAspNetCoreVersion>7.3.1</SwashbuckleAspNetCoreVersion>
-    <SystemIdentityModelTokensJwtVersion>8.6.0</SystemIdentityModelTokensJwtVersion>
+    <SystemIdentityModelTokensJwtVersion>8.6.1</SystemIdentityModelTokensJwtVersion>
     <XUnitRunnerVisualStudioVersion>3.0.2</XUnitRunnerVisualStudioVersion>
     <XUnitVersion>2.9.3</XUnitVersion>
   </PropertyGroup>
