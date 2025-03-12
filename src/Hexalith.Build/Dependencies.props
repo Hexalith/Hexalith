@@ -13,12 +13,12 @@
     <AzureResourceManagerKeyVaultVersion>1.2.0</AzureResourceManagerKeyVaultVersion>
     <AzureResourceManagerLogicVersion>1.1.0</AzureResourceManagerLogicVersion>
     <AzureSecurityKeyVaultSecretsVersion>4.6.0</AzureSecurityKeyVaultSecretsVersion>
-    <AzureStorageBlobsVersion>12.23.0</AzureStorageBlobsVersion>
+    <AzureStorageBlobsVersion>12.24.0</AzureStorageBlobsVersion>
     <CoconaVersion>2.2.0</CoconaVersion>
     <CompareNETObjectsVersion>4.83.0</CompareNETObjectsVersion>
     <CommunityToolkitAspireHostingDaprVersion>9.2.1</CommunityToolkitAspireHostingDaprVersion>
     <CoverletCollectorVersion>6.0.4</CoverletCollectorVersion>
-    <DaprVersion>1.15.1</DaprVersion>
+    <DaprVersion>1.15.2</DaprVersion>
     <DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
     <FluentAssertionsVersion>8.1.1</FluentAssertionsVersion>
     <FluentValidationVersion>11.11.0</FluentValidationVersion>
@@ -36,9 +36,9 @@
     <MicrosoftCodeAnalysisAnalyzersVersion>3.11.0</MicrosoftCodeAnalysisAnalyzersVersion>
     <MicrosoftFluentUIComponentsVersion>4.11.6</MicrosoftFluentUIComponentsVersion>
     <MicrosoftIdentityClientVersion>4.69.1</MicrosoftIdentityClientVersion>
-    <MicrosoftIdentityWebVersion>3.7.1</MicrosoftIdentityWebVersion>
+    <MicrosoftIdentityWebVersion>3.8.0</MicrosoftIdentityWebVersion>
     <MicrosoftNETTestSdkVersion>17.13.0</MicrosoftNETTestSdkVersion>
-    <MicrosoftSemanticKernelVersion>1.40.1</MicrosoftSemanticKernelVersion>
+    <MicrosoftSemanticKernelVersion>1.41.0</MicrosoftSemanticKernelVersion>
     <MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
     <MicrosoftTypescriptMSBuild>5.8.1</MicrosoftTypescriptMSBuild>
     <MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
