@@ -72,24 +72,20 @@ public class AzureBlobStorageFileService : IFileService
         return tags.Value.Tags;
     }
 
-    /// <summary>
-    /// Uploads a file to Azure Blob Storage.
-    /// </summary>
-    /// <param name="containerName">The name of the container where the file is stored.</param>
-    /// <param name="fileId">The unique identifier for the file in blob storage.</param>
-    /// <param name="readStream">The stream containing the file content to upload.</param>
-    /// <param name="tags">Optional metadata tags to associate with the blob.</param>
-    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
-    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="fileId"/> or <paramref name="readStream"/> is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when <paramref name="fileId"/> is empty or consists only of white-space characters.</exception>
-    /// <exception cref="Azure.RequestFailedException">Thrown when a failure occurs while interacting with Azure Storage.</exception>
-    public async Task UploadAsync(string containerName, string fileId, Stream readStream, IDictionary<string, string> tags, CancellationToken cancellationToken)
+    /// <inheritdoc/>
+    public async Task UploadAsync(
+       string containerId,
+       string documentTypeId,
+       string documentId,
+       string fileId,
+       Stream readStream,
+       IDictionary<string, string> tags,
+       CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(fileId);
         ArgumentNullException.ThrowIfNull(readStream);
 
-        BlobContainerClient containerClient = BlobServiceClient.GetBlobContainerClient(containerName);
+        BlobContainerClient containerClient = BlobServiceClient.GetBlobContainerClient(containerId);
         _ = await containerClient.CreateIfNotExistsAsync(PublicAccessType.None, cancellationToken: cancellationToken);
 
         BlobClient blobClient = containerClient.GetBlobClient(fileId);
@@ -101,16 +97,8 @@ public class AzureBlobStorageFileService : IFileService
         }
     }
 
-    /// <summary>
-    /// Uploads a file to Azure Blob Storage.
-    /// </summary>
-    /// <param name="containerName">The name of the container where the file is stored.</param>
-    /// <param name="fileId">The unique identifier for the file in blob storage.</param>
-    /// <param name="data">The data to upload.</param>
-    /// <param name="tags">Optional metadata tags to associate with the blob.</param>
-    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
-    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-    public Task UploadAsync(string containerName, string fileId, object data, IDictionary<string, string> tags, CancellationToken cancellationToken) => throw new NotImplementedException();
+    /// <inheritdoc/>
+    public Task UploadAsync(string containerId, string documentTypeId, string documentId, string fileId, object data, IDictionary<string, string> tags, CancellationToken cancellationToken) => throw new NotImplementedException();
 
     private BlobServiceClient CreateBlobServiceClient()
     {
