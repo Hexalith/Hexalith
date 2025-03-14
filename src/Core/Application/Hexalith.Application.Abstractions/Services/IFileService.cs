@@ -29,7 +29,9 @@ public interface IFileService
     /// <summary>
     /// Uploads a file asynchronously to the storage system.
     /// </summary>
-    /// <param name="containerName">The name of the container where the file is stored.</param>
+    /// <param name="containerId">The ID of the container where the file is stored.</param>
+    /// <param name="documentTypeId">The unique identifier for the document type.</param>
+    /// <param name="documentId">The unique identifier for the document. This ID can be used later to retrieve the document.</param>
     /// <param name="fileId">The unique identifier for the file. This ID can be used later to retrieve the file.</param>
     /// <param name="readStream">The stream containing the file data to upload. The stream should be readable and positioned at the beginning of the content.</param>
     /// <param name="tags">A collection of tags associated with the file for categorization and metadata purposes.</param>
@@ -38,12 +40,21 @@ public interface IFileService
     /// <remarks>
     /// The stream will not be closed by this method. The caller is responsible for managing the stream's lifecycle.
     /// </remarks>
-    Task UploadAsync(string containerName, string fileId, Stream readStream, IDictionary<string, string> tags, CancellationToken cancellationToken);
+    Task UploadAsync(
+        string containerId,
+        string documentTypeId,
+        string documentId,
+        string fileId,
+        Stream readStream,
+        IDictionary<string, string> tags,
+        CancellationToken cancellationToken);
 
     /// <summary>
     /// Uploads a file asynchronously to the storage system.
     /// </summary>
-    /// <param name="containerName">The name of the container where the file is stored.</param>
+    /// <param name="containerId">The ID of the container where the file is stored.</param>
+    /// <param name="documentTypeId">The unique identifier for the document type.</param>
+    /// <param name="documentId">The unique identifier for the document. This ID can be used later to retrieve the document.</param>
     /// <param name="fileId">The unique identifier for the file. This ID can be used later to retrieve the file.</param>
     /// <param name="data">The data to upload. This can be any object that represents the file content.</param>
     /// <param name="tags">A collection of tags associated with the file for categorization and metadata purposes.</param>
@@ -52,5 +63,12 @@ public interface IFileService
     /// <remarks>
     /// The caller is responsible for managing the lifecycle of the data object.
     /// </remarks>
-    Task UploadAsync(string containerName, string fileId, object data, IDictionary<string, string> tags, CancellationToken cancellationToken);
+    Task UploadAsync(
+        string containerId,
+        string documentTypeId,
+        string documentId,
+        string fileId,
+        object data,
+        IDictionary<string, string> tags,
+        CancellationToken cancellationToken);
 }
