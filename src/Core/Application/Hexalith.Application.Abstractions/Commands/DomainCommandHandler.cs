@@ -77,8 +77,8 @@ public abstract partial class DomainCommandHandler<TCommand> : IDomainCommandHan
     /// <param name="aggregate">The domain aggregate to check.</param>
     /// <param name="metadata">The metadata containing the expected aggregate information.</param>
     /// <exception cref="CommandHandlerAggregateNullException">Thrown when the aggregate is null.</exception>
-    /// <exception cref="CommandHandlerAggregateNameMismatch">Thrown when the aggregate name does not match the expected name.</exception>
-    /// <exception cref="CommandHandlerAggregateIdentifierMismatch">Thrown when the aggregate identifier does not match the expected identifier.</exception>
+    /// <exception cref="CommandHandlerAggregateNameMismatchException">Thrown when the aggregate name does not match the expected name.</exception>
+    /// <exception cref="CommandHandlerAggregateIdentifierMismatchException">Thrown when the aggregate identifier does not match the expected identifier.</exception>
     /// <returns>The validated domain aggregate.</returns>
     protected TAggregate CheckAggregateIsValid<TAggregate>(IDomainAggregate? aggregate, Metadata metadata)
         where TAggregate : IDomainAggregate
@@ -118,7 +118,7 @@ public abstract partial class DomainCommandHandler<TCommand> : IDomainCommandHan
                 metadata.Message.Id,
                 metadata.Context.CorrelationId,
                 metadata.Context.UserId);
-            throw new CommandHandlerAggregateIdentifierMismatch(aggregate.AggregateId, metadata);
+            throw new CommandHandlerAggregateIdentifierMismatchException(aggregate.AggregateId, metadata);
         }
 
         return (TAggregate)aggregate;
