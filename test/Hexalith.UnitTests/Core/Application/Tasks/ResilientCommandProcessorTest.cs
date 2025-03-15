@@ -34,6 +34,7 @@ public class ResilientCommandProcessorTest
             ResiliencyPolicy.None,
             dispatcher.Object,
             stateProvider,
+            TimeProvider.System,
             new Mock<ILogger<ResilientCommandProcessor>>().Object);
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
@@ -64,6 +65,7 @@ public class ResilientCommandProcessorTest
             ResiliencyPolicy.None,
             dispatcher.Object,
             stateProvider,
+            TimeProvider.System,
             new Mock<ILogger<ResilientCommandProcessor>>().Object);
 
         const string key = "test1";
@@ -103,6 +105,7 @@ public class ResilientCommandProcessorTest
                 false),
             dispatcher.Object,
             stateProvider,
+            TimeProvider.System,
             new Mock<ILogger<ResilientCommandProcessor>>().Object);
 
         const string key = "test1";

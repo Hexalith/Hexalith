@@ -8,8 +8,7 @@ namespace Hexalith.Application.Aggregates;
 /// <summary>
 /// Represents an interface for maintaining aggregates.
 /// </summary>
-/// <typeparam name="TAggregate">The type of the aggregate.</typeparam>
-public interface IAggregateMaintenance<TAggregate>
+public interface IAggregateMaintenance
 {
     /// <summary>
     /// Clears all commands for the aggregate.

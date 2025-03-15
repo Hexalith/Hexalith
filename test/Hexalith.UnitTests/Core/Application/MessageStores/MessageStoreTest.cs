@@ -156,7 +156,7 @@ public class MessageStoreTest
         Mock<IStateStoreProvider> stateManager = new();
         MessageStore<MessageState> store = new(stateManager.Object, _streamName);
         _ = store.StreamName.Should().Be(_streamName);
-        _ = store.GetStreamStateName().Should().Be(_streamName + "Stream");
+        _ = store.StreamStateName.Should().Be(_streamName + "Stream");
     }
 
     [Fact]

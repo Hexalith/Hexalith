@@ -35,7 +35,7 @@ using Microsoft.Extensions.Options;
 /// <seealso cref="CosmosDbProvider" />
 /// <seealso cref="IAggregateMaintenance{TAggregate}" />
 public class DaprCosmosAggregateMaintenance<TAggregate> :
-    IAggregateMaintenance<TAggregate>, IDisposable
+    IAggregateMaintenance, IDisposable
     where TAggregate : IDomainAggregate, new()
 {
     private readonly string _connectionString;

@@ -21,13 +21,13 @@ using Microsoft.AspNetCore.Mvc;
 public class AggregateMaintenanceController<TAggregate> : ControllerBase
     where TAggregate : IDomainAggregate, new()
 {
-    private readonly IAggregateMaintenance<TAggregate> _aggregateMaintenance;
+    private readonly IAggregateMaintenance _aggregateMaintenance;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateMaintenanceController{TAggregate}"/> class.
     /// </summary>
     /// <param name="aggregateMaintenance">Aggregate maintenance service.</param>
-    protected AggregateMaintenanceController(IAggregateMaintenance<TAggregate> aggregateMaintenance)
+    protected AggregateMaintenanceController(IAggregateMaintenance aggregateMaintenance)
     {
         ArgumentNullException.ThrowIfNull(aggregateMaintenance);
         _aggregateMaintenance = aggregateMaintenance;

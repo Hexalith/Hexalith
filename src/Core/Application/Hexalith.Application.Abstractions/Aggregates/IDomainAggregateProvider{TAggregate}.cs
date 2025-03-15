@@ -11,7 +11,7 @@ using Hexalith.Domain.Aggregates;
 /// Interface IDomainAggregateProvider.
 /// </summary>
 /// <typeparam name="TAggregate">The type of the t aggregate.</typeparam>
-public interface IDomainAggregateProvider<TAggregate> : IDomainAggregateProvider
+public interface IDomainAggregateProvider<out TAggregate> : IDomainAggregateProvider
     where TAggregate : IDomainAggregate, new()
 {
     /// <summary>
