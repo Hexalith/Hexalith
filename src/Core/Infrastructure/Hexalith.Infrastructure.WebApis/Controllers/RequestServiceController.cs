@@ -62,7 +62,12 @@ public partial class RequestServiceController : ControllerBase
     /// <param name="take">The maximum number of records to return (for pagination). Use 0 for all records.</param>
     /// <returns>A <see cref="Task{TResult}"/> containing an <see cref="ActionResult{T}"/> of <see cref="IEnumerable{String}"/> representing the collection of aggregate identifiers.</returns>
     [HttpPost("aggregate/ids")]
-    public async Task<ActionResult<IEnumerable<string>>> GetAggregateIdsRequestAsync([FromServices] IIdCollectionFactory collectionFactory, string partitionId, string aggregateName, int skip = 0, int take = 0)
+    public async Task<ActionResult<IEnumerable<string>>> GetAggregateIdsRequestAsync(
+        [FromServices] IIdCollectionFactory collectionFactory,
+        string partitionId,
+        string aggregateName,
+        int skip = 0,
+        int take = 0)
     {
         IIdCollectionService service = collectionFactory.CreateService(IIdCollectionFactory.GetAggregateCollectionName(aggregateName), partitionId);
         IEnumerable<string> ids = [.. await service

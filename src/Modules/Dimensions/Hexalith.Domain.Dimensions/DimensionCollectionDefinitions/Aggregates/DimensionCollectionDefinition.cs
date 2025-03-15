@@ -82,17 +82,15 @@ public record DimensionCollectionDefinition(
                 true);
         }
 
-        return contactEvent switch
-        {
-            DimensionCollectionDefinitionInformationChanged e => ApplyEvent(e),
-            _ => new ApplyResult(
+        return contactEvent is DimensionCollectionDefinitionInformationChanged e
+            ? ApplyEvent(e)
+            : new ApplyResult(
                 this,
                 [new DimensionCollectionDefinitionEventCancelled(contactEvent, "Event not implemented")],
-                true),
-        };
+                true);
     }
 
-    private ApplyResult ApplyEvent(DimensionCollectionDefinitionAdded added)
+    private static ApplyResult ApplyEvent(DimensionCollectionDefinitionAdded added)
         => new(new DimensionCollectionDefinition(added), [added], false);
 
     private ApplyResult ApplyEvent(DimensionCollectionDefinitionInformationChanged changed)

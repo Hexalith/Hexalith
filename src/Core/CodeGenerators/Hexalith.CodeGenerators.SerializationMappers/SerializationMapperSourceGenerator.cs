@@ -77,7 +77,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
 
     private static string GenerateAddServicesExtension(List<INamedTypeSymbol> symbols)
     {
-        string namespaceName = symbols.First().ContainingAssembly.MetadataName;
+        string namespaceName = symbols[0].ContainingAssembly.MetadataName;
         string usings = symbols
             .Select(s => s.ContainingNamespace.ToDisplayString())
             .Distinct()

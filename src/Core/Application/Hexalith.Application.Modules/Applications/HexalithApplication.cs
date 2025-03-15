@@ -161,11 +161,14 @@ public abstract class HexalithApplication : IApplication
             services.TryAddSingleton<IUIApplication>(WebServerApplication);
             services.TryAddSingleton<IApplication>(WebServerApplication);
         }
-        else if (WebAppApplication is not null)
+        else
         {
-            services.TryAddSingleton(WebAppApplication);
-            services.TryAddSingleton<IApplication>(WebAppApplication);
-            services.TryAddSingleton<IUIApplication>(WebAppApplication);
+            if (WebAppApplication is not null)
+            {
+                services.TryAddSingleton(WebAppApplication);
+                services.TryAddSingleton<IApplication>(WebAppApplication);
+                services.TryAddSingleton<IUIApplication>(WebAppApplication);
+            }
         }
 
         if (ApiServerApplication is not null)
@@ -221,7 +224,8 @@ public abstract class HexalithApplication : IApplication
     {
         TApplication[] applications = [.. ReflectionHelper.GetInstantiableObjectsOf<TApplication>()];
         return applications.Length > 1
-            ? throw new InvalidOperationException($"Multiple implementations of {typeof(TApplication).Name} found: {string.Join("; ", applications.Select(p => p.GetType().Name))}. Only one implementation is allowed.")
+            ? throw new InvalidOperationException(
+                $"Multiple implementations of {typeof(TApplication).Name} found: {string.Join("; ", applications.Select(p => p.GetType().Name))}. Only one implementation is allowed.")
             : applications.FirstOrDefault();
     }
 }

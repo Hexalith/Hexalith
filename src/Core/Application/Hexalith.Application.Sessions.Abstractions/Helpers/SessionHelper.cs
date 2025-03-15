@@ -10,6 +10,7 @@ using System.Security.Claims;
 /// <summary>
 /// Provides helper methods for managing user sessions and roles.
 /// </summary>
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S2339:Public constant members should not be used", Justification = "Used by attributes")]
 public static class SessionHelper
 {
     /// <summary>
@@ -121,7 +122,7 @@ public static class SessionHelper
     {
         string partitionPrefix = PartitionRolePrefix(partitionId);
         return (user.GetRoles() ?? [])
-                .Where(p => p.StartsWith(partitionPrefix))
+                .Where(p => p.StartsWith(partitionPrefix, StringComparison.InvariantCulture))
                 .Select(p => p[partitionPrefix.Length..]);
     }
 

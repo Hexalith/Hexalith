@@ -62,7 +62,8 @@ public class DependencyGraph
 
         do
         {
-            HashSet<OrderedProcess> set = [.. unused.Where(p => !unused.Overlaps(p.Predecessors))]; // select processes which have no predecessors in the unused set, which means that all their predecessors must either be used, or not exist, either way is fine
+            // select processes which have no predecessors in the unused set, which means that all their predecessors must either be used, or not exist, either way is fine
+            HashSet<OrderedProcess> set = [.. unused.Where(p => !unused.Overlaps(p.Predecessors))];
 
             if (set.Count == 0)
             {

@@ -10,23 +10,23 @@ using System;
 /// <summary>
 /// Exception that is thrown when there is a failure to add services from an application module.
 /// </summary>
-[Serializable]
-internal class ApplicationModuleAddServicesException : Exception
+public class ApplicationModuleAddServicesException(string? message, Exception? innerException) : Exception($"Failed to load services from {message} module.", innerException)
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ApplicationModuleAddServicesException"/> class.
     /// </summary>
     public ApplicationModuleAddServicesException()
+        : this(null, null)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ApplicationModuleAddServicesException"/> class with a specified error message and a reference to the inner exception that is the cause of this exception.
+    /// Initializes a new instance of the <see cref="ApplicationModuleAddServicesException"/> class
+    /// with a specified error message and a reference to the inner exception that is the cause of this exception.
     /// </summary>
     /// <param name="message">The name of the module that failed to load services.</param>
-    /// <param name="innerException">The exception that is the cause of the current exception.</param>
-    public ApplicationModuleAddServicesException(string? message, Exception? innerException)
-        : base($"Failed to load services from {message} module.", innerException)
+    public ApplicationModuleAddServicesException(string? message)
+        : this(message, null)
     {
     }
 }

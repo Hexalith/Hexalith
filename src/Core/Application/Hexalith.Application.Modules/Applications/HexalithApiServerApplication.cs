@@ -61,7 +61,7 @@ public abstract class HexalithApiServerApplication : HexalithApplication, IApiSe
     /// <param name="actors">The actor collection.</param>
     public void RegisterActors(object actors)
     {
-        ArgumentNullException.ThrowIfNull(actors, nameof(actors));
+        ArgumentNullException.ThrowIfNull(actors);
 
         foreach (Type module in ApiServerModules)
         {

@@ -81,11 +81,9 @@ public abstract partial class ReceiveMessageController : ControllerBase
     protected BadRequestObjectResult? MessageValidation<TMessageType>(MessageState messageState, string aggregateType)
         where TMessageType : MessageState
     {
-        BadRequestObjectResult? badRequest = messageState == null
-            ? BadRequest("Invalid data : Message state received is null.")
-            : messageState.Metadata == null
-            ? BadRequest($"Invalid data : Message metadata received is null. CorrelationId={messageState.IdempotencyId}.")
-            : string.IsNullOrWhiteSpace(messageState.Message)
+        BadRequestObjectResult? badRequest = messageState.Metadata == null
+            ? messageState == null ? BadRequest("Invalid data : Message state received is null.") : BadRequest($"Invalid data : Message metadata received is null. CorrelationId={messageState.IdempotencyId}.")
+            : messageState == null ? BadRequest("Invalid data : Message state received is null.") : string.IsNullOrWhiteSpace(messageState.Message)
             ? BadRequest($"Invalid data : Message received is empty. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
             : messageState.MessageObject == null
             ? BadRequest($"Invalid data : Message received is invalid. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId} : {messageState.Message}")

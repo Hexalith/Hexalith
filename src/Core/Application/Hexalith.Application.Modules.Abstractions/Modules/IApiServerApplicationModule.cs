@@ -12,6 +12,7 @@ namespace Hexalith.Application.Modules.Modules;
 /// A module is a self-contained unit of functionality in the application.
 /// It provides a set of actions that can be performed and has a name, description, path, and version.
 /// </remarks>
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S4023:Interfaces should not be empty", Justification = "Needed for IOC")]
 public interface IApiServerApplicationModule : IApplicationModule
 {
 }

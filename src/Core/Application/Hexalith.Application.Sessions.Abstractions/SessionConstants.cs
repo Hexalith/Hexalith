@@ -13,12 +13,12 @@ using Hexalith.Application.Sessions.Models;
 public static class SessionConstants
 {
     /// <summary>
-    /// The name of the session expiration property.
+    /// Gets the name of the session expiration property.
     /// </summary>
-    public const string SessionExpirationName = $"{nameof(Session)}{nameof(Session.Expiration)}";
+    public static string SessionExpirationName => $"{nameof(Session)}{nameof(Session.Expiration)}";
 
     /// <summary>
-    /// The name of the session ID property.
+    /// Gets the name of the session ID property.
     /// </summary>
-    public const string SessionIdName = $"{nameof(Session)}{nameof(Session.Id)}";
+    public static string SessionIdName => $"{nameof(Session)}{nameof(Session.Id)}";
 }
