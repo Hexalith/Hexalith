@@ -105,7 +105,7 @@ public abstract partial class DomainCommandHandler<TCommand> : IDomainCommandHan
                 metadata.Message.Id,
                 metadata.Context.CorrelationId,
                 metadata.Context.UserId);
-            throw new CommandHandlerAggregateNameMismatch(aggregate.AggregateName, metadata);
+            throw new CommandHandlerAggregateNameMismatchException(aggregate.AggregateName, metadata);
         }
 
         if (aggregate.AggregateId != metadata.Message.Aggregate.Id)
