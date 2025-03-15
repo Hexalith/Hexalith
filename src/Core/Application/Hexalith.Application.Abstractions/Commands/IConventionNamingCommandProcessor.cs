@@ -13,6 +13,7 @@ namespace Hexalith.Application.Commands;
 /// based on naming conventions. Implementations of this interface should provide logic
 /// for handling commands where the naming follows specific conventions.
 /// </remarks>
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S4023:Interfaces should not be empty", Justification = "Needed for IOC")]
 public interface IConventionNamingCommandProcessor : IDomainCommandProcessor
 {
     // Interface members can be added here if needed in the future

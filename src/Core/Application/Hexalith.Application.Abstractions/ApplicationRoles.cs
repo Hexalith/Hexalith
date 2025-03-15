@@ -13,5 +13,6 @@ public static class ApplicationRoles
     /// <summary>
     /// Gets the name of the global administrator role.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S2339:Public constant members should not be used", Justification = "Need to be const as it's used in attribute")]
     public const string GlobalAdministrator = nameof(GlobalAdministrator);
 }

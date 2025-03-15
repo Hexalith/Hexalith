@@ -10,6 +10,7 @@ using Hexalith.Application.Envelopes;
 /// <summary>
 /// A command bus is a component that allows to send commands.
 /// </summary>
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S4023:Interfaces should not be empty", Justification = "Needed for IOC")]
 public interface ICommandBus : IMessageBus
 {
 }

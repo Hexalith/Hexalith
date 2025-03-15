@@ -8,7 +8,7 @@ namespace Hexalith.Application.Requests;
 /// <summary>
 /// Represents a request that can be searched.
 /// </summary>
-public interface IRelationalFilterRequest : ISearchRequest, ICollectionRequest
+public interface IRelationalFilterRequest : ISearchRequest
 {
     /// <summary>
     /// Gets the search step.

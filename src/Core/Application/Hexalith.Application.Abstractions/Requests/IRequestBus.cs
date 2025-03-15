@@ -10,6 +10,7 @@ using Hexalith.Application.Envelopes;
 /// <summary>
 /// A request bus is a component that allows to send requests.
 /// </summary>
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S4023:Interfaces should not be empty", Justification = "Needed for IOC")]
 public interface IRequestBus : IMessageBus
 {
 }

@@ -15,7 +15,8 @@ public class UserRoles : IRoleProvider
     /// <summary>
     /// Gets the constant representing the User Management role.
     /// </summary>
-    public static string UserManagement => nameof(UserManagement);
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S2339:Public constant members should not be used", Justification = "Need to be const as it's used in attribute")]
+    public const string UserManagement = nameof(UserManagement);
 
     /// <summary>
     /// Gets the collection of roles.

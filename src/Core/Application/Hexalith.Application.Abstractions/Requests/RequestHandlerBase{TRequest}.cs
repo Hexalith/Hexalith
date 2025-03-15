@@ -17,14 +17,8 @@ using Hexalith.Application.Metadatas;
 public abstract class RequestHandlerBase<TRequest> : IRequestHandler<TRequest>
     where TRequest : class
 {
-    /// <summary>
-    /// Executes the request asynchronously.
-    /// </summary>
-    /// <param name="baseRequest">The request to execute.</param>
-    /// <param name="metadata">The metadata associated with the request.</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task that represents the asynchronous operation. The task result contains the request.</returns>
-    public abstract Task<TRequest> ExecuteAsync(TRequest baseRequest, Metadata metadata, CancellationToken cancellationToken);
+    /// <inheritdoc/>
+    public abstract Task<TRequest> ExecuteAsync(TRequest request, Metadata metadata, CancellationToken cancellationToken);
 
     /// <inheritdoc/>
     async Task<object> IRequestHandler.ExecuteAsync(object baseRequest, Metadata metadata, CancellationToken cancellationToken)

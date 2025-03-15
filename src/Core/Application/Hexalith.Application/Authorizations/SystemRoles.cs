@@ -15,12 +15,14 @@ public class SystemRoles : IRoleProvider
     /// <summary>
     /// Gets administrator role.
     /// </summary>
-    public static string Administrator => nameof(Administrator);
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S2339:Public constant members should not be used", Justification = "Need to be const as it's used in attribute")]
+    public const string Administrator = nameof(Administrator);
 
     /// <summary>
     /// Gets system role.
     /// </summary>
-    public static string System => nameof(System);
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S2339:Public constant members should not be used", Justification = "Need to be const as it's used in attribute")]
+    public const string System = nameof(System);
 
     /// <summary>
     /// Gets the collection of roles.

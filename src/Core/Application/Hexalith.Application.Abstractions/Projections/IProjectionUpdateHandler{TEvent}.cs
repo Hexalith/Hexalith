@@ -33,7 +33,10 @@ public interface IProjectionUpdateHandler<in TEvent> : IProjectionUpdateHandler
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
     /// <exception cref="InvalidCastException">Could not cast event {ev.GetType().Name} to {typeof(TEvent).Name} in projection update handler : {GetType().Name}.</exception>
+#pragma warning disable S4039 // Interface methods should be callable by derived types
+
     async Task IProjectionUpdateHandler.ApplyAsync(object ev, Metadata metadata, CancellationToken cancellationToken)
+#pragma warning restore S4039 // Interface methods should be callable by derived types
     {
         if (ev is TEvent e)
         {

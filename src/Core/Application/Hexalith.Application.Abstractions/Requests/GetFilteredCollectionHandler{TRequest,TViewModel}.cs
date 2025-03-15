@@ -58,7 +58,10 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
     /// <param name="messageId">The ID of the message.</param>
     /// <param name="correlationId">The correlation ID of the context.</param>
     /// <param name="aggregateIds">The aggregate identifiers that are missing results.</param>
-    [LoggerMessage(EventId = 0, Level = LogLevel.Error, Message = "Missing results for aggregate identifiers in request {MessageName} : {AggregateIds}. MessageId={MessageId}; CorrelationId={CorrelationId}")]
+    [LoggerMessage(
+        EventId = 0,
+        Level = LogLevel.Error,
+        Message = "Missing results for aggregate identifiers in request {MessageName} : {AggregateIds}. MessageId={MessageId}; CorrelationId={CorrelationId}")]
     public static partial void LogMissingResults(ILogger logger, string messageName, string messageId, string correlationId, IEnumerable<string> aggregateIds);
 
     /// <summary>
@@ -68,7 +71,10 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
     /// <param name="messageName">The name of the message.</param>
     /// <param name="messageId">The ID of the message.</param>
     /// <param name="correlationId">The correlation ID of the context.</param>
-    [LoggerMessage(EventId = 1, Level = LogLevel.Warning, Message = "Request contains both ids and a filter or search in request {MessageName}. MessageId={MessageId}; CorrelationId={CorrelationId}")]
+    [LoggerMessage(
+        EventId = 1,
+        Level = LogLevel.Warning,
+        Message = "Request contains both ids and a filter or search in request {MessageName}. MessageId={MessageId}; CorrelationId={CorrelationId}")]
     public static partial void LogWarningForIdsWithFilterOrSearch(ILogger logger, string messageName, string messageId, string correlationId);
 
     /// <summary>
@@ -110,7 +116,7 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
         // Search with search
         List<TViewModel> chunkResults;
         List<TViewModel> searchResults = [];
-        int chunkTake = 100;
+        const int chunkTake = 100;
         int chunkSkip = 0;
 
         // Split and normalize words

@@ -26,11 +26,9 @@ public interface IOneToManyAggregateRelationService<TLeft, TRight>
     {
         get
         {
-            {
-                TLeft l = new();
-                TRight r = new();
-                return $"{l.AggregateName}{r.AggregateName}";
-            }
+            TLeft l = new();
+            TRight r = new();
+            return $"{l.AggregateName}{r.AggregateName}";
         }
     }
 

@@ -10,13 +10,25 @@ using System;
 /// <summary>
 /// Exception thrown when an invalid request chunk is encountered.
 /// </summary>
-public class InvalidRequestChunkException : InvalidOperationException
+public class InvalidRequestChunkException(string? message, Exception? innerException)
+    : InvalidOperationException(
+        "Cannot create next chunk request if Take is not set or previous result is null." + message,
+        innerException)
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="InvalidRequestChunkException"/> class.
     /// </summary>
     public InvalidRequestChunkException()
-        : base("Cannot create next chunk request if Take is not set or previous result is null.")
+        : this(null, null)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="InvalidRequestChunkException"/> class with a specified error message.
+    /// </summary>
+    /// <param name="message">The message that describes the error.</param>
+    public InvalidRequestChunkException(string? message)
+        : this(message, null)
     {
     }
 }
