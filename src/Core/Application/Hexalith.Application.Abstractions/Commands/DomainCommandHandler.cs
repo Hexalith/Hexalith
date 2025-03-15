@@ -68,7 +68,11 @@ public abstract partial class DomainCommandHandler<TCommand> : IDomainCommandHan
         => Task.FromException<ExecuteCommandResult>(new NotSupportedException());
 
     /// <inheritdoc/>
-    public Task<ExecuteCommandResult> UndoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken) => UndoAsync(ToCommand(command), metadata, aggregate, cancellationToken);
+    public Task<ExecuteCommandResult> UndoAsync(
+        object command,
+        Metadata metadata,
+        IDomainAggregate? aggregate,
+        CancellationToken cancellationToken) => UndoAsync(ToCommand(command), metadata, aggregate, cancellationToken);
 
     /// <summary>
     /// Checks if the aggregate is valid based on the provided metadata.
@@ -137,21 +141,75 @@ public abstract partial class DomainCommandHandler<TCommand> : IDomainCommandHan
             : throw new ArgumentException($"Invalid command type. Expected: {typeof(TCommand).Name}. Command: {JsonSerializer.Serialize(command)}", nameof(command));
     }
 
-    [LoggerMessage(EventId = 5, Level = LogLevel.Error, Message = "Aggregate ID mismatch for command '{CommandName}' on aggregate '{AggregateGlobalId}'. Expected='{ExpectedAggregateId}'; Actual='{ActualId}'; MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
-    private partial void LogAggregateIdMismatchError(string actualId, string commandName, string aggregateGlobalId, string expectedAggregateId, string messageId, string correlationId, string userId);
+    [LoggerMessage(
+        EventId = 5,
+        Level = LogLevel.Error,
+        Message = "Aggregate ID mismatch for command '{CommandName}' on aggregate '{AggregateGlobalId}'." +
+        " Expected='{ExpectedAggregateId}'; Actual='{ActualId}'; MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
+    private partial void LogAggregateIdMismatchError(
+        string actualId,
+        string commandName,
+        string aggregateGlobalId,
+        string expectedAggregateId,
+        string messageId,
+        string correlationId,
+        string userId);
 
-    [LoggerMessage(EventId = 4, Level = LogLevel.Error, Message = "Aggregate name mismatch for command {CommandName} on aggregate {AggregateGlobalId}. Expected='{ExpectedAggregateName}'; Actual='{ActualName}'; MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
-    private partial void LogAggregateNameMismatchError(string actualName, string commandName, string aggregateGlobalId, string expectedAggregateName, string messageId, string correlationId, string userId);
+    [LoggerMessage(
+        EventId = 4,
+        Level = LogLevel.Error,
+        Message = "Aggregate name mismatch for command {CommandName} on aggregate {AggregateGlobalId}." +
+        " Expected='{ExpectedAggregateName}'; Actual='{ActualName}'; MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
+    private partial void LogAggregateNameMismatchError(
+        string actualName,
+        string commandName,
+        string aggregateGlobalId,
+        string expectedAggregateName,
+        string messageId,
+        string correlationId,
+        string userId);
 
-    [LoggerMessage(EventId = 3, Level = LogLevel.Error, Message = "Aggregate is null for command {CommandName} on aggregate {AggregateGlobalId}. MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
-    private partial void LogAggregateNullError(string commandName, string aggregateGlobalId, string messageId, string correlationId, string userId);
+    [LoggerMessage(
+        EventId = 3,
+        Level = LogLevel.Error,
+        Message = "Aggregate is null for command {CommandName} on aggregate {AggregateGlobalId}. MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
+    private partial void LogAggregateNullError(
+        string commandName,
+        string aggregateGlobalId,
+        string messageId,
+        string correlationId,
+        string userId);
 
-    [LoggerMessage(EventId = 0, Level = LogLevel.Information, Message = "Command {CommandName} on aggregate {AggregateGlobalId} succeeded. MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
-    private partial void LogCommandExecutedSucceeded(string commandName, string aggregateGlobalId, string messageId, string correlationId, string userId);
+    [LoggerMessage(
+        EventId = 0,
+        Level = LogLevel.Information,
+        Message = "Command {CommandName} on aggregate {AggregateGlobalId} succeeded. MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
+    private partial void LogCommandExecutedSucceeded(
+        string commandName,
+        string aggregateGlobalId,
+        string messageId,
+        string correlationId,
+        string userId);
 
-    [LoggerMessage(EventId = 1, Level = LogLevel.Warning, Message = "Command {CommandName} on aggregate {AggregateGlobalId} failed. MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
-    private partial void LogCommandFailed(string commandName, string aggregateGlobalId, string messageId, string correlationId, string userId);
+    [LoggerMessage(
+        EventId = 1,
+        Level = LogLevel.Warning,
+        Message = "Command {CommandName} on aggregate {AggregateGlobalId} failed. MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
+    private partial void LogCommandFailed(
+        string commandName,
+        string aggregateGlobalId,
+        string messageId,
+        string correlationId,
+        string userId);
 
-    [LoggerMessage(EventId = 2, Level = LogLevel.Information, Message = "Executing command {CommandName} on aggregate {AggregateGlobalId}. MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
-    private partial void LogExecutingCommand(string commandName, string aggregateGlobalId, string messageId, string correlationId, string userId);
+    [LoggerMessage(
+        EventId = 2,
+        Level = LogLevel.Information,
+        Message = "Executing command {CommandName} on aggregate {AggregateGlobalId}. MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
+    private partial void LogExecutingCommand(
+        string commandName,
+        string aggregateGlobalId,
+        string messageId,
+        string correlationId,
+        string userId);
 }

@@ -8,23 +8,20 @@ namespace Hexalith.Infrastructure.WebApis.Controllers;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Aggregates;
-using Hexalith.Domain.Aggregates;
 
 using Microsoft.AspNetCore.Mvc;
 
 /// <summary>
 /// Base controller for aggregate maintenance operations.
 /// </summary>
-/// <typeparam name="TAggregate">The type of the aggregate.</typeparam>
 [ApiController]
 [Route("api/maintenance")]
-public class AggregateMaintenanceController<TAggregate> : ControllerBase
-    where TAggregate : IDomainAggregate, new()
+public class AggregateMaintenanceController : ControllerBase
 {
     private readonly IAggregateMaintenance _aggregateMaintenance;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateMaintenanceController{TAggregate}"/> class.
+    /// Initializes a new instance of the <see cref="AggregateMaintenanceController"/> class.
     /// </summary>
     /// <param name="aggregateMaintenance">Aggregate maintenance service.</param>
     protected AggregateMaintenanceController(IAggregateMaintenance aggregateMaintenance)
