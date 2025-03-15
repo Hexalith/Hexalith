@@ -15,26 +15,19 @@ using Hexalith.Application.Metadatas;
 /// </summary>
 public class MemoryEventBus : IEventBus
 {
-    private List<(object, Metadata)>? _messageStream;
+    private readonly List<(object, Metadata)> _messageStream = [];
 
     /// <summary>
     /// Gets the message stream.
     /// </summary>
-    public List<(object Message, Metadata Metadata)> MessageStream => _messageStream ??= [];
+    public IEnumerable<(object Message, Metadata Metadata)> MessageStream => _messageStream;
 
-    /// <summary>
-    /// Publishes a message asynchronously with the specified metadata.
-    /// </summary>
-    /// <param name="message">The message to be published.</param>
-    /// <param name="metadata">The metadata associated with the message.</param>
-    /// <param name="cancellationToken">A cancellation token that can be used to cancel the publish operation.</param>
-    /// <returns>A task that represents the asynchronous publish operation.</returns>
-    /// <exception cref="ArgumentNullException">Thrown if <paramref name="message"/> or <paramref name="metadata"/> is null.</exception>
+    /// <inheritdoc/>
     public Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
-        MessageStream.Add((message, metadata));
+        _messageStream.Add((message, metadata));
         return Task.CompletedTask;
     }
 }

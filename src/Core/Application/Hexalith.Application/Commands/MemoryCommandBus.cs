@@ -15,26 +15,19 @@ using Hexalith.Application.Metadatas;
 /// </summary>
 public class MemoryCommandBus : ICommandBus
 {
-    private List<(object, Metadata)>? _messagestream;
+    private readonly List<(object, Metadata)> _messageStream = [];
 
     /// <summary>
     /// Gets the message stream.
     /// </summary>
-    public List<(object Message, Metadata Metadata)> MessageStream => _messagestream ??= [];
+    public IEnumerable<(object Message, Metadata Metadata)> MessageStream => _messageStream;
 
-    /// <summary>
-    /// Publishes a command asynchronously with the specified metadata.
-    /// </summary>
-    /// <param name="command">The command to be published.</param>
-    /// <param name="metadata">The metadata associated with the command.</param>
-    /// <param name="cancellationToken">A cancellation token that can be used to cancel the publish operation.</param>
-    /// <returns>A task that represents the asynchronous publish operation.</returns>
-    /// <exception cref="ArgumentNullException">Thrown if <paramref name="command"/> or <paramref name="metadata"/> is null.</exception>
-    public async Task PublishAsync(object command, Metadata metadata, CancellationToken cancellationToken)
+    /// <inheritdoc/>
+    public async Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(command);
+        ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
-        MessageStream.Add((command, metadata));
+        _messageStream.Add((message, metadata));
         await Task.CompletedTask.ConfigureAwait(false);
     }
 }

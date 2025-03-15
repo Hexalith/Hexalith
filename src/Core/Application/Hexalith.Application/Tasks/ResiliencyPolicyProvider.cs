@@ -14,5 +14,5 @@ public class ResiliencyPolicyProvider : IResiliencyPolicyProvider
 {
     /// <inheritdoc/>
     public ResiliencyPolicy GetPolicy(string name)
-        => ResiliencyPolicy.CreateDefaultExponentialRetry(); // TODO: Implement policy provider using settings
+        => ResiliencyPolicy.CreateDefaultExponentialRetry();
 }

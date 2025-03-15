@@ -47,15 +47,18 @@ public class MessageStore<TMessage>
     public string StreamName { get; }
 
     /// <summary>
+    /// Gets the stream state name. Used to store version.
+    /// </summary>
+    /// <returns>The stream state name. Default is 'Stream'.</returns>
+    public virtual string StreamStateName => StreamName + "Stream";
+
+    /// <summary>
     /// Add as an asynchronous operation.
     /// </summary>
     /// <param name="messages">The messages.</param>
     /// <param name="expectedVersion">The expected version.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;System.Int64&gt; representing the asynchronous operation.</returns>
-    /// <exception cref="System.ArgumentNullException">Argument is null.</exception>
-    /// <exception cref="System.Data.DBConcurrencyException">Stream version mismatch: Expected version={expectedVersion.ToString(CultureInfo.InvariantCulture)}; Actual version={version.ToString(CultureInfo.InvariantCulture)}.</exception>
-    /// <exception cref="StreamStores.DuplicateIdempotencyIdException">The idempotent Id already exists in the stream.</exception>
     public async Task<long> AddAsync(
         [NotNull] IEnumerable<TMessage> messages,
         long expectedVersion,
@@ -103,7 +106,7 @@ public class MessageStore<TMessage>
         {
             // If version is 0, the stream has not been initialized, we need to add new version header.
             await _stateManager.AddStateAsync(
-                GetStreamStateName(),
+                StreamStateName,
                 version,
                 cancellationToken)
                 .ConfigureAwait(false);
@@ -112,7 +115,7 @@ public class MessageStore<TMessage>
 
         // Update the stream header with the new version.
         await _stateManager
-            .SetStateAsync(GetStreamStateName(), version, cancellationToken)
+            .SetStateAsync(StreamStateName, version, cancellationToken)
             .ConfigureAwait(false);
         return version;
     }
@@ -206,20 +209,14 @@ public class MessageStore<TMessage>
     /// </summary>
     /// <param name="id">The stream item version number.</param>
     /// <returns>The message state name. Default is the version number.</returns>
-    public virtual string GetMessageStateName(string id) => GetStreamStateName() + "Id-" + id;
+    public virtual string GetMessageStateName(string id) => StreamStateName + "Id-" + id;
 
     /// <summary>
     /// The stream item version and identifier.
     /// </summary>
     /// <param name="version">The stream item version number.</param>
     /// <returns>The message state name. Default is the version number.</returns>
-    public virtual string GetStreamItemStateName(long version) => GetStreamStateName() + version.ToInvariantString();
-
-    /// <summary>
-    /// The stream state name. Used to store version.
-    /// </summary>
-    /// <returns>The stream state name. Default is 'Stream'.</returns>
-    public virtual string GetStreamStateName() => StreamName + "Stream";
+    public virtual string GetStreamItemStateName(long version) => StreamStateName + version.ToInvariantString();
 
     /// <summary>
     /// Get version.
@@ -229,7 +226,7 @@ public class MessageStore<TMessage>
     public async Task<long> GetVersionAsync(CancellationToken cancellationToken)
     {
         ConditionalValue<long> result = await _stateManager
-            .TryGetStateAsync<long>(GetStreamStateName(), cancellationToken)
+            .TryGetStateAsync<long>(StreamStateName, cancellationToken)
             .ConfigureAwait(false);
         return result.HasValue ? result.Value : 0L;
     }

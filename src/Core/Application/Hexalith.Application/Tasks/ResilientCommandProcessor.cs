@@ -44,40 +44,50 @@ public partial class ResilientCommandProcessor
     /// </summary>
     private readonly IStateStoreProvider _stateStoreProvider;
 
+    private readonly TimeProvider _timeProvider;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="ResilientCommandProcessor" /> class.
     /// </summary>
     /// <param name="resiliencyPolicy">The resiliency policy defining retry behavior.</param>
     /// <param name="commandDispatcher">The command dispatcher for executing domain commands.</param>
     /// <param name="stateStoreProvider">The state store provider for persisting task states.</param>
+    /// <param name="timeProvider">The time provider for getting the current time.</param>
     /// <param name="logger">The logger for error and information logging.</param>
     /// <exception cref="System.ArgumentNullException">Thrown when any of the parameters are null.</exception>
     public ResilientCommandProcessor(
         ResiliencyPolicy resiliencyPolicy,
         IDomainCommandDispatcher commandDispatcher,
         IStateStoreProvider stateStoreProvider,
+        TimeProvider timeProvider,
         ILogger logger)
     {
         ArgumentNullException.ThrowIfNull(resiliencyPolicy);
         ArgumentNullException.ThrowIfNull(commandDispatcher);
         ArgumentNullException.ThrowIfNull(stateStoreProvider);
+        ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(logger);
         _resiliencyPolicy = resiliencyPolicy;
         _commandDispatcher = commandDispatcher;
         _stateStoreProvider = stateStoreProvider;
+        _timeProvider = timeProvider;
         _logger = logger;
     }
 
     /// <summary>
     /// Logs an error that occurred during command execution.
     /// </summary>
+    /// <param name="logger"></param>
     /// <param name="e">The exception that was thrown.</param>
     /// <param name="commandType">The type of the command being executed.</param>
     /// <param name="partitionKey"></param>
     /// <param name="correlationId"></param>
     /// <param name="message">The error message.</param>
-    [LoggerMessage(EventId = 0, Level = LogLevel.Error, Message = "An error occurred when executing command {CommandType} on partition key {PartitionKey} with correlation id {CorrelationId}: {Message}")]
-    public partial void LogCommandExecutionError(Exception e, string commandType, string partitionKey, string correlationId, string message);
+    [LoggerMessage(
+        EventId = 0,
+        Level = LogLevel.Error,
+        Message = "An error occurred when executing command {CommandType} on partition key {PartitionKey} with correlation id {CorrelationId}: {Message}")]
+    public static partial void LogCommandExecutionError(ILogger logger, Exception e, string commandType, string partitionKey, string correlationId, string message);
 
     /// <summary>
     /// Processes a command asynchronously with resilience and error handling.
@@ -90,7 +100,14 @@ public partial class ResilientCommandProcessor
     /// <returns>A tuple containing the updated TaskProcessor and the ExecuteCommandResult, if successful.</returns>
     /// <exception cref="System.ArgumentNullException">Thrown when the command is null.</exception>
     /// <exception cref="System.NotSupportedException">Thrown when an unsupported task processor status or retry status is encountered.</exception>
-    public async Task<(TaskProcessor Processor, ExecuteCommandResult? Result)> ProcessAsync(string id, [NotNull] object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
+    [SuppressMessage("Minor Code Smell", "S2221:\"Exception\" should not be caught", Justification = "Retry policy needs to capture all exceptions.")]
+    [SuppressMessage("Critical Code Smell", "S1821:\"switch\" statements should not be nested", Justification = "Nesting needed")]
+    public async Task<(TaskProcessor Processor, ExecuteCommandResult? Result)> ProcessAsync(
+        string id,
+        [NotNull] object command,
+        Metadata metadata,
+        IDomainAggregate? aggregate,
+        CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         ExecuteCommandResult? result = null;
@@ -143,8 +160,9 @@ public partial class ResilientCommandProcessor
             }
             catch (Exception e)
             {
-                taskProcessor = taskProcessor.Fail($"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}: {e.Message}", e.FullMessage());
-                LogCommandExecutionError(e, metadata.Message.Name, metadata.AggregateGlobalId, metadata.Context.CorrelationId, e.FullMessage());
+                taskProcessor = taskProcessor
+                    .Fail($"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}: {e.Message}", e.FullMessage());
+                LogCommandExecutionError(_logger, e, metadata.Message.Name, metadata.AggregateGlobalId, metadata.Context.CorrelationId, e.FullMessage());
             }
         }
 
@@ -164,6 +182,6 @@ public partial class ResilientCommandProcessor
             .TryGetStateAsync<TaskProcessor>(
                 nameof(TaskProcessor) + id,
                 cancellationToken).ConfigureAwait(false);
-        return result.HasValue ? result.Value : new TaskProcessor(DateTimeOffset.UtcNow, _resiliencyPolicy);
+        return result.HasValue ? result.Value : new TaskProcessor(_timeProvider.GetUtcNow(), _resiliencyPolicy);
     }
 }

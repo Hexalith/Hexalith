@@ -112,7 +112,8 @@ public class ResilientProjectionEventProcessor
         }
         catch (Exception e)
         {
-            taskProcessor = taskProcessor.Fail($"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}: {e.Message}", e.FullMessage());
+            taskProcessor = taskProcessor.Fail(
+                $"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}: {e.Message}", e.FullMessage());
         }
 
         await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken).ConfigureAwait(false);

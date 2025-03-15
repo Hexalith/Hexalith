@@ -20,7 +20,7 @@
     <CoverletCollectorVersion>6.0.4</CoverletCollectorVersion>
     <DaprVersion>1.15.2</DaprVersion>
     <DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
-    <FluentAssertionsVersion>8.1.1</FluentAssertionsVersion>
+    <FluentAssertionsVersion>8.2.0</FluentAssertionsVersion>
     <FluentValidationVersion>11.11.0</FluentValidationVersion>
     <FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
     <GitHubActionsTestLoggerVersion>2.4.1</GitHubActionsTestLoggerVersion>

@@ -19,19 +19,19 @@ public class MemoryRequestBus : IRequestBus
     /// <summary>
     /// The internal message stream storage.
     /// </summary>
-    private List<(object, Metadata)>? _messageStream;
+    private readonly List<(object, Metadata)> _messageStream = [];
 
     /// <summary>
     /// Gets the message stream containing all published messages and their metadata.
     /// </summary>
-    public List<(object Message, Metadata Metadata)> MessageStream => _messageStream ??= [];
+    public IEnumerable<(object Message, Metadata Metadata)> MessageStream => _messageStream;
 
     /// <inheritdoc/>
     public Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
-        MessageStream.Add((message, metadata));
+        _messageStream.Add((message, metadata));
         return Task.CompletedTask;
     }
 }

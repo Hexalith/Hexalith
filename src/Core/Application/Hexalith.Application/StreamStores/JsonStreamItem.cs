@@ -41,6 +41,7 @@ public class JsonStreamItem : IStreamItem
     /// Initializes a new instance of the <see cref="JsonStreamItem" /> class. Initializer for serializers that require a parameterless constructor.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Info Code Smell", "S1133:Deprecated code should be removed", Justification = "Used for serialization")]
     public JsonStreamItem() => Data = Metadata = DataType = MetaType = string.Empty;
 
     /// <summary>
