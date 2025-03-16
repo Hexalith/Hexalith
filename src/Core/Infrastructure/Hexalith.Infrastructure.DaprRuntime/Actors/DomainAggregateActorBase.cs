@@ -24,7 +24,6 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.States;
 using Hexalith.PolymorphicSerialization;
@@ -318,6 +317,11 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         {
             MessageState ev = await EventSourceStore.GetAsync(i, cancellationToken).ConfigureAwait(false);
             ApplyResult applyResult = aggregate.Apply(ev.MessageObject);
+            if (applyResult.Failed)
+            {
+                throw new InvalidOperationException($"Error while applying event {ev.Metadata.Message.Name} to aggregate {aggregateName} : {applyResult.Reason}");
+            }
+
             metadata = ev.Metadata;
             aggregate = applyResult.Aggregate;
         }
