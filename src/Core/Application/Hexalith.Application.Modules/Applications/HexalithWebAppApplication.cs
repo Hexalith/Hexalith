@@ -61,7 +61,7 @@ public abstract class HexalithWebAppApplication : HexalithApplication, IWebAppAp
     public abstract IEnumerable<Type> WebAppModules { get; }
 
     /// <inheritdoc/>
-    public override Action<AuthorizationOptions> ConfigureAuthorization()
+    public override Action<object> ConfigureAuthentication()
     {
         return options =>
         {
@@ -74,9 +74,34 @@ public abstract class HexalithWebAppApplication : HexalithApplication, IWebAppAp
 
                 IWebAppApplicationModule webServerModule = Activator.CreateInstance(module) as IWebAppApplicationModule
                     ?? throw new InvalidOperationException($"Unable to create an instance of {module.FullName}");
+                webServerModule.ConfigureAuthorization(options);
+            }
+        };
+    }
+
+    /// <inheritdoc/>
+    public override Action<object> ConfigureAuthorization()
+    {
+        return options =>
+        {
+            if (options is not AuthorizationOptions authorizationOptions)
+            {
+                return;
+            }
+
+            foreach (Type module in Modules)
+            {
+                if (!typeof(IWebAppApplicationModule).IsAssignableFrom(module))
+                {
+                    continue;
+                }
+
+                IWebAppApplicationModule webServerModule = Activator.CreateInstance(module) as IWebAppApplicationModule
+                    ?? throw new InvalidOperationException($"Unable to create an instance of {module.FullName}");
+                webServerModule.ConfigureAuthorization(options);
                 foreach (KeyValuePair<string, AuthorizationPolicy> policy in webServerModule.AuthorizationPolicies)
                 {
-                    options.AddPolicy(policy.Key, policy.Value);
+                    authorizationOptions.AddPolicy(policy.Key, policy.Value);
                 }
             }
         };

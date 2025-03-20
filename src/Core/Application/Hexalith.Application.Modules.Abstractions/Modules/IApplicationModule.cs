@@ -60,6 +60,22 @@ public interface IApplicationModule
     string Version { get; }
 
     /// <summary>
+    /// Configures the authentication for the module.
+    /// </summary>
+    /// <param name="options">The authentication options.</param>
+    void ConfigureAuthentication(object options)
+    {
+    }
+
+    /// <summary>
+    /// Configures the authorization for the module.
+    /// </summary>
+    /// <param name="options">The authorization options.</param>
+    void ConfigureAuthorization(object options)
+    {
+    }
+
+    /// <summary>
     /// Setup the module in the application. For example, maps routes, etc.
     /// </summary>
     /// <param name="application">The host application.</param>

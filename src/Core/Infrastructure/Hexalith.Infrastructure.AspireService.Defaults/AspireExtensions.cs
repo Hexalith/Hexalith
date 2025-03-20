@@ -106,13 +106,13 @@ public static class AspireExtensions
     public static WebApplication MapDefaultEndpoints(this WebApplication app)
     {
         // Map health check endpoint for overall application health
-        _ = app.MapHealthChecks("/health");
+        _ = app.MapHealthChecks("/health").AllowAnonymous();
 
         // Map health check endpoint for liveness probe
         _ = app.MapHealthChecks("/alive", new HealthCheckOptions
         {
             Predicate = r => r.Tags.Contains("live"),
-        });
+        }).AllowAnonymous();
 
         return app;
     }

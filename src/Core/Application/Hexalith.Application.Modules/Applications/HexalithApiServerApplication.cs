@@ -34,7 +34,10 @@ public abstract class HexalithApiServerApplication : HexalithApplication, IApiSe
         .OrderBy(p => p.FullName)];
 
     /// <inheritdoc/>
-    public override Action<AuthorizationOptions> ConfigureAuthorization()
+    IEnumerable<Type>? IApiServerApplication.ApiServerModules { get; }
+
+    /// <inheritdoc/>
+    public override Action<object> ConfigureAuthentication()
     {
         return options =>
         {
@@ -47,9 +50,34 @@ public abstract class HexalithApiServerApplication : HexalithApplication, IApiSe
 
                 IApiServerApplicationModule webServerModule = Activator.CreateInstance(module) as IApiServerApplicationModule
                     ?? throw new InvalidOperationException($"Unable to create an instance of {module.FullName}");
+                webServerModule.ConfigureAuthentication(options);
+            }
+        };
+    }
+
+    /// <inheritdoc/>
+    public override Action<object> ConfigureAuthorization()
+    {
+        return options =>
+        {
+            if (options is not AuthorizationOptions authorizationOptions)
+            {
+                return;
+            }
+
+            foreach (Type module in Modules)
+            {
+                if (!typeof(IApiServerApplicationModule).IsAssignableFrom(module))
+                {
+                    continue;
+                }
+
+                IApiServerApplicationModule webServerModule = Activator.CreateInstance(module) as IApiServerApplicationModule
+                    ?? throw new InvalidOperationException($"Unable to create an instance of {module.FullName}");
+                webServerModule.ConfigureAuthorization(options);
                 foreach (KeyValuePair<string, AuthorizationPolicy> policy in webServerModule.AuthorizationPolicies)
                 {
-                    options.AddPolicy(policy.Key, policy.Value);
+                    authorizationOptions.AddPolicy(policy.Key, policy.Value);
                 }
             }
         };
@@ -84,4 +112,7 @@ public abstract class HexalithApiServerApplication : HexalithApplication, IApiSe
             }
         }
     }
+
+    /// <inheritdoc/>
+    void IApiServerApplication.RegisterActors(object actors) => throw new NotImplementedException();
 }

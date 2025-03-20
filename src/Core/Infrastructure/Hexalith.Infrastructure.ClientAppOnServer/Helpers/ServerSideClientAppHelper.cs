@@ -43,7 +43,6 @@ using Hexalith.Infrastructure.WebApis.Controllers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.PolymorphicSerialization;
 
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
@@ -150,20 +149,6 @@ public static class ServerSideClientAppHelper
             .AddDaprAggregateServices()
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration);
-
-        _ = builder
-            .Services
-            .ConfigureHttpJsonOptions(options => options.SerializerOptions.SetDefault())
-            .AddHttpContextAccessor()
-            .AddControllers()
-            .AddApplicationPart(typeof(RequestServiceController).Assembly)
-            .AddDapr(dapr =>
-            {
-                if (builder.Environment.IsDevelopment())
-                {
-                    _ = dapr.UseTimeout(TimeSpan.FromMinutes(1));
-                }
-            });
 
         _ = builder
             .Services
@@ -343,7 +328,7 @@ public static class ServerSideClientAppHelper
             }
         }
 
-        _ = app.MapActorsHandlers();
+        _ = app.MapActorsHandlers().AllowAnonymous();
         _ = app.UseHexalithGraphQL();
 
         app.UseHexalithModules();

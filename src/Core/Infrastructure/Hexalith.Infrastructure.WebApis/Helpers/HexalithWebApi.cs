@@ -39,8 +39,6 @@ using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 using Hexalith.Infrastructure.GraphQLServer.Helpers;
 using Hexalith.Infrastructure.WebApis.Services;
 
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -174,7 +172,7 @@ public static partial class HexalithWebApi
         _ = app.UseExceptionHandler();
 
         _ = app.UseRouting();
-        _ = app.MapActorsHandlers();
+        _ = app.MapActorsHandlers().AllowAnonymous();
         _ = app.UseHexalithGraphQL();
         _ = app.UseSwagger();
         _ = app.UseSwaggerUI();
