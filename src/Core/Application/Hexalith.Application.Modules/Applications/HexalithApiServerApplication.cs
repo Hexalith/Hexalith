@@ -112,7 +112,4 @@ public abstract class HexalithApiServerApplication : HexalithApplication, IApiSe
             }
         }
     }
-
-    /// <inheritdoc/>
-    void IApiServerApplication.RegisterActors(object actors) => throw new NotImplementedException();
 }

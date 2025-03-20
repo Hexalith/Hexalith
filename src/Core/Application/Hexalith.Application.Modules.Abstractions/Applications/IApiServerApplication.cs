@@ -18,5 +18,7 @@ public interface IApiServerApplication : IApplication
     /// Registers the actors associated with the application.
     /// </summary>
     /// <param name="actors">The actor collection.</param>
-    void RegisterActors(object actors);
+    void RegisterActors(object actors)
+    {
+    }
 }
