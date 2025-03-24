@@ -298,13 +298,19 @@ public static class ServerSideClientAppHelper
         _ = app.UseRequestLocalization(new RequestLocalizationOptions()
           .AddSupportedCultures(_cultures)
           .AddSupportedUICultures(_cultures));
-        _ = app
-            .MapStaticAssets();
-        _ = app
-            .UseRouting()
-            .UseSession();
+
+        // Map static files in wwwroot before authentication
+        _ = app.MapStaticAssets();
+        // For static files not in wwwroot
+        _ = app.UseStaticFiles();
+
+        _ = app.UseRouting();
+        _ = app.UseSession();
+
+        // Configure authentication and authorization after static files
         app.UseHexalithSecurity();
         _ = app.UseAntiforgery();
+
         _ = app
             .UseSwagger()
             .UseSwaggerUI();
