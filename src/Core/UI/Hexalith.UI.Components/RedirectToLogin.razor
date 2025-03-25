@@ -6,11 +6,6 @@
 @code {
     protected override void OnInitialized()
     {
-        //       var redirect = NavigationManager.Uri;
-        //        if (string.IsNullOrWhiteSpace(redirect))
-        //        {
-        //            redirect = Application.HomePath;
-        //        }
-        NavigationManager.NavigateTo(Application.HomePath, forceLoad: true);//LoginRedirectUrlService.GetRedirect(redirect), forceLoad: true);
+        NavigationManager.NavigateTo(Application.LoginPath, forceLoad: true);
     }
 }
