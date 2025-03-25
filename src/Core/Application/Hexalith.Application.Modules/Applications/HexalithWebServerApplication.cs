@@ -1,6 +1,6 @@
 ﻿// <copyright file="HexalithWebServerApplication.cs" company="ITANEO">
-// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+//     Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved. Licensed under the MIT
+//     license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Modules.Applications;
@@ -24,7 +24,8 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
     public override ApplicationType ApplicationType => ApplicationType.WebServer;
 
     /// <inheritdoc/>
-    public override IEnumerable<Type> Modules => WebServerModules.Distinct().OrderBy(p => p.FullName);
+    public override IEnumerable<Type> Modules =>
+        WebServerModules.Distinct().OrderBy(p => p.FullName);
 
     /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies
@@ -41,15 +42,20 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
                         continue;
                     }
 
-                    IUIApplicationModule uiModule = Activator.CreateInstance(module) as IUIApplicationModule
-                        ?? throw new InvalidOperationException($"Unable to create an instance of {module.FullName}");
+                    IUIApplicationModule uiModule =
+                        Activator.CreateInstance(module) as IUIApplicationModule
+                        ?? throw new InvalidOperationException(
+                            $"Unable to create an instance of {module.FullName}"
+                        );
                     assemblies.AddRange(uiModule.PresentationAssemblies);
                 }
 
                 _presentationAssemblies = assemblies.Distinct();
             }
 
-            return _presentationAssemblies.Concat(WebAppApplication?.PresentationAssemblies ?? []).Distinct();
+            return _presentationAssemblies
+                .Concat(WebAppApplication?.PresentationAssemblies ?? [])
+                .Distinct();
         }
     }
 
@@ -71,8 +77,11 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
                     continue;
                 }
 
-                IWebServerApplicationModule webServerModule = Activator.CreateInstance(module) as IWebServerApplicationModule
-                    ?? throw new InvalidOperationException($"Unable to create an instance of {module.FullName}");
+                IWebServerApplicationModule webServerModule =
+                    Activator.CreateInstance(module) as IWebServerApplicationModule
+                    ?? throw new InvalidOperationException(
+                        $"Unable to create an instance of {module.FullName}"
+                    );
                 webServerModule.ConfigureAuthorization(options);
             }
         };
@@ -95,17 +104,21 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
                     continue;
                 }
 
-                IWebServerApplicationModule webServerModule = Activator.CreateInstance(module) as IWebServerApplicationModule
-                    ?? throw new InvalidOperationException($"Unable to create an instance of {module.FullName}");
+                IWebServerApplicationModule webServerModule =
+                    Activator.CreateInstance(module) as IWebServerApplicationModule
+                    ?? throw new InvalidOperationException(
+                        $"Unable to create an instance of {module.FullName}"
+                    );
                 webServerModule.ConfigureAuthorization(options);
-                foreach (KeyValuePair<string, AuthorizationPolicy> policy in webServerModule.AuthorizationPolicies)
+                foreach (
+                    KeyValuePair<
+                        string,
+                        AuthorizationPolicy
+                    > policy in webServerModule.AuthorizationPolicies
+                )
                 {
                     authorizationOptions.AddPolicy(policy.Key, policy.Value);
                 }
-
-                authorizationOptions.FallbackPolicy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
             }
         };
     }
