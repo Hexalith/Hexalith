@@ -69,7 +69,8 @@ public static class ServerSideClientAppHelper
     /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddHexalithServerSideClientApp(
         this IServiceCollection services,
-        IConfiguration configuration)
+        IConfiguration configuration
+    )
     {
         HexalithApplicationAbstractions.RegisterPolymorphicMappers();
         HexalithDomainAbstractions.RegisterPolymorphicMappers();
@@ -85,18 +86,32 @@ public static class ServerSideClientAppHelper
             .AddScoped<IRequestProcessor, DependencyInjectionRequestProcessor>()
             .AddPartitions(configuration)
             .AddSessionsServices();
-        _ = services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
+        _ = services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(
+            ServiceLifetime.Singleton
+        );
         services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
-        services.TryAddScoped<IDomainCommandDispatcher, DependencyInjectionDomainCommandDispatcher>();
-        services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
+        services.TryAddScoped<
+            IDomainCommandDispatcher,
+            DependencyInjectionDomainCommandDispatcher
+        >();
+        services.TryAddScoped<
+            IProjectionUpdateProcessor,
+            DependencyInjectionProjectionUpdateProcessor
+        >();
         services.TryAddSingleton<IDomainAggregateFactory, DomainAggregateFactory>();
-        services.TryAddScoped<IProjectionUpdateHandler<SnapshotEvent>, IdsCollectionProjectionHandler<SnapshotEvent>>();
+        services.TryAddScoped<
+            IProjectionUpdateHandler<SnapshotEvent>,
+            IdsCollectionProjectionHandler<SnapshotEvent>
+        >();
         services.TryAddSingleton<IIdCollectionFactory, IdCollectionFactory>();
-        services
-            .TryAddSingleton<IDomainCommandProcessor>((s) => new DomainActorCommandProcessor(
-            ActorProxy.DefaultProxyFactory,
-            false,
-            s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
+        services.TryAddSingleton<IDomainCommandProcessor>(
+            (s) =>
+                new DomainActorCommandProcessor(
+                    ActorProxy.DefaultProxyFactory,
+                    false,
+                    s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()
+                )
+        );
         _ = services.AddActorProjectionFactory<IdDescription>();
         return services;
     }
@@ -116,7 +131,8 @@ public static class ServerSideClientAppHelper
         Action<ActorRegistrationCollection> registerActors,
         string sessionCookieName,
         string version,
-        string[] args)
+        string[] args
+    )
     {
         Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
@@ -131,7 +147,9 @@ public static class ServerSideClientAppHelper
 
         builder.Services.AddActors(options =>
         {
-            options.ActorIdleTimeout = builder.Environment.IsDevelopment() ? TimeSpan.FromMinutes(3) : TimeSpan.FromMinutes(1);
+            options.ActorIdleTimeout = builder.Environment.IsDevelopment()
+                ? TimeSpan.FromMinutes(3)
+                : TimeSpan.FromMinutes(1);
 
             // Register actor types and configure actor settings
             registerActors(options.Actors);
@@ -140,19 +158,19 @@ public static class ServerSideClientAppHelper
         startupLogger.Information("Configuring {AppName} ...", applicationName);
         _ = builder
             .AddServiceDefaults()
-            .Services
-            .AddLocalization()
+            .Services.AddLocalization()
             .AddProblemDetails()
             .AddHexalithServerSideClientApp(builder.Configuration)
             .AddEndpointsApiExplorer()
-            .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
+            .AddSwaggerGen(c =>
+                c.SwaggerDoc("v1", new() { Title = applicationName, Version = version })
+            )
             .AddDaprAggregateServices()
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration);
 
         _ = builder
-            .Services
-            .ConfigureHttpJsonOptions(options => options.SerializerOptions.SetDefault())
+            .Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.SetDefault())
             .AddHttpContextAccessor()
             .AddControllers()
             .AddApplicationPart(typeof(RequestServiceController).Assembly)
@@ -164,23 +182,24 @@ public static class ServerSideClientAppHelper
                 }
             });
 
-        _ = builder.Services
-            .AddRazorComponents()
+        _ = builder
+            .Services.AddRazorComponents()
             .AddInteractiveServerComponents()
             .AddInteractiveWebAssemblyComponents()
             .AddAuthenticationStateSerialization();
 
         // Show detailed errors on Circuit exceptions
-        _ = builder.Services.AddServerSideBlazor().AddCircuitOptions(option => option.DetailedErrors = true);
+        _ = builder
+            .Services.AddServerSideBlazor()
+            .AddCircuitOptions(option => option.DetailedErrors = true);
 
-        _ = builder.Services
-            .AddSession(options =>
-            {
-                options.Cookie.Name = sessionCookieName;
-                options.IdleTimeout = TimeSpan.FromMinutes(20);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-            });
+        _ = builder.Services.AddSession(options =>
+        {
+            options.Cookie.Name = sessionCookieName;
+            options.IdleTimeout = TimeSpan.FromMinutes(20);
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
+        });
         _ = builder.AddHexalithGraphQL();
         HexalithApplication.AddWebServerServices(builder.Services, builder.Configuration);
         return builder;
@@ -193,29 +212,57 @@ public static class ServerSideClientAppHelper
     /// <returns>The defaulted JSON options.</returns>
     public static JsonSerializerOptions SetDefault(this JsonSerializerOptions options)
     {
-        options.AllowTrailingCommas = PolymorphicHelper.DefaultJsonSerializerOptions.AllowTrailingCommas;
-        foreach (System.Text.Json.Serialization.JsonConverter converter in PolymorphicHelper.DefaultJsonSerializerOptions.Converters)
+        options.AllowTrailingCommas = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .AllowTrailingCommas;
+        foreach (
+            System.Text.Json.Serialization.JsonConverter converter in PolymorphicHelper
+                .DefaultJsonSerializerOptions
+                .Converters
+        )
         {
             options.Converters.Add(converter);
         }
 
-        options.DefaultBufferSize = PolymorphicHelper.DefaultJsonSerializerOptions.DefaultBufferSize;
-        options.DefaultIgnoreCondition = PolymorphicHelper.DefaultJsonSerializerOptions.DefaultIgnoreCondition;
-        options.DictionaryKeyPolicy = PolymorphicHelper.DefaultJsonSerializerOptions.DictionaryKeyPolicy;
+        options.DefaultBufferSize = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .DefaultBufferSize;
+        options.DefaultIgnoreCondition = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .DefaultIgnoreCondition;
+        options.DictionaryKeyPolicy = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .DictionaryKeyPolicy;
         options.Encoder = PolymorphicHelper.DefaultJsonSerializerOptions.Encoder;
-        options.IgnoreReadOnlyFields = PolymorphicHelper.DefaultJsonSerializerOptions.IgnoreReadOnlyFields;
-        options.IgnoreReadOnlyProperties = PolymorphicHelper.DefaultJsonSerializerOptions.IgnoreReadOnlyProperties;
+        options.IgnoreReadOnlyFields = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .IgnoreReadOnlyFields;
+        options.IgnoreReadOnlyProperties = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .IgnoreReadOnlyProperties;
         options.IncludeFields = PolymorphicHelper.DefaultJsonSerializerOptions.IncludeFields;
         options.MaxDepth = PolymorphicHelper.DefaultJsonSerializerOptions.MaxDepth;
         options.NumberHandling = PolymorphicHelper.DefaultJsonSerializerOptions.NumberHandling;
-        options.PreferredObjectCreationHandling = PolymorphicHelper.DefaultJsonSerializerOptions.PreferredObjectCreationHandling;
-        options.PropertyNameCaseInsensitive = PolymorphicHelper.DefaultJsonSerializerOptions.PropertyNameCaseInsensitive;
-        options.PropertyNamingPolicy = PolymorphicHelper.DefaultJsonSerializerOptions.PropertyNamingPolicy;
-        options.ReadCommentHandling = PolymorphicHelper.DefaultJsonSerializerOptions.ReadCommentHandling;
+        options.PreferredObjectCreationHandling = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .PreferredObjectCreationHandling;
+        options.PropertyNameCaseInsensitive = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .PropertyNameCaseInsensitive;
+        options.PropertyNamingPolicy = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .PropertyNamingPolicy;
+        options.ReadCommentHandling = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .ReadCommentHandling;
         options.ReferenceHandler = PolymorphicHelper.DefaultJsonSerializerOptions.ReferenceHandler;
         options.TypeInfoResolver = PolymorphicHelper.DefaultJsonSerializerOptions.TypeInfoResolver;
-        options.UnknownTypeHandling = PolymorphicHelper.DefaultJsonSerializerOptions.UnknownTypeHandling;
-        options.UnmappedMemberHandling = PolymorphicHelper.DefaultJsonSerializerOptions.UnmappedMemberHandling;
+        options.UnknownTypeHandling = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .UnknownTypeHandling;
+        options.UnmappedMemberHandling = PolymorphicHelper
+            .DefaultJsonSerializerOptions
+            .UnmappedMemberHandling;
         options.WriteIndented = PolymorphicHelper.DefaultJsonSerializerOptions.WriteIndented;
         return options;
     }
@@ -231,9 +278,8 @@ public static class ServerSideClientAppHelper
         // initialize modules
         using IServiceScope scope = application.Services.CreateScope();
 
-        IEnumerable<IApplicationModule>? modules = scope
-            .ServiceProvider
-            .GetServices<IApplicationModule>();
+        IEnumerable<IApplicationModule>? modules =
+            scope.ServiceProvider.GetServices<IApplicationModule>();
         foreach (IApplicationModule module in modules)
         {
             module.UseModule(application);
@@ -251,10 +297,11 @@ public static class ServerSideClientAppHelper
         // initialize modules
         using IServiceScope scope = application.Services.CreateScope();
 
-        IEnumerable<IApplicationModule>? modules = scope
-            .ServiceProvider
-            .GetServices<IApplicationModule>();
-        foreach (IWebServerApplicationModule module in modules.OfType<IWebServerApplicationModule>())
+        IEnumerable<IApplicationModule>? modules =
+            scope.ServiceProvider.GetServices<IApplicationModule>();
+        foreach (
+            IWebServerApplicationModule module in modules.OfType<IWebServerApplicationModule>()
+        )
         {
             module.UseSecurity(application);
         }
@@ -267,42 +314,43 @@ public static class ServerSideClientAppHelper
     /// <param name="app">The application.</param>
     /// <returns>IApplicationBuilder.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static IApplicationBuilder UseHexalithWebApplication<TApp>([NotNull] this WebApplication app)
+    public static IApplicationBuilder UseHexalithWebApplication<TApp>(
+        [NotNull] this WebApplication app
+    )
     {
         ArgumentNullException.ThrowIfNull(app);
 
-        // Needed when behind a reverse proxy like Azure Container Instances. It will forward the original host and protocol (https/http).
-        _ = app.UseForwardedHeaders(new ForwardedHeadersOptions
-        {
-            ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
-        });
+        // Map static files in wwwroot before authentication
+        _ = app.MapStaticAssets();
 
-        _ = app
-            .MapDefaultEndpoints()
-            .UseSerilogRequestLogging()
-            .UseCloudEvents();
+        // For static files not in wwwroot
+        _ = app.UseStaticFiles();
+
+        // Needed when behind a reverse proxy like Azure Container Instances. It will forward the original host and protocol (https/http).
+        _ = app.UseForwardedHeaders(
+            new ForwardedHeadersOptions
+            {
+                ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+            }
+        );
+
+        _ = app.MapDefaultEndpoints().UseSerilogRequestLogging().UseCloudEvents();
 
         if (!app.Environment.IsProduction())
         {
-            app
-                 .UseDeveloperExceptionPage()
-                 .UseWebAssemblyDebugging();
+            app.UseDeveloperExceptionPage().UseWebAssemblyDebugging();
         }
         else
         {
-            _ = app
-                .UseExceptionHandler("/Error", createScopeForErrors: true)
-                .UseHsts();
+            _ = app.UseExceptionHandler("/Error", createScopeForErrors: true).UseHsts();
         }
 
-        _ = app.UseRequestLocalization(new RequestLocalizationOptions()
-          .AddSupportedCultures(_cultures)
-          .AddSupportedUICultures(_cultures));
-
-        // Map static files in wwwroot before authentication
-        _ = app.MapStaticAssets();
-        // For static files not in wwwroot
-        _ = app.UseStaticFiles();
+        _ = app.UseRequestLocalization(
+            new RequestLocalizationOptions()
+                .AddSupportedCultures(_cultures)
+                .AddSupportedUICultures(_cultures)
+        );
 
         _ = app.UseRouting();
         _ = app.UseSession();
@@ -311,21 +359,18 @@ public static class ServerSideClientAppHelper
         app.UseHexalithSecurity();
         _ = app.UseAntiforgery();
 
-        _ = app
-            .UseSwagger()
-            .UseSwaggerUI();
+        _ = app.UseSwagger().UseSwaggerUI();
         _ = app.MapControllers();
         _ = app.MapSubscribeHandler();
-        RazorComponentsEndpointConventionBuilder razor = app
-            .MapRazorComponents<TApp>()
+        RazorComponentsEndpointConventionBuilder razor = app.MapRazorComponents<TApp>()
             .AddInteractiveServerRenderMode()
             .AddInteractiveWebAssemblyRenderMode();
         if (HexalithApplication.WebServerApplication is not null)
         {
             System.Reflection.Assembly[]? assemblies = HexalithApplication
-                .WebServerApplication?
-                .PresentationAssemblies
-                .Where(assembly => assembly != typeof(TApp).Assembly)
+                .WebServerApplication?.PresentationAssemblies.Where(assembly =>
+                    assembly != typeof(TApp).Assembly
+                )
                 .Distinct()
                 .ToArray();
             if (assemblies != null)
