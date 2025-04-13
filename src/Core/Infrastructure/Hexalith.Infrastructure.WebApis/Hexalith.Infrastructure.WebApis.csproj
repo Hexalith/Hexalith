@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,20 +21,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" Version="$(FluentValidationAspNetCoreVersion)" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleAspNetCoreVersion)" />
-    <PackageReference Include="Serilog.AspNetCore" Version="$(SerilogVersion)" />
-    <PackageReference Include="Serilog.Enrichers.Environment" Version="$(SerilogEnrichersEnvironmentVersion)" />
-    <PackageReference Include="Serilog.Enrichers.Thread" Version="$(SerilogEnrichersThreadVersion)" />
-    <PackageReference Include="Serilog.Enrichers.Process" Version="$(SerilogEnrichersProcessVersion)" />
-    <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
-    <PackageReference Include="Serilog.Extensions.Hosting" Version="$(SerilogVersion)" />
-    <PackageReference Include="Serilog.Extensions.Logging" Version="$(SerilogVersion)" />
-    <PackageReference Include="Serilog.Formatting.Compact" Version="$(SerilogFormattingCompactVersion)" />
-    <PackageReference Include="Serilog.Settings.AppSettings" Version="3.0.0" />
-    <PackageReference Include="Serilog.Settings.Configuration" Version="$(SerilogVersion)" />
-    <PackageReference Include="Serilog.Sinks.Console" Version="$(SerilogSinksConsoleVersion)" />
-    <PackageReference Include="Serilog.Sinks.Debug" Version="$(SerilogSinksDebugVersion)" />
-    <PackageReference Include="Serilog.Sinks.File" Version="$(SerilogSinksFileVersion)" />
+    <PackageReference Include="FluentValidation.AspNetCore"  />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations"  />
+    <PackageReference Include="Serilog.AspNetCore"  />
+    <PackageReference Include="Serilog.Enrichers.Environment"  />
+    <PackageReference Include="Serilog.Enrichers.Thread"  />
+    <PackageReference Include="Serilog.Enrichers.Process"  />
+    <PackageReference Include="Serilog.Exceptions"  />
+    <PackageReference Include="Serilog.Extensions.Hosting"  />
+    <PackageReference Include="Serilog.Extensions.Logging"  />
+    <PackageReference Include="Serilog.Formatting.Compact"  />
+    <PackageReference Include="Serilog.Settings.AppSettings" />
+    <PackageReference Include="Serilog.Settings.Configuration"  />
+    <PackageReference Include="Serilog.Sinks.Console"  />
+    <PackageReference Include="Serilog.Sinks.Debug"  />
+    <PackageReference Include="Serilog.Sinks.File"  />
   </ItemGroup>
 </Project>

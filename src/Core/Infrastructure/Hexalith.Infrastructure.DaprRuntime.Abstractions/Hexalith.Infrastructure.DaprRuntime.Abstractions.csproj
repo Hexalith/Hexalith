@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-      <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+      <TargetFramework>net9.0</TargetFramework>
       <RootNamespace>Hexalith.Infrastructure.DaprRuntime</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-      <PackageReference Include="Dapr.Actors.AspNetCore" Version="$(DaprVersion)" />
-      <PackageReference Include="Dapr.AspNetCore" Version="$(DaprVersion)" />
+      <PackageReference Include="Dapr.Actors.AspNetCore"  />
+      <PackageReference Include="Dapr.AspNetCore"  />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />

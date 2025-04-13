@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<Import Project="$([MSBuild]::GetPathOfFileAbove('Domain.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 	<PropertyGroup>
-		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 	</PropertyGroup>
 </Project>

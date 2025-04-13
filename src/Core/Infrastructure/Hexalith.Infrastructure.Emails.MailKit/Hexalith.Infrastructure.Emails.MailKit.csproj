@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="MailKit" Version="$(MailKitVersion)" />
+      <PackageReference Include="MailKit"  />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Hexalith.Infrastructure.Emails.Abstractions\Hexalith.Infrastructure.Emails.Abstractions.csproj" />

@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
     </PropertyGroup>
 </Project>

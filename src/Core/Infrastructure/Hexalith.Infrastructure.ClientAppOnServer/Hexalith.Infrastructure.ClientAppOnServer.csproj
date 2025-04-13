@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="$(AspNetCorePackagesVersion)" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Hybrid" Version="9.*-*" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(AspNetCorePackagesVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI"  />
+    <PackageReference Include="Microsoft.Extensions.Caching.Hybrid"  />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server"  />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Hexalith.Application.Sessions.Abstractions\Hexalith.Application.Sessions.Abstractions.csproj" />

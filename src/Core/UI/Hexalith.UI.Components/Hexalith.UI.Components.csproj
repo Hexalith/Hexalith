@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
-        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -17,13 +17,13 @@
       <ProjectReference Include="..\Hexalith.UI.Components.Abstractions\Hexalith.UI.Components.Abstractions.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="$(AspNetCorePackagesVersion)" />
-        <PackageReference Include="Microsoft.Extensions.Localization" Version="$(MicrosoftExtensionsPackagesVersion)" />
-        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIComponentsVersion)" />
-        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIComponentsVersion)" />
-        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.DataGrid.EntityFrameworkAdapter" Version="$(MicrosoftFluentUIComponentsVersion)" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-      <PackageReference Include="Scriban" Version="$(ScribanVersion)" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization"  />
+        <PackageReference Include="Microsoft.Extensions.Localization"  />
+        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components"  />
+        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons"  />
+        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.DataGrid.EntityFrameworkAdapter"  />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"  />
+      <PackageReference Include="Scriban"  />
     </ItemGroup>
     <ItemGroup>
         <SupportedPlatform Include="browser" />

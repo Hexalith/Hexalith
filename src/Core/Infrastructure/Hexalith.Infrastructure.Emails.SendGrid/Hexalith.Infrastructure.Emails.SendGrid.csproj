@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="SendGrid.Extensions.DependencyInjection" Version="$(SendGridExtensionsDependencyInjectionVersion)" />
-      <PackageReference Include="SendGrid" Version="$(SendGridVersion)" />
+      <PackageReference Include="SendGrid.Extensions.DependencyInjection"  />
+      <PackageReference Include="SendGrid"  />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Hexalith.Infrastructure.Emails.Abstractions\Hexalith.Infrastructure.Emails.Abstractions.csproj" />

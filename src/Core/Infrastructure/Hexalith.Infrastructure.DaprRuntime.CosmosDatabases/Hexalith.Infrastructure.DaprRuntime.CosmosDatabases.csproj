@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-      <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+      <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Dapr.Actors" Version="$(DaprVersion)" />
+    <PackageReference Include="Dapr.Actors"  />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />

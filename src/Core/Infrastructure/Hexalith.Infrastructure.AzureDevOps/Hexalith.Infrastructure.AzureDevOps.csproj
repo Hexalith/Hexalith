@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.SemanticKernel" Version="$(MicrosoftSemanticKernelVersion)" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Microsoft.SemanticKernel"  />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"  />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />

@@ -1,26 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
-        <IsAspireSharedProject>true</IsAspireSharedProject>
-      <NoWarn>$(NoWarn);CS1591;</NoWarn>
-    </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="Aspire.Hosting" Version="$(AspireVersion)" />
-        <PackageReference Include="CommunityToolkit.Aspire.Hosting.Dapr" Version="$(CommunityToolkitAspireHostingDaprVersion)" />
-        <PackageReference Include="Aspire.Azure.Messaging.ServiceBus" Version="$(AspireVersion)" />
-        <PackageReference Include="Aspire.Azure.Storage.Blobs" Version="$(AspireVersion)" />
-        <PackageReference Include="Aspire.Azure.Storage.Queues" Version="$(AspireVersion)" />
-        <PackageReference Include="Aspire.Hosting.AppHost" Version="$(AspireVersion)" />
-        <PackageReference Include="Aspire.Hosting.Redis" Version="$(AspireVersion)" />
-        <PackageReference Include="Aspire.Hosting.Azure.CosmosDB" Version="$(AspireVersion)" />
-        <PackageReference Include="Aspire.Azure.Security.KeyVault" Version="$(AspireVersion)" />
-    <PackageReference Include="Aspire.Microsoft.Azure.Cosmos" Version="$(AspireVersion)" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="$(MicrosoftExtensionsPackagesVersion)" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-    <PackageReference Include="System.Text.Json" Version="$(MicrosoftExtensionsPackagesVersion)" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-  </ItemGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
-    </ItemGroup>
+ <PropertyGroup>
+   <TargetFramework>net9.0</TargetFramework>
+   <IsAspireSharedProject>true</IsAspireSharedProject>
+   <NoWarn>$(NoWarn);CS1591;</NoWarn>
+ </PropertyGroup>
+ <ItemGroup>
+   <PackageReference Include="Aspire.Azure.Messaging.ServiceBus" />
+   <PackageReference Include="Aspire.Azure.Security.KeyVault" />
+   <PackageReference Include="Aspire.Azure.Storage.Blobs" />
+   <PackageReference Include="Aspire.Azure.Storage.Queues" />
+   <PackageReference Include="Aspire.Hosting" />
+   <PackageReference Include="Aspire.Hosting.AppHost" />
+   <PackageReference Include="Aspire.Hosting.Azure.CosmosDB" />
+   <PackageReference Include="Aspire.Hosting.Redis" />
+   <PackageReference Include="Aspire.Microsoft.Azure.Cosmos" />
+   <PackageReference Include="CommunityToolkit.Aspire.Hosting.Dapr" />
+   <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+   <PackageReference Include="Microsoft.Extensions.Hosting" />
+   <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+   <PackageReference Include="System.Text.Json" />
+ </ItemGroup>
+ <ItemGroup>
+   <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
+ </ItemGroup>
 </Project>

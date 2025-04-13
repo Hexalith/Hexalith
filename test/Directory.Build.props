@@ -1,29 +1,29 @@
 <Project>
-	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
-	<PropertyGroup>
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<IsPackable>false</IsPackable>
-		<Nullable>disable</Nullable>
-		<NoWarn>$(NoWarn);SA1600;VSTHRD200;SA1402;CA2007;CS1591;CA1034;CA1707;</NoWarn>
-		<OutputPath>$(RepoRoot)bin\$(Configuration)\test\$(MSBuildProjectName)\</OutputPath>
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="FluentAssertions" Version="$(FluentAssertionsVersion)" />
-		<PackageReference Include="Moq" Version="$(MoqVersion)" />
-		<PackageReference Include="Moq.Contrib.HttpClient" Version="$(MoqContribHttpClientVersion)" />
-		<PackageReference Include="xunit" Version="$(XUnitVersion)" />
-		<PackageReference Include="xunit.runner.visualstudio" Version="$(XUnitRunnerVisualStudioVersion)">
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-		<PackageReference Include="coverlet.collector" Version="$(CoverletCollectorVersion)">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNETTestSdkVersion)" />
-	</ItemGroup>
-	<!-- Used to annotate PR with test failures: https://github.com/Tyrrrz/GitHubActionsTestLogger -->
-	<ItemGroup>
-		<PackageReference Include="GitHubActionsTestLogger" Version="$(GitHubActionsTestLoggerVersion)" />
-	</ItemGroup>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+  <PropertyGroup>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IsPackable>false</IsPackable>
+    <Nullable>disable</Nullable>
+    <NoWarn>$(NoWarn);SA1600;VSTHRD200;SA1402;CA2007;CS1591;CA1034;CA1707;</NoWarn>
+    <OutputPath>$(RepoRoot)bin\$(Configuration)\test\$(MSBuildProjectName)\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="Moq.Contrib.HttpClient" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+  </ItemGroup>
+  <!-- Used to annotate PR with test failures: https://github.com/Tyrrrz/GitHubActionsTestLogger -->
+  <ItemGroup>
+    <PackageReference Include="GitHubActionsTestLogger" />
+  </ItemGroup>
 </Project>
