@@ -5,6 +5,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="Hexalith.PolymorphicSerializations" />
-	  <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" />
+	  <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="true" />
 	</ItemGroup>
 </Project>

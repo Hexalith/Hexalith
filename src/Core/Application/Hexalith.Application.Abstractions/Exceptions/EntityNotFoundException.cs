@@ -62,7 +62,7 @@ public class EntityNotFoundException<TEntity> : ApplicationErrorException
     /// Gets the key.
     /// </summary>
     /// <value>The key.</value>
-    public object? Key { get; private set; }
+    public object? Key { get; }
 
     private static ApplicationError CreateError(object key)
     {
