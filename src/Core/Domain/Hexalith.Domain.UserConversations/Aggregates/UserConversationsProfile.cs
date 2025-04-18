@@ -10,10 +10,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
-using Hexalith.Domain.Aggregates;
+
 using Hexalith.Domain.Events;
 using Hexalith.Domain.UserConversationProfiles.Entities;
 using Hexalith.Domain.UserConversationProfiles.Events;
+using Hexalith.Domains;
+using Hexalith.Domains.Results;
 
 /// <summary>
 /// Represents a user's conversation profile, which is an aggregate root in the domain.

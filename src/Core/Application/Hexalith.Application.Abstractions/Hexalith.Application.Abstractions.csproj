@@ -6,6 +6,7 @@
     <RootNamespace>Hexalith.Application</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Hexalith.Domains.Abstractions" />
     <PackageReference Include="Hexalith.PolymorphicSerializations" />
     <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="true" />
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" />

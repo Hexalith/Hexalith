@@ -10,7 +10,8 @@ using System;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
+using Hexalith.Domains.Results;
 using Hexalith.PolymorphicSerializations;
 
 using Microsoft.Extensions.DependencyInjection;

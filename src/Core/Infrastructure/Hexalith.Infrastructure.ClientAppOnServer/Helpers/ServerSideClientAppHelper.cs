@@ -27,9 +27,9 @@ using Hexalith.Application.Requests;
 using Hexalith.Application.Services;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Abstractions.Extensions;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjects;
+using Hexalith.Domains.Abstractions.Extensions;
 using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
@@ -72,7 +72,7 @@ public static class ServerSideClientAppHelper
         IConfiguration configuration)
     {
         HexalithApplicationAbstractionsSerialization.RegisterPolymorphicMappers();
-        HexalithDomainAbstractionsSerialization.RegisterPolymorphicMappers();
+        HexalithDomainsAbstractionsSerialization.RegisterPolymorphicMappers();
 
         _ = services
             .AddOrganizations(configuration)

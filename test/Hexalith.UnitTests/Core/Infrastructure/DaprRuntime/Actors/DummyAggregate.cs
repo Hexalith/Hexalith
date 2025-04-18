@@ -7,7 +7,8 @@ namespace Hexalith.UnitTests.Core.Infrastructure.DaprRuntime.Actors;
 
 using System.Runtime.Serialization;
 
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
+using Hexalith.Domains.Results;
 
 [DataContract]
 public record DummyAggregate(string Id, string Name) : IDomainAggregate

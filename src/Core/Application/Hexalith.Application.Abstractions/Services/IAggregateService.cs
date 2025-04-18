@@ -8,7 +8,7 @@ namespace Hexalith.Application.Services;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 using Hexalith.Domain.Events;
 
 /// <summary>

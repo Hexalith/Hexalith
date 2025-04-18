@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Services;
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 

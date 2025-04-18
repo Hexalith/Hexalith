@@ -8,10 +8,12 @@ namespace Hexalith.Infrastructure.DaprRuntime.Projections;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Projections;
-using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Domains;
+using Hexalith.Domains.Results;
 
 #pragma warning disable CA1711 // Identifiers should not have incorrect suffix
 

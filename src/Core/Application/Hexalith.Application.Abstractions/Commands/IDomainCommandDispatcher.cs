@@ -6,7 +6,7 @@
 namespace Hexalith.Application.Commands;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 
 /// <summary>
 /// Domain command dispatcher interface.

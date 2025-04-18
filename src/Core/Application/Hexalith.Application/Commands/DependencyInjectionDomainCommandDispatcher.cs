@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 

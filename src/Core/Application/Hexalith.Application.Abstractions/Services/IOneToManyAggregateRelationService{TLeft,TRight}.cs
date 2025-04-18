@@ -8,7 +8,7 @@ namespace Hexalith.Application.Services;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 
 /// <summary>
 /// Interface for managing one-to-many aggregate relations.

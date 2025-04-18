@@ -10,10 +10,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
-using Hexalith.Domain.Aggregates;
+
 using Hexalith.Domain.Dimensions.DimensionCollectionDefinitions.Entities;
 using Hexalith.Domain.Dimensions.DimensionCollectionDefinitions.Events;
 using Hexalith.Domain.Events;
+using Hexalith.Domains;
+using Hexalith.Domains.Results;
 
 /// <summary>
 /// Represents a definition of a dimension collection.

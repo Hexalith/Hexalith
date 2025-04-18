@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 
 /// <summary>
 /// Command handler interface.

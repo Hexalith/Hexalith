@@ -7,7 +7,7 @@ namespace Hexalith.Application.Aggregates;
 
 using System;
 
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 
 /// <summary>
 /// Class AggregateProvider.

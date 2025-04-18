@@ -8,7 +8,7 @@ namespace Hexalith.Application.Aggregates;
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 
 /// <summary>
 /// Factory class for creating domain aggregates.

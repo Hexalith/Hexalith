@@ -17,7 +17,7 @@
 // using Hexalith.Application.Requests;
 // using Hexalith.Application.States;
 // using Hexalith.Application.Tasks;
-// using Hexalith.Domain.Aggregates;
+// using Hexalith.Domains;
 // using Hexalith.Extensions.Errors;
 // using Hexalith.Infrastructure.DaprRuntime;
 // using Hexalith.Infrastructure.DaprRuntime.Actors;

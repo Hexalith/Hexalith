@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Services;
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 using Hexalith.Domain.Events;
 
 /// <summary>

@@ -11,10 +11,12 @@ using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
-using Hexalith.Domain.Aggregates;
+
 using Hexalith.Domain.ConversationThreads.Entities;
 using Hexalith.Domain.ConversationThreads.Events;
 using Hexalith.Domain.Events;
+using Hexalith.Domains;
+using Hexalith.Domains.Results;
 
 /// <summary>
 /// Represents a conversation thread in the domain, implementing the <see cref="IDomainAggregate"/> interface.

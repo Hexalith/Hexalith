@@ -7,7 +7,7 @@ namespace Hexalith.Application.Commands;
 
 using System.Collections.Generic;
 
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 
 /// <summary>
 /// Command execution result.

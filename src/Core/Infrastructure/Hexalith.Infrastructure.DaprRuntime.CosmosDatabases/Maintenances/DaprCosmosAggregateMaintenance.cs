@@ -16,7 +16,7 @@ using Dapr.Actors.Client;
 using Dapr.Client;
 
 using Hexalith.Application.Aggregates;
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.CosmosDb.Configurations;
 using Hexalith.Infrastructure.CosmosDb.Providers;

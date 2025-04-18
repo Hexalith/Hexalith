@@ -10,6 +10,8 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 
 using Hexalith.Domain.Events;
+using Hexalith.Domains;
+using Hexalith.Domains.Results;
 
 /// <summary>
 /// Represents a survey campaign in the domain.

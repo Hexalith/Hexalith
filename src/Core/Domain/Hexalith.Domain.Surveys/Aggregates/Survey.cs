@@ -12,6 +12,8 @@ using System.Text.Json;
 using Hexalith.Domain.Entities;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjects;
+using Hexalith.Domains;
+using Hexalith.Domains.Results;
 
 /// <summary>
 /// Represents a survey aggregate.

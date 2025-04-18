@@ -4,9 +4,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="Hexalith.Commons" Version="1.56.0" />
+    <PackageVersion Include="Hexalith.Domains" Version="1.0.0" />
+    <PackageVersion Include="Hexalith.Domains.Abstractions" Version="1.0.0" />
     <PackageVersion Include="Hexalith.NetAspire.Defaults" Version="1.1.0" />
-    <PackageVersion Include="Hexalith.PolymorphicSerializations" Version="1.6.4" />
-    <PackageVersion Include="Hexalith.PolymorphicSerializations.CodeGenerators" Version="1.6.4" />
+    <PackageVersion Include="Hexalith.PolymorphicSerializations" Version="1.6.6" />
+    <PackageVersion Include="Hexalith.PolymorphicSerializations.CodeGenerators" Version="1.6.6" />
   </ItemGroup>
   <ItemGroup>
     <PackageVersion Include="AdaptiveCards" Version="3.1.0" />

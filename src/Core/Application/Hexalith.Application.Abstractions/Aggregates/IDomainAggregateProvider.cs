@@ -5,7 +5,7 @@
 
 namespace Hexalith.Application.Aggregates;
 
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 
 /// <summary>
 /// Interface IDomainAggregateProvider.

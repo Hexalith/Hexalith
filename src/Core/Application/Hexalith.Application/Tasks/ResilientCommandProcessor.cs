@@ -12,7 +12,7 @@ using System.Threading;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domains;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 

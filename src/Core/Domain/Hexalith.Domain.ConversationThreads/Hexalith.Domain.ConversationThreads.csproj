@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
-    </PropertyGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
-      <ProjectReference Include="..\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
-    </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Hexalith.Domains.Abstractions" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+    <ProjectReference Include="..\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
+  </ItemGroup>
 </Project>
