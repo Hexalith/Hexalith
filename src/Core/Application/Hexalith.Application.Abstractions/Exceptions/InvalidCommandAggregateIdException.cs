@@ -9,7 +9,7 @@ using System;
 using System.Text.Json;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an exception that is thrown when a command is associated with an invalid aggregate identifier.

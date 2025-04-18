@@ -40,8 +40,8 @@ public static class WebAssemblyClientHelper
     /// <returns>The modified service collection.</returns>
     public static IServiceCollection AddHexalithWasmClientApp(this IServiceCollection services, IConfiguration configuration)
     {
-        HexalithApplicationAbstractions.RegisterPolymorphicMappers();
-        HexalithDomainAbstractions.RegisterPolymorphicMappers();
+        HexalithApplicationAbstractionsSerialization.RegisterPolymorphicMappers();
+        HexalithDomainAbstractionsSerialization.RegisterPolymorphicMappers();
         _ = services
              .AddOrganizations(configuration)
              .AddSingleton(TimeProvider.System)

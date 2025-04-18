@@ -5,7 +5,7 @@
 
 namespace Hexalith.Domain.ConversationThreads.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event that indicates the cancellation of a conversation thread event.

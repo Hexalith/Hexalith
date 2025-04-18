@@ -5,11 +5,11 @@
 
 namespace Hexalith.Domain.UserConversationProfiles.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event that occurs when a user conversations profile is added.
 /// </summary>
 /// <param name="UserId">The unique identifier of the user for whom the conversations profile is added.</param>
 [PolymorphicSerialization]
-public record UserConversationsProfileAdded(string UserId) : UserConversationsProfileEvent(UserId);
+public partial record UserConversationsProfileAdded(string UserId) : UserConversationsProfileEvent(UserId);

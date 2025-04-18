@@ -14,7 +14,7 @@ using System.Text.Json;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.States;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 using Microsoft.Extensions.Logging;
 
@@ -119,7 +119,7 @@ public partial class ServiceApiProxy
     /// <returns>The result of the POST request.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the value or metadata is null.</exception>
     protected async Task<TResult> PostAsync<TResult, TValue>([NotNull] string route, [NotNull] TValue value, [NotNull] Metadata metadata, CancellationToken cancellationToken)
-        where TValue : PolymorphicRecordBase
+        where TValue : Polymorphic
     {
         ArgumentNullException.ThrowIfNull(value);
         ArgumentNullException.ThrowIfNull(metadata);
@@ -139,7 +139,7 @@ public partial class ServiceApiProxy
     /// <exception cref="ArgumentNullException">Thrown when the user or user identity is null.</exception>
     /// <exception cref="ArgumentException">Thrown when the user identity name is null or whitespace.</exception>
     protected async Task<TResult> PostAsync<TResult, TValue>([NotNull] string route, [NotNull] ClaimsPrincipal user, [NotNull] TValue value, CancellationToken cancellationToken)
-        where TValue : PolymorphicRecordBase
+        where TValue : Polymorphic
     {
         ArgumentNullException.ThrowIfNull(user);
         ArgumentNullException.ThrowIfNull(user.Identity);

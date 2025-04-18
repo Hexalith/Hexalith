@@ -30,7 +30,6 @@ using Hexalith.Application.Tasks;
 using Hexalith.Domain.Abstractions.Extensions;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjects;
-using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
@@ -41,7 +40,8 @@ using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 using Hexalith.Infrastructure.GraphQLServer.Helpers;
 using Hexalith.Infrastructure.WebApis.Controllers;
 using Hexalith.Infrastructure.WebApis.Helpers;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.NetAspire.Defaults;
+using Hexalith.PolymorphicSerializations;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -69,11 +69,10 @@ public static class ServerSideClientAppHelper
     /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddHexalithServerSideClientApp(
         this IServiceCollection services,
-        IConfiguration configuration
-    )
+        IConfiguration configuration)
     {
-        HexalithApplicationAbstractions.RegisterPolymorphicMappers();
-        HexalithDomainAbstractions.RegisterPolymorphicMappers();
+        HexalithApplicationAbstractionsSerialization.RegisterPolymorphicMappers();
+        HexalithDomainAbstractionsSerialization.RegisterPolymorphicMappers();
 
         _ = services
             .AddOrganizations(configuration)
@@ -87,8 +86,7 @@ public static class ServerSideClientAppHelper
             .AddPartitions(configuration)
             .AddSessionsServices();
         _ = services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(
-            ServiceLifetime.Singleton
-        );
+            ServiceLifetime.Singleton);
         services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         services.TryAddScoped<
             IDomainCommandDispatcher,
@@ -109,9 +107,7 @@ public static class ServerSideClientAppHelper
                 new DomainActorCommandProcessor(
                     ActorProxy.DefaultProxyFactory,
                     false,
-                    s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()
-                )
-        );
+                    s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
         _ = services.AddActorProjectionFactory<IdDescription>();
         return services;
     }
@@ -131,8 +127,7 @@ public static class ServerSideClientAppHelper
         Action<ActorRegistrationCollection> registerActors,
         string sessionCookieName,
         string version,
-        string[] args
-    )
+        string[] args)
     {
         Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
@@ -163,8 +158,7 @@ public static class ServerSideClientAppHelper
             .AddHexalithServerSideClientApp(builder.Configuration)
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c =>
-                c.SwaggerDoc("v1", new() { Title = applicationName, Version = version })
-            )
+                c.SwaggerDoc("v1", new() { Title = applicationName, Version = version }))
             .AddDaprAggregateServices()
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration);
@@ -218,8 +212,7 @@ public static class ServerSideClientAppHelper
         foreach (
             System.Text.Json.Serialization.JsonConverter converter in PolymorphicHelper
                 .DefaultJsonSerializerOptions
-                .Converters
-        )
+                .Converters)
         {
             options.Converters.Add(converter);
         }
@@ -300,8 +293,7 @@ public static class ServerSideClientAppHelper
         IEnumerable<IApplicationModule>? modules =
             scope.ServiceProvider.GetServices<IApplicationModule>();
         foreach (
-            IWebServerApplicationModule module in modules.OfType<IWebServerApplicationModule>()
-        )
+            IWebServerApplicationModule module in modules.OfType<IWebServerApplicationModule>())
         {
             module.UseSecurity(application);
         }
@@ -315,8 +307,7 @@ public static class ServerSideClientAppHelper
     /// <returns>IApplicationBuilder.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public static IApplicationBuilder UseHexalithWebApplication<TApp>(
-        [NotNull] this WebApplication app
-    )
+        [NotNull] this WebApplication app)
     {
         ArgumentNullException.ThrowIfNull(app);
 
@@ -332,8 +323,7 @@ public static class ServerSideClientAppHelper
             {
                 ForwardedHeaders =
                     ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
-            }
-        );
+            });
 
         _ = app.MapDefaultEndpoints().UseSerilogRequestLogging().UseCloudEvents();
 
@@ -349,8 +339,7 @@ public static class ServerSideClientAppHelper
         _ = app.UseRequestLocalization(
             new RequestLocalizationOptions()
                 .AddSupportedCultures(_cultures)
-                .AddSupportedUICultures(_cultures)
-        );
+                .AddSupportedUICultures(_cultures));
 
         _ = app.UseRouting();
         _ = app.UseSession();
@@ -369,8 +358,7 @@ public static class ServerSideClientAppHelper
         {
             System.Reflection.Assembly[]? assemblies = HexalithApplication
                 .WebServerApplication?.PresentationAssemblies.Where(assembly =>
-                    assembly != typeof(TApp).Assembly
-                )
+                    assembly != typeof(TApp).Assembly)
                 .Distinct()
                 .ToArray();
             if (assemblies != null)

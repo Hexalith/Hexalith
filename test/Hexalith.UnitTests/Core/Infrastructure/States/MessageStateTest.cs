@@ -13,7 +13,7 @@ using FluentAssertions;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 public class MessageStateTest
@@ -46,7 +46,7 @@ public class MessageStateTest
     }
     """;
 
-    public MessageStateTest() => Extensions.HexalithUnitTests.RegisterPolymorphicMappers();
+    public MessageStateTest() => Extensions.HexalithUnitTestsSerialization.RegisterPolymorphicMappers();
 
     [Fact]
     public void DeserializeShouldSucceed()

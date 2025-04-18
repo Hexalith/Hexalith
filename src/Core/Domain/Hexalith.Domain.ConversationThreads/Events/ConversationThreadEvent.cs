@@ -6,7 +6,7 @@
 namespace Hexalith.Domain.ConversationThreads.Events;
 
 using Hexalith.Domain.ConversationThreads.Aggregates;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents a base event for conversation threads in the domain.

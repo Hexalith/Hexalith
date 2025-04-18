@@ -6,6 +6,10 @@
 		<None Include="..\..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 	<ItemGroup>
+	  <PackageReference Include="Hexalith.PolymorphicSerializations" />
+	  <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" />
+	</ItemGroup>
+	<ItemGroup>
 		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application.Modules\Hexalith.Application.Modules.csproj" />
 		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application.TopologicalSorting\Hexalith.Application.TopologicalSorting.csproj" />
 		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application\Hexalith.Application.csproj" />
@@ -14,9 +18,6 @@
 		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
 		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
 		<ProjectReference Include="..\..\src\Core\UI\Hexalith.UI.Components\Hexalith.UI.Components.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\..\src\Core\CodeGenerators\Hexalith.CodeGenerators.SerializationMappers\Hexalith.CodeGenerators.SerializationMappers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Update="appsettings.json">

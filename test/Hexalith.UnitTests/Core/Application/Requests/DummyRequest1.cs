@@ -8,7 +8,7 @@ namespace Hexalith.UnitTests.Core.Application.Requests;
 using System.Runtime.Serialization;
 
 using Hexalith.Extensions.Helpers;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 [PolymorphicSerialization]
 public partial record DummyRequest1(

@@ -6,7 +6,7 @@
 namespace Hexalith.UnitTests.Core.Application.Requests;
 
 using Hexalith.Extensions.Helpers;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 [PolymorphicSerialization]
 public partial record DummyRequest2(string BaseValue, int Value2) : DummyBaseRequest(BaseValue)

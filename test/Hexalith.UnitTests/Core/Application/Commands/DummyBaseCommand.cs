@@ -9,7 +9,7 @@ using System.Runtime.Serialization;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Helpers;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 [PolymorphicSerialization]
 public partial record DummyBaseCommand(

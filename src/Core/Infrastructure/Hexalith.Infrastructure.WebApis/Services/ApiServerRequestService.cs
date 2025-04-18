@@ -15,7 +15,7 @@ using Hexalith.Application.Metadatas;
 using Hexalith.Application.Requests;
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents a service for sending requests asynchronously.
@@ -47,7 +47,7 @@ public class ApiServerRequestService : IRequestService
 
     /// <inheritdoc/>
     public async Task<TRequest> SubmitAsync<TRequest>(ClaimsPrincipal user, TRequest request, CancellationToken cancellationToken)
-        where TRequest : PolymorphicRecordBase
+        where TRequest : Polymorphic
     {
         ArgumentNullException.ThrowIfNull(request);
         if (string.IsNullOrWhiteSpace(user.Identity?.Name))

@@ -5,7 +5,7 @@
 
 namespace Hexalith.Domain.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event that occurs when a survey campaign is registered.
@@ -14,7 +14,7 @@ using Hexalith.PolymorphicSerialization;
 /// <param name="Name">The name of the survey campaign.</param>
 /// <param name="Date">The date and time when the survey campaign was registered.</param>
 [PolymorphicSerialization]
-public record SurveyCampaignRegistered(
+public partial record SurveyCampaignRegistered(
         string Id,
         string Name,
         DateTimeOffset Date) : SurveyCampaignEvent(Id);

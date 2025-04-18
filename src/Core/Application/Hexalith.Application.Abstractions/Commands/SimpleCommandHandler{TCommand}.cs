@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Aggregates;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 using Microsoft.Extensions.Logging;
 
@@ -20,20 +20,20 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 /// <typeparam name="TCommand">The command type.</typeparam>
 public class SimpleCommandHandler<TCommand>(
-    Func<TCommand, PolymorphicRecordBase> toEvent,
+    Func<TCommand, Polymorphic> toEvent,
     TimeProvider timeProvider,
     ILogger<DomainCommandHandler<TCommand>> logger) : DomainCommandHandler<TCommand>(timeProvider, logger)
 {
     /// <summary>
     /// Gets the function to convert a command to an event.
     /// </summary>
-    protected Func<TCommand, PolymorphicRecordBase> ToEvent { get; } = toEvent;
+    protected Func<TCommand, Polymorphic> ToEvent { get; } = toEvent;
 
     /// <inheritdoc/>
     public override async Task<ExecuteCommandResult> DoAsync(TCommand command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        PolymorphicRecordBase ev = ToEvent(command);
+        Polymorphic ev = ToEvent(command);
         return await Task.FromResult(
             CheckAggregateIsValid<IDomainAggregate>(aggregate, metadata)
             .Apply(ev)

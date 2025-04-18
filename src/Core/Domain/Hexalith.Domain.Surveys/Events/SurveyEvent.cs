@@ -5,14 +5,14 @@
 
 namespace Hexalith.Domain.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an abstract base class for survey events.
 /// </summary>
 /// <param name="Id">The unique identifier for the survey event.</param>
 [PolymorphicSerialization]
-public abstract record SurveyEvent(string Id)
+public abstract partial record SurveyEvent(string Id)
 {
     /// <summary>
     /// Gets the aggregate identifier for the survey.

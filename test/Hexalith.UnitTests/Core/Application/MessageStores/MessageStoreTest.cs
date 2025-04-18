@@ -15,7 +15,7 @@ using Hexalith.Application.StreamStores;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Serialization.States;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 using Moq;
@@ -28,7 +28,7 @@ public class MessageStoreTest
     private const string _streamItemId = "TestStreamId-";
     private const string _streamName = "Test";
 
-    public MessageStoreTest() => Extensions.HexalithUnitTests.RegisterPolymorphicMappers();
+    public MessageStoreTest() => Extensions.HexalithUnitTestsSerialization.RegisterPolymorphicMappers();
 
     [Fact]
     public async Task AddAndGetFromSerializedCommandStateShouldReturnSame()
@@ -234,7 +234,7 @@ public class MessageStoreTest
                     _fakeValue2Start + id)
                 : (object)new BaseTestEvent(id, id, _fakeMessageStart + $"base {id}");
             list.Add(new MessageState(
-                (PolymorphicRecordBase)e,
+                (Polymorphic)e,
                 new Metadata(
                  MessageMetadata.Create(e, DateTimeOffset.Now),
                  new ContextMetadata(

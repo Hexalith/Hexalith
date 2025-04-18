@@ -7,7 +7,7 @@ namespace Hexalith.Domain.ConversationThreads.Events;
 
 using System;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event that occurs when a new item (message or interaction) is added to a conversation thread.

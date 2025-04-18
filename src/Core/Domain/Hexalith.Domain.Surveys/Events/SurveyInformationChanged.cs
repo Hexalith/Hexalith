@@ -5,7 +5,7 @@
 
 namespace Hexalith.Domain.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event that occurs when the information of a survey has been changed.
@@ -14,7 +14,7 @@ using Hexalith.PolymorphicSerialization;
 /// <param name="Name">The updated name of the survey.</param>
 /// <param name="Date">The date and time when the survey information was changed.</param>
 [PolymorphicSerialization]
-public record SurveyInformationChanged(
+public partial record SurveyInformationChanged(
         string Id,
         string Name,
         DateTimeOffset Date) : SurveyEvent(Id)

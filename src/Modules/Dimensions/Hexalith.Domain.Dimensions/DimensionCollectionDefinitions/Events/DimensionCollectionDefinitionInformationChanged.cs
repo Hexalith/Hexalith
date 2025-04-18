@@ -7,7 +7,7 @@ namespace Hexalith.Domain.Dimensions.DimensionCollectionDefinitions.Events;
 
 using System.Runtime.Serialization;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event that occurs when the information of a dimension collection definition has changed.

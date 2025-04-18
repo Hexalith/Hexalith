@@ -7,7 +7,7 @@ namespace Hexalith.Domain.Events;
 
 using Hexalith.Domain.Entities;
 using Hexalith.Domain.ValueObjects;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event that occurs when a new survey is registered in the system.
@@ -20,7 +20,7 @@ using Hexalith.PolymorphicSerialization;
 /// <param name="StartDate">The start date of the survey.</param>
 /// <param name="EndDate">The end date of the survey.</param>
 [PolymorphicSerialization]
-public record SurveyRegistered(
+public partial record SurveyRegistered(
         string Id,
         string Name,
         IEnumerable<SurveyCategory> Categories,

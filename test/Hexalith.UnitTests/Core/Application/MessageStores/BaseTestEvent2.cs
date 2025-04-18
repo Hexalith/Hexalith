@@ -5,7 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Application.MessageStores;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 [PolymorphicSerialization]
 public partial record BaseTestEvent2(string Id, string IdempotencyId, string Message, string Value2)

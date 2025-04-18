@@ -8,7 +8,7 @@ namespace Hexalith.UnitTests.Core.Infrastructure.Prompts;
 using System.ComponentModel.DataAnnotations;
 
 using Hexalith.Extensions.Common;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 [PolymorphicSerialization]
 [Display(Name = "Add a country", Description = "Add a new country")]

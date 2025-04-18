@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Class StringStateProvider.

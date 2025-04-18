@@ -5,7 +5,7 @@
 
 namespace Hexalith.Domain.UserConversationProfiles.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event indicating that a user conversation profile event has been cancelled.

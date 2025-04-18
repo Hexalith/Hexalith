@@ -10,7 +10,7 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 
 using Hexalith.Domain.Aggregates;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents a snapshot event in the domain, capturing the state of an aggregate at a specific point in time.

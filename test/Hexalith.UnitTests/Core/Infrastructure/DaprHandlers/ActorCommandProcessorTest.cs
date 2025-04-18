@@ -16,7 +16,7 @@ using FluentAssertions;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 using Microsoft.Extensions.Logging;
 

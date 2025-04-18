@@ -5,7 +5,7 @@
 
 namespace Hexalith.Domain.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event indicating that a survey campaign event has been cancelled.

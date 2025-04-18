@@ -6,9 +6,9 @@
 namespace Hexalith.UnitTests.Core.Application.Metadatas;
 
 using Hexalith.Extensions.Helpers;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
-public record DummyMessage(int Value1, string Value2) : PolymorphicRecordBase
+public record DummyMessage(int Value1, string Value2) : Polymorphic
 {
     public string AggregateId => Value1.ToInvariantString();
 

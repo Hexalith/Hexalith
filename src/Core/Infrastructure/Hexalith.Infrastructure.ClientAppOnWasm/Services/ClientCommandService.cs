@@ -18,7 +18,7 @@ using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents a service for sending commands asynchronously.
@@ -92,9 +92,9 @@ public class ClientCommandService : ICommandService
     {
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
-        if (command is not PolymorphicRecordBase recordBase)
+        if (command is not Polymorphic recordBase)
         {
-            throw new ArgumentException($"The command should be of type {nameof(PolymorphicRecordBase)}");
+            throw new ArgumentException($"The command should be of type {nameof(Polymorphic)}");
         }
 
         _ = await _client.PostAsJsonAsync("api/command/submit", new MessageState(recordBase, metadata), cancellationToken);

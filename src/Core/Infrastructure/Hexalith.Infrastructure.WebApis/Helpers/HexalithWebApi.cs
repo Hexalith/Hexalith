@@ -30,7 +30,6 @@ using Hexalith.Domain.Abstractions.Extensions;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjects;
 using Hexalith.Extensions.Configuration;
-using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
@@ -38,6 +37,7 @@ using Hexalith.Infrastructure.DaprRuntime.Services;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 using Hexalith.Infrastructure.GraphQLServer.Helpers;
 using Hexalith.Infrastructure.WebApis.Services;
+using Hexalith.NetAspire.Defaults;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -73,8 +73,8 @@ public static partial class HexalithWebApi
             .AddServiceDefaults()
             .Services
             .ConfigureSettings<Hexalith.Infrastructure.CosmosDb.Configurations.CosmosDbSettings>(builder.Configuration);
-        HexalithApplicationAbstractions.RegisterPolymorphicMappers();
-        HexalithDomainAbstractions.RegisterPolymorphicMappers();
+        HexalithApplicationAbstractionsSerialization.RegisterPolymorphicMappers();
+        HexalithDomainAbstractionsSerialization.RegisterPolymorphicMappers();
         builder.Services.AddDaprClient();
         builder
             .Services

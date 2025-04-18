@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Aggregates;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 using Microsoft.Extensions.Logging;
 
@@ -20,8 +20,8 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 /// <typeparam name="TCommand">The command type.</typeparam>
 public class SimpleInitializationCommandHandler<TCommand>(
-    Func<TCommand, PolymorphicRecordBase> toEvent,
-    Func<PolymorphicRecordBase, IDomainAggregate> initializeAggregate,
+    Func<TCommand, Polymorphic> toEvent,
+    Func<Polymorphic, IDomainAggregate> initializeAggregate,
     TimeProvider timeProvider,
     ILogger<DomainCommandHandler<TCommand>> logger)
     : SimpleCommandHandler<TCommand>(toEvent, timeProvider, logger)
@@ -32,7 +32,7 @@ public class SimpleInitializationCommandHandler<TCommand>(
         ArgumentNullException.ThrowIfNull(command);
         if (aggregate is null || string.IsNullOrWhiteSpace(aggregate.AggregateId))
         {
-            PolymorphicRecordBase ev = ToEvent(command);
+            Polymorphic ev = ToEvent(command);
             aggregate = initializeAggregate(ev);
             return Task.FromResult(new ExecuteCommandResult(aggregate, [ev], [ev], false));
         }

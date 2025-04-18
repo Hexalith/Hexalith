@@ -5,7 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Domain.Messages;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 [PolymorphicSerialization(version: 2)]
 public partial record MyDummyMessage2(string Id, string Name, int Value)

@@ -5,7 +5,7 @@
 
 namespace Hexalith.Domain.Dimensions.DimensionCollectionDefinitions.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event indicating that a DimensionCollectionDefinition event has been cancelled.

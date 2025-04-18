@@ -5,7 +5,7 @@
 
 namespace Hexalith.Domain.UserConversationProfiles.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event that occurs when a new user conversation is added.
@@ -15,7 +15,7 @@ using Hexalith.PolymorphicSerialization;
 /// <param name="Date">The date and time when the conversation entry was added.</param>
 /// <param name="Content">The content of the conversation entry.</param>
 [PolymorphicSerialization]
-public record UserConversationAdded(
+public partial record UserConversationAdded(
     string UserId,
     string Participant,
     DateTimeOffset Date,

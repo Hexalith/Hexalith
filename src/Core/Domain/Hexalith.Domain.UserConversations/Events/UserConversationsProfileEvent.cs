@@ -5,7 +5,7 @@
 
 namespace Hexalith.Domain.UserConversationProfiles.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event related to a user's conversation profile.
@@ -13,7 +13,7 @@ using Hexalith.PolymorphicSerialization;
 /// </summary>
 /// <param name="UserId">The unique identifier of the user associated with this event.</param>
 [PolymorphicSerialization]
-public record UserConversationsProfileEvent(string UserId)
+public partial record UserConversationsProfileEvent(string UserId)
 {
     /// <summary>
     /// Gets the aggregate identifier for the user conversation profile.

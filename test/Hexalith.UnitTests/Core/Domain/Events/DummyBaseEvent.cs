@@ -7,7 +7,7 @@ namespace Hexalith.UnitTests.Core.Domain.Events;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Helpers;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 [PolymorphicSerialization]
 public abstract partial record DummyBaseEvent(string BaseValue)

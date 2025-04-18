@@ -5,7 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprRuntime.Actors;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 [PolymorphicSerialization]
 public partial record DummyAggregateCommand1(string Id, string Name)

@@ -8,7 +8,7 @@ namespace Hexalith.Application.Events;
 using System.Runtime.Serialization;
 
 using Hexalith.Application.States;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event that indicates a domain event has been cancelled.

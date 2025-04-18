@@ -5,14 +5,14 @@
 
 namespace Hexalith.Domain.Dimensions.DimensionCollectionDefinitions.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an event related to a dimension collection definition.
 /// </summary>
 /// <param name="Id">The unique identifier for the dimension collection definition.</param>
 [PolymorphicSerialization]
-public record DimensionCollectionDefinitionEvent(string Id)
+public partial record DimensionCollectionDefinitionEvent(string Id)
 {
     /// <summary>
     /// Gets the aggregate identifier for the dimension collection definition.

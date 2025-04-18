@@ -11,7 +11,7 @@ using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.Services;
 using Hexalith.Application.States;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -109,9 +109,9 @@ public partial class RequestServiceController : ControllerBase
             return BadRequest("Request metadata is null");
         }
 
-        PolymorphicRecordBase result = (await _requestProcessor
+        Polymorphic result = (await _requestProcessor
             .ProcessAsync(request.MessageObject, request.Metadata, CancellationToken.None)
-            .ConfigureAwait(false)) as PolymorphicRecordBase
+            .ConfigureAwait(false)) as Polymorphic
                 ?? throw new InvalidOperationException("Request processor returned a null or invalid object.");
 
         LogRequestSubmittedDebugInformation(

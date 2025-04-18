@@ -8,7 +8,7 @@ namespace Hexalith.Application.Requests;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Claims;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Provides helper methods for handling requests.
@@ -34,7 +34,7 @@ public static class RequestHelper
         Func<string, TRequest> createRequest,
         CancellationToken cancellationToken)
         where TViewModel : class
-        where TRequest : PolymorphicRecordBase, IRequest
+        where TRequest : Polymorphic, IRequest
     {
         ArgumentNullException.ThrowIfNull(requestService);
         ArgumentNullException.ThrowIfNull(user);
@@ -69,7 +69,7 @@ public static class RequestHelper
         Func<string, TRequest> createRequest,
         CancellationToken cancellationToken)
         where TViewModel : class
-        where TRequest : PolymorphicRecordBase, IChunkableRequest
+        where TRequest : Polymorphic, IChunkableRequest
     {
         ArgumentNullException.ThrowIfNull(requestService);
         ArgumentNullException.ThrowIfNull(user);
@@ -105,7 +105,7 @@ public static class RequestHelper
         Func<string, TRequest> createRequest,
         CancellationToken cancellationToken)
         where TViewModel : class
-        where TRequest : PolymorphicRecordBase, IRequest
+        where TRequest : Polymorphic, IRequest
     {
         ArgumentException.ThrowIfNullOrEmpty(id);
         return await RequestHelper.FindDetailsAsync<TViewModel, TRequest>(requestService, id, user, createRequest, cancellationToken).ConfigureAwait(false)
@@ -132,7 +132,7 @@ public static class RequestHelper
         Func<string, TRequest> createRequest,
         CancellationToken cancellationToken)
         where TViewModel : class
-        where TRequest : PolymorphicRecordBase, IChunkableRequest
+        where TRequest : Polymorphic, IChunkableRequest
     {
         ArgumentException.ThrowIfNullOrEmpty(id);
         return await RequestHelper.FindSummaryAsync<TViewModel, TRequest>(requestService, id, user, createRequest, cancellationToken).ConfigureAwait(false)

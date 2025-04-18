@@ -17,7 +17,7 @@ using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 using Microsoft.Extensions.Logging;
 
@@ -105,7 +105,7 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
         try
         {
             LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.AggregateGlobalId, metadata.Message.Aggregate.Name);
-            if (_actorPolymorphicSerialization && command is PolymorphicRecordBase polymorphicCommand)
+            if (_actorPolymorphicSerialization && command is Polymorphic polymorphicCommand)
             {
                 await _actorProxy
                     .ToDomainAggregateActor(metadata)

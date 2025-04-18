@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Common;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents the state of a message with its associated metadata.
@@ -35,7 +35,7 @@ public class MessageState : IIdempotent
     /// </summary>
     /// <param name="message">The polymorphic message content.</param>
     /// <param name="metadata">The metadata associated with the message.</param>
-    public MessageState(PolymorphicRecordBase message, Metadata metadata)
+    public MessageState(Polymorphic message, Metadata metadata)
     {
         Message = Serialize(message);
         Metadata = metadata;
@@ -67,7 +67,7 @@ public class MessageState : IIdempotent
     /// </summary>
     [JsonIgnore]
     [IgnoreDataMember]
-    public PolymorphicRecordBase MessageObject => Deserialize();
+    public Polymorphic MessageObject => Deserialize();
 
     /// <summary>
     /// Gets or sets the metadata associated with the message.
@@ -77,19 +77,19 @@ public class MessageState : IIdempotent
     public Metadata Metadata { get; set; }
 
     /// <summary>
-    /// Serializes the given <see cref="PolymorphicRecordBase"/> object to a JSON string.
+    /// Serializes the given <see cref="Polymorphic"/> object to a JSON string.
     /// </summary>
     /// <param name="message">The message object to serialize.</param>
     /// <returns>The serialized JSON string.</returns>
-    private static string Serialize(PolymorphicRecordBase message) =>
-        JsonSerializer.Serialize<PolymorphicRecordBase>(message, PolymorphicHelper.DefaultJsonSerializerOptions);
+    private static string Serialize(Polymorphic message) =>
+        JsonSerializer.Serialize<Polymorphic>(message, PolymorphicHelper.DefaultJsonSerializerOptions);
 
     /// <summary>
-    /// Deserializes the message content to a <see cref="PolymorphicRecordBase"/> object.
+    /// Deserializes the message content to a <see cref="Polymorphic"/> object.
     /// </summary>
-    /// <returns>The deserialized <see cref="PolymorphicRecordBase"/> object.</returns>
+    /// <returns>The deserialized <see cref="Polymorphic"/> object.</returns>
     /// <exception cref="InvalidOperationException">Thrown when deserialization fails.</exception>
-    private PolymorphicRecordBase Deserialize() =>
-        JsonSerializer.Deserialize<PolymorphicRecordBase>(Message, PolymorphicHelper.DefaultJsonSerializerOptions)
+    private Polymorphic Deserialize() =>
+        JsonSerializer.Deserialize<Polymorphic>(Message, PolymorphicHelper.DefaultJsonSerializerOptions)
          ?? throw new InvalidOperationException("Message deserialization failed :" + Message);
 }

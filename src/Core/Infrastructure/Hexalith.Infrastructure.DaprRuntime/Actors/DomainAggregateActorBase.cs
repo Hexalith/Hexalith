@@ -26,7 +26,7 @@ using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.States;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// The domain aggregate actor base class.
@@ -245,7 +245,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid partition key : {metadata.AggregateGlobalId}.");
         }
 
-        List<MessageState> commandStates = [new MessageState((PolymorphicRecordBase)command, metadata)];
+        List<MessageState> commandStates = [new MessageState((Polymorphic)command, metadata)];
         LogAcceptedCommandInformation(
             Logger,
             metadata.Message.Name,
@@ -270,7 +270,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         ArgumentNullException.ThrowIfNull(envelope);
 
         (object command, Metadata metadata) = envelope.Deserialize();
-        await SubmitCommandAsStateAsync(new MessageState((PolymorphicRecordBase)command, metadata)).ConfigureAwait(false);
+        await SubmitCommandAsStateAsync(new MessageState((Polymorphic)command, metadata)).ConfigureAwait(false);
     }
 
     private async Task<IDomainAggregate> GetAggregateAsync(string aggregateName, CancellationToken cancellationToken)
@@ -436,7 +436,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             .GetAsync(commandNumber, CancellationToken.None)
             .ConfigureAwait(false);
 
-        PolymorphicRecordBase command = commandState.MessageObject ?? throw new InvalidOperationException("The specified command state is missing associated message.");
+        Polymorphic command = commandState.MessageObject ?? throw new InvalidOperationException("The specified command state is missing associated message.");
         Metadata metadata = commandState.Metadata ?? throw new InvalidOperationException("The specified command state is missing associated metadata.");
 
         if (metadata.AggregateGlobalId != Id.ToUnescapeString())
@@ -494,7 +494,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                 commandResult
                 .SourceEvents
                 .Select(p => new MessageState(
-                    (PolymorphicRecordBase)p,
+                    (Polymorphic)p,
                     Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))];
 
             // Persist events and messages
@@ -543,7 +543,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             // Get integration messages to persist in the message store
             MessageState[] messagesToSend = [.. commandResult.SourceEvents
                 .Union(commandResult.IntegrationEvents)
-                .Select(p => new MessageState((PolymorphicRecordBase)p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))];
+                .Select(p => new MessageState((Polymorphic)p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))];
 
             if (messagesToSend.Length > 0)
             {

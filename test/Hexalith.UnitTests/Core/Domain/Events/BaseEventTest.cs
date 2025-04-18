@@ -9,18 +9,18 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 public class BaseEventTest
 {
-    public BaseEventTest() => Hexalith.UnitTests.Extensions.HexalithUnitTests.RegisterPolymorphicMappers();
+    public BaseEventTest() => Hexalith.UnitTests.Extensions.HexalithUnitTestsSerialization.RegisterPolymorphicMappers();
 
     [Fact]
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyEvent1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<PolymorphicRecordBase>(original, PolymorphicHelper.DefaultJsonSerializerOptions);
-        PolymorphicRecordBase result = JsonSerializer.Deserialize<PolymorphicRecordBase>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
+        string json = JsonSerializer.Serialize<Polymorphic>(original, PolymorphicHelper.DefaultJsonSerializerOptions);
+        Polymorphic result = JsonSerializer.Deserialize<Polymorphic>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeOfType<DummyEvent1>();
         _ = result.Should().BeEquivalentTo(original);

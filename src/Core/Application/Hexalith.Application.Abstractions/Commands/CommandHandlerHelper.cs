@@ -11,7 +11,7 @@ using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -30,7 +30,7 @@ public static class CommandHandlerHelper
     /// <param name="metadata">The metadata associated with the event.</param>
     /// <param name="timeProvider">The time provider to get the current time.</param>
     /// <returns>The result of executing the command.</returns>
-    public static ExecuteCommandResult CreateCommandResult(this ApplyResult result, PolymorphicRecordBase ev, Metadata metadata, TimeProvider timeProvider)
+    public static ExecuteCommandResult CreateCommandResult(this ApplyResult result, Polymorphic ev, Metadata metadata, TimeProvider timeProvider)
     {
         return result.Failed
                 ? new ExecuteCommandResult(
@@ -56,7 +56,7 @@ public static class CommandHandlerHelper
     /// <param name="services">The service collection.</param>
     /// <param name="toEvent">The function to convert the command to an event.</param>
     /// <returns>The updated service collection.</returns>
-    public static IServiceCollection TryAddSimpleCommandHandler<TCommand>(this IServiceCollection services, Func<TCommand, PolymorphicRecordBase> toEvent)
+    public static IServiceCollection TryAddSimpleCommandHandler<TCommand>(this IServiceCollection services, Func<TCommand, Polymorphic> toEvent)
     {
         services.TryAddSingleton<IDomainCommandHandler<TCommand>>(s =>
             new SimpleCommandHandler<TCommand>(
@@ -76,8 +76,8 @@ public static class CommandHandlerHelper
     /// <returns>The updated service collection.</returns>
     public static IServiceCollection TryAddSimpleInitializationCommandHandler<TCommand>(
         this IServiceCollection services,
-        Func<TCommand, PolymorphicRecordBase> toEvent,
-        Func<PolymorphicRecordBase, IDomainAggregate> toAggregate)
+        Func<TCommand, Polymorphic> toEvent,
+        Func<Polymorphic, IDomainAggregate> toAggregate)
     {
         services.TryAddSingleton<IDomainCommandHandler<TCommand>>(s =>
             new SimpleInitializationCommandHandler<TCommand>(

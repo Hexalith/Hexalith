@@ -9,12 +9,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 using Hexalith.Extensions.Common;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 [Display(Name = "Add a country", Description = "Add a new country")]
 [ExampleName("France")]
 [PolymorphicSerialization]
-public record AddCountryCommand
+public partial record AddCountryCommand
 {
     [JsonConstructor]
     public AddCountryCommand(string iso2, string iso3, int isoNumber, string name, string currencyName, string currencySymbol, string currencyCode)

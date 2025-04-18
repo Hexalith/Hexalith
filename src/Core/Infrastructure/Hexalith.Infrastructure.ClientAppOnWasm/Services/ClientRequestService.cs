@@ -18,7 +18,7 @@ using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 using Microsoft.Extensions.Logging;
 
@@ -57,7 +57,7 @@ public partial class ClientRequestService : IRequestService
 
     /// <inheritdoc/>
     public async Task<TRequest> SubmitAsync<TRequest>(ClaimsPrincipal user, TRequest request, CancellationToken cancellationToken)
-        where TRequest : PolymorphicRecordBase
+        where TRequest : Polymorphic
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(user);
@@ -101,13 +101,13 @@ public partial class ClientRequestService : IRequestService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     private async Task<TRequest> SubmitRequestAsync<TRequest>(TRequest request, Metadata metadata, CancellationToken cancellationToken)
-    where TRequest : PolymorphicRecordBase
+    where TRequest : Polymorphic
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(metadata);
-        if (request is not PolymorphicRecordBase recordBase)
+        if (request is not Polymorphic recordBase)
         {
-            throw new ArgumentException($"The request should be of type {nameof(PolymorphicRecordBase)}");
+            throw new ArgumentException($"The request should be of type {nameof(Polymorphic)}");
         }
 
         HttpResponseMessage response = await _client.PostAsJsonAsync("api/request/submit", new MessageState(recordBase, metadata), cancellationToken);

@@ -7,7 +7,7 @@ namespace Hexalith.Application.Requests;
 
 using System.Security.Claims;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents a service for submitting requests.
@@ -26,5 +26,5 @@ public interface IRequestService
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the submitted request.</returns>
     Task<TRequest> SubmitAsync<TRequest>(ClaimsPrincipal user, TRequest request, CancellationToken cancellationToken)
-        where TRequest : PolymorphicRecordBase;
+        where TRequest : Polymorphic;
 }

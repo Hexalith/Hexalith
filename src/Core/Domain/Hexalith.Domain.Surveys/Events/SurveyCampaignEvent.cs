@@ -5,7 +5,7 @@
 
 namespace Hexalith.Domain.Events;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an abstract base class for survey campaign events.
@@ -16,7 +16,7 @@ using Hexalith.PolymorphicSerialization;
 /// It uses polymorphic serialization to support different event types derived from this base class.
 /// </remarks>
 [PolymorphicSerialization]
-public abstract record SurveyCampaignEvent(string Id)
+public abstract partial record SurveyCampaignEvent(string Id)
 {
     /// <summary>
     /// Gets the aggregate identifier for the survey campaign.

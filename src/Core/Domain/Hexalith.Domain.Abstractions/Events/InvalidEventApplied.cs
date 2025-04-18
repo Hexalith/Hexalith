@@ -7,7 +7,7 @@ namespace Hexalith.Domain.Events;
 
 using System.Text.Json;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents an invalid event that was applied to an aggregate in the domain.

@@ -5,7 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Application.Commands;
 
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 [PolymorphicSerialization]
 public partial record CommandDispatchUndoEvent

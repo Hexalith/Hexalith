@@ -3,4 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Include="Hexalith.PolymorphicSerializations" />
+	  <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" />
+	</ItemGroup>
 </Project>

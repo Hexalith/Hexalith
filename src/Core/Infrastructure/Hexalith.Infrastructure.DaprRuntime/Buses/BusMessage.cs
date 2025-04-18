@@ -10,7 +10,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents the state of a message, including its content and metadata.
@@ -42,13 +42,13 @@ public record BusMessage(
     public static BusMessage Create(object message, Metadata metadata)
     {
         ArgumentNullException.ThrowIfNull(message);
-        return message is PolymorphicRecordBase polymorphicObject
+        return message is Polymorphic polymorphicObject
             ? new(
             JsonSerializer
             .Serialize(polymorphicObject, PolymorphicHelper.DefaultJsonSerializerOptions),
             metadata)
             : throw new ArgumentException(
-                $"Only objects derived from {nameof(PolymorphicRecordBase)} can be serialized by the {nameof(BusMessage)}.",
+                $"Only objects derived from {nameof(Polymorphic)} can be serialized by the {nameof(BusMessage)}.",
                 nameof(message));
     }
 }

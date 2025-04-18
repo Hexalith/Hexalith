@@ -10,7 +10,7 @@ using System.Text.Json;
 using FluentAssertions;
 
 using Hexalith.Infrastructure.DaprRuntime.Actors;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.PolymorphicSerializations;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 /// <summary>
@@ -18,7 +18,7 @@ using Hexalith.UnitTests.Core.Application.Commands;
 /// </summary>
 public class ActorMessageEnvelopeTest
 {
-    public ActorMessageEnvelopeTest() => Extensions.HexalithUnitTests.RegisterPolymorphicMappers();
+    public ActorMessageEnvelopeTest() => Extensions.HexalithUnitTestsSerialization.RegisterPolymorphicMappers();
 
     /// <summary>
     /// Defines the test method Envelope_serialization_deserialization_should_return_same.
