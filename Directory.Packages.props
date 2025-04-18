@@ -4,8 +4,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="Hexalith.Commons" Version="1.56.0" />
-    <PackageVersion Include="Hexalith.Domains" Version="1.0.0" />
-    <PackageVersion Include="Hexalith.Domains.Abstractions" Version="1.0.0" />
+    <PackageVersion Include="Hexalith.Domains" Version="1.0.2" />
+    <PackageVersion Include="Hexalith.Domains.Abstractions" Version="1.0.2" />
     <PackageVersion Include="Hexalith.NetAspire.Defaults" Version="1.1.0" />
     <PackageVersion Include="Hexalith.PolymorphicSerializations" Version="1.6.6" />
     <PackageVersion Include="Hexalith.PolymorphicSerializations.CodeGenerators" Version="1.6.6" />

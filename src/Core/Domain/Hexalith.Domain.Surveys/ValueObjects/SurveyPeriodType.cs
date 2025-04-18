@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Domain.ValueObjects;
+namespace Hexalith.Domains.ValueObjects;
 
 /// <summary>
 /// Represents the period of a survey.

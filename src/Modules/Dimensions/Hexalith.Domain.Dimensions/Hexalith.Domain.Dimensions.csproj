@@ -1,10 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<Import Project="$([MSBuild]::GetPathOfFileAbove('Domain.Build.props', '$(MSBuildThisFileDirectory)../'))" />
-	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
-	</PropertyGroup>
-	<ItemGroup>
-	  <PackageReference Include="Hexalith.PolymorphicSerializations" />
-	  <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="true" />
-	</ItemGroup>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Domain.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Hexalith.Domains.Abstractions" />
+    <PackageReference Include="Hexalith.PolymorphicSerializations" />
+    <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="true" />
+  </ItemGroup>
 </Project>

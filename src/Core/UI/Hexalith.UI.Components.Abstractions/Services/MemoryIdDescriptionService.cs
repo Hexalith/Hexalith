@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Services;
-using Hexalith.Domain.ValueObjects;
+using Hexalith.Domains.ValueObjects;
 
 /// <summary>
 /// Represents a memory based implementation of the <see cref="Application.Services.IIdDescriptionService" />.

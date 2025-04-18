@@ -6,7 +6,7 @@
 namespace Hexalith.Domain.Events;
 
 using Hexalith.Domain.Entities;
-using Hexalith.Domain.ValueObjects;
+using Hexalith.Domains.ValueObjects;
 using Hexalith.PolymorphicSerializations;
 
 /// <summary>

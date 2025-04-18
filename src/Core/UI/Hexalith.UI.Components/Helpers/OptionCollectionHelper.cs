@@ -5,7 +5,7 @@
 
 namespace Hexalith.UI.Components.Helpers;
 
-using Hexalith.Domain.ValueObjects;
+using Hexalith.Domains.ValueObjects;
 
 using Microsoft.FluentUI.AspNetCore.Components;
 

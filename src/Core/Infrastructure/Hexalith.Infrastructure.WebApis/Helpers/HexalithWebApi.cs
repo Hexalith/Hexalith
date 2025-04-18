@@ -27,8 +27,8 @@ using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.Tasks;
 
 using Hexalith.Domain.Events;
-using Hexalith.Domain.ValueObjects;
 using Hexalith.Domains.Abstractions.Extensions;
+using Hexalith.Domains.ValueObjects;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;

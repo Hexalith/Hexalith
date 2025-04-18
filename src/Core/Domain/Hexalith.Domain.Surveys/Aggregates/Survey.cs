@@ -9,11 +9,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
+
 using Hexalith.Domain.Entities;
 using Hexalith.Domain.Events;
-using Hexalith.Domain.ValueObjects;
 using Hexalith.Domains;
 using Hexalith.Domains.Results;
+using Hexalith.Domains.ValueObjects;
 
 /// <summary>
 /// Represents a survey aggregate.
