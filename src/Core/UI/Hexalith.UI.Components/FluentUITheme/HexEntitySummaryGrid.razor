@@ -8,9 +8,10 @@
 @inject IStringLocalizer<Labels> L
 @inject NavigationManager NavigationManager
 @inject IToastService ToastService
+
 @if (Items is not null)
 {
-	<FluentSearch Style="width:100%" Value="SearchValue" ValueChanged="OnSearchChanged" />
+	<FluentSearch Style="width:100%" Value="Search" ValueChanged="OnSearchChangedAsync" />
 	<FluentDataGrid GenerateHeader="GenerateHeaderOption.Sticky"
 					Items="Items"
 					ItemKey="@((i) => i.Id)"
@@ -18,12 +19,12 @@
 					ResizableColumns="true"
 					ShowHover="true"
 					OnRowDoubleClick="DoubleClick">
-		<PropertyColumn Title="@Labels.Id" Property="@(p => p.Id)" Sortable="true" />
-		<PropertyColumn Title="@Labels.Description" Property="@(p => p.Description)" Sortable="true" />
+		<PropertyColumn Title="@(L[nameof(Labels.Id)])" Property="@(p => p.Id)" Sortable="true" />
+		<PropertyColumn Title="@(L[nameof(Labels.Description)])" Property="@(p => p.Description)" Sortable="true" />
 		@ChildContent
 		@if (ShowDisabledColumn)
 		{
-			<TemplateColumn Title="@Labels.Disabled">
+			<TemplateColumn Title="@(L[nameof(Labels.Disabled)])">
 				<FluentCheckbox Value="@(context.Disabled)" ValueChanged="@(async () => await DisabledChangedAsync(context.Id))" />
 			</TemplateColumn>
 		}
@@ -48,7 +49,13 @@
 	/// Gets or sets the search value.
 	/// </summary>
 	[Parameter]
-	public EventCallback<string> OnSearchChanged { get; set; }
+	public EventCallback<string?> SearchChanged { get; set; }
+
+	/// <summary>
+	/// Gets or sets the search value.
+	/// </summary>
+	[Parameter]
+	public string? Search { get; set; }
 
 	/// <summary>
 	/// Gets or sets a value indicating whether the disabled column should be displayed.
@@ -75,5 +82,11 @@
 		{
 			NavigationManager.NavigateTo($"{EntityDetailsPath}/{row.Item.Id}");
 		}
+	}
+
+	private async Task OnSearchChangedAsync(string value)
+	{
+		Search = value;
+		await SearchChanged.InvokeAsync(value);
 	}
 }
