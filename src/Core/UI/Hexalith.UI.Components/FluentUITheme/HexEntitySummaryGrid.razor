@@ -5,67 +5,75 @@
 @typeparam TIdDescription where TIdDescription : IIdDescription
 @inherits FluentDataGrid<TIdDescription>
 @using Labels = Hexalith.UI.Components.Resources.FluentUITheme
+@inject IStringLocalizer<Labels> L
 @inject NavigationManager NavigationManager
 @inject IToastService ToastService
 @if (Items is not null)
 {
-    <FluentDataGrid GenerateHeader="GenerateHeaderOption.Sticky"
-                    Items="Items"
-                    ItemKey="@((i) => i.Id)"
-                    TGridItem="TIdDescription"
-                    ResizableColumns="true"
-                    ShowHover="true"
-                    OnRowDoubleClick="DoubleClick">
-        <PropertyColumn Title="@Labels.Id" Property="@(p => p.Id)" Sortable="true" />
-        <PropertyColumn Title="@Labels.Description" Property="@(p => p.Description)" Sortable="true" />
-        @ChildContent
-        @if (ShowDisabledColumn)
-        {
-            <TemplateColumn Title="@Labels.Disabled">
-                <FluentCheckbox Value="@(context.Disabled)" ValueChanged="@(async (c) => await DisabledChanged(context.Id))" />
-            </TemplateColumn>
-        }
+	<FluentSearch Style="width:100%" Value="SearchValue" ValueChanged="OnSearchChanged" />
+	<FluentDataGrid GenerateHeader="GenerateHeaderOption.Sticky"
+					Items="Items"
+					ItemKey="@((i) => i.Id)"
+					TGridItem="TIdDescription"
+					ResizableColumns="true"
+					ShowHover="true"
+					OnRowDoubleClick="DoubleClick">
+		<PropertyColumn Title="@Labels.Id" Property="@(p => p.Id)" Sortable="true" />
+		<PropertyColumn Title="@Labels.Description" Property="@(p => p.Description)" Sortable="true" />
+		@ChildContent
+		@if (ShowDisabledColumn)
+		{
+			<TemplateColumn Title="@Labels.Disabled">
+				<FluentCheckbox Value="@(context.Disabled)" ValueChanged="@(async () => await DisabledChangedAsync(context.Id))" />
+			</TemplateColumn>
+		}
 
-    </FluentDataGrid>
+	</FluentDataGrid>
 }
 @code {
 
-    /// <summary>
-    /// Gets or sets the callback when a row is double clicked.
-    /// </summary>
-    [Parameter]
-    public string? EntityDetailsPath { get; set; }
+	/// <summary>
+	/// Gets or sets the callback when a row is double clicked.
+	/// </summary>
+	[Parameter]
+	public string? EntityDetailsPath { get; set; }
 
-    /// <summary>
-    /// Gets or sets the callback when the disabled state changes.
-    /// </summary>
-    [Parameter]
-    public EventCallback<string> OnDisabledChanged { get; set; }
+	/// <summary>
+	/// Gets or sets the callback when the disabled state changes.
+	/// </summary>
+	[Parameter]
+	public EventCallback<string> OnDisabledChanged { get; set; }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether the disabled column should be displayed.
-    /// </summary>
-    [Parameter]
-    public bool ShowDisabledColumn { get; set; }
+	/// <summary>
+	/// Gets or sets the search value.
+	/// </summary>
+	[Parameter]
+	public EventCallback<string> OnSearchChanged { get; set; }
+
+	/// <summary>
+	/// Gets or sets a value indicating whether the disabled column should be displayed.
+	/// </summary>
+	[Parameter]
+	public bool ShowDisabledColumn { get; set; }
 
 
-    private async Task DisabledChanged(string id)
-    {
-        try
-        {
-            await OnDisabledChanged.InvokeAsync(id);
-        }
-        catch (Exception ex)
-        {
-            ToastService.ShowError(string.Format(Labels.DisableChangeError, id, ex.FullMessage()));
-        }
-    }
+	private async Task DisabledChangedAsync(string id)
+	{
+		try
+		{
+			await OnDisabledChanged.InvokeAsync(id);
+		}
+		catch (Exception ex)
+		{
+			ToastService.ShowError(L[nameof(Labels.DisableChangeError), id, ex.FullMessage()]);
+		}
+	}
 
-    private void DoubleClick(FluentDataGridRow<TIdDescription> row)
-    {
-        if (!string.IsNullOrWhiteSpace(EntityDetailsPath) && !string.IsNullOrWhiteSpace(row.Item?.Id))
-        {
-            NavigationManager.NavigateTo($"{EntityDetailsPath}/{row.Item.Id}");
-        }
-    }
+	private void DoubleClick(FluentDataGridRow<TIdDescription> row)
+	{
+		if (!string.IsNullOrWhiteSpace(EntityDetailsPath) && !string.IsNullOrWhiteSpace(row.Item?.Id))
+		{
+			NavigationManager.NavigateTo($"{EntityDetailsPath}/{row.Item.Id}");
+		}
+	}
 }
