@@ -123,7 +123,7 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
         string[] splittedWords = request.Search?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? [];
         string[] normalizedWords = [.. splittedWords.Select(w => w.Normalize(System.Text.NormalizationForm.FormD))];
 
-        while (true)
+        do
         {
             chunkResults = [..await GetProjectionChunkAsync(
                     chunkSkip,
@@ -139,13 +139,8 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
                     searchResults.Add(chunkResult);
                 }
             }
-
-            // Break if enough results have been found or fewer items remain
-            if (searchResults.Count >= request.Skip + request.Take || chunkResults.Count < chunkTake)
-            {
-                break;
-            }
         }
+        while (searchResults.Count < request.Skip + request.Take && chunkResults.Count >= chunkTake);
 
         if (request.Skip > 0)
         {
@@ -160,14 +155,11 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
         return (TRequest)request.CreateResults(searchResults);
     }
 
-    private static async Task<bool> CompliesWithFilterAndSearchAsync(string[] normalizedWords, TViewModel p, IFilteredRequest? filtered, CancellationToken cancellationToken)
+    private static async Task<bool> CompliesWithFilterAndSearchAsync(string[] normalizedWords, IIdDescription p, IFilteredRequest? filtered, CancellationToken cancellationToken)
     {
         // Filter projections using pre-normalized words:
-        string normalizedDescription = p.Description.Normalize(System.Text.NormalizationForm.FormD);
-        string normalizedId = p.Id.Normalize(System.Text.NormalizationForm.FormD);
-        bool compliesToSearch = normalizedWords.All(
-                nw => normalizedDescription.Contains(nw, StringComparison.OrdinalIgnoreCase)
-                        || normalizedId.Contains(nw, StringComparison.OrdinalIgnoreCase));
+        string searchText = p.Search.Normalize(System.Text.NormalizationForm.FormD);
+        bool compliesToSearch = normalizedWords.All(nw => searchText.Contains(nw, StringComparison.OrdinalIgnoreCase));
         bool compliesToFilter = filtered?.Filter is null || await filtered.Filter.CompliesToFilterAsync(p, cancellationToken);
         return compliesToSearch && compliesToFilter;
     }
