@@ -1,1 +1,0 @@
-# Hexalith.Infrastructure.AzureDevOps
