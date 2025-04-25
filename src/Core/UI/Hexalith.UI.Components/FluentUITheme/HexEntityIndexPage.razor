@@ -1,105 +1,106 @@
 ﻿@inject NavigationManager NavigationManager
 @inject ICommandService CommandService
 @inject IToastService ToastService
+@inject IStringLocalizer<Labels> L
+
 @using Hexalith.Application.Commands
 @using Hexalith.Extensions.Helpers
 @using Labels = Hexalith.UI.Components.Resources.FluentUITheme;
-@using System.Security.Claims
+
 <HexEntityIndexToolbar ShowAdministratorTools="@ShowAdministratorTools"
-OnAdd="Add"
-OnRefresh="RefreshAsync"
-OnImport="ImportAsync"
-OnExport="ExportAsync"
-OnSynchronizeDatabase="SynchronizeDatabaseAsync" />
+					   OnAdd="Add"
+					   OnRefresh="RefreshAsync"
+					   OnImport="ImportAsync"
+					   OnExport="ExportAsync"
+					   OnSynchronizeDatabase="SynchronizeDatabaseAsync" />
 
 <FluentStack Orientation="Orientation.Vertical">
-    <FluentLabel Typo="Typography.PageTitle">@Title</FluentLabel>
-    @ChildContent
+	<FluentLabel Typo="Typography.PageTitle">@Title</FluentLabel>
+	@ChildContent
 </FluentStack>
 
 
 @code {
-    [Parameter]
-    public bool ShowAdministratorTools { get; set; }
+	[Parameter]
+	public bool ShowAdministratorTools { get; set; }
 
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
 
-    [Parameter]
-    [EditorRequired]
-    public required string Title { get; set; }
+	[Parameter]
+	[EditorRequired]
+	public required string Title { get; set; }
 
-    [Parameter]
-    [EditorRequired]
-    public required string AddPagePath { get; set; }
+	[Parameter]
+	[EditorRequired]
+	public required string AddPagePath { get; set; }
 
-    [Parameter]
-    [EditorRequired]
-    public EventCallback OnImport { get; set; }
+	[Parameter]
+	[EditorRequired]
+	public EventCallback OnImport { get; set; }
 
-    [Parameter]
-    [EditorRequired]
-    public EventCallback OnExport { get; set; }
+	[Parameter]
+	[EditorRequired]
+	public EventCallback OnExport { get; set; }
 
-    [Parameter]
-    [EditorRequired]
-    public EventCallback OnDatabaseSynchronize { get; set; }
+	[Parameter]
+	[EditorRequired]
+	public EventCallback OnDatabaseSynchronize { get; set; }
 
-    [Parameter]
-    [EditorRequired]
-    public EventCallback OnLoadData { get; set; }
+	[Parameter]
+	public EventCallback OnLoadData { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        await OnLoadData.InvokeAsync();
-        await base.OnInitializedAsync();
-    }
+	protected override async Task OnInitializedAsync()
+	{
+		await OnLoadData.InvokeAsync();
+		await base.OnInitializedAsync();
+	}
 
-    private async Task RefreshAsync()
-    {
-        await OnLoadData.InvokeAsync();
-        StateHasChanged();
-    }
-    private async Task SynchronizeDatabaseAsync()
-    {
-        await OnDatabaseSynchronize.InvokeAsync();
-        await OnLoadData.InvokeAsync();
-        StateHasChanged();
-    }
+	private async Task RefreshAsync()
+	{
+		await OnLoadData.InvokeAsync();
+		StateHasChanged();
+	}
+	private async Task SynchronizeDatabaseAsync()
+	{
+		await OnDatabaseSynchronize.InvokeAsync();
+		await OnLoadData.InvokeAsync();
+		StateHasChanged();
+	}
 
-    private void Add()
-    {
-        NavigationManager.NavigateTo(AddPagePath);
-    }
-    private async Task ImportAsync()
-    {
-        try
-        {
-            await OnImport.InvokeAsync();
-            // The data has been imported successfully.
-            ToastService.ShowSuccess(Labels.ImportSuccess);
-        }
-        catch (Exception ex)
-        {
-            // An error occurred while importing the data.
-            ToastService.ShowError(string.Format(Labels.ImportError, ex.FullMessage()));
-        }
-        await Task.Delay(1000);
-        await OnLoadData.InvokeAsync();
-        StateHasChanged();
-    }
-    private async Task ExportAsync()
-    {
-        try
-        {
-            await OnExport.InvokeAsync();
-            // The data has been exported successfully.
-            ToastService.ShowSuccess(Labels.ExportSuccess);
-        }
-        catch (Exception ex)
-        {
-            // An error occurred while exporting the data.
-            ToastService.ShowError(string.Format(Labels.ExportError, ex.FullMessage()));
-        }
-    }
+	private void Add()
+	{
+		NavigationManager.NavigateTo(AddPagePath);
+	}
+	private async Task ImportAsync()
+	{
+		try
+		{
+			await OnImport.InvokeAsync();
+			// The data has been imported successfully.
+			ToastService.ShowSuccess(Labels.ImportSuccess);
+		}
+		catch (Exception ex)
+		{
+			// An error occurred while importing the data.
+			ToastService.ShowError(L[nameof(Labels.ImportError), ex.FullMessage()]);
+		}
+		await Task.Delay(1000);
+		await OnLoadData.InvokeAsync();
+		StateHasChanged();
+	}
+	private async Task ExportAsync()
+	{
+		try
+		{
+			await OnExport.InvokeAsync();
+			// The data has been exported successfully.
+			ToastService.ShowSuccess(Labels.ExportSuccess);
+		}
+		catch (Exception ex)
+		{
+			// An error occurred while exporting the data.
+			ToastService.ShowError(L[nameof(Labels.ExportError), ex.FullMessage()]);
+		}
+	}
 }

@@ -6,7 +6,7 @@
     <PackageVersion Include="Hexalith.Commons" Version="1.56.0" />
     <PackageVersion Include="Hexalith.Domains" Version="1.0.2" />
     <PackageVersion Include="Hexalith.Domains.Abstractions" Version="1.0.3" />
-    <PackageVersion Include="Hexalith.NetAspire.Defaults" Version="1.1.0" />
+    <PackageVersion Include="Hexalith.NetAspire.Defaults" Version="1.2.0" />
     <PackageVersion Include="Hexalith.PolymorphicSerializations" Version="1.6.6" />
     <PackageVersion Include="Hexalith.PolymorphicSerializations.CodeGenerators" Version="1.6.6" />
   </ItemGroup>
@@ -96,7 +96,7 @@
     <PackageVersion Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.11.8" />
     <PackageVersion Include="Microsoft.FluentUI.Components" Version="4.11.6" />
     <PackageVersion Include="Microsoft.Graph" Version="5.12.0" />
-    <PackageVersion Include="Microsoft.Identity.Client" Version="4.71.0" />
+    <PackageVersion Include="Microsoft.Identity.Client" Version="4.71.1" />
     <PackageVersion Include="Microsoft.Identity.Web" Version="3.8.0" />
     <PackageVersion Include="Microsoft.Identity.UI" Version="3.8.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
@@ -144,7 +144,7 @@
     <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="8.1.1" />
     <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="8.1.1" />
-    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.8.0" />
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.9.0" />
     <PackageVersion Include="Threenine.Data" Version="5.0.1" />
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.2" />
