@@ -8,6 +8,8 @@
 @using Labels = Hexalith.UI.Components.Resources.FluentUITheme;
 
 <HexEntityIndexToolbar ShowAdministratorTools="@ShowAdministratorTools"
+					   Search="@Search"
+					   SearchChanged="OnSearchChangedAsync"
 					   OnAdd="Add"
 					   OnRefresh="RefreshAsync"
 					   OnImport="ImportAsync"
@@ -50,6 +52,18 @@
 	[Parameter]
 	public EventCallback OnLoadData { get; set; }
 
+	/// <summary>
+	/// Gets or sets the search value.
+	/// </summary>
+	[Parameter]
+	public EventCallback<string?> SearchChanged { get; set; }
+
+	/// <summary>
+	/// Gets or sets the search value.
+	/// </summary>
+	[Parameter]
+	public string? Search { get; set; }
+
 	protected override async Task OnInitializedAsync()
 	{
 		await OnLoadData.InvokeAsync();
@@ -66,6 +80,12 @@
 		await OnDatabaseSynchronize.InvokeAsync();
 		await OnLoadData.InvokeAsync();
 		StateHasChanged();
+	}
+
+	private async Task OnSearchChangedAsync(string value)
+	{
+		Search = value;
+		await SearchChanged.InvokeAsync(value);
 	}
 
 	private void Add()
