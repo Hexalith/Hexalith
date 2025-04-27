@@ -17,7 +17,7 @@
                   Appearance="Appearance.Stealth"
                   IconStart="@(new Icons.Filled.Size20.ArrowSync())"
                   OnClick="OnRefresh"></FluentButton>
-    <FluentSearch Value="@Search" ValueChanged="OnSearchChangedAsync" />
+    <FluentSearch Appearance="FluentInputAppearance.Outline" Value="@Search" ValueChanged="OnSearchChangedAsync" />
     @if (ShowAdministratorTools)
     {
         <FluentButton Title="@SynchronizeDatabaseButtonTitle"
