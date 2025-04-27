@@ -11,7 +11,6 @@
 
 @if (Items is not null)
 {
-	<FluentSearch Style="width:100%" Value="Search" ValueChanged="OnSearchChangedAsync" />
 	<FluentDataGrid GenerateHeader="GenerateHeaderOption.Sticky"
 					Items="Items"
 					ItemKey="@((i) => i.Id)"
@@ -46,18 +45,6 @@
 	public EventCallback<string> OnDisabledChanged { get; set; }
 
 	/// <summary>
-	/// Gets or sets the search value.
-	/// </summary>
-	[Parameter]
-	public EventCallback<string?> SearchChanged { get; set; }
-
-	/// <summary>
-	/// Gets or sets the search value.
-	/// </summary>
-	[Parameter]
-	public string? Search { get; set; }
-
-	/// <summary>
 	/// Gets or sets a value indicating whether the disabled column should be displayed.
 	/// </summary>
 	[Parameter]
@@ -84,9 +71,4 @@
 		}
 	}
 
-	private async Task OnSearchChangedAsync(string value)
-	{
-		Search = value;
-		await SearchChanged.InvokeAsync(value);
-	}
 }
