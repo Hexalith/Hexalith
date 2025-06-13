@@ -1,6 +1,4 @@
 <Project>
-  <Import Project="Dependencies.props" />
-
   <!-- Default values to use when building and packaging -->
   <PropertyGroup>
     <DNVersion>9</DNVersion>

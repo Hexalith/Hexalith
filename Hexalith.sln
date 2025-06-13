@@ -58,7 +58,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.TestMocks", "src\C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{FC1CDC0D-CB64-4639-AE5B-3944F558AB4E}"
 	ProjectSection(SolutionItems) = preProject
-		src\Hexalith.Build\Dependencies.props = src\Hexalith.Build\Dependencies.props
 		Directory.Build.props = Directory.Build.props
 		Directory.Packages.props = Directory.Packages.props
 		.github\workflows\hexalith_build.yml = .github\workflows\hexalith_build.yml
