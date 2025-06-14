@@ -8,8 +8,6 @@
 @using Hexalith.Application.Commands
 @using Hexalith.Extensions.Helpers
 @using Hexalith.UI.Components.Pages
-@using Labels = Hexalith.UI.Components.Resources.FluentUITheme;
-@using System.Security.Claims
 <HexEntityDetailsToolbar IndexPath="@IndexPath"
                          IndexButtonTitle="IndexButtonTitle"
                          RefreshButtonTitle="RefreshButtonTitle"
@@ -20,7 +18,9 @@
 
 
 <FluentStack Orientation="Orientation.Vertical" Width="100%" Style="padding:10px;padding-right:20px;">
-    <HexPageTitle HideTitle="@HideTitle">@(CreateMode ? AddTitle : string.Format(EditTitle, EntityId))</HexPageTitle>
+    <HexPageTitle HideTitle="@HideTitle">@(CreateMode 
+        ? AddTitle 
+        : Localizer[EditTitle, EntityId ?? string.Empty])</HexPageTitle>
     @if (ViewModel is not null)
     {
         <FluentGrid Style="width:100%;">
@@ -159,36 +159,44 @@
     }
     private async Task OnSaveAsync()
     {
+        SaveResult result;
         try
         {
-            var result = await OnSave();
-            switch (result.Result)
-            {
-                case ExecuteSaveResult.Success:
-                    ToastService.ShowSuccess(string.Format(Labels.SaveSuccess, ViewModel?.Id));
-                    return;
-                case ExecuteSaveResult.ValidationFailed:
-                    ToastService.ShowWarning(Labels.ValidationFailed);
-                    break;
-                case ExecuteSaveResult.CustomError:
-                    ToastService.ShowError(string.Format(Labels.SaveError, ViewModel?.Id, result.Message));
-                    break;
-                case ExecuteSaveResult.InternalError:
-                    ToastService.ShowError(Labels.InternalError);
-                    break;
-                case ExecuteSaveResult.NoChangesToApply:
-                    ToastService.ShowInfo(Labels.NoChangesToApply);
-                    break;
-                case ExecuteSaveResult.Unauthorized:
-                    ToastService.ShowError(Labels.SaveUnauthorized);
-                    break;
-            }
+            result = await OnSave();
         }
         catch (Exception ex)
         {
             // An error occurred while saving the data.
-            ToastService.ShowError(string.Format(Labels.SaveError, ViewModel?.Id, ex.FullMessage()));
+            ToastService.ShowError(Localizer[nameof(Labels.SaveError), ViewModel?.Id ?? string.Empty, ex.FullMessage()]);
+            return;
         }
+        HandleResult(result);
         StateHasChanged();
+    }
+    private void HandleResult(SaveResult result)
+    {
+        switch (result.Result)
+        {
+            case ExecuteSaveResult.Success:
+                ToastService.ShowSuccess(Localizer[nameof(Labels.SaveSuccess), ViewModel?.Id ?? string.Empty]);
+                return;
+            case ExecuteSaveResult.ValidationFailed:
+                ToastService.ShowWarning(Localizer[nameof(Labels.ValidationFailed)]);
+                break;
+            case ExecuteSaveResult.CustomError:
+                ToastService.ShowError(Localizer[nameof(Labels.SaveError), ViewModel?.Id ?? string.Empty, result.Message ?? string.Empty]);
+                break;
+            case ExecuteSaveResult.InternalError:
+                ToastService.ShowError(Localizer[nameof(Labels.InternalError)]);
+                break;
+            case ExecuteSaveResult.NoChangesToApply:
+                ToastService.ShowInfo(Localizer[nameof(Labels.NoChangesToApply)]);
+                break;
+            case ExecuteSaveResult.Unauthorized:
+                ToastService.ShowError(Localizer[nameof(Labels.SaveUnauthorized)]);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException($"Unknown result type : {result.Result}");
+        }
     }
 }
