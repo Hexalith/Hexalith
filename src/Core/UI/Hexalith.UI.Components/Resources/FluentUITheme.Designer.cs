@@ -322,7 +322,7 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0] saved successfully.
+        ///   Looks up a localized string similar to {0} saved successfully.
         /// </summary>
         internal static string SaveSuccess {
             get {
