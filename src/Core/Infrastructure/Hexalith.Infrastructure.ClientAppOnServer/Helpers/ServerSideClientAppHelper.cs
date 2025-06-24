@@ -331,22 +331,23 @@ public static class ServerSideClientAppHelper
 
             await next(context);
         });
-        _ = app.MapDefaultEndpoints().UseSerilogRequestLogging().UseCloudEvents();
+        _ = app
+            .MapDefaultEndpoints()
+            .UseSerilogRequestLogging()
+            .UseCloudEvents()
+            .UseCertificateForwarding();
 
         if (app.Environment.IsDevelopment())
         {
-            app
-                .UseDeveloperExceptionPage()
-                .UseWebAssemblyDebugging();
+            _ = app.UseDeveloperExceptionPage();
             _ = app.UseForwardedHeaders();
-            _ = app.UseCertificateForwarding();
+            app.UseWebAssemblyDebugging();
         }
         else
         {
             _ = app.UseExceptionHandler("/Error", createScopeForErrors: true)
-                .UseHsts()
                 .UseForwardedHeaders()
-                .UseCertificateForwarding();
+                .UseHsts();
         }
 
         // Needed when behind a reverse proxy like Azure Container Instances. It will forward the original host and protocol (https/http).
