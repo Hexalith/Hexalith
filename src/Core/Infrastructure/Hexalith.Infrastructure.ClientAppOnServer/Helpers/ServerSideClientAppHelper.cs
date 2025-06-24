@@ -322,11 +322,6 @@ public static class ServerSideClientAppHelper
         // For static files not in wwwroot
         _ = app.UseStaticFiles();
 
-        // Needed when behind a reverse proxy like Azure Container Instances. It will forward the original host and protocol (https/http).
-        _ = app.UseForwardedHeaders();
-        _ = app.UseCertificateForwarding();
-        _ = app.UseHttpLogging();
-
         _ = app.Use(async (context, next) =>
         {
             // Connection: RemoteIp
@@ -341,11 +336,18 @@ public static class ServerSideClientAppHelper
         if (!app.Environment.IsProduction())
         {
             app.UseDeveloperExceptionPage().UseWebAssemblyDebugging();
+            _ = app.UseForwardedHeaders();
+            _ = app.UseCertificateForwarding();
         }
         else
         {
             _ = app.UseExceptionHandler("/Error", createScopeForErrors: true).UseHsts();
+            _ = app.UseForwardedHeaders();
+            _ = app.UseCertificateForwarding();
         }
+
+        // Needed when behind a reverse proxy like Azure Container Instances. It will forward the original host and protocol (https/http).
+        _ = app.UseHttpLogging();
 
         _ = app.UseRequestLocalization(
             new RequestLocalizationOptions()
