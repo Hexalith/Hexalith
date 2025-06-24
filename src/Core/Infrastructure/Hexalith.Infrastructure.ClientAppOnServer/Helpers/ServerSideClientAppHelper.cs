@@ -9,7 +9,6 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
-
 using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
@@ -45,6 +44,7 @@ using Hexalith.NetAspire.Defaults;
 using Hexalith.PolymorphicSerializations;
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -136,6 +136,10 @@ public static class ServerSideClientAppHelper
 
         Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
+        _ = builder.Services.AddCertificateForwarding(options => options.CertificateHeader = "X-ARR-ClientCert");
+        _ = builder.Services.AddHttpLogging(options => options.LoggingFields = HttpLoggingFields.RequestPropertiesAndHeaders);
+        _ = builder.Services.Configure<ForwardedHeadersOptions>(options => options.ForwardedHeaders =
+                ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto);
         _ = builder.Services.AddHttpClient();
         _ = builder.Services.AddRazorPages();
         _ = builder.Services.AddServerSideBlazor();
@@ -319,13 +323,19 @@ public static class ServerSideClientAppHelper
         _ = app.UseStaticFiles();
 
         // Needed when behind a reverse proxy like Azure Container Instances. It will forward the original host and protocol (https/http).
-        _ = app.UseForwardedHeaders(
-            new ForwardedHeadersOptions
-            {
-                ForwardedHeaders =
-                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
-            });
+        _ = app.UseForwardedHeaders();
+        _ = app.UseCertificateForwarding();
+        _ = app.UseHttpLogging();
 
+        _ = app.Use(async (context, next) =>
+        {
+            // Connection: RemoteIp
+            app.Logger.LogInformation(
+                "Request RemoteIp: {RemoteIpAddress}",
+                context.Connection.RemoteIpAddress);
+
+            await next(context);
+        });
         _ = app.MapDefaultEndpoints().UseSerilogRequestLogging().UseCloudEvents();
 
         if (!app.Environment.IsProduction())
