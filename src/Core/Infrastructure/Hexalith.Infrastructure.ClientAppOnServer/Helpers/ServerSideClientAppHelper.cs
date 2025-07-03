@@ -313,6 +313,9 @@ public static class ServerSideClientAppHelper
         // Map static files in wwwroot before authentication
         _ = app.MapStaticAssets();
 
+        // Use static files and logging middleware for old .NET 8 libraries like Fluent UI Blazor
+        _ = app.UseStaticFiles();
+
         _ = app.Use(async (context, next) =>
         {
             // Connection: RemoteIp
