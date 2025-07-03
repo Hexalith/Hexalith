@@ -171,7 +171,6 @@ public static partial class HexalithWebApi
 
         _ = app.UseExceptionHandler();
 
-        _ = app.UseRouting();
         _ = app.MapActorsHandlers().AllowAnonymous();
         _ = app.UseHexalithGraphQL();
         _ = app.UseSwagger();

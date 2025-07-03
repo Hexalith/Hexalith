@@ -142,7 +142,6 @@ public static class ServerSideClientAppHelper
                 ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto);
         _ = builder.Services.AddHttpClient();
         _ = builder.Services.AddRazorPages();
-        _ = builder.Services.AddServerSideBlazor();
         builder.Services.AddDaprClient();
 
         builder.Services.AddActors(options =>
@@ -186,11 +185,6 @@ public static class ServerSideClientAppHelper
             .AddInteractiveServerComponents()
             .AddInteractiveWebAssemblyComponents()
             .AddAuthenticationStateSerialization();
-
-        // Show detailed errors on Circuit exceptions
-        _ = builder
-            .Services.AddServerSideBlazor()
-            .AddCircuitOptions(option => option.DetailedErrors = true);
 
         _ = builder.Services.AddSession(options =>
         {
