@@ -313,9 +313,6 @@ public static class ServerSideClientAppHelper
         // Map static files in wwwroot before authentication
         _ = app.MapStaticAssets();
 
-        // For static files not in wwwroot
-        _ = app.UseStaticFiles();
-
         _ = app.Use(async (context, next) =>
         {
             // Connection: RemoteIp
