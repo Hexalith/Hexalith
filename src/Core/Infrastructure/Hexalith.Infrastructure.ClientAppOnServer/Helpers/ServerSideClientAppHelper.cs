@@ -311,10 +311,24 @@ public static class ServerSideClientAppHelper
         ArgumentNullException.ThrowIfNull(app);
 
         // Map static files in wwwroot before authentication
-        _ = app.MapStaticAssets();
+        _ = app.MapStaticAssets().AllowAnonymous();
 
         // Use static files and logging middleware for old .NET 8 libraries like Fluent UI Blazor
         _ = app.UseStaticFiles();
+
+        // Bypass authentication for static files in libraries for .NET versions < 9
+        _ = app.Use(async (context, next) =>
+        {
+            string? path = context.Request.Path.Value;
+
+            if (path != null && path.StartsWith("/_content/", StringComparison.OrdinalIgnoreCase))
+            {
+                // Skip authentication for libraries static files
+                context.Items["__SkipAuthorization"] = true;
+            }
+
+            await next(context);
+        });
 
         _ = app.Use(async (context, next) =>
         {
@@ -325,6 +339,7 @@ public static class ServerSideClientAppHelper
 
             await next(context);
         });
+
         _ = app
             .MapDefaultEndpoints()
             .UseSerilogRequestLogging()
