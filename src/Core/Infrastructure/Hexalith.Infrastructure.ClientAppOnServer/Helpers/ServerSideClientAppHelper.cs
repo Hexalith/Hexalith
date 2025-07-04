@@ -310,25 +310,8 @@ public static class ServerSideClientAppHelper
     {
         ArgumentNullException.ThrowIfNull(app);
 
-        // Map static files in wwwroot before authentication
-        _ = app.MapStaticAssets().AllowAnonymous();
-
-        // Use static files and logging middleware for old .NET 8 libraries like Fluent UI Blazor
-        _ = app.UseStaticFiles();
-
-        // Bypass authentication for static files in libraries for .NET versions < 9
-        _ = app.Use(async (context, next) =>
-        {
-            string? path = context.Request.Path.Value;
-
-            if (path != null && path.StartsWith("/_content/", StringComparison.OrdinalIgnoreCase))
-            {
-                // Skip authentication for libraries static files
-                context.Items["__SkipAuthorization"] = true;
-            }
-
-            await next(context);
-        });
+        // Configure static assets
+        UseAssets(app);
 
         _ = app.Use(async (context, next) =>
         {
@@ -399,5 +382,57 @@ public static class ServerSideClientAppHelper
         app.UseHexalithModules();
 
         return app;
+    }
+
+    /// <summary>
+    /// Configures static assets and authentication bypass for static files.
+    /// </summary>
+    /// <param name="app">The web application.</param>
+    private static void UseAssets(WebApplication app)
+    {
+        // Map static files in wwwroot before authentication
+        _ = app.MapStaticAssets().AllowAnonymous();
+
+        // Use static files and logging middleware for old .NET 8 libraries like Fluent UI Blazor
+        _ = app.UseStaticFiles();
+
+        // Enhanced middleware to bypass authentication for all static files
+        _ = app.Use(async (context, next) =>
+        {
+            string? path = context.Request.Path.Value;
+            bool isStaticFile = false;
+
+            if (path != null)
+            {
+                string[] starts = [
+                    "/_content/",
+                    "/_framework/",
+                    "/css/",
+                    "/js/",
+                    "/lib/",
+                    "/images/",
+                    "/fonts/",
+                ];
+                string[] ends = [
+                ".css",
+                    ".js",
+                    ".json",
+                    ".woff",
+                    ".woff2",
+                ];
+
+                isStaticFile = starts.Any(c =>
+                    path.StartsWith(c, StringComparison.OrdinalIgnoreCase)) ||
+                    ends.Any(c => path.EndsWith(c, StringComparison.OrdinalIgnoreCase));
+
+                if (isStaticFile)
+                {
+                    // Skip authentication for static files
+                    context.Items["__SkipAuthorization"] = true;
+                }
+            }
+
+            await next(context);
+        });
     }
 }
