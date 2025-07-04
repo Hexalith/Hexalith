@@ -390,12 +390,6 @@ public static class ServerSideClientAppHelper
     /// <param name="app">The web application.</param>
     private static void UseAssets(WebApplication app)
     {
-        // Map static files in wwwroot before authentication
-        _ = app.MapStaticAssets().AllowAnonymous();
-
-        // Use static files and logging middleware for old .NET 8 libraries like Fluent UI Blazor
-        _ = app.UseStaticFiles();
-
         // Enhanced middleware to bypass authentication for all static files
         _ = app.Use(async (context, next) =>
         {
@@ -434,5 +428,11 @@ public static class ServerSideClientAppHelper
 
             await next(context);
         });
+
+        // Map static files in wwwroot before authentication
+        _ = app.MapStaticAssets().AllowAnonymous();
+
+        // Use static files and logging middleware for old .NET 8 libraries like Fluent UI Blazor
+        _ = app.UseStaticFiles();
     }
 }
