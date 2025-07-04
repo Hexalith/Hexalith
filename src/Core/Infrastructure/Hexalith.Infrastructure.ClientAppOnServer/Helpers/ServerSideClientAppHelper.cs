@@ -327,8 +327,7 @@ public static class ServerSideClientAppHelper
         _ = app
             .MapDefaultEndpoints()
             .UseSerilogRequestLogging()
-            .UseCloudEvents()
-            .UseCertificateForwarding();
+            .UseCloudEvents();
 
         if (app.Environment.IsDevelopment())
         {
@@ -351,7 +350,7 @@ public static class ServerSideClientAppHelper
                 .AddSupportedCultures(_cultures)
                 .AddSupportedUICultures(_cultures));
 
-        //       _ = app.UseRouting();
+        // _ = app.UseRouting();
         _ = app.UseSession();
 
         // Configure authentication and authorization after static files
