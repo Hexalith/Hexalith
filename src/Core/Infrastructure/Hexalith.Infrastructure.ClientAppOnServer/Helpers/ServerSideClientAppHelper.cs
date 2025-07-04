@@ -141,7 +141,8 @@ public static class ServerSideClientAppHelper
         _ = builder.Services.Configure<ForwardedHeadersOptions>(options => options.ForwardedHeaders =
                 ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto);
         _ = builder.Services.AddHttpClient();
-        _ = builder.Services.AddRazorPages();
+
+        // _ = builder.Services.AddRazorPages();
         builder.Services.AddDaprClient();
 
         builder.Services.AddActors(options =>
