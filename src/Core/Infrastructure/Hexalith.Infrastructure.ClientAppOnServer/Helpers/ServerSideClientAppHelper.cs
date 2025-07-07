@@ -43,6 +43,7 @@ using Hexalith.NetAspire.Defaults;
 using Hexalith.PolymorphicSerializations;
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
@@ -135,13 +136,18 @@ public static class ServerSideClientAppHelper
 
         Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
+        // Enable Static Web Assets for non-development environments during testing
+        if (!builder.Environment.IsDevelopment())
+        {
+            _ = builder.WebHost.UseStaticWebAssets();
+        }
+
         _ = builder.Services.AddCertificateForwarding(options => options.CertificateHeader = "X-ARR-ClientCert");
         _ = builder.Services.AddHttpLogging(options => options.LoggingFields = HttpLoggingFields.RequestPropertiesAndHeaders);
         _ = builder.Services.Configure<ForwardedHeadersOptions>(options => options.ForwardedHeaders =
                 ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto);
         _ = builder.Services.AddHttpClient();
 
-        // _ = builder.Services.AddRazorPages();
         builder.Services.AddDaprClient();
 
         builder.Services.AddActors(options =>
