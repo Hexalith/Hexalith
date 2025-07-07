@@ -35,7 +35,6 @@ using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Services;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
-using Hexalith.Infrastructure.GraphQLServer.Helpers;
 using Hexalith.Infrastructure.WebApis.Services;
 using Hexalith.NetAspire.Defaults;
 
@@ -48,6 +47,7 @@ using Microsoft.Extensions.Logging;
 /// <summary>
 /// Class HexalithWebApi.
 /// </summary>
+[SuppressMessage("Major Code Smell", "S1200:Classes should not be coupled to too many other classes", Justification = "Initialization helpers always have many dependencies")]
 public static partial class HexalithWebApi
 {
     /// <summary>
@@ -68,7 +68,7 @@ public static partial class HexalithWebApi
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-        Serilog.ILogger startupLogger = builder.AddSerilogLogger();
+        _ = builder.AddSerilogLogger();
         _ = builder
             .AddServiceDefaults()
             .Services
@@ -124,7 +124,6 @@ public static partial class HexalithWebApi
             s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
 
         _ = builder.Services.AddActorProjectionFactory<IdDescription>();
-        _ = builder.AddHexalithGraphQL();
 
         HexalithApplication.AddApiServerServices(builder.Services, builder.Configuration);
 
@@ -156,8 +155,6 @@ public static partial class HexalithWebApi
         _ = app
             .MapDefaultEndpoints()
             .UseCors()
-
-            // .UseSerilogRequestLogging()
             .UseCloudEvents();
 
         _ = app.MapControllers();
@@ -172,7 +169,7 @@ public static partial class HexalithWebApi
         _ = app.UseExceptionHandler();
 
         _ = app.MapActorsHandlers().AllowAnonymous();
-        _ = app.UseHexalithGraphQL();
+
         _ = app.UseSwagger();
         _ = app.UseSwaggerUI();
 
