@@ -37,7 +37,6 @@ using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Services;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
-using Hexalith.Infrastructure.GraphQLServer.Helpers;
 using Hexalith.Infrastructure.WebApis.Controllers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.NetAspire.Defaults;
@@ -377,7 +376,6 @@ public static class ServerSideClientAppHelper
         }
 
         _ = app.MapActorsHandlers().AllowAnonymous();
-        _ = app.UseHexalithGraphQL();
 
         app.UseHexalithModules();
 
