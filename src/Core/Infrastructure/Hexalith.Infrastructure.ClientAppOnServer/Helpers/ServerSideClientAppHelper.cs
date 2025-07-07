@@ -313,6 +313,7 @@ public static class ServerSideClientAppHelper
 
         // Configure static assets
         _ = app.MapStaticAssets().AllowAnonymous();
+        _ = app.UseStaticFiles();
 
         _ = app.Use(async (context, next) =>
         {
