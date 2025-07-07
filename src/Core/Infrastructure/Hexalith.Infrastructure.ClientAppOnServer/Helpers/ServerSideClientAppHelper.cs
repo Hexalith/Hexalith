@@ -187,14 +187,14 @@ public static class ServerSideClientAppHelper
             .AddInteractiveWebAssemblyComponents()
             .AddAuthenticationStateSerialization();
 
-        _ = builder.Services.AddSession(options =>
-        {
-            options.Cookie.Name = sessionCookieName;
-            options.IdleTimeout = TimeSpan.FromMinutes(20);
-            options.Cookie.HttpOnly = true;
-            options.Cookie.IsEssential = true;
-        });
-        _ = builder.AddHexalithGraphQL();
+        // _ = builder.Services.AddSession(options =>
+        // {
+        //    options.Cookie.Name = sessionCookieName;
+        //    options.IdleTimeout = TimeSpan.FromMinutes(20);
+        //    options.Cookie.HttpOnly = true;
+        //    options.Cookie.IsEssential = true;
+        // });
+        // _ = builder.AddHexalithGraphQL();
         HexalithApplication.AddWebServerServices(builder.Services, builder.Configuration);
         return builder;
     }
