@@ -10,7 +10,7 @@ using FluentValidation;
 /// <summary>
 /// Class SurveyInformationChangedValidator.
 /// </summary>
-[Obsolete]
+[Obsolete("This class is deprecated and will be removed in a future version. Use Hexalith.Domain.Events.SurveyInformationChangedValidator instead.")]
 public class SurveyInformationChangedValidator : AbstractValidator<SurveyInformationChanged>
 {
     /// <summary>

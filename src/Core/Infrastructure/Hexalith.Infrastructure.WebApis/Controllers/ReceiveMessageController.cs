@@ -1,17 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.WebApis
-// Author           : JérômePiquot
-// Created          : 01-13-2023
-//
-// Last Modified By : JérômePiquot
-// Last Modified On : 01-15-2023
-// ***********************************************************************
-// <copyright file="ReceiveMessageController.cs" company="ITANEO">
+﻿// <copyright file="ReceiveMessageController.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using System.Diagnostics.CodeAnalysis;

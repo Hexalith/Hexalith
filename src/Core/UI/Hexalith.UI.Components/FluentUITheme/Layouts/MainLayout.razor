@@ -142,7 +142,9 @@
             get
             {
                 if (Data.TryGetValue(i, out bool expanded))
+                {
                     return expanded;
+                }
                 return false;
             }
             set
