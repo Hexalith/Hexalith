@@ -144,8 +144,15 @@ public static class ServerSideClientAppHelper
 
         _ = builder.Services.AddCertificateForwarding(options => options.CertificateHeader = "X-ARR-ClientCert");
         _ = builder.Services.AddHttpLogging(options => options.LoggingFields = HttpLoggingFields.RequestPropertiesAndHeaders);
-        _ = builder.Services.Configure<ForwardedHeadersOptions>(options => options.ForwardedHeaders =
-                ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto);
+        _ = builder.Services.Configure<ForwardedHeadersOptions>(options =>
+        {
+            options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+
+            // These clear calls let any proxy be trusted; in production you can tighten this
+            options.KnownNetworks.Clear();
+            options.KnownProxies.Clear();
+        });
         _ = builder.Services.AddHttpClient();
 
         builder.Services.AddDaprClient();
