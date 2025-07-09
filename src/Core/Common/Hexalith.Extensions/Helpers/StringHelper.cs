@@ -105,7 +105,7 @@ public static partial class StringHelper
     /// <returns>System.String.</returns>
     public static string ReplacePlaceholderNamesByIndex(string value)
     {
-        string pattern = @"\{\w+\}";
+        const string pattern = @"\{\w+\}";
         int i = 0;
         return Regex.Replace(value, pattern, match => "{" + i++ + "}");
     }

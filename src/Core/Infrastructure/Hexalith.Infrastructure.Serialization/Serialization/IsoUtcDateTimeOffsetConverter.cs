@@ -16,7 +16,7 @@ using System.Text.Json.Serialization;
 /// Implements the <see cref="JsonConverter{DateTime}" />.
 /// </summary>
 /// <seealso cref="JsonConverter{DateTime}" />
-public sealed partial class IsoUtcDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
+public sealed class IsoUtcDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
 {
     /// <summary>
     /// Reads and converts the JSON to type />.

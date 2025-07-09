@@ -45,8 +45,7 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
                     IUIApplicationModule uiModule =
                         Activator.CreateInstance(module) as IUIApplicationModule
                         ?? throw new InvalidOperationException(
-                            $"Unable to create an instance of {module.FullName}"
-                        );
+                            $"Unable to create an instance of {module.FullName}");
                     assemblies.AddRange(uiModule.PresentationAssemblies);
                 }
 
@@ -80,8 +79,7 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
                 IWebServerApplicationModule webServerModule =
                     Activator.CreateInstance(module) as IWebServerApplicationModule
                     ?? throw new InvalidOperationException(
-                        $"Unable to create an instance of {module.FullName}"
-                    );
+                        $"Unable to create an instance of {module.FullName}");
                 webServerModule.ConfigureAuthorization(options);
             }
         };
@@ -107,15 +105,13 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
                 IWebServerApplicationModule webServerModule =
                     Activator.CreateInstance(module) as IWebServerApplicationModule
                     ?? throw new InvalidOperationException(
-                        $"Unable to create an instance of {module.FullName}"
-                    );
+                        $"Unable to create an instance of {module.FullName}");
                 webServerModule.ConfigureAuthorization(options);
                 foreach (
                     KeyValuePair<
                         string,
                         AuthorizationPolicy
-                    > policy in webServerModule.AuthorizationPolicies
-                )
+                    > policy in webServerModule.AuthorizationPolicies)
                 {
                     authorizationOptions.AddPolicy(policy.Key, policy.Value);
                 }

@@ -10,7 +10,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
-
 using Hexalith.Domain.Dimensions.DimensionCollectionDefinitions.Entities;
 using Hexalith.Domain.Dimensions.DimensionCollectionDefinitions.Events;
 using Hexalith.Domain.Events;

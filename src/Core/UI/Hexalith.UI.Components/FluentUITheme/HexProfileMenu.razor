@@ -30,7 +30,7 @@
     string? email;
     protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
+        await base.OnInitializedAsync();
         if (AuthenticationState is not null)
         {
             var authState = await AuthenticationState;
