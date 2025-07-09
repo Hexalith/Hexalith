@@ -35,6 +35,7 @@ public class KeyValueActor : Actor, IKeyValueActor
     /// </summary>
     /// <param name="host">The <see cref="ActorHost" /> that will host this actor instance.</param>
     /// <param name="stateManager">The state manager to be used for managing actor state.</param>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S2360:Optional parameters should not be used", Justification = "Actor constraint")]
     public KeyValueActor(ActorHost host, IActorStateManager? stateManager = null)
         : base(host)
     {

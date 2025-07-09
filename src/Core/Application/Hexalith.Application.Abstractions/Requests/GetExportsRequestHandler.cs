@@ -13,8 +13,8 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Services;
-using Hexalith.Domains;
 using Hexalith.Domain.Events;
+using Hexalith.Domains;
 
 /// <summary>
 /// Handles export requests for a specific type of request, export model, and aggregate.

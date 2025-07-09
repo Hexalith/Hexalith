@@ -8,8 +8,8 @@ namespace Hexalith.Application.Services;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
-using Hexalith.Domains;
 using Hexalith.Domain.Events;
+using Hexalith.Domains;
 
 /// <summary>
 /// Interface for aggregate services.

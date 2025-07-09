@@ -30,10 +30,10 @@ using Microsoft.Extensions.Options;
 /// <summary>
 /// Class DaprCosmosAggregateMaintenance.
 /// Implements the <see cref="CosmosDbProvider" />
-/// Implements the <see cref="IAggregateMaintenance{TAggregate}" />.</summary>
+/// Implements the <see cref="IAggregateMaintenance" />.</summary>
 /// <typeparam name="TAggregate">The type of the t aggregate.</typeparam>
 /// <seealso cref="CosmosDbProvider" />
-/// <seealso cref="IAggregateMaintenance{TAggregate}" />
+/// <seealso cref="IAggregateMaintenance" />
 public class DaprCosmosAggregateMaintenance<TAggregate> :
     IAggregateMaintenance, IDisposable
     where TAggregate : IDomainAggregate, new()
@@ -136,13 +136,10 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
     /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
     protected virtual void Dispose(bool disposing)
     {
-        if (disposing)
+        if (disposing && _cosmosDbProvider != null)
         {
-            if (_cosmosDbProvider != null)
-            {
-                _cosmosDbProvider.Dispose();
-                _cosmosDbProvider = null;
-            }
+            _cosmosDbProvider.Dispose();
+            _cosmosDbProvider = null;
         }
     }
 

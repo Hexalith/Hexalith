@@ -103,12 +103,12 @@ public interface IApplication
     /// <summary>
     /// Configures the authentication options for the application.
     /// </summary>
-    /// <returns>An action to configure <see cref="AuthenticationOptions"/>.</returns>
+    /// <returns>An action to configure.</returns>
     Action<object> ConfigureAuthentication();
 
     /// <summary>
     /// Configures the authorization options for the application.
     /// </summary>
-    /// <returns>An action to configure <see cref="AuthorizationOptions"/>.</returns>
+    /// <returns>An action to configure.</returns>
     Action<object> ConfigureAuthorization();
 }

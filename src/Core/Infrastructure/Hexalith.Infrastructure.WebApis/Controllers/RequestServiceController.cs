@@ -62,6 +62,7 @@ public partial class RequestServiceController : ControllerBase
     /// <param name="take">The maximum number of records to return (for pagination). Use 0 for all records.</param>
     /// <returns>A <see cref="Task{TResult}"/> containing an <see cref="ActionResult{T}"/> of <see cref="IEnumerable{String}"/> representing the collection of aggregate identifiers.</returns>
     [HttpPost("aggregate/ids")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S2360:Optional parameters should not be used", Justification = "Api interface")]
     public async Task<ActionResult<IEnumerable<string>>> GetAggregateIdsRequestAsync(
         [FromServices] IIdCollectionFactory collectionFactory,
         string partitionId,
