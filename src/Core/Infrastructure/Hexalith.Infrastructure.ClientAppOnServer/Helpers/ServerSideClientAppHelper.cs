@@ -318,6 +318,7 @@ public static class ServerSideClientAppHelper
         ArgumentNullException.ThrowIfNull(app);
 
         // Configure static assets
+        _ = app.UseForwardedHeaders();
         _ = app.MapStaticAssets().AllowAnonymous();
         _ = app.UseStaticFiles();
 
@@ -339,13 +340,11 @@ public static class ServerSideClientAppHelper
         if (app.Environment.IsDevelopment())
         {
             _ = app.UseDeveloperExceptionPage();
-            _ = app.UseForwardedHeaders();
             app.UseWebAssemblyDebugging();
         }
         else
         {
             _ = app.UseExceptionHandler("/Error", createScopeForErrors: true)
-                .UseForwardedHeaders()
                 .UseHsts();
         }
 
