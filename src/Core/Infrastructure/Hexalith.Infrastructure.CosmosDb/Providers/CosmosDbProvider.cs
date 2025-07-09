@@ -110,13 +110,10 @@ public class CosmosDbProvider : IDisposable
     /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
     protected virtual void Dispose(bool disposing)
     {
-        if (disposing)
+        if (disposing && _cosmosClient != null)
         {
-            if (_cosmosClient != null)
-            {
-                _cosmosClient.Dispose();
-                _cosmosClient = null;
-            }
+            _cosmosClient.Dispose();
+            _cosmosClient = null;
         }
     }
 }
