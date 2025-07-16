@@ -17,7 +17,8 @@ using Hexalith.UI.Components.Icons;
 /// <param name="Path">The url path.</param>
 /// <param name="Icon">The item icon.</param>
 /// <param name="DividerAfter">Add a divider after the menu item.</param>
-/// <param name="OrderWeigth">Defines the order of the menu item. The lower the value, the higher the item will be displayed.</param>
+/// <param name="OrderWeight">Defines the order of the menu item. The lower the value, the higher the item will be displayed.</param>
+/// <param name="SecurityPolicy">The security policy required to access the menu item.</param>
 /// <param name="SubItems">List of sub menu items.</param>
 [DataContract]
 public record MenuItemInformation(
@@ -25,7 +26,8 @@ public record MenuItemInformation(
     [property: DataMember] string? Path,
     [property: DataMember] IconInformation? Icon,
     [property: DataMember] bool DividerAfter,
-    [property: DataMember] int OrderWeigth,
+    [property: DataMember] int OrderWeight,
+    [property: DataMember] string? SecurityPolicy,
     [property: DataMember] IEnumerable<MenuItemInformation> SubItems)
 {
     /// <summary>

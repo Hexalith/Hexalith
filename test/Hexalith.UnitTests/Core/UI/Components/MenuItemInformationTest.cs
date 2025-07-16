@@ -21,11 +21,12 @@ public class MenuItemInformationTest
             null,
             false,
             0,
+            null,
             new List<MenuItemInformation>([
-                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, [])]));
+                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, null, [])]));
 
         // Act
-        (bool found, int last) = menuItem.GetMenuItemIndex(0, new MenuItemInformation("Not Found", "/not-found", null, false, 0, []));
+        (bool found, int last) = menuItem.GetMenuItemIndex(0, new MenuItemInformation("Not Found", "/not-found", null, false, 0, null, []));
 
         // Assert
         _ = found.Should().BeFalse();
@@ -36,25 +37,26 @@ public class MenuItemInformationTest
     public void GetMenuItemIndex_Should_Return_True_When_MenuItem_Found()
     {
         // Arrange
-        MenuItemInformation foundItem = new("Found", "/found", null, false, 0, []);
+        MenuItemInformation foundItem = new("Found", "/found", null, false, 0, null, []);
         MenuItemInformation menuItem = new(
             "Menu",
             "/",
             null,
             false,
             0,
+            null,
             new List<MenuItemInformation>([
-                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, []),
-                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, []),
-                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, []),
-                new("Found", "/found", null, false, 0, []),
-                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, []),
-                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, [
-                    new MenuItemInformation("Sub Menu", "/sub", null, false, 0, []),
-                    new MenuItemInformation("Sub Menu", "/sub", null, false, 0, []),
+                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, null, []),
+                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, null, []),
+                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, null, []),
+                new("Found", "/found", null, false, 0, null, []),
+                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, null, []),
+                new MenuItemInformation("Sub Menu", "/sub", null, false, 0, null, [
+                    new MenuItemInformation("Sub Menu", "/sub", null, false, 0, null, []),
+                    new MenuItemInformation("Sub Menu", "/sub", null, false, 0, null, []),
                     foundItem,
-                    new MenuItemInformation("Sub Menu", "/sub", null, false, 0, []),
-                    new MenuItemInformation("Sub Menu", "/sub", null, false, 0, []),
+                    new MenuItemInformation("Sub Menu", "/sub", null, false, 0, null, []),
+                    new MenuItemInformation("Sub Menu", "/sub", null, false, 0, null, []),
                     ]),
                 ]));
 

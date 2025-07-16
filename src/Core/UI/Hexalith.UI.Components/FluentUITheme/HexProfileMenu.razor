@@ -7,7 +7,7 @@
                            FullName="@name"
                            Email="@email"
                            OnFooterLinkClick="OnAccountClick"
-                           OnHeaderButtonClick="OnLogoutClickAsync">
+                           OnHeaderButtonClick="OnLogoutClick">
             <HeaderTemplate>
                 <HexThemeSelector />
                 <br/>
@@ -50,7 +50,7 @@
     {
         NavigationManager.NavigateTo($"{Application.LoginPath}?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}", forceLoad: true);
     }
-    private void OnLogoutClickAsync()
+    private void OnLogoutClick()
     {
         NavigationManager.NavigateTo($"/logout", forceLoad: true);
     }
