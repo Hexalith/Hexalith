@@ -127,7 +127,7 @@
     <value>Une erreur est apparue lors de l'export des données de base : {0}</value>
   </data>
   <data name="ExportSuccess" xml:space="preserve">
-    <value>Les données ont été exportées avec succès</value>
+    <value>Les données ont été exportées avec succès.</value>
   </data>
   <data name="ImportButtonTitle" xml:space="preserve">
     <value>Importer</value>
