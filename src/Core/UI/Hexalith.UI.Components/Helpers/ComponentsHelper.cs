@@ -31,7 +31,7 @@ public static class ComponentsHelper
 
         services.TryAddScoped<ILoginRedirectUrlService, LoginRedirectUrlService>();
         _ = services.AddHttpClient();
-        _ = services.AddScoped<IMenuService, MenuService>();
+        _ = services.AddScoped<Hexalith.UI.Components.IMenuService, Hexalith.UI.Components.MenuService>();
         _ = services.AddFluentUIComponents();
         return services;
     }
