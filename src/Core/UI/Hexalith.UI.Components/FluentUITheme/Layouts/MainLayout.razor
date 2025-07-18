@@ -3,9 +3,10 @@
 @using Microsoft.AspNetCore.Components.Sections
 @using Microsoft.Extensions.Options
 @using Hexalith.UI.Components.Helpers
+@using System.Security.Claims
 @inject IOptions<FluentUIThemeSettings> ThemeSettings
-@inject IEnumerable<MenuItemInformation> MenuItems
- <FluentLayout Style="width:100%;">
+@inject Hexalith.UI.Components.IMenuService MenuService
+<FluentLayout Style="width:100%;">
     <FluentHeader Style="height:60px;">
         <HexApplicationTitle />
         <FluentSpacer />
@@ -16,94 +17,101 @@
         <HexProfileMenu />
     </FluentHeader>
     <FluentStack Class="body-stack" Orientation="Orientation.Horizontal" Width="100%">
-        <FluentNavMenu Collapsible="true" CollapsedChildNavigation="true" Class="navmenu" Width="400" Style="height: calc(100dvh - 100px); overflow-y: auto;">
-            @{
-                foreach (MenuItemInformation menuItem in MenuItems.OrderByDescending(p => p.OrderWeight))
-                {
-                    if (menuItem.SubItems.Any())
+        @if (MenuItems is null)
+        {
+            <HexInProgress />
+        }
+        else
+        {
+            <FluentNavMenu Collapsible="true" CollapsedChildNavigation="true" Class="navmenu" Width="400" Style="height: calc(100dvh - 100px); overflow-y: auto;">
+                @{
+                    foreach (MenuItemInformation menuItem in MenuItems)
                     {
-                        <FluentNavGroup Title="@menuItem.Name"
-                                        Icon="@menuItem.Icon.ToFluentNavIcon()"
-                                        IconColor="Color.Accent"
-                                        @bind-Expanded="Expanded[GetMenuItemId(menuItem)]">
-                            @foreach (var subItem in menuItem.SubItems.OrderByDescending(p => p.OrderWeight))
-                            {
-                                if (subItem.SubItems.Any())
+                        if (menuItem.SubItems.Any())
+                        {
+                            <FluentNavGroup Title="@menuItem.Name"
+                                            Icon="@menuItem.Icon.ToFluentNavIcon()"
+                                            IconColor="Color.Accent"
+                                            @bind-Expanded="Expanded[GetMenuItemId(menuItem)]">
+                                @foreach (var subItem in menuItem.SubItems.OrderByDescending(p => p.OrderWeight))
                                 {
-                                    <FluentNavGroup Title="@subItem.Name"
-                                                    Icon="@subItem.Icon.ToFluentNavIcon()"
-                                                    IconColor="Color.Accent"
-                                                    @bind-Expanded="Expanded[GetMenuItemId(subItem)]">
-                                        @foreach (var subSubItem in subItem.SubItems)
-                                        {
-                                            if (subSubItem.SubItems.Any())
+                                    if (subItem.SubItems.Any())
+                                    {
+                                        <FluentNavGroup Title="@subItem.Name"
+                                                        Icon="@subItem.Icon.ToFluentNavIcon()"
+                                                        IconColor="Color.Accent"
+                                                        @bind-Expanded="Expanded[GetMenuItemId(subItem)]">
+                                            @foreach (var subSubItem in subItem.SubItems.OrderByDescending(p => p.OrderWeight))
                                             {
-                                                <FluentNavGroup Title="@subSubItem.Name"
-                                                                Icon="@subSubItem.Icon.ToFluentNavIcon()"
-                                                                IconColor="Color.Accent"
-                                                                @bind-Expanded="Expanded[GetMenuItemId(subSubItem)]">
-                                                    @foreach (var subSubSubItem in subSubItem.SubItems.OrderByDescending(p => p.OrderWeight))
-                                                    {
-                                                        if (subSubSubItem.SubItems.Any())
+                                                if (subSubItem.SubItems.Any())
+                                                {
+                                                    <FluentNavGroup Title="@subSubItem.Name"
+                                                                    Icon="@subSubItem.Icon.ToFluentNavIcon()"
+                                                                    IconColor="Color.Accent"
+                                                                    @bind-Expanded="Expanded[GetMenuItemId(subSubItem)]">
+                                                        @foreach (var subSubSubItem in subSubItem.SubItems.OrderByDescending(p => p.OrderWeight))
                                                         {
-                                                            <FluentNavGroup Title="@subSubSubItem.Name"
-                                                                            Icon="@subSubSubItem.Icon.ToFluentNavIcon()"
-                                                                            IconColor="Color.Accent"
-                                                                            @bind-Expanded="Expanded[GetMenuItemId(subSubSubItem)]">
-                                                                @foreach (var subSubSubSubItem in subSubSubItem.SubItems.OrderByDescending(p => p.OrderWeight))
-                                                                {
-                                                                    <FluentNavLink Icon="@subSubSubSubItem.Icon.ToFluentNavIcon()" Href="@subSubSubSubItem.Path">@subSubSubSubItem.Name</FluentNavLink>
-                                                                    if (subSubSubSubItem.DividerAfter)
-                                                                    {
-                                                                        <FluentDivider />
-                                                                    }
-                                                                }
-                                                            </FluentNavGroup>
-                                                        }
-                                                        else
-                                                        {
-                                                            <FluentNavLink Icon="@subSubSubItem.Icon.ToFluentNavIcon()" Href="@subSubSubItem.Path">@subSubSubItem.Name</FluentNavLink>
-                                                            if (subSubSubItem.DividerAfter)
+                                                            if (subSubSubItem.SubItems.Any())
                                                             {
-                                                                <FluentDivider />
+                                                                <FluentNavGroup Title="@subSubSubItem.Name"
+                                                                                Icon="@subSubSubItem.Icon.ToFluentNavIcon()"
+                                                                                IconColor="Color.Accent"
+                                                                                @bind-Expanded="Expanded[GetMenuItemId(subSubSubItem)]">
+                                                                    @foreach (var subSubSubSubItem in subSubSubItem.SubItems.OrderByDescending(p => p.OrderWeight))
+                                                                    {
+                                                                        <FluentNavLink Icon="@subSubSubSubItem.Icon.ToFluentNavIcon()" Href="@subSubSubSubItem.Path">@subSubSubSubItem.Name</FluentNavLink>
+                                                                        if (subSubSubSubItem.DividerAfter)
+                                                                        {
+                                                                            <FluentDivider />
+                                                                        }
+                                                                    }
+                                                                </FluentNavGroup>
+                                                            }
+                                                            else
+                                                            {
+                                                                <FluentNavLink Icon="@subSubSubItem.Icon.ToFluentNavIcon()" Href="@subSubSubItem.Path">@subSubSubItem.Name</FluentNavLink>
+                                                                if (subSubSubItem.DividerAfter)
+                                                                {
+                                                                    <FluentDivider />
+                                                                }
                                                             }
                                                         }
-                                                    }
-                                                </FluentNavGroup>
-                                            }
-                                            else
-                                            {
-                                                <FluentNavLink Icon="@subSubItem.Icon.ToFluentNavIcon()" Href="@subSubItem.Path">@subSubItem.Name</FluentNavLink>
-                                                if (subSubItem.DividerAfter)
+                                                    </FluentNavGroup>
+                                                }
+                                                else
                                                 {
-                                                    <FluentDivider />
+                                                    <FluentNavLink Icon="@subSubItem.Icon.ToFluentNavIcon()" Href="@subSubItem.Path">@subSubItem.Name</FluentNavLink>
+                                                    if (subSubItem.DividerAfter)
+                                                    {
+                                                        <FluentDivider />
+                                                    }
                                                 }
                                             }
-                                        }
-                                    </FluentNavGroup>
-                                }
-                                else
-                                {
-                                    <FluentNavLink Icon="@subItem.Icon.ToFluentNavIcon()" Href="@subItem.Path">@subItem.Name</FluentNavLink>
-                                    if (subItem.DividerAfter)
+                                        </FluentNavGroup>
+                                    }
+                                    else
                                     {
-                                        <FluentDivider />
+                                        <FluentNavLink Icon="@subItem.Icon.ToFluentNavIcon()" Href="@subItem.Path">@subItem.Name</FluentNavLink>
+                                        if (subItem.DividerAfter)
+                                        {
+                                            <FluentDivider />
+                                        }
                                     }
                                 }
-                            }
-                        </FluentNavGroup>
-                    }
-                    else
-                    {
-                        <FluentNavLink Icon="@menuItem.Icon.ToFluentNavIcon()" Href="@menuItem.Path">@menuItem.Name</FluentNavLink>
-                        if (menuItem.DividerAfter)
+                            </FluentNavGroup>
+                        }
+                        else
                         {
-                            <FluentDivider />
+                            <FluentNavLink Icon="@menuItem.Icon.ToFluentNavIcon()" Href="@menuItem.Path">@menuItem.Name</FluentNavLink>
+                            if (menuItem.DividerAfter)
+                            {
+                                <FluentDivider />
+                            }
                         }
                     }
                 }
-            }
-        </FluentNavMenu>
+            </FluentNavMenu>
+        }
         <FluentBodyContent Style="height: calc(100dvh - 100px);">
             @Body
         </FluentBodyContent>
@@ -129,6 +137,24 @@
 <FluentMenuProvider />
 
 @code {
+    [CascadingParameter]
+    public Task<AuthenticationState>? AuthenticationStateTask { get; set; }
+
+    private ClaimsPrincipal? _user;
+
+    List<MenuItemInformation>? MenuItems;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (AuthenticationStateTask is not null)
+        {
+            var authState = await AuthenticationStateTask;
+            _user = authState.User;
+            MenuItems = MenuService.GetMenuItemsAsync(_user, CancellationToken.None).ToBlockingEnumerable().ToList();
+        }
+        await base.OnInitializedAsync();
+    }
+
     class ExpandedMenuItems
     {
         // Dictionary of all expanded item states

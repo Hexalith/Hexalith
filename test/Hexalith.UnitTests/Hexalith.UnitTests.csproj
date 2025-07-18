@@ -8,6 +8,7 @@
 	<ItemGroup>
 	  <PackageReference Include="Hexalith.PolymorphicSerializations" />
 	  <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="true" />
+	  <PackageReference Include="Shouldly" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application.Modules\Hexalith.Application.Modules.csproj" />

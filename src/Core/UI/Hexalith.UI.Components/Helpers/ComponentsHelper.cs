@@ -31,6 +31,7 @@ public static class ComponentsHelper
 
         services.TryAddScoped<ILoginRedirectUrlService, LoginRedirectUrlService>();
         _ = services.AddHttpClient();
+        _ = services.AddScoped<IMenuService, MenuService>();
         _ = services.AddFluentUIComponents();
         return services;
     }

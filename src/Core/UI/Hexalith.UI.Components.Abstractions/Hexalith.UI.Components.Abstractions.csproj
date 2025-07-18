@@ -2,6 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <RootNamespace>Hexalith.UI.Components</RootNamespace>
+      <NoWarn>$(NoWarn);S3242;</NoWarn>
     </PropertyGroup>
     <ItemGroup>
       <ProjectReference Include="..\..\Application\Hexalith.Application.Modules.Abstractions\Hexalith.Application.Modules.Abstractions.csproj" />

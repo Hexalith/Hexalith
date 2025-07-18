@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-      <NoWarn>$(NoWarn);S2221;</NoWarn>
+      <NoWarn>$(NoWarn);S2221;S4017;</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

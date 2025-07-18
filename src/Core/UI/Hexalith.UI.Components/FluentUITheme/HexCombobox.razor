@@ -1,7 +1,7 @@
 ﻿@using System.Security.Claims
 @using Hexalith.Domains.ValueObjects
 <FluentCombobox TOption="IIdDescription"
-                SelectedOptionsChanged="OnSelectedOptionsChanged"
+                SelectedOptionsChanged="OnSelectedOptionsChangedAsync"
                 SelectedOptions="_selectedOptions"
                 Multiple="true"
                 Label="@Label"
@@ -54,7 +54,7 @@
         await base.OnParametersSetAsync();
     }
 
-    private async Task OnSelectedOptionsChanged(IEnumerable<IIdDescription>? options)
+    private async Task OnSelectedOptionsChangedAsync(IEnumerable<IIdDescription>? options)
     {
         _selectedOptions = options;
         Id = _selectedOptions?.FirstOrDefault()?.Id;

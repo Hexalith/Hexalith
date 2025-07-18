@@ -1,6 +1,6 @@
 ﻿<FluentAutocomplete TOption="Option<bool?>"
                     OnOptionsSearch="@OnSearchAsync"
-                    SelectedOptionsChanged="OnSelectedOptionsChanged"
+                    SelectedOptionsChanged="OnSelectedOptionsChangedAsync"
                     SelectedOptions="_selectedOptions"
                     MaximumSelectedOptions="1"
                     MaximumOptionsSearch="10"
@@ -79,16 +79,9 @@
                 new Option<bool?> { Value = true, Text = TrueOptionLabel, Disabled = trueDisabled }
         };
     }
-    private async Task OnSelectedOptionsChanged(IEnumerable<Option<bool?>> options)
+    private async Task OnSelectedOptionsChangedAsync(IEnumerable<Option<bool?>> options)
     {
-        if (options is not null && options.Any())
-        {
-            _selectedOptions = options;
-        }
-        else
-        {
-            _selectedOptions = null;
-        }
+        _selectedOptions = (options is not null && options.Any()) ? options : null;
         var value = _selectedOptions?.FirstOrDefault()?.Value;
         if (value != Value)
         {
