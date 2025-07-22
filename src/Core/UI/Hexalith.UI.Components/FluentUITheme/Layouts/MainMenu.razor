@@ -1,37 +1,46 @@
+@using System.Security.Claims
+@using Hexalith.UI.Components.Helpers
+@inject Hexalith.UI.Components.IMenuService MenuService
+
 <FluentNavMenu Collapsible="true" CollapsedChildNavigation="true" Class="navmenu" Width="400" Style="height: calc(100dvh - 100px); overflow-y: auto;">
-    @{
-        foreach (MenuItemInformation menuItem in MenuItems)
+    @if (_menuItems is not null)
+    {
+        foreach (MenuItemViewModel menuItem in _menuItems)
         {
             if (menuItem.SubItems.Any())
             {
                 <FluentNavGroup Title="@menuItem.Name"
                                 Icon="@menuItem.Icon.ToFluentNavIcon()"
                                 IconColor="Color.Accent"
-                                @bind-Expanded="Expanded[GetMenuItemId(menuItem)]">
-                    @foreach (var subItem in menuItem.SubItems.OrderByDescending(p => p.OrderWeight))
+                                ExpandedChanged="@((e) => ToggleExpanded(menuItem.Id,e))"
+                                Expanded="IsExpanded(menuItem.Id)">
+                    @foreach (var subItem in menuItem.SubItems.OfType<MenuItemViewModel>().OrderByDescending(p => p.OrderWeight))
                     {
                         if (subItem.SubItems.Any())
                         {
                             <FluentNavGroup Title="@subItem.Name"
                                             Icon="@subItem.Icon.ToFluentNavIcon()"
                                             IconColor="Color.Accent"
-                                            @bind-Expanded="Expanded[GetMenuItemId(subItem)]">
-                                @foreach (var subSubItem in subItem.SubItems.OrderByDescending(p => p.OrderWeight))
+                                            ExpandedChanged="@((e) => ToggleExpanded(subItem.Id,e))"
+                                            Expanded="IsExpanded(subItem.Id)">
+                                @foreach (var subSubItem in subItem.SubItems.OfType<MenuItemViewModel>().OrderByDescending(p => p.OrderWeight))
                                 {
                                     if (subSubItem.SubItems.Any())
                                     {
                                         <FluentNavGroup Title="@subSubItem.Name"
                                                         Icon="@subSubItem.Icon.ToFluentNavIcon()"
                                                         IconColor="Color.Accent"
-                                                        @bind-Expanded="Expanded[GetMenuItemId(subSubItem)]">
-                                            @foreach (var subSubSubItem in subSubItem.SubItems.OrderByDescending(p => p.OrderWeight))
+                                                        ExpandedChanged="@((e) => ToggleExpanded(subSubItem.Id,e))"
+                                                        Expanded="IsExpanded(subSubItem.Id)">
+                                            @foreach (var subSubSubItem in subSubItem.SubItems.OfType<MenuItemViewModel>().OrderByDescending(p => p.OrderWeight))
                                             {
                                                 if (subSubSubItem.SubItems.Any())
                                                 {
                                                     <FluentNavGroup Title="@subSubSubItem.Name"
                                                                     Icon="@subSubSubItem.Icon.ToFluentNavIcon()"
                                                                     IconColor="Color.Accent"
-                                                                    @bind-Expanded="Expanded[GetMenuItemId(subSubSubItem)]">
+                                                                    ExpandedChanged="@((e) => ToggleExpanded(subSubSubItem.Id,e))"
+                                                                    Expanded="IsExpanded(subSubSubItem.Id)">
                                                         @foreach (var subSubSubSubItem in subSubSubItem.SubItems.OrderByDescending(p => p.OrderWeight))
                                                         {
                                                             <FluentNavLink Icon="@subSubSubSubItem.Icon.ToFluentNavIcon()" Href="@subSubSubSubItem.Path">@subSubSubSubItem.Name</FluentNavLink>
@@ -86,3 +95,39 @@
         }
     }
 </FluentNavMenu>
+
+@code {
+    IEnumerable<MenuItemViewModel>? _menuItems;
+
+    [Parameter]
+    public ClaimsPrincipal? User { get; set; }
+
+    private Dictionary<string, bool> Expanded { get; set; } = new();
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Get the current user information
+
+        _menuItems = MenuItemViewModel.From(MenuService.GetMenuItemsAsync(User,CancellationToken.None ).ToBlockingEnumerable());
+        await base.OnInitializedAsync();
+    }
+    private bool IsExpanded(string id)
+    {
+        return Expanded.ContainsKey(id) && Expanded[id];
+    }
+
+    private void ToggleExpanded(string id, bool expanded)
+    {
+        if (Expanded.ContainsKey(id))
+        {
+            Expanded[id] = expanded;
+        }
+        else
+        {
+            Expanded.Add(id, expanded);
+        }
+    }
+}
