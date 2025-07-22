@@ -123,11 +123,16 @@
     {
         if (Expanded.ContainsKey(id))
         {
+            if (Expanded[id] == expanded)
+            {
+                return; // No change, do nothing
+            }
             Expanded[id] = expanded;
         }
         else
         {
             Expanded.Add(id, expanded);
         }
+        StateHasChanged();
     }
 }
