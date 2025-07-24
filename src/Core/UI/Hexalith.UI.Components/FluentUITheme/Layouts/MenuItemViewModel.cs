@@ -8,7 +8,6 @@ namespace Hexalith.UI.Components.FluentUITheme.Layouts;
 using System.Collections.Generic;
 using System.Linq;
 
-using Hexalith.Extensions.Helpers;
 using Hexalith.UI.Components.Icons;
 
 /// <summary>
@@ -30,9 +29,10 @@ public record MenuItemViewModel(
     /// </summary>
     /// <param name="item">The menu item information.</param>
     /// <param name="subItems">The sub-items associated with the menu item.</param>
-    public MenuItemViewModel(MenuItemInformation item, IEnumerable<MenuItemViewModel> subItems)
+    /// <param name="hierarchy">The hierarchy string used to create the identifier.</param>
+    public MenuItemViewModel(MenuItemInformation item, IEnumerable<MenuItemViewModel> subItems, string? hierarchy)
         : this(
-            UniqueIdHelper.GenerateUniqueStringId(),
+            CreateId(hierarchy, item.Name),
             item.Name,
             item.Path,
             item.Icon,
@@ -51,6 +51,18 @@ public record MenuItemViewModel(
     public static IEnumerable<MenuItemViewModel> From(IEnumerable<MenuItemInformation> items)
         => items.OrderByDescending(p => p.OrderWeight).Select(Convert);
 
+    private static string CreateId(string? hierarchy, string name)
+        => $"{(hierarchy is null ? string.Empty : $"{hierarchy}/")}{name}";
+
+    private static MenuItemViewModel Convert(MenuItemInformation item, string? hierarchy)
+        => new(
+            item,
+            item
+                .SubItems
+                .OrderByDescending(p => p.OrderWeight)
+                .Select(p => Convert(p, CreateId(hierarchy, p.Name))),
+            hierarchy);
+
     private static MenuItemViewModel Convert(MenuItemInformation item)
-        => new(item, item.SubItems.OrderByDescending(p => p.OrderWeight).Select(Convert));
+        => Convert(item, null);
 }

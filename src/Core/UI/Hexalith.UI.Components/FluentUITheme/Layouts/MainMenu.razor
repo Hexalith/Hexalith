@@ -113,6 +113,7 @@
 
         _menuItems = MenuItemViewModel.From(MenuService.GetMenuItemsAsync(User,CancellationToken.None ).ToBlockingEnumerable());
         await base.OnInitializedAsync();
+
     }
     private bool IsExpanded(string id)
     {
@@ -136,3 +137,4 @@
         StateHasChanged();
     }
 }
+
