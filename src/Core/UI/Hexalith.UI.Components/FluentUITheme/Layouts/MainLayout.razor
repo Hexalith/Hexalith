@@ -2,7 +2,6 @@
 @using Hexalith.UI.Components.Configurations
 @using Microsoft.AspNetCore.Components.Sections
 @using Microsoft.Extensions.Options
-@using Hexalith.UI.Components.Helpers
 @using System.Security.Claims
 @inject IOptions<FluentUIThemeSettings> ThemeSettings
 @inject Hexalith.UI.Components.IMenuService MenuService
@@ -59,46 +58,5 @@
             MenuItems = MenuService.GetMenuItemsAsync(_user, CancellationToken.None).ToBlockingEnumerable().ToList();
         }
         await base.OnInitializedAsync();
-    }
-
-    class ExpandedMenuItems
-    {
-        // Dictionary of all expanded item states
-        private Dictionary<int, bool> Data = [];
-
-        // Define the indexer to allow client code to use [] notation.
-        public bool this[int i]
-        {
-            get
-            {
-                if (Data.TryGetValue(i, out bool expanded))
-                {
-                    return expanded;
-                }
-                return false;
-            }
-            set
-            {
-                if (!Data.TryAdd(i, value))
-                {
-                    Data[i] = value;
-                }
-            }
-        }
-    }
-    private ExpandedMenuItems Expanded = new();
-
-    private int GetMenuItemId(MenuItemInformation menuItem)
-    {
-        int index = 0;
-        foreach (MenuItemInformation mi in MenuItems)
-        {
-            (bool found, index) = mi.GetMenuItemIndex(index, menuItem);
-            if (found)
-            {
-                return index;
-            }
-        }
-        throw new InvalidOperationException("MenuItem not found");
     }
 }
