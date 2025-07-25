@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
     <PackageReference Include="Hexalith.NetAspire.Defaults" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
     <PackageReference Include="Serilog.AspNetCore" />
