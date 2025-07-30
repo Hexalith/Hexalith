@@ -12,6 +12,7 @@ using global::SendGrid.Extensions.DependencyInjection;
 using Hexalith.Application.Emails;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Emails.Abstractions.Configurations;
+using Hexalith.Infrastructure.Emails.Abstractions.Services;
 using Hexalith.Infrastructure.Emails.SendGrid.Services;
 
 using Microsoft.Extensions.Configuration;
@@ -42,7 +43,9 @@ public static class SendGridHelper
                 SettingsException<EmailServerSettings>.ThrowIfNullOrEmpty(emailServerSettings.ApplicationSecret);
                 o.ApiKey = emailServerSettings.ApplicationSecret;
             });
-        services.TryAddTransient<IEmailService, SendGridEmailService>();
+        services
+            .AddTransient<IEmailProvider, SendGridEmailService>()
+            .TryAddTransient<IEmailService, EmailService>();
         return services;
     }
 }

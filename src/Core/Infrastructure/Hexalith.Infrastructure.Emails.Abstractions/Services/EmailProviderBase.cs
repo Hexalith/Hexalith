@@ -1,4 +1,4 @@
-﻿// <copyright file="EmailServiceBase.cs" company="ITANEO">
+﻿// <copyright file="EmailProviderBase.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -9,24 +9,23 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Emails;
 using Hexalith.Infrastructure.Emails.Abstractions.Configurations;
 
 using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class EmailServiceBase.
-/// Implements the <see cref="IEmailService" />.
+/// Implements the <see cref="IEmailProvider" />.
 /// </summary>
-/// <seealso cref="IEmailService" />
-public abstract class EmailServiceBase : IEmailService
+/// <seealso cref="IEmailProvider" />
+public abstract class EmailProviderBase : IEmailProvider
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="EmailServiceBase" /> class.
+    /// Initializes a new instance of the <see cref="EmailProviderBase" /> class.
     /// </summary>
     /// <param name="settings">The settings.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    protected EmailServiceBase([NotNull] IOptions<EmailServerSettings> settings)
+    protected EmailProviderBase([NotNull] IOptions<EmailServerSettings> settings)
     {
         ArgumentNullException.ThrowIfNull(settings);
         ArgumentNullException.ThrowIfNull(settings.Value);
@@ -45,6 +44,9 @@ public abstract class EmailServiceBase : IEmailService
     /// </summary>
     /// <value>The default from name.</value>
     public string? DefaultFromName { get; }
+
+    /// <inheritdoc/>
+    public abstract string? ProviderName { get; }
 
     /// <inheritdoc/>
     public abstract Task SendAsync(string fromEmail, string fromName, string toEmail, string subject, string? plainTextContent, string? htmlContent, CancellationToken cancellationToken);

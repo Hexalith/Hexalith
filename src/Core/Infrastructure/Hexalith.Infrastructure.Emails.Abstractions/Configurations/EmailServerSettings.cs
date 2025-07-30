@@ -45,6 +45,11 @@ public class EmailServerSettings : ISettings
     public string? Password { get; set; }
 
     /// <summary>
+    /// Gets or sets the provider name.
+    /// </summary>
+    public string? ProviderName { get; set; }
+
+    /// <summary>
     /// Gets or sets the name of the server.
     /// </summary>
     /// <value>The name of the server.</value>

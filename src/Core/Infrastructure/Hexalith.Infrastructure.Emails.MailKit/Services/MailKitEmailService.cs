@@ -9,7 +9,6 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using global::MailKit.Net.Smtp;
-using global::MailKit.Security;
 
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Emails.Abstractions.Configurations;
@@ -22,20 +21,22 @@ using MimeKit.Text;
 
 /// <summary>
 /// Class MailKitEmailService.
-/// Implements the <see cref="EmailServiceBase" />.
+/// Implements the <see cref="EmailProviderBase" />.
 /// </summary>
-/// <seealso cref="EmailServiceBase" />
-public class MailKitEmailService : EmailServiceBase
+/// <seealso cref="EmailProviderBase" />
+public class MailKitEmailService : EmailProviderBase
 {
+    private readonly bool _enabled;
+
     /// <summary>
     /// The password.
     /// </summary>
-    private readonly string _password;
+    private readonly string? _password;
 
     /// <summary>
     /// The server name.
     /// </summary>
-    private readonly string _serverName;
+    private readonly string? _serverName;
 
     /// <summary>
     /// The server port.
@@ -45,7 +46,7 @@ public class MailKitEmailService : EmailServiceBase
     /// <summary>
     /// The user name.
     /// </summary>
-    private readonly string _userName;
+    private readonly string? _userName;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MailKitEmailService" /> class.
@@ -54,6 +55,12 @@ public class MailKitEmailService : EmailServiceBase
     public MailKitEmailService(IOptions<EmailServerSettings> settings)
         : base(settings)
     {
+        if (settings.Value.ProviderName != ProviderName)
+        {
+            _enabled = false;
+            return;
+        }
+
         SettingsException<EmailServerSettings>.ThrowIfNullOrEmpty(settings.Value.Password);
         SettingsException<EmailServerSettings>.ThrowIfNullOrEmpty(settings.Value.UserName);
         SettingsException<EmailServerSettings>.ThrowIfNullOrEmpty(settings.Value.ServerName);
@@ -66,8 +73,16 @@ public class MailKitEmailService : EmailServiceBase
     }
 
     /// <inheritdoc/>
+    public override string? ProviderName => nameof(MailKit);
+
+    /// <inheritdoc/>
     public override async Task SendAsync(string fromEmail, string fromName, string toEmail, string subject, string? plainTextContent, string? htmlContent, CancellationToken cancellationToken)
     {
+        if (!_enabled)
+        {
+            return;
+        }
+
         ArgumentException.ThrowIfNullOrWhiteSpace(fromEmail);
         ArgumentException.ThrowIfNullOrWhiteSpace(toEmail);
         ArgumentException.ThrowIfNullOrWhiteSpace(subject);
@@ -91,7 +106,7 @@ public class MailKitEmailService : EmailServiceBase
 
         // send email
         using SmtpClient smtp = new();
-        await smtp.ConnectAsync(_serverName, _serverPort, SecureSocketOptions.Auto, cancellationToken).ConfigureAwait(false);
+        await smtp.ConnectAsync(_serverName, _serverPort, cancellationToken: cancellationToken).ConfigureAwait(false);
         await smtp.AuthenticateAsync(_userName, _password, cancellationToken).ConfigureAwait(false);
         _ = await smtp.SendAsync(email, cancellationToken).ConfigureAwait(false);
         await smtp.DisconnectAsync(true, cancellationToken).ConfigureAwait(false);

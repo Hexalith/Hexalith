@@ -22,12 +22,14 @@ using Microsoft.Extensions.Options;
 /// Implements the <see cref="IEmailService" />.
 /// </summary>
 /// <seealso cref="IEmailService" />
-public class SendGridEmailService : EmailServiceBase
+public class SendGridEmailService : EmailProviderBase
 {
     /// <summary>
     /// The API key.
     /// </summary>
-    private readonly string _apiKey;
+    private readonly string? _apiKey;
+
+    private readonly bool _enabled;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SendGridEmailService" /> class.
@@ -37,13 +39,28 @@ public class SendGridEmailService : EmailServiceBase
     public SendGridEmailService(IOptions<EmailServerSettings> settings)
         : base(settings)
     {
+        _enabled = settings.Value.ProviderName == ProviderName;
+        if (!_enabled)
+        {
+            return;
+        }
+
         SettingsException<EmailServerSettings>.ThrowIfNullOrWhiteSpace(settings.Value.ApplicationSecret);
         _apiKey = settings.Value.ApplicationSecret;
     }
 
     /// <inheritdoc/>
+    public override string? ProviderName => nameof(SendGrid);
+
+    /// <inheritdoc/>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S2302:\"nameof\" should be used", Justification = "False positive")]
     public override async Task SendAsync(string fromEmail, string fromName, string toEmail, string subject, string? plainTextContent, string? htmlContent, CancellationToken cancellationToken)
     {
+        if (!_enabled)
+        {
+            return;
+        }
+
         ArgumentException.ThrowIfNullOrWhiteSpace(fromEmail);
         ArgumentException.ThrowIfNullOrWhiteSpace(toEmail);
         ArgumentException.ThrowIfNullOrWhiteSpace(subject);

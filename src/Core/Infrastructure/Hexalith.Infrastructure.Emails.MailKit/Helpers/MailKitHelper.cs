@@ -10,6 +10,7 @@ using System.Diagnostics.CodeAnalysis;
 using Hexalith.Application.Emails;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Emails.Abstractions.Configurations;
+using Hexalith.Infrastructure.Emails.Abstractions.Services;
 using Hexalith.Infrastructure.Emails.Mailkit.Services;
 
 using Microsoft.Extensions.Configuration;
@@ -33,7 +34,8 @@ public static class MailKitHelper
         ArgumentNullException.ThrowIfNull(configuration);
         services
             .ConfigureSettings<EmailServerSettings>(configuration)
-            .TryAddTransient<IEmailService, MailKitEmailService>();
+            .AddTransient<IEmailProvider, MailKitEmailService>()
+            .TryAddTransient<IEmailService, EmailService>();
         return services;
     }
 }
