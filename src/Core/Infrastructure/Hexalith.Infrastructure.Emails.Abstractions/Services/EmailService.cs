@@ -24,14 +24,24 @@ using Microsoft.Extensions.Options;
 /// <param name="settings">The settings.</param>
 /// <param name="providers">The email providers.</param>
 /// <exception cref="System.ArgumentNullException">null.</exception>
-public abstract class EmailService(IOptions<EmailServerSettings> settings, IEnumerable<IEmailProvider> providers) : IEmailService
+public class EmailService(IOptions<EmailServerSettings> settings, IEnumerable<IEmailProvider> providers) : IEmailService
 {
     private string? ProviderName { get; } = settings?.Value?.ProviderName;
 
     private IEnumerable<IEmailProvider> Providers { get; } = providers;
 
     /// <inheritdoc/>
-    public abstract Task SendAsync(string fromEmail, string fromName, string toEmail, string subject, string? plainTextContent, string? htmlContent, CancellationToken cancellationToken);
+    public async Task SendAsync(string fromEmail, string fromName, string toEmail, string subject, string? plainTextContent, string? htmlContent, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(ProviderName))
+        {
+            return;
+        }
+
+        await GetProvider()
+                .SendAsync(fromEmail, fromName, toEmail, subject, plainTextContent, htmlContent, cancellationToken)
+                .ConfigureAwait(false);
+    }
 
     /// <inheritdoc/>
     public virtual async Task SendAsync(string toEmail, string subject, string? plainTextContent, string? htmlContent, CancellationToken cancellationToken)
@@ -41,15 +51,20 @@ public abstract class EmailService(IOptions<EmailServerSettings> settings, IEnum
             return;
         }
 
-        IEmailProvider? provider = Providers.FirstOrDefault(p => p.ProviderName == ProviderName)
+        await GetProvider()
+                .SendAsync(
+                    toEmail,
+                    subject,
+                    plainTextContent,
+                    htmlContent,
+                    cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    private IEmailProvider GetProvider()
+    {
+        return Providers.FirstOrDefault(p => p.ProviderName == ProviderName)
             ?? throw new InvalidOperationException(
                 $"Email provider '{ProviderName}' is not configured. Set application settings : {EmailServerSettings.ConfigurationName()}.{new EmailServerSettings().ProviderName}.");
-
-        await provider.SendAsync(
-            toEmail,
-            subject,
-            plainTextContent,
-            htmlContent,
-            cancellationToken).ConfigureAwait(false);
     }
 }
