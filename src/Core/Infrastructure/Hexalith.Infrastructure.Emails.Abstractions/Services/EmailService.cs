@@ -6,7 +6,6 @@
 namespace Hexalith.Infrastructure.Emails.Abstractions.Services;
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Emails;
@@ -25,7 +24,7 @@ using Microsoft.Extensions.Options;
 /// <param name="settings">The settings.</param>
 /// <param name="providers">The email providers.</param>
 /// <exception cref="System.ArgumentNullException">null.</exception>
-public abstract class EmailService([NotNull] IOptions<EmailServerSettings> settings, IEnumerable<IEmailProvider> providers) : IEmailService
+public abstract class EmailService(IOptions<EmailServerSettings> settings, IEnumerable<IEmailProvider> providers) : IEmailService
 {
     private string? ProviderName { get; } = settings?.Value?.ProviderName;
 
