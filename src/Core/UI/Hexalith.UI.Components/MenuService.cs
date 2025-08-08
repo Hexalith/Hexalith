@@ -52,14 +52,11 @@ public sealed class MenuService : IMenuService
     /// This method:
     /// - Includes items without security policies
     /// - Checks authorization for items with security policies
-    /// - Recursively filters sub-items
+    /// - Recursively filters sub-items at all levels (sub-items, sub-sub-items, etc.)
     /// - Skips items the user is not authorized to access
-    /// - Caches authorization results to avoid redundant checks.
+    /// - Caches authorization results to avoid redundant checks
+    /// - Ensures all menu items at every level are properly filtered by authorization.
     /// </remarks>
-    /// <summary>
-    /// Returns an async enumerator that iterates through the filtered menu items.
-    /// </summary>
-    /// <returns>An async enumerator that can be used to iterate through the filtered menu items.</returns>
     public IAsyncEnumerable<MenuItemInformation> GetMenuItemsAsync(ClaimsPrincipal? user, CancellationToken cancellationToken)
     {
         // Create a new cache for each enumeration to ensure thread safety
@@ -132,8 +129,8 @@ public sealed class MenuService : IMenuService
                     filteredSubItems.Add(subItem);
                 }
 
-                // Only create new record if sub-items were actually filtered
-                yield return filteredSubItems.Count != item.SubItems.Count() ? item with { SubItems = filteredSubItems } : item;
+                // Always return the item with filtered sub-items to ensure proper authorization at all levels
+                yield return item with { SubItems = filteredSubItems };
             }
             else
             {
