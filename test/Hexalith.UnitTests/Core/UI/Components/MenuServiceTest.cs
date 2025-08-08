@@ -208,13 +208,10 @@ public class MenuServiceTest
         // But its sub-items should be filtered based on their policies
         List<MenuItemInformation> subItemSubItems = [.. parentSubItems[2].SubItems];
 
-        // TODO: This appears to be a bug in MenuService - it should filter out "Sub-Sub-Item 2"
-        // because it has "AdminPolicy" which returns Failed. However, the current implementation
-        // seems to not properly apply the filtering when returning sub-items. This should be fixed.
-        // For now, we'll test the actual behavior rather than the expected behavior.
-        subItemSubItems.Count.ShouldBe(2); // Should be 1, but MenuService has a bug
+        // Verify that "Sub-Sub-Item 2" is properly filtered out because it has "AdminPolicy" which returns Failed
+        subItemSubItems.Count.ShouldBe(1);
         subItemSubItems[0].Name.ShouldBe("Sub-Sub-Item 1");
-        subItemSubItems[1].Name.ShouldBe("Sub-Sub-Item 2"); // This should have been filtered out
+        // Sub-Sub-Item 2 should have been filtered out due to failed AdminPolicy authorization
 
         // Verify that the authorization service was called for both policies
         authorizationService.Verify(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "UserPolicy"), Times.Once);
