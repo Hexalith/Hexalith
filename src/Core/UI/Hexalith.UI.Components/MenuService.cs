@@ -125,14 +125,14 @@ public sealed class MenuService : IMenuService
             {
                 List<MenuItemInformation> filteredSubItems = [];
                 List<MenuItemInformation> originalSubItems = [.. item.SubItems];
-                
+
                 await foreach (MenuItemInformation subItem in FilterMenuItemsAsync(user, item.SubItems, authorizationCache, cancellationToken))
                 {
                     filteredSubItems.Add(subItem);
                 }
 
                 // Only create a new instance if filtering actually occurred
-                if (filteredSubItems.Count == originalSubItems.Count && 
+                if (filteredSubItems.Count == originalSubItems.Count &&
                     filteredSubItems.SequenceEqual(originalSubItems, ReferenceEqualityComparer.Instance))
                 {
                     // No filtering occurred, return the original item
