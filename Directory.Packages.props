@@ -35,7 +35,7 @@
     <PackageVersion Include="CommunityToolkit.Aspire.Hosting.Dapr" Version="9.3.0" />
     <PackageVersion Include="CompareNETObjects" Version="4.84.0" />
     <PackageVersion Include="coverlet.collector" Version="6.0.4" />
-    <PackageVersion Include="Dapr" Version="1.15.4" />
+    <PackageVersion Include="Dapr" Version="1.16.0" />
     <PackageVersion Include="Dapr.Actors" Version="1.16.0" />
     <PackageVersion Include="Dapr.Actors.AspNetCore" Version="1.16.0" />
     <PackageVersion Include="Dapr.AspNetCore" Version="1.16.0" />
