@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<UserSecretsId>16985a23-56f5-4511-9b9b-38c8a672583a</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
