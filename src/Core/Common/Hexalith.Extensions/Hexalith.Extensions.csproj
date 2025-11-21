@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net9.0</TargetFrameworks>
+    <TargetFrameworks>net10.0</TargetFrameworks>
     <NoWarn>$(NoWarn);S6354;RS0016;</NoWarn>
     <!--<EnableConfigurationBindingGenerator>false</EnableConfigurationBindingGenerator>-->
     <!--EnableConfigurationBindingGenerator: https://github.com/dotnet/runtime/issues/89273-->

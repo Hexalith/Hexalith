@@ -11,7 +11,7 @@
 
   <!-- Detect if the solution is opened in VS to limit the versions that are analyzed by Roslyn for performance reasons and set a local repository for packages -->
   <PropertyGroup Condition="'$(UseProjectReference)' == 'true'">
-    <CommonTargetFrameworks>net9.0</CommonTargetFrameworks>
+    <CommonTargetFrameworks>net10.0</CommonTargetFrameworks>
   </PropertyGroup>
 
   <!-- These versions are used for the NuGet packages that are dependent on the current .NET version -->
