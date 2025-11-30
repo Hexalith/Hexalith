@@ -360,3 +360,6 @@ cov-int.zip
 cov-int/
 .azure
 manifests
+
+#Ignore vscode AI rules
+.github\instructions\codacy.instructions.md

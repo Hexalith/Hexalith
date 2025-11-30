@@ -88,6 +88,7 @@ public class ClientCommandService : ICommandService
     /// <param name="metadata">The metadata associated with the command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
+    [SuppressMessage("Critical Code Smell", "S2302:\"nameof\" should be used", Justification = "NA")]
     private async Task SubmitCommandAsync(object command, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
@@ -97,6 +98,6 @@ public class ClientCommandService : ICommandService
             throw new ArgumentException($"The command should be of type {nameof(Polymorphic)}");
         }
 
-        _ = await _client.PostAsJsonAsync("api/command/submit", new MessageState(recordBase, metadata), cancellationToken);
+        _ = await _client.PostAsJsonAsync("api/command/submit", new MessageState(recordBase, metadata), cancellationToken).ConfigureAwait(false);
     }
 }

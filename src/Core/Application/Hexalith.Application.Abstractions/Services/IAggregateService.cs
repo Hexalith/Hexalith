@@ -31,7 +31,7 @@ public interface IAggregateService
         ArgumentException.ThrowIfNullOrWhiteSpace(partitionId);
         ArgumentException.ThrowIfNullOrWhiteSpace(aggregate.AggregateId);
         ArgumentException.ThrowIfNullOrWhiteSpace(aggregate.AggregateName);
-        SnapshotEvent? snapshot = await GetSnapshotAsync(aggregate, partitionId, cancellationToken);
+        SnapshotEvent? snapshot = await GetSnapshotAsync(aggregate, partitionId, cancellationToken).ConfigureAwait(false);
         return snapshot?.GetAggregate<TAggregate>();
     }
 
@@ -47,7 +47,7 @@ public interface IAggregateService
     async Task<TAggregate> GetAsync<TAggregate>([NotNull] TAggregate aggregate, [NotNull] string partitionId, CancellationToken cancellationToken)
         where TAggregate : class, IDomainAggregate
     {
-        return (await FindAsync(aggregate, partitionId, cancellationToken))
+        return (await FindAsync(aggregate, partitionId, cancellationToken).ConfigureAwait(false))
             ?? throw new InvalidOperationException($"The aggregate with name '{aggregate.AggregateName}' and ID '{aggregate.AggregateId}' was not found in partition '{partitionId}'.");
     }
 
@@ -69,7 +69,12 @@ public interface IAggregateService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the snapshot event.</returns>
     async Task<SnapshotEvent?> GetSnapshotAsync(IDomainAggregate aggregate, string partitionId, CancellationToken cancellationToken)
-        => await GetSnapshotAsync(aggregate.AggregateName, partitionId, aggregate.AggregateId, cancellationToken);
+        => await GetSnapshotAsync(
+                (aggregate ?? throw new ArgumentNullException(nameof(aggregate))).AggregateName,
+                partitionId,
+                aggregate.AggregateId,
+                cancellationToken)
+            .ConfigureAwait(false);
 
     /// <summary>
     /// Gets the snapshot asynchronously.

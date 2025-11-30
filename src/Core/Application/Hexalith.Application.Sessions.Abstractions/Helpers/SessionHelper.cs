@@ -70,21 +70,21 @@ public static class SessionHelper
     /// </summary>
     /// <param name="user">The user principal.</param>
     /// <returns>The identity provider claim value, or null if not found.</returns>
-    public static string? FindIdentityProvider(this ClaimsPrincipal user) => user.FindFirst(IdentityProviderClaimName)?.Value;
+    public static string? FindIdentityProvider(this ClaimsPrincipal user) => (user ?? throw new ArgumentNullException(nameof(user))).FindFirst(IdentityProviderClaimName)?.Value;
 
     /// <summary>
     /// Finds the partition ID claim value for the specified user.
     /// </summary>
     /// <param name="user">The user principal.</param>
     /// <returns>The partition ID claim value, or null if not found.</returns>
-    public static string? FindPartitionId(this ClaimsPrincipal user) => user.FindFirst(PartitionIdClaimName)?.Value;
+    public static string? FindPartitionId(this ClaimsPrincipal user) => (user ?? throw new ArgumentNullException(nameof(user))).FindFirst(PartitionIdClaimName)?.Value;
 
     /// <summary>
     /// Finds the session ID claim value for the specified user.
     /// </summary>
     /// <param name="user">The user principal.</param>
     /// <returns>The session ID claim value, or null if not found.</returns>
-    public static string? FindSessionId(this ClaimsPrincipal user) => user.FindFirst(SessionIdClaimName)?.Value;
+    public static string? FindSessionId(this ClaimsPrincipal user) => (user ?? throw new ArgumentNullException(nameof(user))).FindFirst(SessionIdClaimName)?.Value;
 
     /// <summary>
     /// Finds the user email for the specified user.
@@ -92,7 +92,7 @@ public static class SessionHelper
     /// <param name="user">The user principal.</param>
     /// <returns>The user email.</returns>
     public static string? FindUserEmail(this ClaimsPrincipal user)
-        => user.FindFirst(p => p.Type == ClaimTypes.Email)?.Value;
+        => (user ?? throw new ArgumentNullException(nameof(user))).FindFirst(p => p.Type == ClaimTypes.Email)?.Value;
 
     /// <summary>
     /// Gets the identity provider claim value for the specified user.
@@ -132,7 +132,7 @@ public static class SessionHelper
     /// <param name="user">The user principal.</param>
     /// <returns>A collection of role names.</returns>
     public static IEnumerable<string>? GetRoles(this ClaimsPrincipal user)
-                => user.FindAll(p => p.Type == ClaimTypes.Role).Select(p => p.Value);
+                => (user ?? throw new ArgumentNullException(nameof(user))).FindAll(p => p.Type == ClaimTypes.Role).Select(p => p.Value);
 
     /// <summary>
     /// Gets the session ID claim value for the specified user.
@@ -151,7 +151,7 @@ public static class SessionHelper
     /// <exception cref="InvalidOperationException">Thrown if the user email is not found in user claims.</exception>
     public static string GetUserId(this ClaimsPrincipal user)
     {
-        string? id = user.FindFirst(p => p.Type == ClaimTypes.NameIdentifier)?.Value;
+        string? id = (user ?? throw new ArgumentNullException(nameof(user))).FindFirst(p => p.Type == ClaimTypes.NameIdentifier)?.Value;
         return string.IsNullOrWhiteSpace(id) ? throw new InvalidOperationException("User id not found in user claims.") : id;
     }
 
@@ -163,7 +163,7 @@ public static class SessionHelper
     /// <exception cref="InvalidOperationException">Thrown if the user name is not found in user claims.</exception>
     public static string GetUserName(this ClaimsPrincipal user)
     {
-        string? name = user.FindFirst(p => p.Type == ClaimTypes.Name)?.Value;
+        string? name = (user ?? throw new ArgumentNullException(nameof(user))).FindFirst(p => p.Type == ClaimTypes.Name)?.Value;
         return string.IsNullOrWhiteSpace(name) ? throw new InvalidOperationException("User Name not found in user claims.") : name;
     }
 

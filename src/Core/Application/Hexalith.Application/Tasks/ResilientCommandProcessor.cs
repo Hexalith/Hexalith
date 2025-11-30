@@ -110,6 +110,7 @@ public partial class ResilientCommandProcessor
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
+        ArgumentNullException.ThrowIfNull(metadata);
         ExecuteCommandResult? result = null;
         TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken).ConfigureAwait(false);
         switch (taskProcessor.Status)

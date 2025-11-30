@@ -76,11 +76,12 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
         }
         catch (Exception ex)
         {
+            string message = _logger.IsEnabled(LogLevel.Error) ? ex.FullMessage() : string.Empty;
             LogDispatchingCommandErrorInformation(
                 ex,
                 metadata.Message.Name,
                 metadata.AggregateGlobalId,
-                ex.FullMessage());
+                message);
             throw;
         }
     }

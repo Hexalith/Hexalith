@@ -61,12 +61,12 @@ public static class WebAssemblyClientHelper
     /// </summary>
     /// <param name="args">The command-line arguments.</param>
     /// <returns>The WebAssembly host builder.</returns>
-    public static WebAssemblyHostBuilder CreateHexalithWasmClient(string[]? args = null)
+    public static WebAssemblyHostBuilder CreateHexalithWasmClient(string[]? args)
     {
         WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(builder.Configuration)
-            .Enrich.WithProperty("InstanceId", Guid.NewGuid().ToString("n"))
+            .Enrich.WithProperty("InstanceId", Guid.NewGuid().ToString("n", CultureInfo.InvariantCulture))
             .WriteTo.BrowserConsole(formatProvider: CultureInfo.InvariantCulture)
             .CreateLogger();
         _ = builder.Services
@@ -93,6 +93,12 @@ public static class WebAssemblyClientHelper
         HexalithApplication.AddWebAppServices(builder.Services, builder.Configuration);
         return builder;
     }
+
+    /// <summary>
+    /// Creates a WebAssembly host builder without command-line arguments.
+    /// </summary>
+    /// <returns>The WebAssembly host builder.</returns>
+    public static WebAssemblyHostBuilder CreateHexalithWasmClient() => CreateHexalithWasmClient(null);
 
     /// <summary>
     /// Uses the user-defined culture for the WebAssembly host.

@@ -22,7 +22,7 @@ public abstract class RequestHandlerBase<TRequest> : IRequestHandler<TRequest>
 
     /// <inheritdoc/>
     async Task<object> IRequestHandler.ExecuteAsync(object baseRequest, Metadata metadata, CancellationToken cancellationToken)
-        => await ExecuteAsync(ToRequest(baseRequest), metadata, cancellationToken);
+        => await ExecuteAsync(ToRequest(baseRequest), metadata, cancellationToken).ConfigureAwait(false);
 
     /// <summary>
     /// Converts the given object to the expected request type.

@@ -45,6 +45,6 @@ public class DependencyInjectionRequestProcessor : IRequestProcessor
         Type type = typeof(IRequestHandler<>).MakeGenericType(request.GetType());
         IRequestHandler handler = _services.GetRequiredService(type) as IRequestHandler
             ?? throw new InvalidOperationException($"No request handler found for request of type '{request.GetType().Name}'.");
-        return await handler.ExecuteAsync(request, metadata, cancellationToken);
+        return await handler.ExecuteAsync(request, metadata, cancellationToken).ConfigureAwait(false);
     }
 }

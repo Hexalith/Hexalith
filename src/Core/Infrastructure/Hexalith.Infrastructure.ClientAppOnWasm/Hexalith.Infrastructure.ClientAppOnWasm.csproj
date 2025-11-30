@@ -4,7 +4,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Serilog.Extensions.Logging"  />
-        <PackageReference Include="System.IdentityModel.Tokens.Jwt"  />
+        <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens"  />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly"  />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication"  />
         <PackageReference Include="Serilog.Sinks.BrowserConsole"  />

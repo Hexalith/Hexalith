@@ -35,7 +35,9 @@ public class UserPartitionServiceProxy : IUserPartitionService
     public async Task<string> GetDefaultPartitionAsync(string userName, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(userName);
-        string? partition = await _httpClient.GetFromJsonAsync<string>($"api/UserPartition/{userName}/default", cancellationToken);
+        string? partition = await _httpClient
+            .GetFromJsonAsync<string>($"api/UserPartition/{userName}/default", cancellationToken)
+            .ConfigureAwait(false);
         return string.IsNullOrWhiteSpace(partition)
             ? throw new InvalidOperationException($"No default partition found for user {userName}")
             : partition;
@@ -45,13 +47,17 @@ public class UserPartitionServiceProxy : IUserPartitionService
     public async Task<IEnumerable<string>> GetPartitionsAsync(string userName, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(userName);
-        return await _httpClient.GetFromJsonAsync<IEnumerable<string>>($"api/UserPartition/{userName}/partitions", cancellationToken) ?? [];
+        return await _httpClient
+            .GetFromJsonAsync<IEnumerable<string>>($"api/UserPartition/{userName}/partitions", cancellationToken)
+            .ConfigureAwait(false) ?? [];
     }
 
     /// <inheritdoc/>
     public async Task<bool> InPartitionAsync(string userName, string partitionId, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(userName);
-        return await _httpClient.GetFromJsonAsync<bool>($"api/UserPartition/{userName}/in-partition/{partitionId}", cancellationToken);
+        return await _httpClient
+            .GetFromJsonAsync<bool>($"api/UserPartition/{userName}/in-partition/{partitionId}", cancellationToken)
+            .ConfigureAwait(false);
     }
 }

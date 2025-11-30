@@ -64,6 +64,7 @@ public class ResilientProjectionEventProcessor
     public async Task<DateTimeOffset?> ProcessAsync(string id, object baseEvent, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
+        ArgumentNullException.ThrowIfNull(metadata);
         TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken).ConfigureAwait(false);
         switch (taskProcessor.Status)
         {

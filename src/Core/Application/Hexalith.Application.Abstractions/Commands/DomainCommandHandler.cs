@@ -50,7 +50,7 @@ public abstract partial class DomainCommandHandler<TCommand> : IDomainCommandHan
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
         LogExecutingCommand(metadata.Message.Name, metadata.AggregateGlobalId, metadata.Message.Id, metadata.Context.CorrelationId, metadata.Context.UserId);
-        ExecuteCommandResult result = await DoAsync(ToCommand(command), metadata, aggregate, cancellationToken);
+        ExecuteCommandResult result = await DoAsync(ToCommand(command), metadata, aggregate, cancellationToken).ConfigureAwait(false);
         if (result.Failed)
         {
             LogCommandFailed(metadata.Message.Name, metadata.AggregateGlobalId, metadata.Message.Id, metadata.Context.CorrelationId, metadata.Context.UserId);
@@ -87,6 +87,7 @@ public abstract partial class DomainCommandHandler<TCommand> : IDomainCommandHan
     protected TAggregate CheckAggregateIsValid<TAggregate>(IDomainAggregate? aggregate, Metadata metadata)
         where TAggregate : IDomainAggregate
     {
+        ArgumentNullException.ThrowIfNull(metadata);
         if (aggregate is null)
         {
             // The aggregate is null, this is an invalid state.

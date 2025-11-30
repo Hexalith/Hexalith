@@ -35,6 +35,6 @@ public interface ICommandService
         ArgumentNullException.ThrowIfNull(user);
         ArgumentNullException.ThrowIfNull(commands);
 
-        await Task.WhenAll(commands.Select(command => SubmitCommandAsync(user, command, cancellationToken)));
+        await Task.WhenAll(commands.Select(command => SubmitCommandAsync(user, command, cancellationToken))).ConfigureAwait(false);
     }
 }

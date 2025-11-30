@@ -37,6 +37,6 @@ public class SimpleCommandHandler<TCommand>(
         return await Task.FromResult(
             CheckAggregateIsValid<IDomainAggregate>(aggregate, metadata)
             .Apply(ev)
-            .CreateCommandResult(ev, metadata, Time));
+            .CreateCommandResult(ev, metadata, Time)).ConfigureAwait(false);
     }
 }

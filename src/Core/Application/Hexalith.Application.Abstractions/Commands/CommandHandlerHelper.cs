@@ -33,6 +33,10 @@ public static class CommandHandlerHelper
     /// <returns>The result of executing the command.</returns>
     public static ExecuteCommandResult CreateCommandResult(this ApplyResult result, Polymorphic ev, Metadata metadata, TimeProvider timeProvider)
     {
+        ArgumentNullException.ThrowIfNull(result);
+        ArgumentNullException.ThrowIfNull(ev);
+        ArgumentNullException.ThrowIfNull(metadata);
+        ArgumentNullException.ThrowIfNull(timeProvider);
         return result.Failed
                 ? new ExecuteCommandResult(
                     result.Aggregate,

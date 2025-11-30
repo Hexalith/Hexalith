@@ -100,6 +100,7 @@ public partial class ClientRequestService : IRequestService
     /// <param name="metadata">The metadata associated with the request.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
+    [SuppressMessage("Critical Code Smell", "S2302:\"nameof\" should be used", Justification = "NA")]
     private async Task<TRequest> SubmitRequestAsync<TRequest>(TRequest request, Metadata metadata, CancellationToken cancellationToken)
     where TRequest : Polymorphic
     {
@@ -110,7 +111,7 @@ public partial class ClientRequestService : IRequestService
             throw new ArgumentException($"The request should be of type {nameof(Polymorphic)}");
         }
 
-        HttpResponseMessage response = await _client.PostAsJsonAsync("api/request/submit", new MessageState(recordBase, metadata), cancellationToken);
+        HttpResponseMessage response = await _client.PostAsJsonAsync("api/request/submit", new MessageState(recordBase, metadata), cancellationToken).ConfigureAwait(false);
         if (!response.IsSuccessStatusCode)
         {
             throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. The response status code was {response.StatusCode}.");
@@ -118,16 +119,18 @@ public partial class ClientRequestService : IRequestService
 
         MessageState? messageState = await response
             .Content
-            .ReadFromJsonAsync<MessageState>(cancellationToken: cancellationToken);
+            .ReadFromJsonAsync<MessageState>(cancellationToken: cancellationToken).ConfigureAwait(false);
         if (messageState is null)
         {
-            string value = await response.Content.ReadAsStringAsync(cancellationToken);
+            string value = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. Failed to deserialize response : " + value);
         }
 
         if (messageState.MessageObject is not TRequest result)
         {
-            throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. Expected response of type {typeof(TRequest).Name} but received {messageState.MessageObject.GetType().Name}.");
+            throw new InvalidOperationException(
+                $"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'." +
+                $"Expected response of type {typeof(TRequest).Name} but received {messageState.MessageObject.GetType().Name}.");
         }
 
         LogRequestSucceeded(
