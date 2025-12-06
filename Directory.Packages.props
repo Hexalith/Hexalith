@@ -6,8 +6,8 @@
     <PackageVersion Include="Hexalith.Commons" Version="2.1.7" />
     <PackageVersion Include="Hexalith.Domains.Abstractions" Version="1.2.0" />
     <PackageVersion Include="Hexalith.NetAspire.Defaults" Version="1.4.2" />
-    <PackageVersion Include="Hexalith.PolymorphicSerializations" Version="1.8.1" />
-    <PackageVersion Include="Hexalith.PolymorphicSerializations.CodeGenerators" Version="1.8.1" />
+    <PackageVersion Include="Hexalith.PolymorphicSerializations" Version="1.9.0" />
+    <PackageVersion Include="Hexalith.PolymorphicSerializations.CodeGenerators" Version="1.9.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageVersion Include="AdaptiveCards" Version="3.1.0" />
@@ -42,7 +42,7 @@
     <PackageVersion Include="Dapr.Extensions.Configuration" Version="1.16.1" />
     <PackageVersion Include="docfx.console" Version="2.59.4" />
     <PackageVersion Include="FluentAssertions" Version="8.8.0" />
-    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.0" />
+    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageVersion Include="FluentValidation.Swashbuckle" Version="11.11.0" />
     <PackageVersion Include="GitHubActionsTestLogger" Version="3.0.1" />
     <PackageVersion Include="Google.Apis" Version="5.4.2" />
@@ -137,7 +137,7 @@
     <PackageVersion Include="Serilog.Sinks.Debug" Version="3.0.0" />
     <PackageVersion Include="Serilog.Sinks.File" Version="7.0.0" />
     <PackageVersion Include="Shouldly" Version="4.3.0" />
-    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.16.0.128591" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.16.1.129956" />
     <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.0.1" />
     <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.0.1" />
