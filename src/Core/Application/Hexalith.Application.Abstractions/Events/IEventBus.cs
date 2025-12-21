@@ -5,7 +5,7 @@
 
 namespace Hexalith.Application.Events;
 
-using Hexalith.Application.Envelopes;
+using Hexalith.Applications.Messages;
 
 /// <summary>
 /// A event bus is a component that allows to send events.
