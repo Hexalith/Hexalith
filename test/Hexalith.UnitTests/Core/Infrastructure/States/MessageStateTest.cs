@@ -10,9 +10,9 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
-using Hexalith.Extensions.Helpers;
+using Hexalith.Applications.States;
+using Hexalith.Commons.Metadatas;
+using Hexalith.Commons.Strings;
 using Hexalith.PolymorphicSerializations;
 using Hexalith.UnitTests.Core.Application.Commands;
 
@@ -75,15 +75,15 @@ public class MessageStateTest
         MessageState messageState = new(
             command,
             new Metadata(
-                MessageMetadata.Create(
-                    command,
-                    DateTimeOffset.UtcNow),
+                    command.CreateMessageMetadata(DateTimeOffset.UtcNow),
                 new ContextMetadata(
                         "COR1234566",
                         "TestUser",
                         "Part1",
                         DateTimeOffset.UtcNow,
+                        TimeSpan.FromMinutes(30),
                         100,
+                        "ETA-56",
                         "session-56",
                         [])));
         string json = JsonSerializer.Serialize(messageState, PolymorphicHelper.DefaultJsonSerializerOptions);

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
+using Hexalith.Commons.UniqueIds;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>

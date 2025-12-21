@@ -9,8 +9,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
+using Hexalith.Commons.Errors;
 using Hexalith.Extensions.Common;
-using Hexalith.Extensions.Errors;
 
 /// <summary>
 /// Class EntityNotFoundException.
@@ -75,7 +75,7 @@ public class EntityNotFoundException<TEntity> : ApplicationErrorException
             Title = entityName + " not found.",
             Detail = "Entity {EntityName} not found with key:\n{Key}",
             Arguments = [entityName, key],
-            Category = ErrorCategory.Functional,
+            Category = Commons.Errors.ErrorCategory.Functional,
         };
     }
 }

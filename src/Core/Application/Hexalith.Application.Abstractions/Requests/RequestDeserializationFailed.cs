@@ -8,6 +8,7 @@ namespace Hexalith.Application.Requests;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
+using Hexalith.Commons.Errors;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 

@@ -8,7 +8,7 @@ namespace Hexalith.Application.Events;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 
 /// <summary>
 /// Defines the contract for handling integration events in the application.

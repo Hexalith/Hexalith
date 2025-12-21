@@ -14,7 +14,7 @@ using Dapr.Actors.Client;
 
 using FluentAssertions;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.PolymorphicSerializations;
 
@@ -51,14 +51,14 @@ public class ActorCommandProcessorTest
         Func<Task> submit = async () => await processor.SubmitAsync(
             command,
             new Metadata(
-                MessageMetadata.Create(
-                    command,
-                    DateTimeOffset.UtcNow),
+                    command.CreateMessageMetadata(DateTimeOffset.UtcNow),
                 new ContextMetadata(
                     "325431",
                     "user123",
                     "PART1",
                     DateTimeOffset.UtcNow,
+                    TimeSpan.FromMinutes(5),
+                    null,
                     null,
                     null,
                     [])),

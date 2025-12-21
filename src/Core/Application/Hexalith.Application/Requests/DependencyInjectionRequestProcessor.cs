@@ -9,7 +9,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 
 using Microsoft.Extensions.DependencyInjection;
 

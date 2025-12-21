@@ -10,6 +10,8 @@ using FluentValidation;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.States;
+using Hexalith.Applications.Commands;
+using Hexalith.Applications.States;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -108,7 +110,7 @@ public partial class CommandServiceController : ControllerBase
             command.Metadata.Message.Id,
             command.Metadata.Context.CorrelationId,
             command.Metadata.Message.Name,
-            command.Metadata.AggregateGlobalId);
+            command.Metadata.DomainGlobalId);
 
         return Ok();
     }

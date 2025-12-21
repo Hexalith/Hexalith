@@ -8,6 +8,7 @@ namespace Hexalith.Infrastructure.DaprRuntime.Buses;
 using System;
 using System.Runtime.Serialization;
 
+using Hexalith.Commons.Strings;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>

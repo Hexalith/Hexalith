@@ -9,7 +9,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.UnitTests.Core.Domain.Messages;
 
 public class MessageMetadataTest
@@ -17,7 +17,7 @@ public class MessageMetadataTest
     [Fact]
     public void MessageMetadataShouldBeEqualAfterSerializeDeserialize()
     {
-        MessageMetadata meta = new("ID123", "Message 123", 123, new AggregateMetadata("101", "Dummy"), TimeProvider.System.GetLocalNow());
+        MessageMetadata meta = new("ID123", "Message 123", 123, new DomainMetadata("101", "Dummy"), TimeProvider.System.GetLocalNow());
         string json = JsonSerializer.Serialize(meta);
         Metadata result = JsonSerializer.Deserialize<Metadata>(json);
         _ = result.Should().NotBeNull();
@@ -27,7 +27,7 @@ public class MessageMetadataTest
     [Fact]
     public void MetadataShouldContainMessageNameAndVersion1()
     {
-        MessageMetadata meta = MessageMetadata.Create(new MyDummyMessage("123", "Hello", 124), TimeProvider.System.GetLocalNow());
+        MessageMetadata meta = new MyDummyMessage("123", "Hello", 124).CreateMessageMetadata(TimeProvider.System.GetLocalNow());
         _ = meta.Name.Should().Be(nameof(MyDummyMessage));
         _ = meta.Version.Should().Be(1);
     }
@@ -35,7 +35,7 @@ public class MessageMetadataTest
     [Fact]
     public void MetadataShouldContainMessageNameAndVersionInAttribute()
     {
-        MessageMetadata meta = MessageMetadata.Create(new MyDummyMessage3("123", "Hello", 124), TimeProvider.System.GetLocalNow());
+        MessageMetadata meta = new MyDummyMessage3("123", "Hello", 124).CreateMessageMetadata(TimeProvider.System.GetLocalNow());
         _ = meta.Name.Should().Be("MyMessage");
         _ = meta.Version.Should().Be(3);
     }
@@ -43,7 +43,7 @@ public class MessageMetadataTest
     [Fact]
     public void MetadataShouldContainMessageVersionInAttribute()
     {
-        MessageMetadata meta = MessageMetadata.Create(new MyDummyMessage2("123", "Hello", 124), TimeProvider.System.GetLocalNow());
+        MessageMetadata meta = new MyDummyMessage2("123", "Hello", 124).CreateMessageMetadata(TimeProvider.System.GetLocalNow());
         _ = meta.Name.Should().Be(nameof(MyDummyMessage2));
         _ = meta.Version.Should().Be(2);
     }

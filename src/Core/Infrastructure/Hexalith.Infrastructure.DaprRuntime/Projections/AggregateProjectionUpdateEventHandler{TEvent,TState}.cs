@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Domain.Events;
 using Hexalith.Domains;
@@ -52,11 +52,11 @@ public class AggregateProjectionUpdateEventHandler<TEvent, TState>(
         else
         {
             // If the event is not a snapshot, we load the aggregate from the store
-            aggregate = await GetProjectionAsync(metadata.AggregateGlobalId, cancellationToken)
+            aggregate = await GetProjectionAsync(metadata.DomainGlobalId, cancellationToken)
                 .ConfigureAwait(false) ?? new TState();
         }
 
         ApplyResult result = aggregate.Apply(baseEvent);
-        await SaveProjectionAsync(metadata.AggregateGlobalId, (TState)result.Aggregate, cancellationToken).ConfigureAwait(false);
+        await SaveProjectionAsync(metadata.DomainGlobalId, (TState)result.Aggregate, cancellationToken).ConfigureAwait(false);
     }
 }

@@ -9,7 +9,7 @@ using System.Data;
 
 using FluentAssertions;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Application.StreamStores;
 using Hexalith.Extensions.Common;
@@ -19,6 +19,10 @@ using Hexalith.PolymorphicSerializations;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 using Moq;
+using Hexalith.Applications.States;
+using Hexalith.Commons.Objects;
+using Hexalith.Commons.Strings;
+using Hexalith.Commons.Errors;
 
 public class MessageStoreTest
 {
@@ -197,7 +201,7 @@ public class MessageStoreTest
         {
             { _stateName, 123L },
             { _streamItemId + testEvent.IdempotencyId, 123L },
-            { _stateName + "123", new MessageState(testEvent, Metadata.CreateNew(testEvent, "user123", "part123", DateTimeOffset.Now)) },
+            { _stateName + "123", new MessageState(testEvent, testEvent.CreateMetadata( "user123", "part123", DateTimeOffset.Now)) },
         });
         MessageStore<MessageState> eventStore = new(provider, _streamName);
 
@@ -236,13 +240,15 @@ public class MessageStoreTest
             list.Add(new MessageState(
                 (Polymorphic)e,
                 new Metadata(
-                 MessageMetadata.Create(e, DateTimeOffset.Now),
+                 e.CreateMessageMetadata(DateTimeOffset.Now),
                  new ContextMetadata(
                      id,
                      "TestUser",
                      "Test",
                      DateTimeOffset.Now,
-                     10,
+                     TimeSpan.FromSeconds(10),
+                     11,
+                     "V12",
                      "SES2132",
                      ["sc01", "sc02"]))));
         }

@@ -11,7 +11,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Services;
 using Hexalith.Domains.ValueObjects;
@@ -96,11 +96,11 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
                 LogWarningForIdsWithFilterOrSearch(_logger, metadata.Message.Name, metadata.Message.Id, metadata.Context.CorrelationId);
             }
 
-            return await GetFromIdsAsync(request, metadata, cancellationToken);
+            return await GetFromIdsAsync(request, metadata, cancellationToken).ConfigureAwait(false);
         }
 
         IIdCollectionService service = _collectionFactory.CreateService(
-                IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Aggregate.Name),
+                IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Domain.Name),
                 metadata.Context.PartitionId);
         if (string.IsNullOrEmpty(request.Search) && filtered?.Filter is null)
         {
@@ -134,7 +134,7 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
             chunkSkip += chunkTake;
             foreach (TViewModel chunkResult in chunkResults)
             {
-                if (await CompliesWithFilterAndSearchAsync(normalizedWords, chunkResult, filtered, cancellationToken))
+                if (await CompliesWithFilterAndSearchAsync(normalizedWords, chunkResult, filtered, cancellationToken).ConfigureAwait(false))
                 {
                     searchResults.Add(chunkResult);
                 }
@@ -166,8 +166,8 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
 
     private async Task<TRequest> GetFromIdsAsync(TRequest request, Metadata metadata, CancellationToken cancellationToken)
     {
-        IEnumerable<string> globalIds = request.Ids.Select(metadata.CreateAggregateGlobalId);
-        IDictionary<string, TViewModel> r = await GetIdsProjectionsAsync(globalIds, cancellationToken);
+        IEnumerable<string> globalIds = request.Ids.Select(metadata.CreateDomainGlobalId);
+        IDictionary<string, TViewModel> r = await GetIdsProjectionsAsync(globalIds, cancellationToken).ConfigureAwait(false);
         List<TViewModel> results = [.. r.Values];
 
         // If the request result does not contain all the requested ids, we need to log an error

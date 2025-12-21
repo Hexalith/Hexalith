@@ -13,7 +13,7 @@
 // using Hexalith.Application.Aggregates;
 // using Hexalith.Application.Commands;
 // using Hexalith.Application.Events;
-// using Hexalith.Application.Metadatas;
+// using Hexalith.Commons.Metadatas;
 // using Hexalith.Application.Requests;
 // using Hexalith.Application.States;
 // using Hexalith.Application.Tasks;
@@ -55,7 +55,7 @@
 //            PublishFailed = false,
 //        };
 //        Metadata metadata = CreateMetadata(command);
-//        ActorId actorId = new(metadata.AggregateGlobalId);
+//        ActorId actorId = new(metadata.DomainGlobalId);
 //        DummyTimerManager timerManager = new();
 //        ActorHost host = ActorHost.CreateForTest(
 //            typeof(DomainAggregateActor),
@@ -75,7 +75,7 @@
 //        Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
 //        commandDispatcher.Setup(s => s.DoAsync(
 //            It.IsAny<object>(),
-//            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
+//            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Domain.Id && c.Message.Name == metadata.Message.Name),
 //            It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
 //            It.IsAny<CancellationToken>()))
 //            .ThrowsAsync(new ApplicationErrorException("Dummy Error"))
@@ -206,7 +206,7 @@
 //            command8.AggregateName.ToAggregateActorName(),
 //            new ActorTestOptions
 //            {
-//                ActorId = metadata.AggregateGlobalId.ToActorId(),
+//                ActorId = metadata.DomainGlobalId.ToActorId(),
 //                TimerManager = timerManager,
 //            });
 //        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
@@ -219,21 +219,21 @@
 //        Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
 //        commandDispatcher.Setup(s => s.DoAsync(
 //            It.Is<object>(c => ((DummyAggregateCommand1)c).Name == command8.Name),
-//            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
+//            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Domain.Id && c.Message.Name == metadata.Message.Name),
 //            It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
 //            It.IsAny<CancellationToken>()))
 //            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command8.Id, command8.Name)], [], false))
 //            .Verifiable(Times.Once);
 //        commandDispatcher.Setup(s => s.DoAsync(
 //            It.Is<object>(c => ((DummyAggregateCommand1)c).Name == command9.Name),
-//            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
+//            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Domain.Id && c.Message.Name == metadata.Message.Name),
 //            It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
 //            It.IsAny<CancellationToken>()))
 //            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command9.Id, command9.Name)], [], false))
 //            .Verifiable(Times.Once);
 //        commandDispatcher.Setup(s => s.DoAsync(
 //            It.Is<object>(c => ((DummyAggregateCommand1)c).Name == command10.Name),
-//            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
+//            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Domain.Id && c.Message.Name == metadata.Message.Name),
 //            It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
 //            It.IsAny<CancellationToken>()))
 //            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command10.Id, command10.Name)], [], false))
@@ -608,7 +608,7 @@
 //            RetryOnFailurePeriod = null,
 //        };
 //        Metadata metadata = CreateMetadata(command);
-//        ActorId actorId = metadata.AggregateGlobalId.ToActorId();
+//        ActorId actorId = metadata.DomainGlobalId.ToActorId();
 //        DummyTimerManager timerManager = new();
 //        ActorHost host = ActorHost.CreateForTest(
 //            typeof(DomainAggregateActor),
@@ -629,7 +629,7 @@
 //        Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
 //        commandDispatcher.Setup(s => s.DoAsync(
 //            It.IsAny<object>(),
-//            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
+//            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Domain.Id && c.Message.Name == metadata.Message.Name),
 //            It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
 //            It.IsAny<CancellationToken>()))
 //            .ReturnsAsync(new ExecuteCommandResult(null, [ev], [], false))

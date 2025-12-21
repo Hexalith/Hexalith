@@ -8,6 +8,7 @@ namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 using Dapr.Actors;
 
 using Hexalith.Application.States;
+using Hexalith.Applications.States;
 
 /// <summary>
 /// Interface IAggregateActor
@@ -63,13 +64,6 @@ public interface IDomainAggregateActor : IActor
     /// </summary>
     /// <param name="envelope">The envelope.</param>
     /// <returns>Task.</returns>
-    Task SubmitCommandAsync(ActorMessageEnvelope envelope);
-
-    /// <summary>
-    /// Submits the command asynchronous.
-    /// </summary>
-    /// <param name="envelope">The envelope.</param>
-    /// <returns>Task.</returns>
     Task SubmitCommandAsJsonAsync(string envelope);
 
     /// <summary>
@@ -78,4 +72,11 @@ public interface IDomainAggregateActor : IActor
     /// <param name="envelope">The envelope.</param>
     /// <returns>Task.</returns>
     Task SubmitCommandAsStateAsync(MessageState envelope);
+
+    /// <summary>
+    /// Submits the command asynchronous.
+    /// </summary>
+    /// <param name="envelope">The envelope.</param>
+    /// <returns>Task.</returns>
+    Task SubmitCommandAsync(ActorMessageEnvelope envelope);
 }

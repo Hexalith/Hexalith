@@ -14,17 +14,16 @@ using System.Threading.Tasks;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Aggregates;
-using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
+using Hexalith.Applications.Commands;
+using Hexalith.Applications.States;
+using Hexalith.Commons.Errors;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Domain.Events;
 using Hexalith.Domains;
 using Hexalith.Domains.Results;
-using Hexalith.Extensions.Errors;
-using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.States;
 using Hexalith.PolymorphicSerializations;
@@ -236,14 +235,14 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
         object command = envelope.MessageObject;
         Metadata metadata = envelope.Metadata;
-        if (DaprActorHelper.ToAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
+        if (DaprActorHelper.ToAggregateActorName(metadata.Message.Domain.Name) != Host.ActorTypeInfo.ActorTypeName)
         {
-            throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate name : {metadata.Message.Aggregate.Name}.");
+            throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate name : {metadata.Message.Domain.Name}.");
         }
 
-        if (metadata.AggregateGlobalId != Id.ToUnescapeString())
+        if (metadata.DomainGlobalId != Id.ToUnescapeString())
         {
-            throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid partition key : {metadata.AggregateGlobalId}.");
+            throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid partition key : {metadata.DomainGlobalId}.");
         }
 
         List<MessageState> commandStates = [new MessageState((Polymorphic)command, metadata)];
@@ -251,7 +250,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             Logger,
             metadata.Message.Name,
             metadata.Message.Id,
-            metadata.AggregateGlobalId);
+            metadata.DomainGlobalId);
 
         AggregateActorState state = await GetAggregateStateAsync(cancellationToken)
             .ConfigureAwait(false);
@@ -298,7 +297,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     {
         if (_state is null)
         {
-            ConditionalValue<AggregateActorState> result = await StateManager
+            Dapr.Actors.Runtime.ConditionalValue<AggregateActorState> result = await StateManager
                 .TryGetStateAsync<AggregateActorState>(ActorConstants.AggregateStateStoreName, cancellationToken)
                 .ConfigureAwait(false);
             _state = result.HasValue ? result.Value : new AggregateActorState();
@@ -333,7 +332,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         }
 
         SnapshotEvent e = SnapshotEvent.Create(aggregate);
-        MessageMetadata messageMetadata = MessageMetadata.Create(e, _dateTimeService.GetUtcNow());
+        MessageMetadata messageMetadata = e.CreateMessageMetadata(_dateTimeService.GetUtcNow());
         return new MessageState(
             e,
             new Metadata(
@@ -343,6 +342,8 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                     "system",
                     metadata.Context.PartitionId,
                     messageMetadata.CreatedDate,
+                    null,
+                    null,
                     null,
                     null,
                     [])));
@@ -391,7 +392,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                 metadata.Message.Name,
                 commandSequence,
                 correlationId,
-                metadata.AggregateGlobalId,
+                metadata.DomainGlobalId,
                 (taskProcessor.Failure?.Count ?? 0) + 1,
                 state.RetryOnFailurePeriod.Value,
                 state.RetryOnFailureDateTime.Value);
@@ -401,7 +402,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             Logger,
             commandSequence,
             metadata.Message.Name,
-            metadata.AggregateGlobalId,
+            metadata.DomainGlobalId,
             correlationId,
             ex.Error?.GetDetailMessage(CultureInfo.InvariantCulture) ?? $"Unknown application error on {command.GetType().Name}.",
             ex.Error?.GetTechnicalMessage(CultureInfo.InvariantCulture));
@@ -440,23 +441,23 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         Polymorphic command = commandState.MessageObject ?? throw new InvalidOperationException("The specified command state is missing associated message.");
         Metadata metadata = commandState.Metadata ?? throw new InvalidOperationException("The specified command state is missing associated metadata.");
 
-        if (metadata.AggregateGlobalId != Id.ToUnescapeString())
+        if (metadata.DomainGlobalId != Id.ToUnescapeString())
         {
-            throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate key '{metadata.AggregateGlobalId}' is invalid: Expected : {Id.ToUnescapeString()}.");
+            throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate key '{metadata.DomainGlobalId}' is invalid: Expected : {Id.ToUnescapeString()}.");
         }
 
-        if (string.IsNullOrWhiteSpace(metadata.Message.Aggregate.Id) || string.IsNullOrWhiteSpace(metadata.Message.Aggregate.Name))
+        if (string.IsNullOrWhiteSpace(metadata.Message.Domain.Id) || string.IsNullOrWhiteSpace(metadata.Message.Domain.Name))
         {
-            throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate Name='{metadata.Message.Aggregate.Name}' Id='{metadata.Message.Aggregate.Id}' is invalid.");
+            throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate Name='{metadata.Message.Domain.Name}' Id='{metadata.Message.Domain.Id}' is invalid.");
         }
 
-        if (DaprActorHelper.ToAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
+        if (DaprActorHelper.ToAggregateActorName(metadata.Message.Domain.Name) != Host.ActorTypeInfo.ActorTypeName)
         {
-            throw new InvalidOperationException($"Command {metadata.Message.Name} for '{metadata.AggregateGlobalId}' has an invalid aggregate actor name '{DaprActorHelper.ToAggregateActorName(metadata.Message.Aggregate.Name)}'. Expected : {Host.ActorTypeInfo.ActorTypeName}.");
+            throw new InvalidOperationException($"Command {metadata.Message.Name} for '{metadata.DomainGlobalId}' has an invalid aggregate actor name '{DaprActorHelper.ToAggregateActorName(metadata.Message.Domain.Name)}'. Expected : {Host.ActorTypeInfo.ActorTypeName}.");
         }
 
         IDomainAggregate? aggregate = await GetAggregateAsync(
-                metadata.Message.Aggregate.Name,
+                metadata.Message.Domain.Name,
                 CancellationToken.None)
             .ConfigureAwait(false);
 
@@ -496,7 +497,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                 .SourceEvents
                 .Select(p => new MessageState(
                     (Polymorphic)p,
-                    Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))];
+                    p.CreateMetadata(metadata, _dateTimeService.GetUtcNow())))];
 
             // Persist events and messages
             state.EventSourceCount = await EventSourceStore
@@ -510,7 +511,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                 Logger,
                 metadata.Message.Name,
                 metadata.Message.Id,
-                metadata.AggregateGlobalId);
+                metadata.DomainGlobalId);
         }
         catch (ApplicationErrorException ex)
         {
@@ -532,7 +533,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                 e,
                 commandNumber,
                 metadata.Message.Name,
-                metadata.AggregateGlobalId,
+                metadata.DomainGlobalId,
                 metadata.Context.CorrelationId);
 
             throw;
@@ -544,7 +545,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             // Get integration messages to persist in the message store
             MessageState[] messagesToSend = [.. commandResult.SourceEvents
                 .Union(commandResult.IntegrationEvents)
-                .Select(p => new MessageState((Polymorphic)p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))];
+                .Select(p => new MessageState((Polymorphic)p, p.CreateMetadata(metadata, _dateTimeService.GetUtcNow())))];
 
             if (messagesToSend.Length > 0)
             {

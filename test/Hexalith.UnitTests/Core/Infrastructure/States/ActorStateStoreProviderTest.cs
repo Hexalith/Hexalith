@@ -10,6 +10,7 @@ using Dapr.Actors.Runtime;
 using FluentAssertions;
 
 using Hexalith.Application.Commands;
+using Hexalith.Applications.Commands;
 using Hexalith.Infrastructure.DaprRuntime.States;
 
 using Hexalith.UnitTests.Core.Application.Commands;
@@ -30,7 +31,7 @@ public class ActorStateStoreProviderTest
                 command));
         Mock<IDomainCommandDispatcher> dispatcher = new();
         ActorStateStoreProvider storeProvider = new(actorStateManager.Object);
-        Hexalith.Extensions.Common.ConditionalValue<object> result = await storeProvider.TryGetStateAsync<object>("State", CancellationToken.None);
+        Hexalith.Commons.Errors.ConditionalValue<object> result = await storeProvider.TryGetStateAsync<object>("State", CancellationToken.None);
         _ = result.HasValue.Should().BeTrue();
         _ = result.Value.Should().BeEquivalentTo(command);
     }

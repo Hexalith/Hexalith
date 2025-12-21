@@ -12,7 +12,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 
 using Microsoft.Extensions.Logging;
 
@@ -55,7 +55,7 @@ public partial class DependencyInjectionEventDispatcher : IIntegrationEventDispa
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
         ArgumentNullException.ThrowIfNull(metadata);
-        LogDispatchingEvent(metadata.Message.Name, metadata.AggregateGlobalId);
+        LogDispatchingEvent(metadata.Message.Name, metadata.DomainGlobalId);
         return await Task.WhenAll(
             GetHandlers(baseEvent)
                 .Select(p => p.ApplyAsync(baseEvent, metadata, cancellationToken))).ConfigureAwait(false);

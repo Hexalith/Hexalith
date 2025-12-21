@@ -8,7 +8,7 @@ namespace Hexalith.Application.Requests;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 
 /// <summary>
 /// Represents an in-memory implementation of the request bus.

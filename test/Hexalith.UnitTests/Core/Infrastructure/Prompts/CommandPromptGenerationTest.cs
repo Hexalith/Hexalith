@@ -7,6 +7,7 @@ namespace Hexalith.UnitTests.Core.Infrastructure.Prompts;
 
 using FluentAssertions;
 
+using Hexalith.Commons.UniqueIds;
 using Hexalith.Extensions.Helpers;
 
 public class CommandPromptGenerationTest

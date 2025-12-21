@@ -5,7 +5,7 @@
 
 namespace Hexalith.Application.Projections;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 
 /// <summary>
 /// Interface IProjectionUpdateProcessor.

@@ -10,9 +10,9 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
-using Hexalith.Extensions.Helpers;
+using Hexalith.Applications.States;
+using Hexalith.Commons.Metadatas;
+using Hexalith.Commons.Strings;
 using Hexalith.PolymorphicSerializations;
 using Hexalith.UnitTests.Core.Domain.Messages;
 
@@ -27,13 +27,15 @@ public class MessageStateTest
     {
         MyDummyMessage message = new("ID21", "My 21 dummies", 21);
         Metadata meta = new(
-            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
+            message.CreateMessageMetadata(DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
                 "PART1",
                 DateTimeOffset.UtcNow,
+                TimeSpan.FromMinutes(30),
                 25686L,
+                "Eth-4566",
                 "SESS-4566",
                 ["scope1", "scope9"]));
         MessageState state = new(message, meta);
@@ -49,13 +51,15 @@ public class MessageStateTest
     {
         MyDummyMessage3 message = new("ID22", "My 22 dummies", 22);
         Metadata meta = new(
-            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
+            message.CreateMessageMetadata(DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
                 "PART1",
                 DateTimeOffset.UtcNow,
+                TimeSpan.FromMinutes(30),
                 25686L,
+                "Eth-4566",
                 "SESS-4566",
                 ["scope1", "scope9"]));
         MessageState state = new(message, meta);
@@ -73,13 +77,15 @@ public class MessageStateTest
     {
         MyDummyMessage2 message = new("ID22", "My 22 dummies", 22);
         Metadata meta = new(
-            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
+            message.CreateMessageMetadata(DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
                 "PART1",
                 DateTimeOffset.UtcNow,
+                TimeSpan.FromMinutes(30),
                 25686L,
+                "Eth-4566",
                 "SESS-4566",
                 ["scope1", "scope9"]));
         MessageState state = new(message, meta);
@@ -98,13 +104,15 @@ public class MessageStateTest
     {
         MyDummyMessage3 message = new("ID21", "My 21 dummies", 21);
         Metadata meta = new(
-            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
+            message.CreateMessageMetadata(DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
                 "PART1",
                 DateTimeOffset.UtcNow,
+                TimeSpan.FromMinutes(30),
                 25686L,
+                "Eth-4566",
                 "SESS-4566",
                 ["scope1", "scope9"]));
         MessageState state = new(message, meta);
@@ -120,13 +128,15 @@ public class MessageStateTest
     {
         MyDummyMessage2 message = new("ID21", "My 21 dummies", 21);
         Metadata meta = new(
-            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
+            message.CreateMessageMetadata(DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
                 "PART1",
                 DateTimeOffset.UtcNow,
+                TimeSpan.FromMinutes(30),
                 25686L,
+                "Eth-4566",
                 "SESS-4566",
                 ["scope1", "scope9"]));
         MessageState state = new(message, meta);

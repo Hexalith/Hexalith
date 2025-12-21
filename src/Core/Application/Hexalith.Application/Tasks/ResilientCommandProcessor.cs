@@ -9,12 +9,11 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
-using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
+using Hexalith.Applications.Commands;
+using Hexalith.Commons.Errors;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Domains;
-using Hexalith.Extensions.Common;
-using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;
 
@@ -162,8 +161,8 @@ public partial class ResilientCommandProcessor
             catch (Exception e)
             {
                 taskProcessor = taskProcessor
-                    .Fail($"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}: {e.Message}", e.FullMessage());
-                LogCommandExecutionError(_logger, e, metadata.Message.Name, metadata.AggregateGlobalId, metadata.Context.CorrelationId, e.FullMessage());
+                    .Fail($"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Domain.Name}/{metadata.Message.Domain.Id}: {e.Message}", e.FullMessage());
+                LogCommandExecutionError(_logger, e, metadata.Message.Name, metadata.DomainGlobalId, metadata.Context.CorrelationId, e.FullMessage());
             }
         }
 

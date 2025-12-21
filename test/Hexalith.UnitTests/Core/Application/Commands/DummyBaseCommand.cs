@@ -7,7 +7,8 @@ namespace Hexalith.UnitTests.Core.Application.Commands;
 
 using System.Runtime.Serialization;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
+using Hexalith.Commons.UniqueIds;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerializations;
 
@@ -27,14 +28,16 @@ public partial record DummyBaseCommand(
                 UniqueIdHelper.GenerateUniqueStringId(),
                 nameof(DummyBaseCommand),
                 3,
-                new AggregateMetadata(AggregateName, AggregateId),
+                new DomainMetadata(AggregateName, AggregateId),
                 DateTimeOffset.UtcNow),
             new ContextMetadata(
                 UniqueIdHelper.GenerateUniqueStringId(),
                 "Test user",
                 "PART1",
                 DateTimeOffset.UtcNow.AddMinutes(-1),
+                TimeSpan.FromSeconds(111),
                 100,
+                "ET15",
                 "SESS222",
                 ["TestScope"]));
     }

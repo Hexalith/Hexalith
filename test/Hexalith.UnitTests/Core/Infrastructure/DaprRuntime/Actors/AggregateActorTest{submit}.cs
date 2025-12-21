@@ -13,7 +13,7 @@
 // using Hexalith.Application.Aggregates;
 // using Hexalith.Application.Commands;
 // using Hexalith.Application.Events;
-// using Hexalith.Application.Metadatas;
+// using Hexalith.Commons.Metadatas;
 // using Hexalith.Application.Requests;
 // using Hexalith.Application.States;
 // using Hexalith.Application.Tasks;
@@ -52,7 +52,7 @@
 //            command.AggregateName.ToAggregateActorName(),
 //            new ActorTestOptions
 //            {
-//                ActorId = metadata.AggregateGlobalId.ToActorId(),
+//                ActorId = metadata.DomainGlobalId.ToActorId(),
 //                TimerManager = timerManager,
 //            });
 //        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
@@ -225,7 +225,7 @@
 //            command.AggregateName.ToAggregateActorName(),
 //            new ActorTestOptions
 //            {
-//                ActorId = metadata.AggregateGlobalId.ToActorId(),
+//                ActorId = metadata.DomainGlobalId.ToActorId(),
 //                TimerManager = timerManager,
 //            });
 //        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
@@ -300,7 +300,7 @@
 //    /// Creates the metadata.
 //    /// </summary>
 //    /// <param name="message">The message.</param>
-//    /// <returns>Hexalith.Application.Metadatas.Metadata.</returns>
+//    /// <returns>Hexalith.Commons.Metadatas.Metadata.</returns>
 //    private static Metadata CreateMetadata(object message)
 //        => new(
 //            MessageMetadata.Create(message, DateTimeOffset.Now),

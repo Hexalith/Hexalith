@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.States;
+using Hexalith.Commons.Errors;
 using Hexalith.Extensions.Common;
 using Hexalith.PolymorphicSerializations;
 

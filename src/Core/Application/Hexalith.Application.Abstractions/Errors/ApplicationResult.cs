@@ -9,6 +9,7 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Commons.Errors;
 using Hexalith.Extensions.Common;
 
 /// <summary>

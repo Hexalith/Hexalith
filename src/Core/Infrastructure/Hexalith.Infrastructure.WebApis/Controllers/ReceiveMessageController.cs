@@ -10,6 +10,10 @@ using System.Globalization;
 using System.Net;
 
 using Hexalith.Application.States;
+using Hexalith.Applications.States;
+using Hexalith.Commons.Errors;
+using Hexalith.Commons.Helpers;
+using Hexalith.Commons.Strings;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
@@ -78,15 +82,15 @@ public abstract partial class ReceiveMessageController : ControllerBase
             ? BadRequest($"Invalid data : Message received is empty. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
             : messageState.MessageObject == null
             ? BadRequest($"Invalid data : Message received is invalid. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId} : {messageState.Message}")
-            : messageState.Metadata.Message.Aggregate.Name != aggregateType
-            ? BadRequest($"Invalid data : The message aggregate is {messageState.Metadata.Message.Aggregate.Name}, but {aggregateType} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
+            : messageState.Metadata.Message.Domain.Name != aggregateType
+            ? BadRequest($"Invalid data : The message aggregate is {messageState.Metadata.Message.Domain.Name}, but {aggregateType} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
             : messageState is not TMessageType
             ? BadRequest($"Invalid data : The message state received type is {messageState.GetType().Name}, but {typeof(TMessageType).Name} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
             : null;
         MessageReceivedInformation(
             Logger,
             messageState?.Metadata?.Message.Name ?? "Unknown",
-            messageState?.Metadata?.AggregateGlobalId,
+            messageState?.Metadata?.DomainGlobalId,
             messageState?.Metadata?.Message.Id,
             messageState?.IdempotencyId);
         return badRequest;

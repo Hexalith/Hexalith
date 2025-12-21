@@ -9,7 +9,7 @@ using Dapr.Actors;
 using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 /// <summary>
@@ -116,10 +116,10 @@ public static class DaprActorHelper
     public static IDomainAggregateActor ToDomainAggregateActor(this IActorProxyFactory actorProxy, Metadata metadata, TimeSpan? timeout = null)
     {
         ArgumentNullException.ThrowIfNull(metadata);
-        ArgumentException.ThrowIfNullOrWhiteSpace(metadata.AggregateGlobalId);
-        ArgumentException.ThrowIfNullOrWhiteSpace(metadata.Message.Aggregate.Name);
+        ArgumentException.ThrowIfNullOrWhiteSpace(metadata.DomainGlobalId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(metadata.Message.Domain.Name);
 
-        return actorProxy.ToDomainAggregateActor(metadata.Message.Aggregate.Name, metadata.AggregateGlobalId, timeout);
+        return actorProxy.ToDomainAggregateActor(metadata.Message.Domain.Name, metadata.DomainGlobalId, timeout);
     }
 
     /// <summary>

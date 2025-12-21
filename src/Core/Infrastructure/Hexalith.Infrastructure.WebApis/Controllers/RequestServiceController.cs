@@ -11,6 +11,7 @@ using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.Services;
 using Hexalith.Application.States;
+using Hexalith.Applications.States;
 using Hexalith.PolymorphicSerializations;
 
 using Microsoft.AspNetCore.Authorization;
@@ -120,7 +121,7 @@ public partial class RequestServiceController : ControllerBase
             request.Metadata.Message.Id,
             request.Metadata.Context.CorrelationId,
             request.Metadata.Message.Name,
-            request.Metadata.AggregateGlobalId);
+            request.Metadata.DomainGlobalId);
 
         return Ok(new MessageState(result, request.Metadata));
     }

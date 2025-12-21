@@ -12,6 +12,7 @@ using Hexalith.Application.Partitions.Models;
 using Hexalith.Application.Partitions.Services;
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
+using Hexalith.Commons.UniqueIds;
 using Hexalith.Extensions.Helpers;
 
 using Microsoft.AspNetCore.Http;
@@ -88,7 +89,7 @@ public class ApiServerSessionService : ISessionService
 
         if (string.IsNullOrWhiteSpace(_partitionId))
         {
-            _partitionId = await _userPartitionService.GetDefaultPartitionAsync(userName, cancellationToken);
+            _partitionId = await _userPartitionService.GetDefaultPartitionAsync(userName, cancellationToken).ConfigureAwait(false);
         }
 
         if (string.IsNullOrWhiteSpace(_partitionId))

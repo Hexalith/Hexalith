@@ -5,6 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Application.Metadatas;
 
+using Hexalith.Commons.Strings;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerializations;
 

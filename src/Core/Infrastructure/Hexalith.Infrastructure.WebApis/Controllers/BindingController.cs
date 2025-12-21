@@ -8,8 +8,8 @@ namespace Hexalith.Infrastructure.WebApis.Controllers;
 using System.Text.Json;
 
 using Hexalith.Application.Events;
-using Hexalith.Application.Metadatas;
-using Hexalith.Extensions.Errors;
+using Hexalith.Commons.Errors;
+using Hexalith.Commons.Metadatas;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
@@ -70,7 +70,7 @@ public abstract class BindingController : ReceiveMessageController
             MessageReceivedInformation(
                 Logger,
                 metadata.Message.Name,
-                metadata.AggregateGlobalId,
+                metadata.DomainGlobalId,
                 metadata.Message.Id,
                 metadata.Context.CorrelationId);
             await _eventProcessor.SubmitAsync(@event, metadata, cancellationToken).ConfigureAwait(false);

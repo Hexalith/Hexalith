@@ -11,6 +11,7 @@ using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.Tasks;
+using Hexalith.Applications.Commands;
 
 using Microsoft.Extensions.Logging;
 

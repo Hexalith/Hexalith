@@ -7,7 +7,8 @@ namespace Hexalith.UnitTests.Core.Application.Metadatas;
 
 using System.Runtime.Serialization;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
+using Hexalith.Commons.UniqueIds;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]
@@ -16,13 +17,15 @@ public record DummyMetadata(MessageMetadata Message, ContextMetadata Context)
 {
     public DummyMetadata(object message)
         : this(
-            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
+            message.CreateMessageMetadata(DateTimeOffset.UtcNow),
             new ContextMetadata(
                 UniqueIdHelper.GenerateUniqueStringId(),
                 "Test User",
                 "PART1",
                 DateTimeOffset.UtcNow,
+                TimeSpan.FromSeconds(120),
                 102,
+                "ETAG789",
                 "GFD4565",
                 []))
     {

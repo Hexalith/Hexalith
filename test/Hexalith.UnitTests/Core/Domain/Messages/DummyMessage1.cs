@@ -5,6 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Domain.Messages;
 
+using Hexalith.Commons.Strings;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerializations;
 

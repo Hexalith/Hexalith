@@ -11,6 +11,8 @@ using System.Diagnostics;
 using System.Reflection;
 
 using Hexalith.Application.Modules.Modules;
+using Hexalith.Commons.Errors;
+using Hexalith.Commons.Reflections;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Reflections;
 

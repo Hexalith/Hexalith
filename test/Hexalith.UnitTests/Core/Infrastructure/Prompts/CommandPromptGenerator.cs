@@ -9,7 +9,7 @@ using System.Collections.Concurrent;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Application.Prompts;
 using Hexalith.Extensions.Helpers;
 
@@ -38,7 +38,7 @@ public class CommandPromptGenerator : ICommandPromptGenerator
         }
 
         TCommand command = ExampleHelper.CreateExample<TCommand>();
-        MessageMetadata metadata = MessageMetadata.Create(command, DateTimeOffset.UtcNow);
+        MessageMetadata metadata = command.CreateMessageMetadata(DateTimeOffset.UtcNow);
         return await Task.FromResult($$"""
         You are {{assistantName}} an AI assistant. Your email is {{assistantEmail}}.
         You can help {{userName}} generate a command in the JSON format.

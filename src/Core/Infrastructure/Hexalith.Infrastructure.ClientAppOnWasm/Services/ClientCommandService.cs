@@ -12,13 +12,15 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerializations;
+using Hexalith.Applications.Commands;
+using Hexalith.Commons.UniqueIds;
+using Hexalith.Applications.States;
 
 /// <summary>
 /// Represents a service for sending commands asynchronously.
@@ -67,13 +69,15 @@ public class ClientCommandService : ICommandService
             messageId,
             string.Empty,
             1,
-            AggregateMetadata.Create(command),
+            command.CreateDomainMetadata(),
             _timeProvider.GetLocalNow()),
             new ContextMetadata(
                 messageId,
                 userName,
                 session.PartitionId,
                 _timeProvider.GetLocalNow(),
+                null,
+                null,
                 null,
                 session.SessionId,
                 []));

@@ -12,7 +12,7 @@ using Dapr.Client;
 
 using Hexalith.Application;
 using Hexalith.Application.Buses;
-using Hexalith.Application.Commands;
+using Hexalith.Applications.Commands;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

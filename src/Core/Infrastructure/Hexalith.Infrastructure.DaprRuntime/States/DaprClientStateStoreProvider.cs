@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Dapr.Client;
 
 using Hexalith.Application.States;
+using Hexalith.Commons.Errors;
 using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.DependencyInjection;

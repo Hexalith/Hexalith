@@ -10,6 +10,7 @@ using System.Text.Json;
 using FluentAssertions;
 
 using Hexalith.Application.States;
+using Hexalith.Applications.States;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 public class CommandStateTest

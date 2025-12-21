@@ -7,7 +7,7 @@ namespace Hexalith.Application.Requests;
 
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 
 /// <summary>
 /// Defines a processor for handling requests.

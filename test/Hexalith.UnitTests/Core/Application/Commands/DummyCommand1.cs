@@ -7,7 +7,8 @@ namespace Hexalith.UnitTests.Core.Application.Commands;
 
 using System.Runtime.Serialization;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
+using Hexalith.Commons.Strings;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerializations;
 
@@ -26,13 +27,15 @@ public partial record DummyCommand1(
     public new Metadata CreateMetadata()
     {
         return new Metadata(
-            MessageMetadata.Create(this, DateTimeOffset.UtcNow),
+            this.CreateMessageMetadata(DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR424202",
                 "TestUser1",
                 "PART22",
                 DateTimeOffset.UtcNow,
+                TimeSpan.FromSeconds(200),
                 10,
+                "ET589",
                 "SES2132",
                 _scopes));
     }

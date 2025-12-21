@@ -8,9 +8,9 @@ namespace Hexalith.Application.Requests;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Services;
+using Hexalith.Commons.Metadatas;
 
 /// <summary>
 /// Handles projection updates for a collection of IDs.
@@ -29,8 +29,8 @@ public class IdsCollectionProjectionHandler<TEvent>(IIdCollectionFactory factory
         ArgumentNullException.ThrowIfNull(baseEvent);
         ArgumentNullException.ThrowIfNull(metadata);
         IIdCollectionService service = factory.CreateService(
-            IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Aggregate.Name),
+            IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Domain.Name),
             metadata.Context.PartitionId);
-        await service.AddAsync(metadata.AggregateGlobalId, cancellationToken).ConfigureAwait(false);
+        await service.AddAsync(metadata.DomainGlobalId, cancellationToken).ConfigureAwait(false);
     }
 }

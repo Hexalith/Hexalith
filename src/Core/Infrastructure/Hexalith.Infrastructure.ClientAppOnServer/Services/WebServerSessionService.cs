@@ -12,6 +12,7 @@ using Hexalith.Application.Partitions.Models;
 using Hexalith.Application.Partitions.Services;
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
+using Hexalith.Commons.UniqueIds;
 using Hexalith.Extensions.Helpers;
 
 using Microsoft.AspNetCore.Http;

@@ -9,10 +9,11 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Applications.Commands;
+using Hexalith.Commons.Errors;
+using Hexalith.Commons.Helpers;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Domains;
-using Hexalith.Extensions.Errors;
-using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;
 
@@ -63,14 +64,14 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
         ArgumentNullException.ThrowIfNull(metadata);
         try
         {
-            LogDispatchingCommandDebugInformation(metadata.Message.Name, metadata.AggregateGlobalId);
+            LogDispatchingCommandDebugInformation(metadata.Message.Name, metadata.DomainGlobalId);
             return await GetHandler(command)
                 .DoAsync(command, metadata, aggregate, cancellationToken)
                 .ConfigureAwait(false);
         }
         catch (ApplicationErrorException ex)
         {
-            LogDispatchingCommandErrorInformation(metadata.Message.Name, metadata.AggregateGlobalId);
+            LogDispatchingCommandErrorInformation(metadata.Message.Name, metadata.DomainGlobalId);
             ex.Error?.LogApplicationErrorDetails(_logger, ex);
             throw;
         }
@@ -80,7 +81,7 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
             LogDispatchingCommandErrorInformation(
                 ex,
                 metadata.Message.Name,
-                metadata.AggregateGlobalId,
+                metadata.DomainGlobalId,
                 message);
             throw;
         }
@@ -138,7 +139,7 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
         ArgumentNullException.ThrowIfNull(aggregate);
-        LogDispatchingCommandUndoDebugInformation(metadata.Message.Name, metadata.AggregateGlobalId);
+        LogDispatchingCommandUndoDebugInformation(metadata.Message.Name, metadata.DomainGlobalId);
         return await GetHandler(command).UndoAsync(command, metadata, aggregate, cancellationToken).ConfigureAwait(false);
     }
 

@@ -8,7 +8,8 @@ namespace Hexalith.Application.Commands;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Applications.Commands;
+using Hexalith.Commons.Metadatas;
 
 /// <summary>
 /// Memory Command Bus.

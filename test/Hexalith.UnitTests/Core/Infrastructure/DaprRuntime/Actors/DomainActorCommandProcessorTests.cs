@@ -7,7 +7,7 @@ namespace Hexalith.UnitTests.Core.Infrastructure.DaprRuntime.Actors;
 using Dapr.Actors;
 using Dapr.Actors.Client;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
@@ -36,18 +36,18 @@ public class DomainActorCommandProcessorTests
         // Arrange
         object command = new DummyAggregateCommand1("1 23", "test 123");
         Metadata metadata = new(
-            MessageMetadata.Create(
-                command,
-                DateTimeOffset.Now),
+                command.CreateMessageMetadata(DateTimeOffset.Now),
             new ContextMetadata(
                 "123COR",
                 "123USR",
                 "PART1",
                 DateTimeOffset.UtcNow,
+                TimeSpan.FromSeconds(102),
                 123,
+                "ETH-TEST",
                 "123",
                 _scopes));
-        string normalizedActorId = metadata.AggregateGlobalId.ToActorId().ToString();
+        string normalizedActorId = metadata.DomainGlobalId.ToActorId().ToString();
         Mock<IDomainAggregateActor> actorMock = new(MockBehavior.Strict);
         _ = _actorProxyFactoryMock
             .Setup(
@@ -80,12 +80,14 @@ public class DomainActorCommandProcessorTests
                 string.Empty,
                 string.Empty,
                 0,
-                new AggregateMetadata(string.Empty, string.Empty),
+                new DomainMetadata(string.Empty, string.Empty),
                 DateTimeOffset.MinValue),
             new ContextMetadata(
                 string.Empty,
                 string.Empty,
                 string.Empty,
+                null,
+                null,
                 null,
                 null,
                 null,

@@ -14,7 +14,6 @@ using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
-using Hexalith.Application.Abstractions.Extensions;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
@@ -27,6 +26,8 @@ using Hexalith.Application.Requests;
 using Hexalith.Application.Services;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.Tasks;
+using Hexalith.Applications.Commands;
+using Hexalith.Applications.Commands.Abstractions.Extensions;
 using Hexalith.Domain.Events;
 using Hexalith.Domains.Abstractions.Extensions;
 using Hexalith.Domains.ValueObjects;
@@ -72,7 +73,7 @@ public static class ServerSideClientAppHelper
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        HexalithApplicationAbstractionsSerialization.RegisterPolymorphicMappers();
+        HexalithApplicationsCommandsAbstractionsSerialization.RegisterPolymorphicMappers();
         HexalithDomainsAbstractionsSerialization.RegisterPolymorphicMappers();
 
         _ = services

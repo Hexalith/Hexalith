@@ -9,9 +9,9 @@ using System.Text.Json;
 
 using Dapr.Client;
 
-using Hexalith.Application.Envelopes;
-using Hexalith.Application.Metadatas;
-using Hexalith.Extensions.Helpers;
+using Hexalith.Applications.Messages;
+using Hexalith.Commons.Errors;
+using Hexalith.Commons.Metadatas;
 
 using Microsoft.Extensions.Logging;
 
@@ -71,8 +71,8 @@ public partial class DaprApplicationBus(
         ArgumentNullException.ThrowIfNull(metadata);
 
         // Determine the topic name based on the aggregate name
-        string topicName = !string.IsNullOrEmpty(metadata.Message.Aggregate.Name)
-            ? metadata.Message.Aggregate.Name.ToLowerInvariant() + _topicSuffix
+        string topicName = !string.IsNullOrEmpty(metadata.Message.Domain.Name)
+            ? metadata.Message.Domain.Name.ToLowerInvariant() + _topicSuffix
             : throw new InvalidOperationException("Event aggregate name is not defined.");
 
         // Prepare metadata dictionary
@@ -80,12 +80,12 @@ public partial class DaprApplicationBus(
         {
             { "ContentType", "application/json" },
             { "Time", dateTimeService.GetLocalNow().ToString("O") },
-            { "Label", metadata.Message.Name + ' ' + metadata.Message.Aggregate.Id },
+            { "Label", metadata.Message.Name + ' ' + metadata.Message.Domain.Id },
             { "MessageName", metadata.Message.Name },
             { "MessageId", metadata.Message.Id },
             { "CorrelationId", metadata.Context.CorrelationId },
-            { "SessionId",  metadata.AggregateGlobalId },
-            { "PartitionKey", metadata.AggregateGlobalId },
+            { "SessionId",  metadata.DomainGlobalId },
+            { "PartitionKey", metadata.DomainGlobalId },
         };
 
         BusMessage state = BusMessage.Create(message, metadata);
@@ -106,7 +106,7 @@ public partial class DaprApplicationBus(
                 metadata.Message.Name,
                 metadata.Message.Id,
                 metadata.Context.CorrelationId,
-                metadata.AggregateGlobalId,
+                metadata.DomainGlobalId,
                 topicName,
                 _name);
         }

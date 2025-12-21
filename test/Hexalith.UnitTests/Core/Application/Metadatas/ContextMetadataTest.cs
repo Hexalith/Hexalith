@@ -10,7 +10,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 
 /// <summary>
 /// Class ContextMetadataTest.
@@ -25,7 +25,9 @@ public class ContextMetadataTest
             "TestUser",
             "PART-123",
             DateTimeOffset.UtcNow,
+            TimeSpan.FromSeconds(150),
             101,
+            "etag-4587",
             "session-6987",
             []);
 

@@ -9,7 +9,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 
 public class MetadataTest
 {
@@ -41,14 +41,16 @@ public class MetadataTest
                 "123-456-789",
                 "TestMessage",
                 10,
-                new AggregateMetadata("123356", "TestAggregate"),
+                new DomainMetadata("123356", "TestAggregate"),
                 DateTimeOffset.UtcNow.AddSeconds(-1)),
             new ContextMetadata(
                 "COR-123-456-789",
                 "USER123",
                 "PART1",
                 DateTimeOffset.UtcNow,
+                TimeSpan.FromMinutes(30),
                 25686L,
+                "Eth-4566",
                 "SESS-4566",
                 _scopes));
     }

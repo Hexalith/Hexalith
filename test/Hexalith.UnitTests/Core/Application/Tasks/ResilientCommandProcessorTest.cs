@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 using FluentAssertions;
 
-using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
+using Hexalith.Applications.Commands;
+using Hexalith.Commons.Metadatas;
 using Hexalith.UnitTests.Core.Application.Commands;
 using Hexalith.UnitTests.Core.Domain.Events;
 

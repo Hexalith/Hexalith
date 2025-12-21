@@ -11,12 +11,13 @@ using System.Net.Http.Json;
 using System.Security.Claims;
 using System.Text.Json;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.States;
 using Hexalith.PolymorphicSerializations;
 
 using Microsoft.Extensions.Logging;
+using Hexalith.Applications.States;
 
 /// <summary>
 /// Http API service proxy base class.
@@ -145,9 +146,10 @@ public partial class ServiceApiProxy
         ArgumentNullException.ThrowIfNull(user.Identity);
         ArgumentException.ThrowIfNullOrWhiteSpace(user.Identity.Name);
         string userName = user.Identity.Name;
-        string partitionId = await UserPartitionService.GetDefaultPartitionAsync(userName, cancellationToken);
-        Metadata metadata = Metadata.CreateNew(value, userName, partitionId, _timeProvider.GetLocalNow());
-        return await PostAsync<TResult>(route, new MessageState(value, metadata), cancellationToken);
+        string partitionId = await UserPartitionService.GetDefaultPartitionAsync(userName, cancellationToken).ConfigureAwait(false)
+            ?? throw new InvalidOperationException("No partition found for the user.");
+        Metadata metadata = value.CreateMetadata(userName, partitionId, _timeProvider.GetLocalNow());
+        return await PostAsync<TResult>(route, new MessageState(value, metadata), cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>

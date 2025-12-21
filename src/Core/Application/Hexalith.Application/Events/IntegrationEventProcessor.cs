@@ -8,8 +8,8 @@ namespace Hexalith.Application.Events;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
+using Hexalith.Applications.Commands;
+using Hexalith.Commons.Metadatas;
 
 using Microsoft.Extensions.Logging;
 
@@ -82,7 +82,7 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
 
         if (commands.Count <= 0)
         {
-            LogNoCommandGeneratedInformation(metadata.Message.Name, metadata.AggregateGlobalId, metadata.Context.CorrelationId);
+            LogNoCommandGeneratedInformation(metadata.Message.Name, metadata.DomainGlobalId, metadata.Context.CorrelationId);
         }
 
         // Publish each generated command
@@ -90,7 +90,7 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
         {
             await _commandBus.PublishAsync(
                     command,
-                    Metadata.CreateNew(command, metadata, _dateTimeService.GetUtcNow()),
+                    command.CreateMetadata(metadata, _dateTimeService.GetUtcNow()),
                     cancellationToken)
                 .ConfigureAwait(false);
         }

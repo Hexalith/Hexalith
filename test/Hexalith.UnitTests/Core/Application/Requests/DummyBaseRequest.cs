@@ -7,7 +7,8 @@ namespace Hexalith.UnitTests.Core.Application.Requests;
 
 using System.Runtime.Serialization;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
+using Hexalith.Commons.UniqueIds;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerializations;
 
@@ -23,13 +24,15 @@ public abstract partial record DummyBaseRequest(
     public Metadata CreateMetadata()
     {
         return new Metadata(
-                MessageMetadata.Create(this, DateTimeOffset.UtcNow),
+                this.CreateMessageMetadata(DateTimeOffset.UtcNow),
                 new ContextMetadata(
                     UniqueIdHelper.GenerateUniqueStringId(),
                     "Test user",
                     "PART1",
                     DateTimeOffset.UtcNow.AddMinutes(-1),
+                    TimeSpan.FromSeconds(111),
                     1,
+                    "ET15",
                     "Test session",
                     ["TestScope"]));
     }

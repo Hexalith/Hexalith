@@ -9,6 +9,7 @@
     <PackageReference Include="CompareNETObjects"  />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions "  />
     <PackageReference Include="Humanizer" />
+    <PackageReference Include="Hexalith.Commons" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions"  />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions"  />
     <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations"  />

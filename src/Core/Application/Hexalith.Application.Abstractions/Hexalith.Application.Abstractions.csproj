@@ -10,7 +10,6 @@
     <PackageReference Include="Hexalith.PolymorphicSerializations" />
     <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="true" />
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />

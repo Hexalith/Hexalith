@@ -10,7 +10,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.PolymorphicSerializations;
 
 /// <summary>

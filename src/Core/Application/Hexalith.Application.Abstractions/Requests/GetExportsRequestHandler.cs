@@ -11,7 +11,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Application.Services;
 using Hexalith.Domain.Events;
 using Hexalith.Domains;
@@ -56,7 +56,7 @@ public class GetExportsRequestHandler<TRequest, TAggregate> : RequestHandlerBase
         ArgumentNullException.ThrowIfNull(metadata);
 
         IIdCollectionService service = _collectionFactory.CreateService(
-            IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Aggregate.Name),
+            IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Domain.Name),
             metadata.Context.PartitionId);
 
         IEnumerable<string> ids = await service
@@ -67,7 +67,7 @@ public class GetExportsRequestHandler<TRequest, TAggregate> : RequestHandlerBase
 
         foreach (string id in ids)
         {
-            summaryTasks.Add(_aggregateService.GetSnapshotAsync(metadata.Message.Aggregate.Name, id, cancellationToken));
+            summaryTasks.Add(_aggregateService.GetSnapshotAsync(metadata.Message.Domain.Name, id, cancellationToken));
         }
 
         SnapshotEvent?[] results = await Task.WhenAll(summaryTasks).ConfigureAwait(false);

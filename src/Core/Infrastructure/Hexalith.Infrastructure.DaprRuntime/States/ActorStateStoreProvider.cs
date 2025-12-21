@@ -61,9 +61,9 @@ public class ActorStateStoreProvider : IStateStoreProvider
     public async Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken) => await _actorStateManager.SetStateAsync(key, value, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
-    public async Task<Extensions.Common.ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
+    public async Task<Hexalith.Commons.Errors.ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
     {
-        ConditionalValue<T> result = await _actorStateManager.TryGetStateAsync<T>(key, cancellationToken).ConfigureAwait(false);
-        return result.HasValue ? new Extensions.Common.ConditionalValue<T>(result.Value) : new Extensions.Common.ConditionalValue<T>();
+        ConditionalValue<T> v = await _actorStateManager.TryGetStateAsync<T>(key, cancellationToken).ConfigureAwait(false);
+        return v.HasValue ? new Hexalith.Commons.Errors.ConditionalValue<T>(v.Value) : new Commons.Errors.ConditionalValue<T>();
     }
 }

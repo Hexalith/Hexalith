@@ -13,7 +13,7 @@
 // using Hexalith.Application.Aggregates;
 // using Hexalith.Application.Commands;
 // using Hexalith.Application.Events;
-// using Hexalith.Application.Metadatas;
+// using Hexalith.Commons.Metadatas;
 // using Hexalith.Application.Requests;
 // using Hexalith.Application.States;
 // using Hexalith.Application.Tasks;

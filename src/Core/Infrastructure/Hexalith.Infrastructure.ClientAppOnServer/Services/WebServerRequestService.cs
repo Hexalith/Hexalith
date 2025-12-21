@@ -11,7 +11,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Application.Requests;
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
@@ -62,7 +62,7 @@ public class WebServerRequestService : IRequestService
             throw new InvalidOperationException("Partition not set. PartitionId is empty.");
         }
 
-        Metadata metadata = Metadata.CreateNew(request, user.Identity.Name, session.PartitionId, _timeProvider.GetLocalNow());
+        Metadata metadata = request.CreateMetadata(user.Identity.Name, session.PartitionId, _timeProvider.GetLocalNow());
 
         return (TRequest)await _requestProcessor
             .ProcessAsync(request, metadata, cancellationToken)

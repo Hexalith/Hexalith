@@ -9,8 +9,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
+using Hexalith.Commons.Errors;
 using Hexalith.Extensions.Common;
-using Hexalith.Extensions.Errors;
 
 /// <summary>
 /// Class DuplicateEntityFoundException.
@@ -74,7 +74,7 @@ public class DuplicateEntityFoundException<TEntity> : ApplicationErrorException
             Title = $"Duplicate {entityName} found.",
             Detail = "Duplicate {EntityName} values found for key {Key}. Values:\n{Values}",
             Arguments = [entityName, keyString, valuesString],
-            Category = ErrorCategory.Functional,
+            Category = Commons.Errors.ErrorCategory.Functional,
         };
     }
 }

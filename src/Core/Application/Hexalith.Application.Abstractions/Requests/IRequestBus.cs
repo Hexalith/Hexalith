@@ -5,7 +5,7 @@
 
 namespace Hexalith.Application.Requests;
 
-using Hexalith.Application.Envelopes;
+using Hexalith.Applications.Messages;
 
 /// <summary>
 /// A request bus is a component that allows to send requests.

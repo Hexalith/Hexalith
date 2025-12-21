@@ -9,14 +9,14 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 using Hexalith.Application;
-using Hexalith.Application.Abstractions.Extensions;
-using Hexalith.Application.Commands;
+using Hexalith.Applications.Commands;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Modules.Routes;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Requests;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Domains.Abstractions.Extensions;
+using Hexalith.Applications.Commands.Abstractions.Extensions;
 using Hexalith.Infrastructure.ClientApp;
 using Hexalith.Infrastructure.ClientAppOnWasm.Services;
 
@@ -40,7 +40,7 @@ public static class WebAssemblyClientHelper
     /// <returns>The modified service collection.</returns>
     public static IServiceCollection AddHexalithWasmClientApp(this IServiceCollection services, IConfiguration configuration)
     {
-        HexalithApplicationAbstractionsSerialization.RegisterPolymorphicMappers();
+        HexalithApplicationsCommandsAbstractionsSerialization.RegisterPolymorphicMappers();
         HexalithDomainsAbstractionsSerialization.RegisterPolymorphicMappers();
         _ = services
              .AddOrganizations(configuration)

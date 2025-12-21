@@ -15,11 +15,12 @@ using FluentValidation;
 using FluentValidation.Results;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
 
 using Microsoft.Extensions.Logging;
+using Hexalith.Applications.Commands;
 
 /// <summary>
 /// Represents a service for sending commands asynchronously.
@@ -90,7 +91,7 @@ public partial class ServerCommandService : ICommandService
             }
         }
 
-        Metadata metadata = Metadata.CreateNew(command, user.Identity.Name, session.PartitionId, _timeProvider.GetLocalNow());
+        Metadata metadata = command.CreateMetadata(user.Identity.Name, session.PartitionId, _timeProvider.GetLocalNow());
 
         await _commandProcessor.SubmitAsync(command, metadata, cancellationToken).ConfigureAwait(false);
     }

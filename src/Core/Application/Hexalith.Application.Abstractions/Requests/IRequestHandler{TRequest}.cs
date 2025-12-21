@@ -8,7 +8,7 @@ namespace Hexalith.Application.Requests;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 
 /// <summary>
 /// Defines a handler for processing requests of type <typeparamref name="TRequest"/>.

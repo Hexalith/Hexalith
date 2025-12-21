@@ -12,7 +12,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Application.Requests;
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
@@ -21,6 +21,8 @@ using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerializations;
 
 using Microsoft.Extensions.Logging;
+using Hexalith.Commons.UniqueIds;
+using Hexalith.Applications.States;
 
 /// <summary>
 /// Represents a service for sending requests asynchronously.
@@ -76,13 +78,15 @@ public partial class ClientRequestService : IRequestService
             messageId,
             string.Empty,
             1,
-            AggregateMetadata.Create(request),
+            request.CreateDomainMetadata(),
             _timeProvider.GetLocalNow()),
             new ContextMetadata(
                 messageId,
                 userName,
                 session.PartitionId,
                 _timeProvider.GetLocalNow(),
+                null,
+                null,
                 null,
                 session.SessionId,
                 []));
@@ -114,7 +118,7 @@ public partial class ClientRequestService : IRequestService
         HttpResponseMessage response = await _client.PostAsJsonAsync("api/request/submit", new MessageState(recordBase, metadata), cancellationToken).ConfigureAwait(false);
         if (!response.IsSuccessStatusCode)
         {
-            throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. The response status code was {response.StatusCode}.");
+            throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.DomainGlobalId}'. The response status code was {response.StatusCode}.");
         }
 
         MessageState? messageState = await response
@@ -123,20 +127,20 @@ public partial class ClientRequestService : IRequestService
         if (messageState is null)
         {
             string value = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-            throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. Failed to deserialize response : " + value);
+            throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.DomainGlobalId}'. Failed to deserialize response : " + value);
         }
 
         if (messageState.MessageObject is not TRequest result)
         {
             throw new InvalidOperationException(
-                $"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'." +
+                $"Request {metadata.Message.Name} failed on aggregate '{metadata.DomainGlobalId}'." +
                 $"Expected response of type {typeof(TRequest).Name} but received {messageState.MessageObject.GetType().Name}.");
         }
 
         LogRequestSucceeded(
             _logger,
             metadata.Message.Name,
-            metadata.AggregateGlobalId,
+            metadata.DomainGlobalId,
             metadata.Context.UserId);
 
         return result;

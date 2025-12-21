@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 using Dapr.Actors.Client;
 
-using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
-using Hexalith.Extensions.Helpers;
+using Hexalith.Applications.Commands;
+using Hexalith.Applications.States;
+using Hexalith.Commons.Errors;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.PolymorphicSerializations;
@@ -104,7 +104,7 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
         ArgumentNullException.ThrowIfNull(metadata);
         try
         {
-            LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.AggregateGlobalId, metadata.Message.Aggregate.Name);
+            LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.DomainGlobalId, metadata.Message.Domain.Name);
             if (_actorPolymorphicSerialization && command is Polymorphic polymorphicCommand)
             {
                 await _actorProxy
@@ -124,7 +124,7 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
         }
         catch (Exception e)
         {
-            throw new InvalidOperationException($"Fail to call actor for aggregate {metadata.AggregateGlobalId} method '{nameof(IDomainAggregateActor.SubmitCommandAsync)}' : " + e.FullMessage(), e);
+            throw new InvalidOperationException($"Fail to call actor for aggregate {metadata.DomainGlobalId} method '{nameof(IDomainAggregateActor.SubmitCommandAsync)}' : " + e.FullMessage(), e);
         }
     }
 }

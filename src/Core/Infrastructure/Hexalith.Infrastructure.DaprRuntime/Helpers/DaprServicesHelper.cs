@@ -12,6 +12,7 @@ using Hexalith.Application.Events;
 using Hexalith.Application.Requests;
 using Hexalith.Application.Services;
 using Hexalith.Application.States;
+using Hexalith.Applications.Commands;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
 using Hexalith.Infrastructure.DaprRuntime.Services;

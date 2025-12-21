@@ -3,8 +3,10 @@
         <TargetFramework>net10.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Serilog.Extensions.Logging"  />
-        <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens"  />
+      <PackageReference Include="Hexalith.Applications.Commands.Abstractions"  />
+      <PackageReference Include="Hexalith.Applications.Abstractions"  />
+      <PackageReference Include="Serilog.Extensions.Logging"  />
+      <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens"  />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly"  />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication"  />
         <PackageReference Include="Serilog.Sinks.BrowserConsole"  />

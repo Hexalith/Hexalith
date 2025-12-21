@@ -8,7 +8,7 @@ namespace Hexalith.Application.Requests;
 using System;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Application.Services;
 
 /// <summary>
@@ -44,7 +44,7 @@ public class GetAggregateIdsRequestHandler<TRequest> : RequestHandlerBase<TReque
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(metadata);
         IIdCollectionService service = _factory.CreateService(
-            IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Aggregate.Name),
+            IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Domain.Name),
             metadata.Context.PartitionId);
         return (TRequest)request.CreateResults(await service
                 .GetAsync(request.Skip, request.Take, CancellationToken.None)
