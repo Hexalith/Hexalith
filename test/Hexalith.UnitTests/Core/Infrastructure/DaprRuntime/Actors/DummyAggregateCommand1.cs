@@ -10,7 +10,7 @@ using Hexalith.PolymorphicSerializations;
 [PolymorphicSerialization]
 public partial record DummyAggregateCommand1(string Id, string Name)
 {
-    public string AggregateId => DummyAggregate.GetAggregateId(Id);
+    public string DomainId => DummyAggregate.GetAggregateId(Id);
 
-    public string AggregateName => DummyAggregate.GetAggregateName();
+    public string DomainName => DummyAggregate.GetAggregateName();
 }

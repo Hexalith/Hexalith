@@ -16,7 +16,7 @@ public static class UserConversationProfileDomainHelper
     /// Gets the name of the UserConversationsProfile aggregate.
     /// </summary>
     /// <value>The name of the UserConversationsProfile aggregate.</value>
-    public static string UserConversationProfileAggregateName => nameof(UserConversationsProfile);
+    public static string UserConversationProfileDomainName => nameof(UserConversationsProfile);
 
     /// <summary>
     /// Builds the aggregate ID for a UserConversationProfile.

@@ -10,7 +10,7 @@ using Hexalith.PolymorphicSerializations;
 [PolymorphicSerialization]
 public partial record CommandDispatchUndoEvent
 {
-    public string DefaultAggregateId => "123";
+    public string DefaultDomainId => "123";
 
-    public string DefaultAggregateName => "Test";
+    public string DefaultDomainName => "Test";
 }

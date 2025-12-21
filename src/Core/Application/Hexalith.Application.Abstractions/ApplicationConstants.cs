@@ -48,7 +48,7 @@ public static class ApplicationConstants
     /// <summary>
     /// Gets the notification default aggregate name.
     /// </summary>
-    public static string NotificationDefaultAggregateName => "Global";
+    public static string NotificationDefaultDomainName => "Global";
 
     /// <summary>
     /// Gets the request bus name.

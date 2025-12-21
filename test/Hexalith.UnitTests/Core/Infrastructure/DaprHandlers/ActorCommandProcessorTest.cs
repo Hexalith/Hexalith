@@ -25,9 +25,9 @@ using Moq;
 [PolymorphicSerialization]
 public partial record TestCommand(string Id, string Value)
 {
-    public static string AggregateName => "Test";
+    public static string DomainName => "Test";
 
-    public string AggregateId => AggregateName + "-" + Id;
+    public string DomainId => DomainName + "-" + Id;
 }
 
 /// <summary>

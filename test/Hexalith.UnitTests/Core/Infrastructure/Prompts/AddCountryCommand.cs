@@ -41,7 +41,7 @@ public partial record AddCountryCommand(
     {
     }
 
-    public string AggregateId => Iso3;
+    public string DomainId => Iso3;
 
-    public string AggregateName => "Country";
+    public string DomainName => "Country";
 }

@@ -12,5 +12,5 @@ using Hexalith.PolymorphicSerializations;
 [PolymorphicSerialization]
 public partial record DummyRequest2(string BaseValue, int Value2) : DummyBaseRequest(BaseValue)
 {
-    public override string AggregateId => base.AggregateId + "-" + Value2.ToInvariantString();
+    public override string DomainId => base.DomainId + "-" + Value2.ToInvariantString();
 }

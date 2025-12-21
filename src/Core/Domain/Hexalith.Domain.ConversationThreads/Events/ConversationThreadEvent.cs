@@ -30,7 +30,7 @@ public partial record ConversationThreadEvent(string Owner, DateTimeOffset Start
     /// The aggregate ID is derived from the Owner and StartedDate using the ConversationThread.GetAggregateId method.
     /// This ensures consistency in identifying the specific conversation thread across different parts of the system.
     /// </remarks>
-    public string AggregateId => ConversationThread.GetAggregateId(Owner, StartedDate);
+    public string DomainId => ConversationThread.GetAggregateId(Owner, StartedDate);
 
     /// <summary>
     /// Gets the name of the aggregate associated with this event.
@@ -40,5 +40,5 @@ public partial record ConversationThreadEvent(string Owner, DateTimeOffset Start
     /// This property returns a constant value defined in ConversationDomainHelper.
     /// It provides a standardized way to identify the type of aggregate this event relates to.
     /// </remarks>
-    public string AggregateName => ConversationDomainHelper.ConversationThreadAggregateName;
+    public string DomainName => ConversationDomainHelper.ConversationThreadAggregateName;
 }

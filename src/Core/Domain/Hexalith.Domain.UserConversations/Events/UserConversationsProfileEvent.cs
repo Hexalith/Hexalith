@@ -22,7 +22,7 @@ public partial record UserConversationsProfileEvent(string UserId)
     /// <remarks>
     /// The aggregate identifier is built using the <see cref="UserConversationProfileDomainHelper.BuildUserConversationProfileAggregateId"/> method.
     /// </remarks>
-    public string AggregateId => UserConversationProfileDomainHelper.BuildUserConversationProfileAggregateId(UserId);
+    public string DomainId => UserConversationProfileDomainHelper.BuildUserConversationProfileAggregateId(UserId);
 
     /// <summary>
     /// Gets the name of the aggregate for user conversation profiles.
@@ -31,5 +31,5 @@ public partial record UserConversationsProfileEvent(string UserId)
     /// <remarks>
     /// The aggregate name is a constant value defined in <see cref="UserConversationProfileDomainHelper.UserConversationProfileAggregateName"/>.
     /// </remarks>
-    public string AggregateName => UserConversationProfileDomainHelper.UserConversationProfileAggregateName;
+    public string DomainName => UserConversationProfileDomainHelper.UserConversationProfileAggregateName;
 }

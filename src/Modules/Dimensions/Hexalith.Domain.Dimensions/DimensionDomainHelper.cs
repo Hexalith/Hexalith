@@ -18,7 +18,7 @@ public static class DimensionDomainHelper
     /// <value>
     /// The name of the DimensionCollectionDefinition aggregate.
     /// </value>
-    public static string DimensionCollectionDefinitionAggregateName => nameof(DimensionCollectionDefinition);
+    public static string DimensionCollectionDefinitionDomainName => nameof(DimensionCollectionDefinition);
 
     /// <summary>
     /// Builds the aggregate ID for a DimensionCollectionDefinition.

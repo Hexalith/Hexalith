@@ -38,7 +38,7 @@ public class CommandPromptGenerationTest
         _ = prompt.Should().Contain(assistantName);
         _ = prompt.Should().Contain(userEmail);
         _ = prompt.Should().Contain(userName);
-        _ = prompt.Should().Contain(command.AggregateName);
+        _ = prompt.Should().Contain(command.DomainName);
         _ = prompt.Should().Contain(nameof(AddCountryCommand.Name));
         _ = prompt.Should().Contain(nameof(AddCountryCommand.IsoNumber));
         _ = prompt.Should().Contain(nameof(AddCountryCommand.CurrencyName));

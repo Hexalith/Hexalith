@@ -17,9 +17,9 @@ public partial record DummyBaseCommand(
     [property: DataMember]
     string BaseValue)
 {
-    public string AggregateName => "Test";
+    public string DomainName => "Test";
 
-    public virtual string AggregateId => BaseValue;
+    public virtual string DomainId => BaseValue;
 
     public Metadata CreateMetadata()
     {
@@ -28,7 +28,7 @@ public partial record DummyBaseCommand(
                 UniqueIdHelper.GenerateUniqueStringId(),
                 nameof(DummyBaseCommand),
                 3,
-                new DomainMetadata(AggregateName, AggregateId),
+                new DomainMetadata(DomainId, DomainName),
                 DateTimeOffset.UtcNow),
             new ContextMetadata(
                 UniqueIdHelper.GenerateUniqueStringId(),

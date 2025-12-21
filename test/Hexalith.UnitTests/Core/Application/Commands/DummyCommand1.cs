@@ -20,7 +20,7 @@ public partial record DummyCommand1(
 {
     private static readonly string[] _scopes = ["sc01", "sc02"];
 
-    public override string AggregateId => BaseValue + "-" + Value1.ToInvariantString();
+    public override string DomainId => BaseValue + "-" + Value1.ToInvariantString();
 
     public static DummyCommand1 Create() => new("Test123", 35453);
 

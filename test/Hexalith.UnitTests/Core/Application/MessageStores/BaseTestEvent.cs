@@ -10,7 +10,7 @@ using Hexalith.PolymorphicSerializations;
 [PolymorphicSerialization]
 public partial record BaseTestEvent(string Id, string IdempotencyId, string Message)
 {
-    public string AggregateId => Id;
+    public string DomainId => Id;
 
-    public string AggregateName => "Test";
+    public string DomainName => "Test";
 }

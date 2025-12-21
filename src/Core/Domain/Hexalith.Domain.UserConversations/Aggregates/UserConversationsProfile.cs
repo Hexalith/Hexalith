@@ -38,10 +38,10 @@ public record UserConversationsProfile(string UserId, IEnumerable<ConversationIt
     }
 
     /// <inheritdoc/>
-    public string AggregateId => UserConversationProfileDomainHelper.BuildUserConversationProfileAggregateId(UserId);
+    public string DomainId => UserConversationProfileDomainHelper.BuildUserConversationProfileAggregateId(UserId);
 
     /// <inheritdoc/>
-    public string AggregateName => UserConversationProfileDomainHelper.UserConversationProfileAggregateName;
+    public string DomainName => UserConversationProfileDomainHelper.UserConversationProfileAggregateName;
 
     /// <inheritdoc/>
     public ApplyResult Apply([NotNull] object domainEvent)

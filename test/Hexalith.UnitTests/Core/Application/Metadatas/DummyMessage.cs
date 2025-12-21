@@ -11,7 +11,7 @@ using Hexalith.PolymorphicSerializations;
 
 public record DummyMessage(int Value1, string Value2) : Polymorphic
 {
-    public string AggregateId => Value1.ToInvariantString();
+    public string DomainId => Value1.ToInvariantString();
 
-    public static string AggregateName => "Dummy";
+    public static string DomainName => "Dummy";
 }

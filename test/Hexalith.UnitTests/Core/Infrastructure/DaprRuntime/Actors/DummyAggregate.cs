@@ -18,9 +18,9 @@ public record DummyAggregate(string Id, string Name) : IDomainAggregate
     {
     }
 
-    public string AggregateName => GetAggregateName();
+    public string DomainName => GetAggregateName();
 
-    public string AggregateId => GetAggregateId(Id);
+    public string DomainId => GetAggregateId(Id);
 
     public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 

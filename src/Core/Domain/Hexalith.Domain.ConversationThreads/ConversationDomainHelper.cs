@@ -18,5 +18,5 @@ public static class ConversationDomainHelper
     /// <value>
     /// The name of the conversation thread aggregate.
     /// </value>
-    public static string ConversationThreadAggregateName => nameof(ConversationThread);
+    public static string ConversationThreadDomainName => nameof(ConversationThread);
 }

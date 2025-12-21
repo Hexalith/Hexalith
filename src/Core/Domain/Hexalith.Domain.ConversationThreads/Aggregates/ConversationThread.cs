@@ -53,12 +53,12 @@ public record ConversationThread(
     /// <remarks>
     /// The aggregate ID is a combination of the Owner and the StartedDate, formatted as a string.
     /// </remarks>
-    public string AggregateId => GetAggregateId(Owner, StartedDate);
+    public string DomainId => GetAggregateId(Owner, StartedDate);
 
     /// <summary>
     /// Gets the name of this aggregate type.
     /// </summary>
-    public string AggregateName => ConversationDomainHelper.ConversationThreadAggregateName;
+    public string DomainName => ConversationDomainHelper.ConversationThreadAggregateName;
 
     /// <summary>
     /// Applies a domain event to the conversation thread, updating its state accordingly.

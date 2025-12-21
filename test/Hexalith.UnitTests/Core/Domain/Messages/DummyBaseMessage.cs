@@ -13,9 +13,9 @@ using Hexalith.PolymorphicSerializations;
 [PolymorphicSerialization]
 public abstract partial record DummyBaseMessage(string BaseValue)
 {
-    public string AggregateName => "Test";
+    public string DomainName => "Test";
 
-    public virtual string AggregateId => BaseValue;
+    public virtual string DomainId => BaseValue;
 
     public Metadata CreateMetadata()
     {

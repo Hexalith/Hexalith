@@ -54,10 +54,10 @@ public record Survey(
     }
 
     /// <inheritdoc/>
-    public string AggregateId => SurveyDomainHelper.BuildSurveyAggregateId(Id);
+    public string DomainId => SurveyDomainHelper.BuildSurveyAggregateId(Id);
 
     /// <inheritdoc/>
-    public string AggregateName => SurveyDomainHelper.SurveyAggregateName;
+    public string DomainName => SurveyDomainHelper.SurveyAggregateName;
 
     /// <inheritdoc/>
     public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);

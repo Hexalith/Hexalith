@@ -39,10 +39,10 @@ public record SurveyCampaign(
     }
 
     /// <inheritdoc/>
-    public string AggregateId => SurveyDomainHelper.BuildSurveyCampaignAggregateId(Id);
+    public string DomainId => SurveyDomainHelper.BuildSurveyCampaignAggregateId(Id);
 
     /// <inheritdoc/>
-    public string AggregateName => SurveyDomainHelper.SurveyCampaignAggregateName;
+    public string DomainName => SurveyDomainHelper.SurveyCampaignAggregateName;
 
     /// <inheritdoc/>
     public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);

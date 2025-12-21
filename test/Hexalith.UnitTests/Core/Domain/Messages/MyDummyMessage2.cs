@@ -10,7 +10,7 @@ using Hexalith.PolymorphicSerializations;
 [PolymorphicSerialization(version: 2)]
 public partial record MyDummyMessage2(string Id, string Name, int Value)
 {
-    public string AggregateName => "Dummy";
+    public string DomainName => "Dummy";
 
-    public string AggregateId => Id;
+    public string DomainId => Id;
 }

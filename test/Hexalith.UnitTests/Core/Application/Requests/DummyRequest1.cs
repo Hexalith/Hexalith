@@ -17,5 +17,5 @@ public partial record DummyRequest1(
     [property: DataMember]
     int Value1) : DummyBaseRequest(BaseValue)
 {
-    public override string AggregateId => base.AggregateId + "-" + Value1.ToInvariantString();
+    public override string DomainId => base.DomainId + "-" + Value1.ToInvariantString();
 }

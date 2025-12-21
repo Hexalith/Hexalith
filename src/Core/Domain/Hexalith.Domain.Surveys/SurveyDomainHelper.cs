@@ -25,7 +25,7 @@ public static class SurveyDomainHelper
     /// It uses the nameof operator to ensure consistency with the actual Survey class name.
     /// This can be useful for logging, serialization, or other scenarios where the aggregate name is needed.
     /// </remarks>
-    public static string SurveyAggregateName => nameof(Survey);
+    public static string SurveyDomainName => nameof(Survey);
 
     /// <summary>
     /// Gets the name of the SurveyCampaign aggregate.
@@ -35,7 +35,7 @@ public static class SurveyDomainHelper
     /// It uses the nameof operator to ensure consistency with the actual SurveyCampaign class name.
     /// This can be useful for logging, serialization, or other scenarios where the aggregate name is needed.
     /// </remarks>
-    public static string SurveyCampaignAggregateName => nameof(SurveyCampaign);
+    public static string SurveyCampaignDomainName => nameof(SurveyCampaign);
 
     /// <summary>
     /// Builds the aggregate ID for a Survey.

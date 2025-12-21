@@ -41,10 +41,10 @@ public record DimensionCollectionDefinition(
     }
 
     /// <inheritdoc/>
-    public string AggregateId => DimensionDomainHelper.BuildDimensionCollectionDefinitionAggregateId(Id);
+    public string DomainId => DimensionDomainHelper.BuildDimensionCollectionDefinitionAggregateId(Id);
 
     /// <inheritdoc/>
-    public string AggregateName => DimensionDomainHelper.DimensionCollectionDefinitionAggregateName;
+    public string DomainName => DimensionDomainHelper.DimensionCollectionDefinitionAggregateName;
 
     /// <inheritdoc/>
     public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);

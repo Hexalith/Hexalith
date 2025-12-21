@@ -17,9 +17,9 @@ public abstract partial record DummyBaseRequest(
     [property: DataMember]
     string BaseValue)
 {
-    public string AggregateName => "Test";
+    public string DomainName => "Test";
 
-    public virtual string AggregateId => BaseValue;
+    public virtual string DomainId => BaseValue;
 
     public Metadata CreateMetadata()
     {
