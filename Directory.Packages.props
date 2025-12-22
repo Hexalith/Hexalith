@@ -3,13 +3,13 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Hexalith.Commons" Version="2.5.0" />
+    <PackageVersion Include="Hexalith.Commons" Version="2.6.0" />
     <PackageVersion Include="Hexalith.Domains.Abstractions" Version="2.0.2" />
     <PackageVersion Include="Hexalith.Domains" Version="2.0.2" />
-    <PackageVersion Include="Hexalith.Applications.Abstractions" Version="1.0.4" />
-    <PackageVersion Include="Hexalith.Applications" Version="1.0.4" />
-    <PackageVersion Include="Hexalith.Applications.Commands.Abstractions" Version="1.0.4" />
-    <PackageVersion Include="Hexalith.Applications.Commands" Version="1.0.4" />
+    <PackageVersion Include="Hexalith.Applications.Abstractions" Version="1.0.5" />
+    <PackageVersion Include="Hexalith.Applications" Version="1.0.5" />
+    <PackageVersion Include="Hexalith.Applications.Commands.Abstractions" Version="1.0.5" />
+    <PackageVersion Include="Hexalith.Applications.Commands" Version="1.0.5" />
     <PackageVersion Include="Hexalith.NetAspire.Defaults" Version="1.4.2" />
     <PackageVersion Include="Hexalith.PolymorphicSerializations" Version="1.9.2" />
     <PackageVersion Include="Hexalith.PolymorphicSerializations.CodeGenerators" Version="1.9.2" />
