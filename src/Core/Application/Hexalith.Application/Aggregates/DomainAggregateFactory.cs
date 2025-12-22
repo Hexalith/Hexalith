@@ -28,7 +28,7 @@ public class DomainAggregateFactory : IDomainAggregateFactory
     public DomainAggregateFactory(IEnumerable<IDomainAggregateProvider> aggregateProviders)
     {
         ArgumentNullException.ThrowIfNull(aggregateProviders);
-        _aggregateProviders = aggregateProviders.ToDictionary(k => k.AggregateName, v => v);
+        _aggregateProviders = aggregateProviders.ToDictionary(k => k.DomainName, v => v);
     }
 
     /// <inheritdoc/>

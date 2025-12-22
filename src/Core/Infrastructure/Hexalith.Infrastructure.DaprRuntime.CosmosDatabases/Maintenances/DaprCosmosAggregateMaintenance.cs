@@ -215,7 +215,7 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
     {
         DaprMetadata meta = await _daprClient.GetMetadataAsync(cancellationToken).ConfigureAwait(false);
         string appId = meta.Id;
-        string actorType = $"{new TAggregate().AggregateName}Aggregate";
+        string actorType = $"{new TAggregate().DomainName}Aggregate";
         DaprActorMetadata? actorMeta = meta.Actors.FirstOrDefault(p => p.Type == actorType);
         return actorMeta is null
             ? throw new InvalidOperationException($"Actor type {actorType} is not registered. Registered actors: {string.Join("; ", meta.Actors.Select(p => p.Type))}")

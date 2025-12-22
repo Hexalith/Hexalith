@@ -18,13 +18,13 @@ public partial record DimensionCollectionDefinitionEvent(string Id)
     /// Gets the aggregate identifier for the dimension collection definition.
     /// </summary>
     /// <returns>The aggregate identifier constructed from the Id.</returns>
-    public string AggregateId
-        => DimensionDomainHelper.BuildDimensionCollectionDefinitionAggregateId(Id);
+    public string DomainId
+        => DimensionDomainHelper.BuildDimensionCollectionDefinitionDomainId(Id);
 
     /// <summary>
     /// Gets the name of the aggregate for dimension collection definitions.
     /// </summary>
     /// <returns>The name of the aggregate for dimension collection definitions.</returns>
-    public string AggregateName
-        => DimensionDomainHelper.DimensionCollectionDefinitionAggregateName;
+    public string DomainName
+        => DimensionDomainHelper.DimensionCollectionDefinitionDomainName;
 }

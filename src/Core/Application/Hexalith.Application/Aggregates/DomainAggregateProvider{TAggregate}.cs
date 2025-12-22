@@ -21,13 +21,13 @@ public class DomainAggregateProvider<TAggregate> : IDomainAggregateProvider<TAgg
     /// <summary>
     /// The aggregate name.
     /// </summary>
-    private string? _aggregateName;
-
-    /// <inheritdoc/>
-    public string DomainName => _aggregateName ??= Create().AggregateName;
+    private string? _domainName;
 
     /// <inheritdoc/>
     public Type AggregateType => typeof(TAggregate);
+
+    /// <inheritdoc/>
+    public string DomainName => _domainName ??= Create().DomainName;
 
     /// <inheritdoc/>
     public TAggregate Create() => new();

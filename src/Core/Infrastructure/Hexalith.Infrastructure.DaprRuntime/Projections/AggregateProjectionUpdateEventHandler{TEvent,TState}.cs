@@ -8,9 +8,8 @@ namespace Hexalith.Infrastructure.DaprRuntime.Projections;
 using System.Threading;
 using System.Threading.Tasks;
 
-
-using Hexalith.Commons.Metadatas;
 using Hexalith.Application.Projections;
+using Hexalith.Commons.Metadatas;
 using Hexalith.Domain.Events;
 using Hexalith.Domains;
 using Hexalith.Domains.Results;
@@ -35,6 +34,8 @@ public class AggregateProjectionUpdateEventHandler<TEvent, TState>(
     /// <inheritdoc/>
     public override async Task ApplyAsync(TEvent baseEvent, Metadata metadata, CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(baseEvent);
+        ArgumentNullException.ThrowIfNull(metadata);
         TState? aggregate;
 
         // If the event is a snapshot, we initialize a new aggregate from the snapshot
@@ -43,7 +44,7 @@ public class AggregateProjectionUpdateEventHandler<TEvent, TState>(
             aggregate = new TState();
 
             // If the event is a snapshot, we must check the aggregate name
-            if (s.AggregateName != aggregate.AggregateName)
+            if (s.DomainName != aggregate.DomainName)
             {
                 // If the aggregate name is not the same, we ignore the event
                 return;

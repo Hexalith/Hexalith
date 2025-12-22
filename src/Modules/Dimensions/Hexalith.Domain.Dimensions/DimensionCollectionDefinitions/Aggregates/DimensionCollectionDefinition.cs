@@ -41,10 +41,10 @@ public record DimensionCollectionDefinition(
     }
 
     /// <inheritdoc/>
-    public string DomainId => DimensionDomainHelper.BuildDimensionCollectionDefinitionAggregateId(Id);
+    public string DomainId => DimensionDomainHelper.BuildDimensionCollectionDefinitionDomainId(Id);
 
     /// <inheritdoc/>
-    public string DomainName => DimensionDomainHelper.DimensionCollectionDefinitionAggregateName;
+    public string DomainName => DimensionDomainHelper.DimensionCollectionDefinitionDomainName;
 
     /// <inheritdoc/>
     public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
@@ -65,9 +65,9 @@ public record DimensionCollectionDefinition(
 
         if (domainEvent is DimensionCollectionDefinitionEvent contactEvent)
         {
-            if (contactEvent.AggregateId != AggregateId)
+            if (contactEvent.DomainId != DomainId)
             {
-                return new ApplyResult(this, [new DimensionCollectionDefinitionEventCancelled(contactEvent, $"Invalid aggregate identifier for {Id}/{Name} : {contactEvent.AggregateId}")], true);
+                return new ApplyResult(this, [new DimensionCollectionDefinitionEventCancelled(contactEvent, $"Invalid aggregate identifier for {Id}/{Name} : {contactEvent.DomainId}")], true);
             }
         }
         else
@@ -75,8 +75,8 @@ public record DimensionCollectionDefinition(
             return new ApplyResult(
                 this,
                 [ new InvalidEventApplied(
-                    AggregateName,
-                    AggregateId,
+                    DomainName,
+                    DomainId,
                     domainEvent.GetType().FullName ?? "Unknown",
                     JsonSerializer.Serialize(domainEvent),
                     $"Unexpected event applied.")],

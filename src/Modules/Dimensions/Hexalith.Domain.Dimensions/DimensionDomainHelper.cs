@@ -25,5 +25,5 @@ public static class DimensionDomainHelper
     /// </summary>
     /// <param name="id">The base ID to use for building the aggregate ID.</param>
     /// <returns>The constructed aggregate ID for the DimensionCollectionDefinition.</returns>
-    public static string BuildDimensionCollectionDefinitionAggregateId(string id) => id;
+    public static string BuildDimensionCollectionDefinitionDomainId(string id) => id;
 }
