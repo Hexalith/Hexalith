@@ -22,19 +22,19 @@ public abstract partial record SurveyCampaignEvent(string Id)
     /// Gets the aggregate identifier for the survey campaign.
     /// </summary>
     /// <remarks>
-    /// This property uses the <see cref="SurveyDomainHelper.BuildSurveyCampaignAggregateId"/> method
+    /// This property uses the <see cref="SurveyDomainHelper.BuildSurveyCampaignDomainId"/> method
     /// to construct the aggregate identifier based on the survey campaign's Id.
     /// </remarks>
-    public string AggregateId
-        => SurveyDomainHelper.BuildSurveyCampaignAggregateId(Id);
+    public string DomainId
+        => SurveyDomainHelper.BuildSurveyCampaignDomainId(Id);
 
     /// <summary>
     /// Gets the name of the aggregate associated with this event.
     /// </summary>
     /// <remarks>
     /// This property returns the name of the SurveyCampaign aggregate using the
-    /// <see cref="SurveyDomainHelper.SurveyCampaignAggregateName"/> property.
+    /// <see cref="SurveyDomainHelper.SurveyCampaignDomainName"/> property.
     /// </remarks>
-    public string AggregateName
-        => SurveyDomainHelper.SurveyCampaignAggregateName;
+    public string DomainName
+        => SurveyDomainHelper.SurveyCampaignDomainName;
 }

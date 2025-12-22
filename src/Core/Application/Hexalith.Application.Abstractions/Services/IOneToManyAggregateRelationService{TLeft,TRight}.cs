@@ -28,7 +28,7 @@ public interface IOneToManyAggregateRelationService<TLeft, TRight>
         {
             TLeft l = new();
             TRight r = new();
-            return $"{l.AggregateName}{r.AggregateName}";
+            return $"{l.DomainName}{r.DomainName}";
         }
     }
 
@@ -37,10 +37,10 @@ public interface IOneToManyAggregateRelationService<TLeft, TRight>
     /// </summary>
     /// <param name="partitionId">The partition ID.</param>
     /// <param name="aggregateId">The ID of the left aggregate.</param>
-    /// <param name="linkedAggregateId">The ID of the right aggregate to be linked.</param>
+    /// <param name="linkedDomainId">The ID of the right aggregate to be linked.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    Task AddAsync(string partitionId, string aggregateId, string linkedAggregateId, CancellationToken cancellationToken);
+    Task AddAsync(string partitionId, string aggregateId, string linkedDomainId, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets the related aggregates for a given aggregate.

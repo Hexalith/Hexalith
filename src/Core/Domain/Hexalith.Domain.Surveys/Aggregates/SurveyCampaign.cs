@@ -39,10 +39,10 @@ public record SurveyCampaign(
     }
 
     /// <inheritdoc/>
-    public string DomainId => SurveyDomainHelper.BuildSurveyCampaignAggregateId(Id);
+    public string DomainId => SurveyDomainHelper.BuildSurveyCampaignDomainId(Id);
 
     /// <inheritdoc/>
-    public string DomainName => SurveyDomainHelper.SurveyCampaignAggregateName;
+    public string DomainName => SurveyDomainHelper.SurveyCampaignDomainName;
 
     /// <inheritdoc/>
     public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
@@ -63,9 +63,9 @@ public record SurveyCampaign(
 
         if (domainEvent is SurveyCampaignEvent contactEvent)
         {
-            if (contactEvent.AggregateId != AggregateId)
+            if (contactEvent.DomainId != DomainId)
             {
-                return new ApplyResult(this, [new SurveyCampaignEventCancelled(contactEvent, $"Invalid aggregate identifier for {Id}/{Name} : {contactEvent.AggregateId}")], true);
+                return new ApplyResult(this, [new SurveyCampaignEventCancelled(contactEvent, $"Invalid aggregate identifier for {Id}/{Name} : {contactEvent.DomainId}")], true);
             }
         }
         else
@@ -73,8 +73,8 @@ public record SurveyCampaign(
             return new ApplyResult(
                 this,
                 [new InvalidEventApplied(
-                    AggregateName,
-                    AggregateId,
+                    DomainName,
+                    DomainId,
                     domainEvent.GetType().FullName ?? "Unknown",
                     JsonSerializer.Serialize(domainEvent),
                     $"Unexpected event applied.")],

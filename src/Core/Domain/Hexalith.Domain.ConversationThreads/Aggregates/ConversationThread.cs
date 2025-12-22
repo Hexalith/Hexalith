@@ -11,7 +11,6 @@ using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
-
 using Hexalith.Domain.ConversationThreads.Entities;
 using Hexalith.Domain.ConversationThreads.Events;
 using Hexalith.Domain.Events;
@@ -53,12 +52,12 @@ public record ConversationThread(
     /// <remarks>
     /// The aggregate ID is a combination of the Owner and the StartedDate, formatted as a string.
     /// </remarks>
-    public string DomainId => GetAggregateId(Owner, StartedDate);
+    public string DomainId => GetDomainId(Owner, StartedDate);
 
     /// <summary>
     /// Gets the name of this aggregate type.
     /// </summary>
-    public string DomainName => ConversationDomainHelper.ConversationThreadAggregateName;
+    public string DomainName => ConversationDomainHelper.ConversationThreadDomainName;
 
     /// <summary>
     /// Applies a domain event to the conversation thread, updating its state accordingly.
@@ -81,9 +80,9 @@ public record ConversationThread(
 
         if (domainEvent is ConversationThreadEvent contactEvent)
         {
-            if (contactEvent.AggregateId != AggregateId)
+            if (contactEvent.DomainId != DomainId)
             {
-                return new ApplyResult(this, [new ConversationThreadEventCancelled(contactEvent, $"Invalid aggregate identifier for {Owner}/{StartedDate} : {contactEvent.AggregateId}")], true);
+                return new ApplyResult(this, [new ConversationThreadEventCancelled(contactEvent, $"Invalid aggregate identifier for {Owner}/{StartedDate} : {contactEvent.DomainId}")], true);
             }
         }
         else
@@ -91,8 +90,8 @@ public record ConversationThread(
             return new ApplyResult(
                 this,
                 [new InvalidEventApplied(
-                    AggregateName,
-                    AggregateId,
+                    DomainName,
+                    DomainId,
                     domainEvent.GetType().FullName ?? "Unknown",
                     JsonSerializer.Serialize(domainEvent),
                     $"Unexpected event applied.")],
@@ -121,7 +120,7 @@ public record ConversationThread(
     /// <param name="owner">The owner of the conversation thread.</param>
     /// <param name="startedDate">The date and time when the conversation thread started.</param>
     /// <returns>A string representing the unique aggregate ID for the conversation thread.</returns>
-    public static string GetAggregateId(string owner, DateTimeOffset startedDate) => owner + startedDate.UtcDateTime.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+    public static string GetDomainId(string owner, DateTimeOffset startedDate) => owner + startedDate.UtcDateTime.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
 
     /// <summary>
     /// Applies a ConversationItemAdded event to the conversation thread.

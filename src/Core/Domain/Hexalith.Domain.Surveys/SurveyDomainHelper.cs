@@ -46,7 +46,7 @@ public static class SurveyDomainHelper
     /// This method creates an aggregate ID for a Survey based on the provided unique identifier.
     /// In this implementation, it simply returns the input ID without modification.
     /// </remarks>
-    public static string BuildSurveyAggregateId(string id) => id;
+    public static string BuildSurveyDomainId(string id) => id;
 
     /// <summary>
     /// Builds the aggregate ID for a Survey Campaign.
@@ -57,5 +57,5 @@ public static class SurveyDomainHelper
     /// This method creates an aggregate ID for a Survey Campaign based on the provided unique identifier.
     /// In this implementation, it simply returns the input ID without modification.
     /// </remarks>
-    public static string BuildSurveyCampaignAggregateId(string id) => id;
+    public static string BuildSurveyCampaignDomainId(string id) => id;
 }

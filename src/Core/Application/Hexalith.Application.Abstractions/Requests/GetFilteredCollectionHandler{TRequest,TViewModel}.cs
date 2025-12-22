@@ -61,8 +61,8 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
     [LoggerMessage(
         EventId = 0,
         Level = LogLevel.Error,
-        Message = "Missing results for aggregate identifiers in request {MessageName} : {AggregateIds}. MessageId={MessageId}; CorrelationId={CorrelationId}")]
-    public static partial void LogMissingResults(ILogger logger, string messageName, string messageId, string correlationId, IEnumerable<string> aggregateIds);
+        Message = "Missing results for aggregate identifiers in request {MessageName} : {DomainIds}. MessageId={MessageId}; CorrelationId={CorrelationId}")]
+    public static partial void LogMissingResults(ILogger logger, string messageName, string messageId, string correlationId, IEnumerable<string> domainIds);
 
     /// <summary>
     /// Logs a warning message indicating that the request contains both ids and a filter or search.

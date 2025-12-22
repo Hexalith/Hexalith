@@ -1,19 +1,19 @@
-﻿abstract Hexalith.Domain.Abstractions.Messages.object.DefaultAggregateId() -> string!
-abstract Hexalith.Domain.Abstractions.Messages.object.DefaultAggregateName() -> string!
+﻿abstract Hexalith.Domain.Abstractions.Messages.object.DefaultDomainId() -> string!
+abstract Hexalith.Domain.Abstractions.Messages.object.DefaultDomainName() -> string!
 const Hexalith.Domain.Abstractions.Messages.object.Separator = "-" -> string!
 Hexalith.Domain.Abstractions.Events.object
 Hexalith.Domain.Abstractions.Events.object.object() -> void
 Hexalith.Domain.Abstractions.Events.object
 Hexalith.Domain.Abstractions.Messages.object
-Hexalith.Domain.Abstractions.Messages.object.AggregateId.get -> string!
-Hexalith.Domain.Abstractions.Messages.object.AggregateName.get -> string!
+Hexalith.Domain.Abstractions.Messages.object.DomainId.get -> string!
+Hexalith.Domain.Abstractions.Messages.object.DomainName.get -> string!
 Hexalith.Domain.Abstractions.Messages.object.object() -> void
 Hexalith.Domain.Abstractions.Messages.object.MajorVersion.get -> int
 Hexalith.Domain.Abstractions.Messages.object.MessageName.get -> string!
 Hexalith.Domain.Abstractions.Messages.object.MinorVersion.get -> int
 Hexalith.Domain.Abstractions.Messages.object
-Hexalith.Domain.Abstractions.Messages.object.AggregateId.get -> string!
-Hexalith.Domain.Abstractions.Messages.object.AggregateName.get -> string!
+Hexalith.Domain.Abstractions.Messages.object.DomainId.get -> string!
+Hexalith.Domain.Abstractions.Messages.object.DomainName.get -> string!
 Hexalith.Domain.Abstractions.Messages.object.MajorVersion.get -> int
 Hexalith.Domain.Abstractions.Messages.object.MessageName.get -> string!
 Hexalith.Domain.Abstractions.Messages.object.MinorVersion.get -> int

@@ -10,7 +10,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
-
 using Hexalith.Domain.Events;
 using Hexalith.Domain.UserConversationProfiles.Entities;
 using Hexalith.Domain.UserConversationProfiles.Events;
@@ -38,10 +37,10 @@ public record UserConversationsProfile(string UserId, IEnumerable<ConversationIt
     }
 
     /// <inheritdoc/>
-    public string DomainId => UserConversationProfileDomainHelper.BuildUserConversationProfileAggregateId(UserId);
+    public string DomainId => UserConversationProfileDomainHelper.BuildUserConversationProfileDomainId(UserId);
 
     /// <inheritdoc/>
-    public string DomainName => UserConversationProfileDomainHelper.UserConversationProfileAggregateName;
+    public string DomainName => UserConversationProfileDomainHelper.UserConversationProfileDomainName;
 
     /// <inheritdoc/>
     public ApplyResult Apply([NotNull] object domainEvent)
@@ -59,9 +58,9 @@ public record UserConversationsProfile(string UserId, IEnumerable<ConversationIt
 
         if (domainEvent is UserConversationsProfileEvent contactEvent)
         {
-            if (contactEvent.AggregateId != AggregateId)
+            if (contactEvent.DomainId != DomainId)
             {
-                return new ApplyResult(this, [new UserConversationsProfileEventCancelled(contactEvent, $"Invalid aggregate identifier for {UserId} : {contactEvent.AggregateId}")], true);
+                return new ApplyResult(this, [new UserConversationsProfileEventCancelled(contactEvent, $"Invalid aggregate identifier for {UserId} : {contactEvent.DomainId}")], true);
             }
         }
         else
@@ -69,8 +68,8 @@ public record UserConversationsProfile(string UserId, IEnumerable<ConversationIt
             return new ApplyResult(
                 this,
                 [new InvalidEventApplied(
-                    AggregateName,
-                    AggregateId,
+                    DomainName,
+                    DomainId,
                     domainEvent.GetType().FullName ?? "Unknown",
                     JsonSerializer.Serialize(domainEvent),
                     $"Unexpected event applied.")],

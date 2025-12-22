@@ -13,16 +13,16 @@ using Hexalith.Domains;
 public interface IDomainAggregateProvider
 {
     /// <summary>
-    /// Gets the name of the aggregate.
-    /// </summary>
-    /// <value>The name of the aggregate.</value>
-    string AggregateName { get; }
-
-    /// <summary>
     /// Gets the type of the aggregate.
     /// </summary>
     /// <value>The type of the aggregate.</value>
     Type AggregateType { get; }
+
+    /// <summary>
+    /// Gets the name of the aggregate.
+    /// </summary>
+    /// <value>The name of the aggregate.</value>
+    string DomainName { get; }
 
     /// <summary>
     /// Creates this instance.

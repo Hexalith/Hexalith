@@ -20,16 +20,16 @@ public partial record UserConversationsProfileEvent(string UserId)
     /// </summary>
     /// <returns>A string representing the aggregate identifier, constructed using the <see cref="UserId"/>.</returns>
     /// <remarks>
-    /// The aggregate identifier is built using the <see cref="UserConversationProfileDomainHelper.BuildUserConversationProfileAggregateId"/> method.
+    /// The aggregate identifier is built using the <see cref="UserConversationProfileDomainHelper.BuildUserConversationProfileDomainId"/> method.
     /// </remarks>
-    public string DomainId => UserConversationProfileDomainHelper.BuildUserConversationProfileAggregateId(UserId);
+    public string DomainId => UserConversationProfileDomainHelper.BuildUserConversationProfileDomainId(UserId);
 
     /// <summary>
     /// Gets the name of the aggregate for user conversation profiles.
     /// </summary>
     /// <returns>A string representing the aggregate name.</returns>
     /// <remarks>
-    /// The aggregate name is a constant value defined in <see cref="UserConversationProfileDomainHelper.UserConversationProfileAggregateName"/>.
+    /// The aggregate name is a constant value defined in <see cref="UserConversationProfileDomainHelper.UserConversationProfileDomainName"/>.
     /// </remarks>
-    public string DomainName => UserConversationProfileDomainHelper.UserConversationProfileAggregateName;
+    public string DomainName => UserConversationProfileDomainHelper.UserConversationProfileDomainName;
 }

@@ -1,4 +1,4 @@
-﻿// <copyright file="GetAggregateIdsRequestHandler.cs" company="ITANEO">
+﻿// <copyright file="GetDomainIdsRequestHandler.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -15,17 +15,17 @@ using Hexalith.Application.Services;
 /// Handles requests to get aggregate IDs.
 /// </summary>
 /// <typeparam name="TRequest">The type of the request.</typeparam>
-public class GetAggregateIdsRequestHandler<TRequest> : RequestHandlerBase<TRequest>
+public class GetDomainIdsRequestHandler<TRequest> : RequestHandlerBase<TRequest>
     where TRequest : class, IChunkableRequest
 {
     private readonly IIdCollectionFactory _factory;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetAggregateIdsRequestHandler{TRequest}"/> class.
+    /// Initializes a new instance of the <see cref="GetDomainIdsRequestHandler{TRequest}"/> class.
     /// </summary>
     /// <param name="factory">The factory to create ID collection services.</param>
     /// <exception cref="ArgumentNullException">Thrown when the factory is null.</exception>
-    public GetAggregateIdsRequestHandler(IIdCollectionFactory factory)
+    public GetDomainIdsRequestHandler(IIdCollectionFactory factory)
     {
         ArgumentNullException.ThrowIfNull(factory);
         _factory = factory;

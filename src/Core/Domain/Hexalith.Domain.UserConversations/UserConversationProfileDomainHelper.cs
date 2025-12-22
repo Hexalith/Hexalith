@@ -23,5 +23,5 @@ public static class UserConversationProfileDomainHelper
     /// </summary>
     /// <param name="userId">The unique identifier for the user associated with the UserConversationProfile.</param>
     /// <returns>The aggregate ID for the UserConversationProfile.</returns>
-    public static string BuildUserConversationProfileAggregateId(string userId) => userId;
+    public static string BuildUserConversationProfileDomainId(string userId) => userId;
 }

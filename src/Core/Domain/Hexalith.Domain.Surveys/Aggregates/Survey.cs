@@ -9,7 +9,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
-
 using Hexalith.Domain.Entities;
 using Hexalith.Domain.Events;
 using Hexalith.Domains;
@@ -54,10 +53,10 @@ public record Survey(
     }
 
     /// <inheritdoc/>
-    public string DomainId => SurveyDomainHelper.BuildSurveyAggregateId(Id);
+    public string DomainId => SurveyDomainHelper.BuildSurveyDomainId(Id);
 
     /// <inheritdoc/>
-    public string DomainName => SurveyDomainHelper.SurveyAggregateName;
+    public string DomainName => SurveyDomainHelper.SurveyDomainName;
 
     /// <inheritdoc/>
     public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
@@ -78,9 +77,9 @@ public record Survey(
 
         if (domainEvent is SurveyEvent contactEvent)
         {
-            if (contactEvent.AggregateId != AggregateId)
+            if (contactEvent.DomainId != DomainId)
             {
-                return new ApplyResult(this, [new SurveyEventCancelled(contactEvent, $"Invalid aggregate identifier for {Id}/{Name} : {contactEvent.AggregateId}")], true);
+                return new ApplyResult(this, [new SurveyEventCancelled(contactEvent, $"Invalid aggregate identifier for {Id}/{Name} : {contactEvent.DomainId}")], true);
             }
         }
         else
@@ -88,8 +87,8 @@ public record Survey(
             return new ApplyResult(
                 this,
                 [new InvalidEventApplied(
-                    AggregateName,
-                    AggregateId,
+                    DomainName,
+                    DomainId,
                     domainEvent.GetType().FullName ?? "Unknown",
                     JsonSerializer.Serialize(domainEvent),
                     $"Unexpected event applied.")],
