@@ -1,4 +1,4 @@
-﻿// <copyright file="PolymorphicSerializationTestBase.cs" company="ITANEO">
+// <copyright file="PolymorphicSerializationTestBase.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -7,7 +7,7 @@ namespace Hexalith.TestMocks;
 
 using System.Text.Json;
 
-using FluentAssertions;
+using Shouldly;
 
 using Xunit;
 
@@ -31,8 +31,8 @@ public abstract class PolymorphicSerializationTestBase<TObject, TBase> : Seriali
         TObject original = (TObject)ToSerializeObject();
         string json = JsonSerializer.Serialize<TBase>(original);
         TBase? result = JsonSerializer.Deserialize<TBase>(json);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeOfType<TObject>();
-        _ = result.Should().BeEquivalentTo(original);
+        result.ShouldNotBeNull();
+        result.ShouldBeOfType<TObject>();
+        result.ShouldBeEquivalentTo(original);
     }
 }

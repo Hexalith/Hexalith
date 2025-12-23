@@ -1,15 +1,14 @@
-﻿// <copyright file="AssertionHelper.cs" company="ITANEO">
+// <copyright file="AssertionHelper.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.TestMocks;
 
-using System;
+using System.Runtime.Serialization;
 using System.Text.Json;
 
-using FluentAssertions;
-using FluentAssertions.Primitives;
+using Shouldly;
 
 /// <summary>
 /// Class AssertionHelper.
@@ -17,24 +16,35 @@ using FluentAssertions.Primitives;
 public static class AssertionHelper
 {
     /// <summary>
-    /// Bes the json serializable.
+    /// Asserts that the object is DataContract serializable.
     /// </summary>
-    /// <param name="assertions">The assertions.</param>
-    /// <param name="because">The because.</param>
-    /// <param name="becauseArgs">The because arguments.</param>
-    /// <returns>AndConstraint&lt;ObjectAssertions&gt;.</returns>
+    /// <param name="obj">The object to test.</param>
+    /// <param name="customMessage">The custom message.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static AndConstraint<ObjectAssertions> BeJsonSerializable(
-        this ObjectAssertions assertions,
-        string because,
-        params object[] becauseArgs)
+    public static void ShouldBeDataContractSerializable(this object obj, string? customMessage = null)
     {
-        ArgumentNullException.ThrowIfNull(assertions);
-        ArgumentNullException.ThrowIfNull(assertions.Subject);
-        string json = JsonSerializer.Serialize(assertions.Subject);
-        object? result = JsonSerializer.Deserialize(json, assertions.Subject.GetType());
-        _ = result.Should().NotBeNull();
-        _ = assertions.Subject.Should().BeEquivalentTo(result, because, becauseArgs);
-        return new AndConstraint<ObjectAssertions>(assertions);
+        ArgumentNullException.ThrowIfNull(obj);
+        DataContractSerializer serializer = new(obj.GetType());
+        using MemoryStream stream = new();
+        serializer.WriteObject(stream, obj);
+        _ = stream.Seek(0, SeekOrigin.Begin);
+        object? result = serializer.ReadObject(stream);
+        result.ShouldNotBeNull(customMessage);
+        result.ShouldBeEquivalentTo(obj, customMessage);
+    }
+
+    /// <summary>
+    /// Asserts that the object is JSON serializable.
+    /// </summary>
+    /// <param name="obj">The object to test.</param>
+    /// <param name="customMessage">The custom message.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public static void ShouldBeJsonSerializable(this object obj, string? customMessage = null)
+    {
+        ArgumentNullException.ThrowIfNull(obj);
+        string json = JsonSerializer.Serialize(obj);
+        object? result = JsonSerializer.Deserialize(json, obj.GetType());
+        result.ShouldNotBeNull(customMessage);
+        result.ShouldBeEquivalentTo(obj, customMessage);
     }
 }
