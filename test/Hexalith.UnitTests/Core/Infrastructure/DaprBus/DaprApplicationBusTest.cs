@@ -1,4 +1,4 @@
-﻿// <copyright file="DaprApplicationBusTest.cs" company="ITANEO">
+// <copyright file="DaprApplicationBusTest.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -13,7 +13,7 @@ using Hexalith.UnitTests.Core.Domain.Events;
 
 using Microsoft.Extensions.Logging;
 
-using Moq;
+using NSubstitute;
 
 public class DaprApplicationBusTest
 {
@@ -30,18 +30,15 @@ public class DaprApplicationBusTest
         const string topicName = "test-event";
         const string topicSuffix = "-event";
 
-        Mock<DaprClient> client = new();
-        Mock<ILogger> logger = new();
-        DaprApplicationBus bus = new(client.Object, TimeProvider.System, busName, topicSuffix, logger.Object);
+        DaprClient client = Substitute.For<DaprClient>();
+        ILogger logger = Substitute.For<ILogger>();
+        DaprApplicationBus bus = new(client, TimeProvider.System, busName, topicSuffix, logger);
         await bus.PublishAsync(@event, meta, CancellationToken.None);
-        client.Verify(
-            p => p.PublishEventAsync<BusMessage>(
-             It.Is<string>(p => p == busName),
-             It.Is<string>(p => p == topicName),
-             It.Is<BusMessage>(
-                p => p.Metadata == meta && p.Message.Contains(@event.BaseValue)),
-             It.IsAny<Dictionary<string, string>>(),
-             It.IsAny<CancellationToken>()),
-            Times.Once);
+        await client.Received(1).PublishEventAsync<BusMessage>(
+            Arg.Is<string>(p => p == busName),
+            Arg.Is<string>(p => p == topicName),
+            Arg.Is<BusMessage>(p => p.Metadata == meta && p.Message.Contains(@event.BaseValue)),
+            Arg.Any<Dictionary<string, string>>(),
+            Arg.Any<CancellationToken>());
     }
 }

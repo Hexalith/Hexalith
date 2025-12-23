@@ -21,7 +21,7 @@
 // using Hexalith.Infrastructure.DaprRuntime.Actors;
 // using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
-// using Moq;
+// using NSubstitute;
 
 ///// <summary>
 ///// Class AggregateActorTest.

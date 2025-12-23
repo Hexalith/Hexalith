@@ -10,7 +10,8 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions"  />
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions"  />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"  />
-        <PackageReference Include="Moq"  />
+        <PackageReference Include="NSubstitute"  />
+        <PackageReference Include="RichardSzalay.MockHttp"  />
         <PackageReference Include="xunit"  />
     </ItemGroup>
     <ItemGroup>

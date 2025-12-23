@@ -1,4 +1,4 @@
-﻿// <copyright file="MessageStoreTest.cs" company="ITANEO">
+// <copyright file="MessageStoreTest.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -7,22 +7,22 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores;
 
 using System.Data;
 
-using FluentAssertions;
-
-using Hexalith.Commons.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Application.StreamStores;
+using Hexalith.Applications.States;
+using Hexalith.Commons.Errors;
+using Hexalith.Commons.Metadatas;
+using Hexalith.Commons.Objects;
+using Hexalith.Commons.Strings;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Serialization.States;
 using Hexalith.PolymorphicSerializations;
 using Hexalith.UnitTests.Core.Application.Commands;
 
-using Moq;
-using Hexalith.Applications.States;
-using Hexalith.Commons.Objects;
-using Hexalith.Commons.Strings;
-using Hexalith.Commons.Errors;
+using NSubstitute;
+
+using Shouldly;
 
 public class MessageStoreTest
 {
@@ -48,8 +48,8 @@ public class MessageStoreTest
         _ = provider.SaveChangesAsync(CancellationToken.None);
         MessageState result1 = await store.GetAsync(1, CancellationToken.None);
         MessageState result2 = await store.GetAsync(2, CancellationToken.None);
-        _ = result1.Should().BeEquivalentTo(original1);
-        _ = result2.Should().BeEquivalentTo(original2);
+        result1.ShouldBeEquivalentTo(original1);
+        result2.ShouldBeEquivalentTo(original2);
     }
 
     [Fact]
@@ -60,7 +60,7 @@ public class MessageStoreTest
         DummyState state = new("5354323", 123, "one two three");
         _ = await store.AddAsync([state], 0, CancellationToken.None);
         DummyState result = await store.GetAsync(1, CancellationToken.None);
-        _ = result.Should().BeEquivalentTo(state);
+        result.ShouldBeEquivalentTo(state);
     }
 
     [Fact]
@@ -70,10 +70,10 @@ public class MessageStoreTest
         MessageStore<DummyState> store = new(provider, _streamName);
         DummyState state = new("5354323", 123, "one two three");
         _ = await store.AddAsync([state], 0, CancellationToken.None);
-        _ = provider.UncommittedState.Should().HaveCount(3);
-        _ = provider.UncommittedState[_stateName].Should().Be(1L);
-        _ = provider.UncommittedState[_stateName + "1"].Should().Be(state);
-        _ = provider.UncommittedState[_streamItemId + state.IdempotencyId].Should().Be(1L);
+        provider.UncommittedState.Count.ShouldBe(3);
+        provider.UncommittedState[_stateName].ShouldBe(1L);
+        provider.UncommittedState[_stateName + "1"].ShouldBe(state);
+        provider.UncommittedState[_streamItemId + state.IdempotencyId].ShouldBe(1L);
     }
 
     [Theory]
@@ -95,7 +95,7 @@ public class MessageStoreTest
             list,
             version,
             CancellationToken.None);
-        _ = provider.UncommittedState[_stateName].Should().Be(version + events);
+        provider.UncommittedState[_stateName].ShouldBe(version + events);
     }
 
     [Theory]
@@ -117,7 +117,7 @@ public class MessageStoreTest
             GetEventList(events),
             version,
             CancellationToken.None);
-        _ = newVersion.Should().Be(version + events);
+        newVersion.ShouldBe(version + events);
     }
 
     [Theory]
@@ -140,41 +140,38 @@ public class MessageStoreTest
             CancellationToken.None);
 
         DBConcurrencyException exception = await Assert.ThrowsAsync<DBConcurrencyException>(Act);
-        _ = exception.Message.Should().NotBeEmpty();
-        _ = exception.Message.Should().Contain(version.ToInvariantString());
-        _ = exception.Message.Should().Contain(badVersion.ToInvariantString());
+        exception.Message.ShouldNotBeNullOrEmpty();
+        exception.Message.ShouldContain(version.ToInvariantString());
+        exception.Message.ShouldContain(badVersion.ToInvariantString());
     }
 
     [Fact]
     public void CheckEventStateName()
     {
-        Mock<IStateStoreProvider> stateManager = new();
-        MessageStore<MessageState> store = new(stateManager.Object, _streamName);
-        _ = store.StreamName.Should().Be(_streamName);
-        _ = store.GetStreamItemStateName(101).Should().Be(_stateName + "101");
+        IStateStoreProvider stateManager = Substitute.For<IStateStoreProvider>();
+        MessageStore<MessageState> store = new(stateManager, _streamName);
+        store.StreamName.ShouldBe(_streamName);
+        store.GetStreamItemStateName(101).ShouldBe(_stateName + "101");
     }
 
     [Fact]
     public void CheckStreamStateName()
     {
-        Mock<IStateStoreProvider> stateManager = new();
-        MessageStore<MessageState> store = new(stateManager.Object, _streamName);
-        _ = store.StreamName.Should().Be(_streamName);
-        _ = store.StreamStateName.Should().Be(_streamName + "Stream");
+        IStateStoreProvider stateManager = Substitute.For<IStateStoreProvider>();
+        MessageStore<MessageState> store = new(stateManager, _streamName);
+        store.StreamName.ShouldBe(_streamName);
+        store.StreamStateName.ShouldBe(_streamName + "Stream");
     }
 
     [Fact]
     public async Task EmptyStreamVersionShouldBeZero()
     {
-        Mock<IStateStoreProvider> stateManager = new();
-        _ = stateManager.Setup(m
-            => m.TryGetStateAsync<long>(
-                    It.IsAny<string>(),
-                    It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<long>());
-        MessageStore<MessageState> store = new(stateManager.Object, _streamName);
+        IStateStoreProvider stateManager = Substitute.For<IStateStoreProvider>();
+        stateManager.TryGetStateAsync<long>(Arg.Any<string>(), Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<long>());
+        MessageStore<MessageState> store = new(stateManager, _streamName);
         long version = await store.GetVersionAsync(CancellationToken.None);
-        _ = version.Should().Be(0L);
+        version.ShouldBe(0L);
     }
 
     [Fact]
@@ -187,10 +184,10 @@ public class MessageStoreTest
             list,
             0L,
             CancellationToken.None);
-        _ = provider.UncommittedState[_stateName + "1"].Should().Be(list[0]);
-        _ = provider.UncommittedState[_stateName + "2"].Should().Be(list[1]);
-        _ = provider.UncommittedState[_streamItemId + list[0].IdempotencyId].Should().Be(1L);
-        _ = provider.UncommittedState[_streamItemId + list[1].IdempotencyId].Should().Be(2L);
+        provider.UncommittedState[_stateName + "1"].ShouldBe(list[0]);
+        provider.UncommittedState[_stateName + "2"].ShouldBe(list[1]);
+        provider.UncommittedState[_streamItemId + list[0].IdempotencyId].ShouldBe(1L);
+        provider.UncommittedState[_streamItemId + list[1].IdempotencyId].ShouldBe(2L);
     }
 
     [Fact]
@@ -206,13 +203,13 @@ public class MessageStoreTest
         MessageStore<MessageState> eventStore = new(provider, _streamName);
 
         MessageState @event = await eventStore.GetAsync(123L, CancellationToken.None);
-        _ = @event.Metadata.Should().NotBeNull();
-        _ = @event.Metadata.Should().BeOfType<Metadata>();
+        @event.Metadata.ShouldNotBeNull();
+        @event.Metadata.ShouldBeOfType<Metadata>();
 
-        _ = @event.Message.Should().NotBeNullOrWhiteSpace();
-        _ = @event.MessageObject.Should().NotBeNull();
-        _ = @event.MessageObject.Should().BeOfType<BaseTestEvent2>();
-        _ = @event.MessageObject.Should().BeEquivalentTo(testEvent);
+        @event.Message.ShouldNotBeNullOrWhiteSpace();
+        @event.MessageObject.ShouldNotBeNull();
+        @event.MessageObject.ShouldBeOfType<BaseTestEvent2>();
+        @event.MessageObject.ShouldBeEquivalentTo(testEvent);
     }
 
     [Fact]
@@ -221,7 +218,7 @@ public class MessageStoreTest
         MemoryStateProvider provider = new(new Dictionary<string, object> { { "TestStream", 100L } });
         MessageStore<MessageState> eventStore = new(provider, _streamName);
         long version = await eventStore.GetVersionAsync(CancellationToken.None);
-        _ = version.Should().Be(100L);
+        version.ShouldBe(100L);
     }
 
     private static List<MessageState> GetEventList(int count)
