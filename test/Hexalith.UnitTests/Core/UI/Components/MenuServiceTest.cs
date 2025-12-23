@@ -12,7 +12,7 @@ using Hexalith.UI.Components.Icons;
 
 using Microsoft.AspNetCore.Authorization;
 
-using Moq;
+using NSubstitute;
 
 using Shouldly;
 
@@ -33,7 +33,7 @@ public class MenuServiceTest
     public void Constructor_Should_Throw_ArgumentNullException_When_MenuItems_Is_Null()
     {
         // Arrange
-        IAuthorizationService authorizationService = new Mock<IAuthorizationService>().Object;
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
 
         // Act & Assert
         Should.Throw<ArgumentNullException>(() => new MenuService(null!, authorizationService))
@@ -52,13 +52,13 @@ public class MenuServiceTest
             new("Item 4", "/4", null, false, 3, "DifferentPolicy", []),
         ];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "SamePolicy"))
-            .ReturnsAsync(AuthorizationResult.Success());
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "DifferentPolicy"))
-            .ReturnsAsync(AuthorizationResult.Success());
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "SamePolicy")
+            .Returns(AuthorizationResult.Success());
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "DifferentPolicy")
+            .Returns(AuthorizationResult.Success());
 
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         // Act
@@ -68,8 +68,8 @@ public class MenuServiceTest
         result.Count.ShouldBe(4);
 
         // Verify that "SamePolicy" was only checked once, not three times
-        authorizationService.Verify(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "SamePolicy"), Times.Once);
-        authorizationService.Verify(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "DifferentPolicy"), Times.Once);
+        await authorizationService.Received(1).AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "SamePolicy");
+        await authorizationService.Received(1).AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "DifferentPolicy");
     }
 
     [Fact]
@@ -83,13 +83,13 @@ public class MenuServiceTest
             new("User", "/user", null, false, 2, "UserPolicy", []),
         ];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "AdminPolicy"))
-            .ReturnsAsync(AuthorizationResult.Failed());
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "UserPolicy"))
-            .ReturnsAsync(AuthorizationResult.Success());
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "AdminPolicy")
+            .Returns(AuthorizationResult.Failed());
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "UserPolicy")
+            .Returns(AuthorizationResult.Success());
 
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         // Act
@@ -112,8 +112,8 @@ public class MenuServiceTest
             new("About", "/about", null, false, 2, null, []),
         ];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        MenuService menuService = new(menuItems, authorizationService);
 
         // Act
         List<MenuItemInformation> result = await menuService.GetMenuItemsAsync(null, CancellationToken.None).ToListAsync();
@@ -122,7 +122,7 @@ public class MenuServiceTest
         result.Count.ShouldBe(2);
         result[0].Name.ShouldBe("Home");
         result[1].Name.ShouldBe("About");
-        authorizationService.Verify(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), It.IsAny<string>()), Times.Never);
+        await authorizationService.DidNotReceive().AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), Arg.Any<string>());
     }
 
     [Fact]
@@ -142,11 +142,11 @@ public class MenuServiceTest
             new("About", "/about", null, false, 2, null, []),
         ];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "AdminPolicy"))
-            .ReturnsAsync(AuthorizationResult.Failed());
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "AdminPolicy")
+            .Returns(AuthorizationResult.Failed());
 
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         // Act
@@ -181,13 +181,13 @@ public class MenuServiceTest
             new("Parent", "/parent", null, false, 1, null, subItems),
         ];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "UserPolicy"))
-            .ReturnsAsync(AuthorizationResult.Success());
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "AdminPolicy"))
-            .ReturnsAsync(AuthorizationResult.Failed());
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "UserPolicy")
+            .Returns(AuthorizationResult.Success());
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "AdminPolicy")
+            .Returns(AuthorizationResult.Failed());
 
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         // Act
@@ -214,8 +214,8 @@ public class MenuServiceTest
         // Sub-Sub-Item 2 should have been filtered out due to failed AdminPolicy authorization
 
         // Verify that the authorization service was called for both policies
-        authorizationService.Verify(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "UserPolicy"), Times.Once);
-        authorizationService.Verify(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "AdminPolicy"), Times.Once);
+        await authorizationService.Received(1).AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "UserPolicy");
+        await authorizationService.Received(1).AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "AdminPolicy");
     }
 
     [Fact]
@@ -229,14 +229,17 @@ public class MenuServiceTest
             new("Item 3", "/3", null, false, 2, "ADMINPOLICY", []),
         ];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), It.IsAny<string>()))
-            .ReturnsAsync((ClaimsPrincipal cp, object resource, string policy) =>
-                policy.Equals("AdminPolicy", StringComparison.OrdinalIgnoreCase)
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), Arg.Any<string>())
+            .Returns(callInfo =>
+            {
+                string policy = callInfo.ArgAt<string>(2);
+                return policy.Equals("AdminPolicy", StringComparison.OrdinalIgnoreCase)
                     ? AuthorizationResult.Success()
-                    : AuthorizationResult.Failed());
+                    : AuthorizationResult.Failed();
+            });
 
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         // Act
@@ -246,7 +249,7 @@ public class MenuServiceTest
         result.Count.ShouldBe(3);
 
         // The cache should work case-insensitively, so we should only call AuthorizeAsync once
-        authorizationService.Verify(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), It.IsAny<string>()), Times.Once);
+        await authorizationService.Received(1).AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), Arg.Any<string>());
     }
 
     [Fact]
@@ -270,13 +273,13 @@ public class MenuServiceTest
             new("Main", "/main", icon, true, 0, null, subItems),
         ];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "SubPolicy1"))
-            .ReturnsAsync(AuthorizationResult.Failed());
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "DeepPolicy"))
-            .ReturnsAsync(AuthorizationResult.Success());
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "SubPolicy1")
+            .Returns(AuthorizationResult.Failed());
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "DeepPolicy")
+            .Returns(AuthorizationResult.Success());
 
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         // Act
@@ -302,8 +305,8 @@ public class MenuServiceTest
     {
         // Arrange
         List<MenuItemInformation> menuItems = [];
-        Mock<IAuthorizationService> authorizationService = new();
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         // Act
@@ -324,13 +327,13 @@ public class MenuServiceTest
             new("User", "/user", null, false, 2, "UserPolicy", []),
         ];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "AdminPolicy"))
-            .ReturnsAsync(AuthorizationResult.Success());
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "UserPolicy"))
-            .ReturnsAsync(AuthorizationResult.Success());
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "AdminPolicy")
+            .Returns(AuthorizationResult.Success());
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "UserPolicy")
+            .Returns(AuthorizationResult.Success());
 
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         // Act
@@ -353,8 +356,8 @@ public class MenuServiceTest
             menuItems.Add(new($"Item {i}", $"/{i}", null, false, i, null, []));
         }
 
-        Mock<IAuthorizationService> authorizationService = new();
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         using CancellationTokenSource cts = new();
@@ -376,8 +379,8 @@ public class MenuServiceTest
             new("Contact", "/contact", null, false, 2, null, []),
         ];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         // Act
@@ -388,7 +391,7 @@ public class MenuServiceTest
         result[0].Name.ShouldBe("Home");
         result[1].Name.ShouldBe("About");
         result[2].Name.ShouldBe("Contact");
-        authorizationService.Verify(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), It.IsAny<string>()), Times.Never);
+        await authorizationService.DidNotReceive().AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), Arg.Any<string>());
     }
 
     [Fact]
@@ -401,8 +404,8 @@ public class MenuServiceTest
             new("About", "/about", null, false, 1, null, []),
         ];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        MenuService menuService = new(menuItems, authorizationService);
 
         // Act
         List<MenuItemInformation> result = await menuService.GetMenuItemsAsync(null, CancellationToken.None).ToListAsync();
@@ -426,11 +429,11 @@ public class MenuServiceTest
         MenuItemInformation originalParent = new("Parent", "/parent", null, false, 0, null, subItems);
         List<MenuItemInformation> menuItems = [originalParent];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        _ = authorizationService.Setup(x => x.AuthorizeAsync(It.IsAny<ClaimsPrincipal>(), It.IsAny<object>(), "DeniedPolicy"))
-            .ReturnsAsync(AuthorizationResult.Failed());
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        authorizationService.AuthorizeAsync(Arg.Any<ClaimsPrincipal>(), Arg.Any<object>(), "DeniedPolicy")
+            .Returns(AuthorizationResult.Failed());
 
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         // Act
@@ -460,8 +463,8 @@ public class MenuServiceTest
         MenuItemInformation originalParent = new("Parent", "/parent", null, false, 0, null, subItems);
         List<MenuItemInformation> menuItems = [originalParent];
 
-        Mock<IAuthorizationService> authorizationService = new();
-        MenuService menuService = new(menuItems, authorizationService.Object);
+        IAuthorizationService authorizationService = Substitute.For<IAuthorizationService>();
+        MenuService menuService = new(menuItems, authorizationService);
         ClaimsPrincipal user = new();
 
         // Act

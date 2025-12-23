@@ -1,11 +1,9 @@
-﻿// <copyright file="IMockBuilder.cs" company="ITANEO">
+// <copyright file="IMockBuilder.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.TestMocks;
-
-using Moq;
 
 /// <summary>
 /// Interface for mock builders.
@@ -19,10 +17,4 @@ public interface IMockBuilder<out T>
     /// </summary>
     /// <returns>The mocked instance.</returns>
     T Build();
-
-    /// <summary>
-    /// Build a <see cref="Mock{T}"/> of <typeparamref name="T"/>.
-    /// </summary>
-    /// <returns>The mock of the interface.</returns>
-    IMock<T> BuildMock();
 }

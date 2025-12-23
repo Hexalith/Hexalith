@@ -1,4 +1,4 @@
-﻿// <copyright file="HttpClientFactoryBuilder.cs" company="ITANEO">
+// <copyright file="HttpClientFactoryBuilder.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -7,8 +7,9 @@ namespace Hexalith.TestMocks;
 
 using System.Net;
 
-using Moq;
-using Moq.Protected;
+using NSubstitute;
+
+using RichardSzalay.MockHttp;
 
 /// <summary>
 /// Helper class to build a <see cref="IHttpClientFactory" /> mock.
@@ -30,7 +31,10 @@ public class HttpClientFactoryBuilder : IDisposable
     /// </summary>
     private HttpMessageHandler? _httpHandler;
 
-    private HttpResponseMessage? _httpResponse;
+    /// <summary>
+    /// The mock HTTP message handler.
+    /// </summary>
+    private MockHttpMessageHandler? _mockHttpMessageHandler;
 
     /// <summary>
     /// Gets the HTTP client.
@@ -47,20 +51,11 @@ public class HttpClientFactoryBuilder : IDisposable
     /// Builds this instance.
     /// </summary>
     /// <returns>IHttpClientFactory.</returns>
-    public IHttpClientFactory Build() => BuildMock().Object;
-
-    /// <summary>
-    /// Build a <see cref="Mock{IHttpClientFactory}" /> with the specified <see cref="HttpMessageHandler" />.
-    /// </summary>
-    /// <returns>A HTTP client factory with mocked dependencies if handler is defined, else a mock of the factory.</returns>
-    /// <exception cref="InvalidOperationException">HttpMessageHandler already set.</exception>
-    public Mock<IHttpClientFactory> BuildMock()
+    public IHttpClientFactory Build()
     {
-        Mock<IHttpClientFactory> mockHttpClientFactory = new();
-        _ = mockHttpClientFactory
-            .Setup(_ => _.CreateClient(It.IsAny<string>()))
-            .Returns(HttpClient);
-        return mockHttpClientFactory;
+        IHttpClientFactory factory = Substitute.For<IHttpClientFactory>();
+        factory.CreateClient(Arg.Any<string>()).Returns(HttpClient);
+        return factory;
     }
 
     /// <inheritdoc/>
@@ -100,41 +95,15 @@ public class HttpClientFactoryBuilder : IDisposable
             throw new InvalidOperationException("HttpMessageHandler already set.");
         }
 
-        if (_httpResponse != null)
+        if (_mockHttpMessageHandler != null)
         {
             throw new InvalidOperationException("Response already set.");
         }
 
-        Mock<HttpMessageHandler> handlerMock = new(MockBehavior.Strict);
+        _mockHttpMessageHandler = new MockHttpMessageHandler();
+        _mockHttpMessageHandler.When("*").Respond(HttpStatusCode.OK, "text/plain", response);
 
-        _httpResponse = new()
-        {
-            StatusCode = HttpStatusCode.OK,
-            Content = new StringContent(
-                    response),
-        };
-        handlerMock
-           .Protected()
-
-           // Setup the PROTECTED method to mock
-           .Setup<Task<HttpResponseMessage>>(
-              "SendAsync",
-              ItExpr.IsAny<HttpRequestMessage>(),
-              ItExpr.IsAny<CancellationToken>())
-
-           // prepare the expected response of the mocked HTTP call
-           .ReturnsAsync(_httpResponse)
-           .Verifiable();
-        handlerMock
-           .Protected()
-
-           // Setup the PROTECTED method to mock
-           .Setup(
-              "Dispose",
-              ItExpr.IsAny<bool>())
-
-           .Verifiable();
-        return SetHttpMessageHandler(handlerMock.Object);
+        return SetHttpMessageHandler(_mockHttpMessageHandler);
     }
 
     /// <summary>
@@ -147,7 +116,7 @@ public class HttpClientFactoryBuilder : IDisposable
         {
             if (disposing)
             {
-                _httpResponse?.Dispose();
+                _mockHttpMessageHandler?.Dispose();
                 _httpHandler?.Dispose();
                 _httpClient?.Dispose();
             }

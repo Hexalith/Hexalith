@@ -13,23 +13,23 @@ using System.Threading.Tasks;
 
 using Dapr.Actors.Runtime;
 
-using FluentAssertions;
-
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 
-using Moq;
+using NSubstitute;
+
+using Shouldly;
 
 using Xunit;
 
 public class SequentialStringListActorTests
 {
     private readonly ActorHost _actorHost;
-    private readonly Mock<IActorStateManager> _stateManagerMock;
+    private readonly IActorStateManager _stateManagerMock;
 
     public SequentialStringListActorTests()
     {
         // Create a mock IActorStateManager
-        _stateManagerMock = new Mock<IActorStateManager>(MockBehavior.Strict);
+        _stateManagerMock = Substitute.For<IActorStateManager>();
 
         // Create an ActorHost. Here, we can just pass null for services and use a test actor type.
         _actorHost = ActorHost.CreateForTest<SequentialStringListActor>();
@@ -42,26 +42,27 @@ public class SequentialStringListActorTests
         string valueToAdd = "testValue";
 
         // Initially, we have no pages in state
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(false, null));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>(Arg.Any<string>(), Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(false, null));
 
         // Expect that we set the state for page 0 with the new value
-        _ = _stateManagerMock
-            .Setup(x => x.SetStateAsync("0", It.Is<IEnumerable<string>>(s => s.Contains(valueToAdd)), It.IsAny<CancellationToken>()))
+        _stateManagerMock
+            .SetStateAsync("0", Arg.Is<IEnumerable<string>>(s => s.Contains(valueToAdd)), Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
 
-        _ = _stateManagerMock
-            .Setup(x => x.SaveStateAsync(It.IsAny<CancellationToken>()))
+        _stateManagerMock
+            .SaveStateAsync(Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
 
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
+        SequentialStringListActor actor = new(_actorHost, _stateManagerMock);
 
         // Act
         await actor.AddAsync(valueToAdd);
 
         // Assert
-        _stateManagerMock.VerifyAll();
+        await _stateManagerMock.Received(1).SetStateAsync("0", Arg.Is<IEnumerable<string>>(s => s.Contains(valueToAdd)), Arg.Any<CancellationToken>());
+        await _stateManagerMock.Received(1).SaveStateAsync(Arg.Any<CancellationToken>());
     }
 
     [Fact]
@@ -74,29 +75,30 @@ public class SequentialStringListActorTests
         // The page is not full, so we can add more items to it.
         List<string> existingData = [existingValue];
 
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("0", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, existingData));
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(false, null));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("0", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(true, existingData));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("1", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(false, null));
 
         // We expect the updated list to contain both existingValue and newValue.
-        _ = _stateManagerMock
-            .Setup(x => x.SetStateAsync("0", It.Is<IEnumerable<string>>(s => s.Contains(existingValue) && s.Contains(newValue)), It.IsAny<CancellationToken>()))
+        _stateManagerMock
+            .SetStateAsync("0", Arg.Is<IEnumerable<string>>(s => s.Contains(existingValue) && s.Contains(newValue)), Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
 
-        _ = _stateManagerMock
-            .Setup(x => x.SaveStateAsync(It.IsAny<CancellationToken>()))
+        _stateManagerMock
+            .SaveStateAsync(Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
 
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
+        SequentialStringListActor actor = new(_actorHost, _stateManagerMock);
 
         // Act
         await actor.AddAsync(newValue);
 
         // Assert
-        _stateManagerMock.VerifyAll();
+        await _stateManagerMock.Received(1).SetStateAsync("0", Arg.Is<IEnumerable<string>>(s => s.Contains(existingValue) && s.Contains(newValue)), Arg.Any<CancellationToken>());
+        await _stateManagerMock.Received(1).SaveStateAsync(Arg.Any<CancellationToken>());
     }
 
     [Fact]
@@ -106,31 +108,32 @@ public class SequentialStringListActorTests
         // Assume page 0 is full
         List<string> fullPageData = [.. Enumerable.Range(0, 1024).Select(i => $"value{i}")];
 
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("0", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, fullPageData));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("0", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(true, fullPageData));
 
         // No page 1 yet
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(false, null));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("1", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(false, null));
 
         string newValue = "newPageValue";
-        _ = _stateManagerMock
-            .Setup(x => x.SetStateAsync("1", It.Is<IEnumerable<string>>(s => s.Count() == 1 && s.Contains(newValue)), It.IsAny<CancellationToken>()))
+        _stateManagerMock
+            .SetStateAsync("1", Arg.Is<IEnumerable<string>>(s => s.Count() == 1 && s.Contains(newValue)), Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
 
-        _ = _stateManagerMock
-            .Setup(x => x.SaveStateAsync(It.IsAny<CancellationToken>()))
+        _stateManagerMock
+            .SaveStateAsync(Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
 
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
+        SequentialStringListActor actor = new(_actorHost, _stateManagerMock);
 
         // Act
         await actor.AddAsync(newValue);
 
         // Assert: The new page should be created at page 1
-        _stateManagerMock.VerifyAll();
+        await _stateManagerMock.Received(1).SetStateAsync("1", Arg.Is<IEnumerable<string>>(s => s.Count() == 1 && s.Contains(newValue)), Arg.Any<CancellationToken>());
+        await _stateManagerMock.Received(1).SaveStateAsync(Arg.Any<CancellationToken>());
     }
 
     [Fact]
@@ -140,18 +143,18 @@ public class SequentialStringListActorTests
         string valueToAdd = "existingValue";
         List<string> existingData = [valueToAdd];
 
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("0", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, existingData));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("0", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(true, existingData));
 
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
+        SequentialStringListActor actor = new(_actorHost, _stateManagerMock);
 
         // Act
         await actor.AddAsync(valueToAdd);
 
         // Assert: No state changes should occur since the value already exists.
-        _stateManagerMock.Verify(x => x.SetStateAsync(It.IsAny<string>(), It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()), Times.Never);
-        _stateManagerMock.Verify(x => x.SaveStateAsync(It.IsAny<CancellationToken>()), Times.Never);
+        await _stateManagerMock.DidNotReceive().SetStateAsync(Arg.Any<string>(), Arg.Any<IEnumerable<string>>(), Arg.Any<CancellationToken>());
+        await _stateManagerMock.DidNotReceive().SaveStateAsync(Arg.Any<CancellationToken>());
     }
 
     [Fact]
@@ -162,25 +165,25 @@ public class SequentialStringListActorTests
         List<string> firstPageData = ["notTargetValue"];
         List<string> secondPageData = ["anotherValue", targetValue];
 
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("0", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, firstPageData));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("0", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(true, firstPageData));
 
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, secondPageData));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("1", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(true, secondPageData));
 
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("2", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(false, null));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("2", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(false, null));
 
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
+        SequentialStringListActor actor = new(_actorHost, _stateManagerMock);
 
         // Act
         bool exists = await actor.ExistsAsync(targetValue);
 
         // Assert
-        _ = exists.Should().BeTrue();
+        exists.ShouldBeTrue();
     }
 
     [Fact]
@@ -188,17 +191,17 @@ public class SequentialStringListActorTests
     {
         // Arrange
         string valueToCheck = "nonExistentValue";
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(false, null));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>(Arg.Any<string>(), Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(false, null));
 
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
+        SequentialStringListActor actor = new(_actorHost, _stateManagerMock);
 
         // Act
         bool exists = await actor.ExistsAsync(valueToCheck);
 
         // Assert
-        _ = exists.Should().BeFalse();
+        exists.ShouldBeFalse();
     }
 
     [Fact]
@@ -208,17 +211,17 @@ public class SequentialStringListActorTests
         string valueToCheck = "existingValue";
         List<string> data = ["existingValue", "anotherValue"];
 
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("0", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, data));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("0", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(true, data));
 
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
+        SequentialStringListActor actor = new(_actorHost, _stateManagerMock);
 
         // Act
         bool exists = await actor.ExistsAsync(valueToCheck);
 
         // Assert
-        _ = exists.Should().BeTrue();
+        exists.ShouldBeTrue();
     }
 
     [Fact]
@@ -228,21 +231,21 @@ public class SequentialStringListActorTests
         string valueToRemove = "missingValue";
         List<string> existingData = ["value1", "value2"];
 
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("0", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, existingData));
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(false, null));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("0", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(true, existingData));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("1", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(false, null));
 
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
+        SequentialStringListActor actor = new(_actorHost, _stateManagerMock);
 
         // Act
         await actor.RemoveAsync(valueToRemove);
 
         // Assert: No changes since value not found
-        _stateManagerMock.Verify(x => x.SetStateAsync(It.IsAny<string>(), It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()), Times.Never);
-        _stateManagerMock.Verify(x => x.SaveStateAsync(It.IsAny<CancellationToken>()), Times.Never);
+        await _stateManagerMock.DidNotReceive().SetStateAsync(Arg.Any<string>(), Arg.Any<IEnumerable<string>>(), Arg.Any<CancellationToken>());
+        await _stateManagerMock.DidNotReceive().SaveStateAsync(Arg.Any<CancellationToken>());
     }
 
     [Fact]
@@ -253,28 +256,38 @@ public class SequentialStringListActorTests
         List<string> firstPageData = ["value1", "value2"];
         List<string> secondPageData = ["valueA", valueToRemove, "valueB"];
 
-        _ = _stateManagerMock
-            .SetupSequence(x => x.TryGetStateAsync<IEnumerable<string>>(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, firstPageData)) // page 0
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, secondPageData)) // page 1
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(false, null));        // no page 2
+        // Use a counter to track calls
+        int callCount = 0;
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>(Arg.Any<string>(), Arg.Any<CancellationToken>())
+            .Returns(callInfo =>
+            {
+                string key = callInfo.ArgAt<string>(0);
+                return key switch
+                {
+                    "0" when callCount++ == 0 => new ConditionalValue<IEnumerable<string>>(true, firstPageData),
+                    "1" => new ConditionalValue<IEnumerable<string>>(true, secondPageData),
+                    _ => new ConditionalValue<IEnumerable<string>>(false, null)
+                };
+            });
 
         // After removal, second page should not contain "removeMe"
-        _ = _stateManagerMock
-            .Setup(x => x.SetStateAsync("1", It.Is<IEnumerable<string>>(s => !s.Contains(valueToRemove)), It.IsAny<CancellationToken>()))
+        _stateManagerMock
+            .SetStateAsync("1", Arg.Is<IEnumerable<string>>(s => !s.Contains(valueToRemove)), Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
 
-        _ = _stateManagerMock
-            .Setup(x => x.SaveStateAsync(It.IsAny<CancellationToken>()))
+        _stateManagerMock
+            .SaveStateAsync(Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
 
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
+        SequentialStringListActor actor = new(_actorHost, _stateManagerMock);
 
         // Act
         await actor.RemoveAsync(valueToRemove);
 
         // Assert
-        _stateManagerMock.VerifyAll();
+        await _stateManagerMock.Received(1).SetStateAsync("1", Arg.Is<IEnumerable<string>>(s => !s.Contains(valueToRemove)), Arg.Any<CancellationToken>());
+        await _stateManagerMock.Received(1).SaveStateAsync(Arg.Any<CancellationToken>());
     }
 
     [Fact]
@@ -284,24 +297,25 @@ public class SequentialStringListActorTests
         string valueToRemove = "valueToRemove";
         List<string> existingData = ["valueToRemove", "anotherValue"];
 
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("0", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, existingData));
+        _stateManagerMock
+            .TryGetStateAsync<IEnumerable<string>>("0", Arg.Any<CancellationToken>())
+            .Returns(new ConditionalValue<IEnumerable<string>>(true, existingData));
 
-        _ = _stateManagerMock
-            .Setup(x => x.SetStateAsync("0", It.Is<IEnumerable<string>>(s => !s.Contains(valueToRemove)), It.IsAny<CancellationToken>()))
+        _stateManagerMock
+            .SetStateAsync("0", Arg.Is<IEnumerable<string>>(s => !s.Contains(valueToRemove)), Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
 
-        _ = _stateManagerMock
-            .Setup(x => x.SaveStateAsync(It.IsAny<CancellationToken>()))
+        _stateManagerMock
+            .SaveStateAsync(Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
 
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
+        SequentialStringListActor actor = new(_actorHost, _stateManagerMock);
 
         // Act
         await actor.RemoveAsync(valueToRemove);
 
         // Assert
-        _stateManagerMock.VerifyAll();
+        await _stateManagerMock.Received(1).SetStateAsync("0", Arg.Is<IEnumerable<string>>(s => !s.Contains(valueToRemove)), Arg.Any<CancellationToken>());
+        await _stateManagerMock.Received(1).SaveStateAsync(Arg.Any<CancellationToken>());
     }
 }

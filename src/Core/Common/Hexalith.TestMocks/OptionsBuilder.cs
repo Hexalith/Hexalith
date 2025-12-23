@@ -1,4 +1,4 @@
-﻿// <copyright file="OptionsBuilder.cs" company="ITANEO">
+// <copyright file="OptionsBuilder.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -10,7 +10,7 @@ using Hexalith.Extensions.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
-using Moq;
+using NSubstitute;
 
 /// <summary>
 /// Helper class to build a <see cref="IOptions{TOptions}"/> mock.
@@ -30,23 +30,15 @@ public class OptionsBuilder<T> : IMockBuilder<IOptions<T>>
     /// Build a <see cref="IOptions{TOptions}"/>.
     /// </summary>
     /// <returns>The mocked options instance.</returns>
-    public IOptions<T> Build() => BuildMock().Object;
-
-    /// <summary>
-    /// Build.
-    /// </summary>
-    /// <returns>The options mock instance.</returns>
-    public IMock<IOptions<T>> BuildMock()
+    public IOptions<T> Build()
     {
-        Mock<IOptions<T>> mock = new();
+        IOptions<T> options = Substitute.For<IOptions<T>>();
         if (_value is not null)
         {
-            _ = mock
-                .Setup(x => x.Value)
-                .Returns(_value);
+            options.Value.Returns(_value);
         }
 
-        return mock;
+        return options;
     }
 
     /// <summary>

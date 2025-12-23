@@ -1,18 +1,18 @@
-﻿// <copyright file="HexalithApplicationTest.cs" company="ITANEO">
+// <copyright file="HexalithApplicationTest.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Applications;
 
-using FluentAssertions;
-
 using Hexalith.Application.Modules.Applications;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using Moq;
+using NSubstitute;
+
+using Shouldly;
 
 public class HexalithApplicationTest
 {
@@ -20,38 +20,36 @@ public class HexalithApplicationTest
     public void DummyServicesFromClientModulesShouldBeAdded()
     {
         ServiceCollection services = [];
-        Mock<IConfiguration> configurationMock = new();
+        IConfiguration configuration = Substitute.For<IConfiguration>();
 
-        HexalithApplication.AddWebAppServices(services, configurationMock.Object);
+        HexalithApplication.AddWebAppServices(services, configuration);
 
         // Check that the services have been added
-        _ = services
+        services
             .Where(p => p.ImplementationType == typeof(DummyClientService))
-            .Should()
-            .HaveCount(1);
-        _ = services
+            .Count()
+            .ShouldBe(1);
+        services
             .Where(p => p.ImplementationType == typeof(DummyServerService))
-            .Should()
-            .BeEmpty();
+            .ShouldBeEmpty();
     }
 
     [Fact]
     public void DummyServicesFromServerModulesShouldBeAdded()
     {
         ServiceCollection services = [];
-        Mock<IConfiguration> configurationMock = new();
+        IConfiguration configuration = Substitute.For<IConfiguration>();
 
-        HexalithApplication.AddWebServerServices(services, configurationMock.Object);
+        HexalithApplication.AddWebServerServices(services, configuration);
 
         // Check that the services have been added
-        _ = services
+        services
             .Where(p => p.ImplementationType == typeof(DummyServerService))
-            .Should()
-            .HaveCount(1);
-        _ = services
+            .Count()
+            .ShouldBe(1);
+        services
             .Where(p => p.ImplementationType == typeof(DummyClientService))
-            .Should()
-            .BeEmpty();
+            .ShouldBeEmpty();
     }
 
     [Fact]
@@ -59,14 +57,12 @@ public class HexalithApplicationTest
         => HexalithApplication
             .WebAppApplication
             .WebAppModules
-            .Should()
-            .Contain(typeof(DummyClientModule));
+            .ShouldContain(typeof(DummyClientModule));
 
     [Fact]
     public void HexalithApplicationWebServerModuleShouldBeInstantiated()
         => HexalithApplication
             .WebServerApplication
             .WebServerModules
-            .Should()
-            .Contain(typeof(DummyServerModule));
+            .ShouldContain(typeof(DummyServerModule));
 }

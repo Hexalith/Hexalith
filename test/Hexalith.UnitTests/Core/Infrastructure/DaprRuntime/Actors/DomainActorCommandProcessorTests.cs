@@ -14,20 +14,20 @@ using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Microsoft.Extensions.Logging;
 
-using Moq;
+using NSubstitute;
 
 public class DomainActorCommandProcessorTests
 {
     private static readonly string[] _scopes = ["123"];
-    private readonly Mock<IActorProxyFactory> _actorProxyFactoryMock;
-    private readonly Mock<ILogger<DomainActorCommandProcessor>> _loggerMock;
+    private readonly IActorProxyFactory _actorProxyFactoryMock;
+    private readonly ILogger<DomainActorCommandProcessor> _loggerMock;
     private readonly DomainActorCommandProcessor _processor;
 
     public DomainActorCommandProcessorTests()
     {
-        _actorProxyFactoryMock = new Mock<IActorProxyFactory>();
-        _loggerMock = new Mock<ILogger<DomainActorCommandProcessor>>();
-        _processor = new DomainActorCommandProcessor(_actorProxyFactoryMock.Object, false, _loggerMock.Object);
+        _actorProxyFactoryMock = Substitute.For<IActorProxyFactory>();
+        _loggerMock = Substitute.For<ILogger<DomainActorCommandProcessor>>();
+        _processor = new DomainActorCommandProcessor(_actorProxyFactoryMock, false, _loggerMock);
     }
 
     [Fact]
@@ -48,26 +48,23 @@ public class DomainActorCommandProcessorTests
                 "123",
                 _scopes));
         string normalizedActorId = metadata.DomainGlobalId.ToActorId().ToString();
-        Mock<IDomainAggregateActor> actorMock = new(MockBehavior.Strict);
-        _ = _actorProxyFactoryMock
-            .Setup(
-                x => x.CreateActorProxy<IDomainAggregateActor>(
-                It.Is<ActorId>(p => p.ToString() == normalizedActorId),
-                It.IsAny<string>(),
-                It.IsAny<ActorProxyOptions>()))
-            .Returns(actorMock.Object);
+        IDomainAggregateActor actorMock = Substitute.For<IDomainAggregateActor>();
+        _actorProxyFactoryMock
+            .CreateActorProxy<IDomainAggregateActor>(
+                Arg.Is<ActorId>(p => p.ToString() == normalizedActorId),
+                Arg.Any<string>(),
+                Arg.Any<ActorProxyOptions>())
+            .Returns(actorMock);
 
-        _ = actorMock
-            .Setup(
-                x => x.SubmitCommandAsJsonAsync(
-                    It.Is<string>(p => p.Contains("Metadata") && p.Contains("Message"))))
+        actorMock
+            .SubmitCommandAsJsonAsync(Arg.Is<string>(p => p.Contains("Metadata") && p.Contains("Message")))
             .Returns(Task.CompletedTask);
 
         // Act
         await _processor.SubmitAsync(command, metadata, CancellationToken.None);
 
         // Assert
-        actorMock.Verify(x => x.SubmitCommandAsJsonAsync(It.IsAny<string>()), Times.Once);
+        await actorMock.Received(1).SubmitCommandAsJsonAsync(Arg.Any<string>());
     }
 
     [Fact]

@@ -1,4 +1,4 @@
-﻿// <copyright file="ActorCommandProcessorTest.cs" company="ITANEO">
+// <copyright file="ActorCommandProcessorTest.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -12,15 +12,15 @@ using System.Threading.Tasks;
 using Dapr.Actors;
 using Dapr.Actors.Client;
 
-using FluentAssertions;
-
 using Hexalith.Commons.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.PolymorphicSerializations;
 
 using Microsoft.Extensions.Logging;
 
-using Moq;
+using NSubstitute;
+
+using Shouldly;
 
 [PolymorphicSerialization]
 public partial record TestCommand(string Id, string Value)
@@ -40,12 +40,12 @@ public class ActorCommandProcessorTest
     [Fact]
     public async Task SubmittingACommandShouldSucceed()
     {
-        Mock<IActorProxyFactory> factory = new();
-        Mock<ActorProxy> actor = new();
-        _ = factory.Setup(x => x.Create(It.IsAny<ActorId>(), It.IsAny<string>(), It.IsAny<ActorProxyOptions>()))
-            .Returns(actor.Object);
+        IActorProxyFactory factory = Substitute.For<IActorProxyFactory>();
+        ActorProxy actor = Substitute.For<ActorProxy>();
+        factory.Create(Arg.Any<ActorId>(), Arg.Any<string>(), Arg.Any<ActorProxyOptions>())
+            .Returns(actor);
         PolymorphicSerializationResolver.TryAddDefaultMapper(new TestCommandMapper());
-        DomainActorCommandProcessor processor = new(factory.Object, false, new Mock<ILogger<DomainActorCommandProcessor>>().Object);
+        DomainActorCommandProcessor processor = new(factory, false, Substitute.For<ILogger<DomainActorCommandProcessor>>());
         TestCommand command = new("123", "Hello");
 
         Func<Task> submit = async () => await processor.SubmitAsync(
@@ -65,9 +65,7 @@ public class ActorCommandProcessorTest
             CancellationToken.None);
 
         // The InvokeMethodAsync on the actor is not virtual and cannot be mocked to return a Task. The mock object returned task will be null.
-        _ = await submit
-            .Should()
-            .ThrowAsync<InvalidOperationException>()
-            .Where(p => p.InnerException is NullReferenceException);
+        InvalidOperationException exception = await Should.ThrowAsync<InvalidOperationException>(submit);
+        exception.InnerException.ShouldBeOfType<NullReferenceException>();
     }
 }
