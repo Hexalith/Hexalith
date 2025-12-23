@@ -18,16 +18,11 @@ using Hexalith.Domains;
 public class DomainAggregateProvider<TAggregate> : IDomainAggregateProvider<TAggregate>
     where TAggregate : IDomainAggregate, new()
 {
-    /// <summary>
-    /// The aggregate name.
-    /// </summary>
-    private string? _domainName;
-
     /// <inheritdoc/>
     public Type AggregateType => typeof(TAggregate);
 
     /// <inheritdoc/>
-    public string DomainName => _domainName ??= Create().DomainName;
+    public string DomainName => field ??= Create().DomainName;
 
     /// <inheritdoc/>
     public TAggregate Create() => new();

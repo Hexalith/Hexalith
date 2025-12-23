@@ -11,13 +11,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 using Hexalith.Application.States;
-using Hexalith.Commons.Objects;
-using Hexalith.Extensions.Common;
-
-using Hexalith.Commons.Strings;
-
-using Hexalith.Extensions.Helpers;
 using Hexalith.Commons.Errors;
+using Hexalith.Commons.Objects;
+using Hexalith.Commons.Strings;
 
 /// <summary>
 /// Represents a store for messages that ensures idempotency and version control.

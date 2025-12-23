@@ -10,7 +10,6 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 
 using Hexalith.Commons.Errors;
-using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Class DuplicateEntityFoundException.

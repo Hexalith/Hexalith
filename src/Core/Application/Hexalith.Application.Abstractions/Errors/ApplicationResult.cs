@@ -10,7 +10,6 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Commons.Errors;
-using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Class ApplicationResult.
@@ -19,17 +18,12 @@ using Hexalith.Extensions.Common;
 public class ApplicationResult<T>
 {
     /// <summary>
-    /// The value.
-    /// </summary>
-    private readonly T _value;
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="ApplicationResult{T}"/> class.
     /// </summary>
     /// <param name="value">The value.</param>
     public ApplicationResult(T value)
     {
-        _value = value;
+        Value = value;
         Error = null;
     }
 
@@ -40,7 +34,7 @@ public class ApplicationResult<T>
     public ApplicationResult(ApplicationError error)
     {
         Error = error;
-        _value = default!;
+        Value = default!;
     }
 
     /// <summary>
@@ -62,5 +56,5 @@ public class ApplicationResult<T>
     /// </summary>
     /// <value>The value.</value>
     /// <exception cref="InvalidOperationException">The result has failed.</exception>
-    public T Value => HasFailed ? throw new InvalidOperationException("The result has failed.") : _value;
+    public T Value => HasFailed ? throw new InvalidOperationException("The result has failed.") : field;
 }

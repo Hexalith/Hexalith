@@ -101,6 +101,7 @@ public partial class ResilientCommandProcessor
     /// <exception cref="System.NotSupportedException">Thrown when an unsupported task processor status or retry status is encountered.</exception>
     [SuppressMessage("Minor Code Smell", "S2221:\"Exception\" should not be caught", Justification = "Retry policy needs to capture all exceptions.")]
     [SuppressMessage("Critical Code Smell", "S1821:\"switch\" statements should not be nested", Justification = "Nesting needed")]
+    [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Intentional")]
     public async Task<(TaskProcessor Processor, ExecuteCommandResult? Result)> ProcessAsync(
         string id,
         [NotNull] object command,
@@ -160,9 +161,10 @@ public partial class ResilientCommandProcessor
             }
             catch (Exception e)
             {
+                string error = e.FullMessage();
                 taskProcessor = taskProcessor
-                    .Fail($"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Domain.Name}/{metadata.Message.Domain.Id}: {e.Message}", e.FullMessage());
-                LogCommandExecutionError(_logger, e, metadata.Message.Name, metadata.DomainGlobalId, metadata.Context.CorrelationId, e.FullMessage());
+                    .Fail($"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Domain.Name}/{metadata.Message.Domain.Id}: {e.Message}", error);
+                LogCommandExecutionError(_logger, e, metadata.Message.Name, metadata.DomainGlobalId, metadata.Context.CorrelationId, error);
             }
         }
 

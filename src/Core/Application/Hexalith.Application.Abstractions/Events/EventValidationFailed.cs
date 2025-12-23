@@ -8,8 +8,6 @@ namespace Hexalith.Application.Events;
 using System.Runtime.Serialization;
 
 using Hexalith.Commons.Errors;
-using Hexalith.Extensions.Common;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class EventValidationFailed.

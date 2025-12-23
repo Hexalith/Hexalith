@@ -9,7 +9,6 @@ using System;
 using System.Runtime.Serialization;
 
 using Hexalith.Commons.Strings;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// The message store item not found exception.
