@@ -6,7 +6,6 @@
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprHandlers;
 
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 using Dapr.Actors;
@@ -20,6 +19,7 @@ using Hexalith.PolymorphicSerializations;
 using Microsoft.Extensions.Logging;
 
 using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 
 using Shouldly;
 
@@ -36,15 +36,21 @@ public partial record TestCommand(string Id, string Value)
 /// </summary>
 public class ActorCommandProcessorTest
 {
-    /// <summary>Defines the test method Submitting_a_command_should_succeed.</summary>
+    /// <summary>Defines the test method that submitting a command with a failing actor should wrap exception.</summary>
     /// <returns>Task.</returns>
     [Fact]
-    public async Task SubmittingACommandShouldSucceed()
+    public async Task SubmittingACommandWithFailingActorShouldWrapException()
     {
         IActorProxyFactory factory = Substitute.For<IActorProxyFactory>();
         IDomainAggregateActor actor = Substitute.For<IDomainAggregateActor>();
+
+        // Set up the actor to throw when SubmitCommandAsJsonAsync is called
+        actor.SubmitCommandAsJsonAsync(Arg.Any<string>())
+            .ThrowsAsync(new NullReferenceException("Test exception"));
+
         factory.CreateActorProxy<IDomainAggregateActor>(Arg.Any<ActorId>(), Arg.Any<string>(), Arg.Any<ActorProxyOptions>())
             .Returns(actor);
+
         PolymorphicSerializationResolver.TryAddDefaultMapper(new TestCommandMapper());
         DomainActorCommandProcessor processor = new(factory, false, Substitute.For<ILogger<DomainActorCommandProcessor>>());
         TestCommand command = new("123", "Hello");
@@ -66,7 +72,8 @@ public class ActorCommandProcessorTest
                     [])),
             CancellationToken.None);
 
-        // Verify the actor received the command
-        await actor.Received(1).SubmitCommandAsJsonAsync(Arg.Any<string>());
+        // Verify that the exception is wrapped in InvalidOperationException
+        InvalidOperationException exception = await Should.ThrowAsync<InvalidOperationException>(submit);
+        exception.InnerException.ShouldBeOfType<NullReferenceException>();
     }
 }

@@ -8,9 +8,9 @@ namespace Hexalith.UnitTests.Core.Application.Metadatas;
 using System;
 using System.Text.Json;
 
-using FluentAssertions;
-
 using Hexalith.Commons.Metadatas;
+
+using Shouldly;
 
 /// <summary>
 /// Class ContextMetadataTest.
@@ -33,7 +33,13 @@ public class ContextMetadataTest
 
         string json = JsonSerializer.Serialize(meta);
         ContextMetadata result = JsonSerializer.Deserialize<ContextMetadata>(json);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeEquivalentTo(meta);
+        result.ShouldNotBeNull();
+        result.CorrelationId.ShouldBe(meta.CorrelationId);
+        result.UserId.ShouldBe(meta.UserId);
+        result.PartitionId.ShouldBe(meta.PartitionId);
+        result.ReceivedDate.ShouldBe(meta.ReceivedDate);
+        result.SequenceNumber.ShouldBe(meta.SequenceNumber);
+        result.SessionId.ShouldBe(meta.SessionId);
+        result.Scopes.ShouldBe(meta.Scopes);
     }
 }

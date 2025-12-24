@@ -3,7 +3,9 @@
     "allow": [
       "Bash(find:*)",
       "Bash(dotnet build:*)",
-      "Bash(xxd:*)"
+      "Bash(xxd:*)",
+      "Bash(dotnet test:*)",
+      "Bash(dotnet list:*)"
     ]
   }
 }
