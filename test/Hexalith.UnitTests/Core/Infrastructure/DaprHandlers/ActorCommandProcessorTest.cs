@@ -56,7 +56,7 @@ public class ActorCommandProcessorTest
         TestCommand command = new("123", "Hello");
 
         // Submit the command
-        await processor.SubmitAsync(
+        Func<Task> submit = () => processor.SubmitAsync(
             command,
             new Metadata(
                     command.CreateMessageMetadata(DateTimeOffset.UtcNow),

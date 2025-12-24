@@ -8,7 +8,6 @@
     <OutputPath>$(RepoRoot)bin\$(Configuration)\test\$(MSBuildProjectName)\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" />
     <PackageReference Include="NSubstitute" />
     <PackageReference Include="RichardSzalay.MockHttp" />
     <PackageReference Include="xunit" />

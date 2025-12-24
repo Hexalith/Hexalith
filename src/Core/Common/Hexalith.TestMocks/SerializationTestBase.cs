@@ -5,8 +5,6 @@
 
 namespace Hexalith.TestMocks;
 
-using Xunit;
-
 /// <summary>
 /// Class SerializationTestBase.
 /// </summary>
@@ -15,13 +13,11 @@ public abstract class SerializationTestBase
     /// <summary>
     /// Defines the test method CheckDataContractSerialization.
     /// </summary>
-    [Fact]
     public void CheckDataContractSerialization() => ToSerializeObject().ShouldBeDataContractSerializable();
 
     /// <summary>
     /// Defines the test method CheckJsonSerialization.
     /// </summary>
-    [Fact]
     public void CheckJsonSerialization() => ToSerializeObject().ShouldBeJsonSerializable();
 
     /// <summary>

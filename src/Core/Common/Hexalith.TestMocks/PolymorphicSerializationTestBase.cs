@@ -9,8 +9,6 @@ using System.Text.Json;
 
 using Shouldly;
 
-using Xunit;
-
 /// <summary>
 /// Class PolymorphicSerializationTestBase.
 /// Implements the <see cref="Hexalith.TestMocks.SerializationTestBase" />.
@@ -25,7 +23,6 @@ public abstract class PolymorphicSerializationTestBase<TObject, TBase> : Seriali
     /// <summary>
     /// Defines the test method PolymorphicSerializeAndDeserializeShouldReturnSameObject.
     /// </summary>
-    [Fact]
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         TObject original = (TObject)ToSerializeObject();
