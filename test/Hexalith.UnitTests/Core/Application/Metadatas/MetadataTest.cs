@@ -7,9 +7,9 @@ namespace Hexalith.UnitTests.Core.Application.Metadatas;
 
 using System.Text.Json;
 
-using FluentAssertions;
-
 using Hexalith.Commons.Metadatas;
+
+using Shouldly;
 
 public class MetadataTest
 {
@@ -21,8 +21,8 @@ public class MetadataTest
         Metadata meta = GetMetadata();
         string json = JsonSerializer.Serialize(meta);
         Metadata result = JsonSerializer.Deserialize<Metadata>(json);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeEquivalentTo(result);
+        result.ShouldNotBeNull();
+        result.ShouldBeEquivalentTo(result);
     }
 
     [Fact]
@@ -30,8 +30,8 @@ public class MetadataTest
     {
         Metadata meta = GetMetadata();
         string json = JsonSerializer.Serialize(meta);
-        _ = json.Should().NotBeNull();
-        _ = json.Should().Contain(meta.Message.Id);
+        json.ShouldNotBeNull();
+        json.ShouldContain(meta.Message.Id);
     }
 
     private static Metadata GetMetadata()

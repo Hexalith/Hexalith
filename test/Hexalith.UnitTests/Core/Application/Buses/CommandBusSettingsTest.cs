@@ -5,10 +5,10 @@
 
 namespace Hexalith.UnitTests.Core.Application.Buses;
 
-using FluentAssertions;
-
 using Hexalith.Application.Buses;
 using Hexalith.TestMocks;
+
+using Shouldly;
 
 public class CommandBusSettingsTest
 {
@@ -16,7 +16,7 @@ public class CommandBusSettingsTest
     public void CheckDefaultNameIsNotNullOrEmpty()
     {
         string name = new CommandBusSettings().Name;
-        _ = name.Should().NotBeNullOrEmpty();
+        name.ShouldNotBeNullOrEmpty();
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public class CommandBusSettingsTest
     {
         CommandBusSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new CommandBusSettings());
-        _ = result.IsValid.Should().BeTrue();
+        result.IsValid.ShouldBeTrue();
     }
 
     [Fact]
@@ -34,7 +34,7 @@ public class CommandBusSettingsTest
             .WithValueFromConfiguration<CommandBusSettingsTest>();
         string name = settings.Build().Value.Name;
 
-        _ = name.Should().Be("my-command-bus");
+        name.ShouldBe("my-command-bus");
     }
 
     [Fact]
@@ -42,6 +42,6 @@ public class CommandBusSettingsTest
     {
         CommandBusSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new CommandBusSettings() { Name = string.Empty });
-        _ = result.IsValid.Should().BeFalse();
+        result.IsValid.ShouldBeFalse();
     }
 }

@@ -5,7 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Common.Common;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Extensions.Helpers;
 
@@ -24,8 +24,8 @@ public class AreSameEnumerationTest
             [100] = new DummyEquatable(),
             [101] = new DummyEquatable() { Property3 = 11 },
         };
-        _ = a.AreSameDictionary(b).Should().BeFalse();
-        _ = a.AreSame(b).Should().BeFalse();
+        a.AreSameDictionary(b).ShouldBeFalse();
+        a.AreSame(b).ShouldBeFalse();
     }
 
     [Fact]
@@ -41,8 +41,8 @@ public class AreSameEnumerationTest
             [100] = new DummyEquatable(),
             [101] = new DummyEquatable() { Property3 = 10 },
         };
-        _ = a.AreSameDictionary(b).Should().BeTrue();
-        _ = a.AreSame(b).Should().BeTrue();
+        a.AreSameDictionary(b).ShouldBeTrue();
+        a.AreSame(b).ShouldBeTrue();
     }
 
     [Fact]
@@ -50,8 +50,8 @@ public class AreSameEnumerationTest
     {
         List<DummyEquatable> a = [new DummyEquatable(), new DummyEquatable() { Property3 = 10 }];
         List<DummyEquatable> b = [new DummyEquatable(), new DummyEquatable() { Property3 = 11 }];
-        _ = a.AreSameEnumeration(b).Should().BeFalse();
-        _ = a.AreSame(b).Should().BeFalse();
+        a.AreSameEnumeration(b).ShouldBeFalse();
+        a.AreSame(b).ShouldBeFalse();
     }
 
     [Fact]
@@ -59,8 +59,8 @@ public class AreSameEnumerationTest
     {
         List<DummyEquatable> a = [new DummyEquatable(), new DummyEquatable() { Property3 = 10 }];
         List<DummyEquatable> b = [new DummyEquatable(), new DummyEquatable() { Property3 = 10 }];
-        _ = a.AreSameEnumeration(b).Should().BeTrue();
-        _ = a.AreSame(b).Should().BeTrue();
+        a.AreSameEnumeration(b).ShouldBeTrue();
+        a.AreSame(b).ShouldBeTrue();
     }
 
     [Fact]
@@ -68,8 +68,8 @@ public class AreSameEnumerationTest
     {
         Dictionary<int, string> a = new() { [10] = "Hello", [11] = "world" };
         Dictionary<int, string> b = new() { [10] = "Hello", [11] = "world*" };
-        _ = a.AreSameDictionary(b).Should().BeFalse();
-        _ = a.AreSame(b).Should().BeFalse();
+        a.AreSameDictionary(b).ShouldBeFalse();
+        a.AreSame(b).ShouldBeFalse();
     }
 
     [Fact]
@@ -77,8 +77,8 @@ public class AreSameEnumerationTest
     {
         Dictionary<int, string> a = new() { [10] = "Hello", [11] = "world" };
         Dictionary<int, string> b = new() { [10] = "Hello", [11] = "world" };
-        _ = a.AreSameDictionary(b).Should().BeTrue();
-        _ = a.AreSame(b).Should().BeTrue();
+        a.AreSameDictionary(b).ShouldBeTrue();
+        a.AreSame(b).ShouldBeTrue();
     }
 
     [Fact]
@@ -86,8 +86,8 @@ public class AreSameEnumerationTest
     {
         List<string> a = ["Hello", "World"];
         List<string> b = ["Hello", "World*"];
-        _ = a.AreSameEnumeration(b).Should().BeFalse();
-        _ = a.AreSame(b).Should().BeFalse();
+        a.AreSameEnumeration(b).ShouldBeFalse();
+        a.AreSame(b).ShouldBeFalse();
     }
 
     [Fact]
@@ -95,7 +95,7 @@ public class AreSameEnumerationTest
     {
         List<string> a = ["Hello", "World"];
         List<string> b = ["Hello", "World"];
-        _ = a.AreSameEnumeration(b).Should().BeTrue();
-        _ = a.AreSame(b).Should().BeTrue();
+        a.AreSameEnumeration(b).ShouldBeTrue();
+        a.AreSame(b).ShouldBeTrue();
     }
 }

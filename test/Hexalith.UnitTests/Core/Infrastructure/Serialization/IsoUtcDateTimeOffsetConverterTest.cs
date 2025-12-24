@@ -8,7 +8,7 @@ namespace Hexalith.UnitTests.Core.Infrastructure.Serialization;
 using System;
 using System.Text.Json;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Infrastructure.Serialization.Serialization;
 
@@ -24,7 +24,7 @@ public class IsoUtcDateTimeOffsetConverterTest
         DateTimeOffset date = JsonSerializer.Deserialize<DateTimeOffset>(
             json,
             options);
-        _ = date.Should().Be(new DateTimeOffset(
+        date.ShouldBe(new DateTimeOffset(
             2022,
             5,
             6,
@@ -45,6 +45,6 @@ public class IsoUtcDateTimeOffsetConverterTest
             date,
             options);
         DateTimeOffset d = date.ToUniversalTime();
-        _ = json.Should().Be($"\"{d.Year:D4}-{d.Month:D2}-{d.Day:D2}T{d.Hour:D2}:{d.Minute:D2}:{d.Second:D2}Z\"");
+        json.ShouldBe($"\"{d.Year:D4}-{d.Month:D2}-{d.Day:D2}T{d.Hour:D2}:{d.Minute:D2}:{d.Second:D2}Z\"");
     }
 }

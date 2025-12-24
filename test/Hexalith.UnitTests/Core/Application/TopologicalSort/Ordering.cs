@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Application.TopologicalSorting;
 
@@ -32,15 +32,15 @@ public class Ordering
 
         IEnumerable<IEnumerable<OrderedProcess>> s = g.CalculateSort();
 
-        _ = s.Skip(0).First().Count().Should().Be(1);
-        _ = s.Skip(0).First().First().Should().Be(a);
+        s.Skip(0).First().Count().ShouldBe(1);
+        s.Skip(0).First().First().ShouldBe(a);
 
-        _ = s.Skip(1).First().Count().Should().Be(2);
-        _ = s.Skip(1).First().Should().Contain(b1);
-        _ = s.Skip(1).First().Should().Contain(b2);
+        s.Skip(1).First().Count().ShouldBe(2);
+        s.Skip(1).First().ShouldContain(b1);
+        s.Skip(1).First().ShouldContain(b2);
 
-        _ = s.Skip(2).First().Count().Should().Be(1);
-        _ = s.Skip(2).First().First().Should().Be(c);
+        s.Skip(2).First().Count().ShouldBe(1);
+        s.Skip(2).First().First().ShouldBe(c);
     }
 
     /// <summary>
@@ -61,14 +61,14 @@ public class Ordering
 
         IEnumerable<IEnumerable<OrderedProcess>> s = g.CalculateSort();
 
-        _ = s.Skip(0).First().Count().Should().Be(1);
-        _ = s.Skip(0).First().First().Should().Be(a);
+        s.Skip(0).First().Count().ShouldBe(1);
+        s.Skip(0).First().First().ShouldBe(a);
 
-        _ = s.Skip(1).First().Count().Should().Be(1);
-        _ = s.Skip(1).First().First().Should().Be(b);
+        s.Skip(1).First().Count().ShouldBe(1);
+        s.Skip(1).First().First().ShouldBe(b);
 
-        _ = s.Skip(2).First().Count().Should().Be(1);
-        _ = s.Skip(2).First().First().Should().Be(c);
+        s.Skip(2).First().Count().ShouldBe(1);
+        s.Skip(2).First().First().ShouldBe(c);
     }
 
     /// <summary>
@@ -87,14 +87,14 @@ public class Ordering
 
         IEnumerable<IEnumerable<OrderedProcess>> s = g.CalculateSort();
 
-        _ = s.Skip(0).First().Count().Should().Be(1);
-        _ = s.Skip(0).First().First().Should().Be(a);
+        s.Skip(0).First().Count().ShouldBe(1);
+        s.Skip(0).First().First().ShouldBe(a);
 
-        _ = s.Skip(1).First().Count().Should().Be(1);
-        _ = s.Skip(1).First().First().Should().Be(b);
+        s.Skip(1).First().Count().ShouldBe(1);
+        s.Skip(1).First().First().ShouldBe(b);
 
-        _ = s.Skip(2).First().Count().Should().Be(1);
-        _ = s.Skip(2).First().First().Should().Be(c);
+        s.Skip(2).First().Count().ShouldBe(1);
+        s.Skip(2).First().First().ShouldBe(c);
     }
 
     /// <summary>
@@ -117,7 +117,7 @@ public class Ordering
         _ = a.Before(b1, b2).Before(c1, c2, c3, c4).Before(d).Before(b1);
 
         Action calc = () => g.CalculateSort();
-        _ = calc.Should().Throw<InvalidOperationException>();
+        Should.Throw<InvalidOperationException>(calc);
     }
 
     /// <summary>
@@ -141,21 +141,21 @@ public class Ordering
 
         IEnumerable<IEnumerable<OrderedProcess>> s = g.CalculateSort();
 
-        _ = s.Skip(0).First().Count().Should().Be(1);
-        _ = s.Skip(0).First().First().Should().Be(a);
+        s.Skip(0).First().Count().ShouldBe(1);
+        s.Skip(0).First().First().ShouldBe(a);
 
-        _ = s.Skip(1).First().Count().Should().Be(2);
-        _ = s.Skip(1).First().Should().Contain(b1);
-        _ = s.Skip(1).First().Should().Contain(b2);
+        s.Skip(1).First().Count().ShouldBe(2);
+        s.Skip(1).First().ShouldContain(b1);
+        s.Skip(1).First().ShouldContain(b2);
 
-        _ = s.Skip(2).First().Count().Should().Be(4);
-        _ = s.Skip(2).First().Should().Contain(c1);
-        _ = s.Skip(2).First().Should().Contain(c2);
-        _ = s.Skip(2).First().Should().Contain(c3);
-        _ = s.Skip(2).First().Should().Contain(c4);
+        s.Skip(2).First().Count().ShouldBe(4);
+        s.Skip(2).First().ShouldContain(c1);
+        s.Skip(2).First().ShouldContain(c2);
+        s.Skip(2).First().ShouldContain(c3);
+        s.Skip(2).First().ShouldContain(c4);
 
-        _ = s.Skip(3).First().Count().Should().Be(1);
-        _ = s.Skip(3).First().First().Should().Be(d);
+        s.Skip(3).First().Count().ShouldBe(1);
+        s.Skip(3).First().First().ShouldBe(d);
     }
 
     /// <summary>
@@ -173,6 +173,6 @@ public class Ordering
         _ = b.Before(a);
 
         Action calc = () => g.CalculateSort();
-        _ = calc.Should().Throw<InvalidOperationException>();
+        Should.Throw<InvalidOperationException>(calc);
     }
 }

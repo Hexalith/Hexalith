@@ -5,10 +5,10 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Prompts;
 
-using FluentAssertions;
-
 using Hexalith.Commons.UniqueIds;
 using Hexalith.Extensions.Helpers;
+
+using Shouldly;
 
 public class CommandPromptGenerationTest
 {
@@ -28,23 +28,22 @@ public class CommandPromptGenerationTest
             userEmail,
             userName,
             "en-US",
-            correlationId)
-;
+            correlationId);
 
         // Assert
-        _ = prompt.Should().NotBeNullOrEmpty();
-        _ = prompt.Should().Contain(correlationId);
-        _ = prompt.Should().Contain(assistantEmail);
-        _ = prompt.Should().Contain(assistantName);
-        _ = prompt.Should().Contain(userEmail);
-        _ = prompt.Should().Contain(userName);
-        _ = prompt.Should().Contain(command.DomainName);
-        _ = prompt.Should().Contain(nameof(AddCountryCommand.Name));
-        _ = prompt.Should().Contain(nameof(AddCountryCommand.IsoNumber));
-        _ = prompt.Should().Contain(nameof(AddCountryCommand.CurrencyName));
-        _ = prompt.Should().Contain(nameof(AddCountryCommand.CurrencySymbol));
-        _ = prompt.Should().Contain(nameof(AddCountryCommand.Iso2));
-        _ = prompt.Should().Contain(nameof(AddCountryCommand.Iso3));
-        _ = prompt.Should().Contain(nameof(AddCountryCommand.IsoNumber));
+        prompt.ShouldNotBeNullOrEmpty();
+        prompt.ShouldContain(correlationId);
+        prompt.ShouldContain(assistantEmail);
+        prompt.ShouldContain(assistantName);
+        prompt.ShouldContain(userEmail);
+        prompt.ShouldContain(userName);
+        prompt.ShouldContain(command.DomainName);
+        prompt.ShouldContain(nameof(AddCountryCommand.Name));
+        prompt.ShouldContain(nameof(AddCountryCommand.IsoNumber));
+        prompt.ShouldContain(nameof(AddCountryCommand.CurrencyName));
+        prompt.ShouldContain(nameof(AddCountryCommand.CurrencySymbol));
+        prompt.ShouldContain(nameof(AddCountryCommand.Iso2));
+        prompt.ShouldContain(nameof(AddCountryCommand.Iso3));
+        prompt.ShouldContain(nameof(AddCountryCommand.IsoNumber));
     }
 }

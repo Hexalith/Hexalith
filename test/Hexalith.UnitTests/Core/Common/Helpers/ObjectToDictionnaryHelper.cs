@@ -7,7 +7,7 @@ namespace Hexalith.UnitTests.Core.Common.Helpers;
 
 using System.Collections.Generic;
 
-using FluentAssertions;
+using Shouldly;
 
 public class ObjectToDictionnaryHelper
 {
@@ -18,12 +18,12 @@ public class ObjectToDictionnaryHelper
         var obj = new { Name = "John", Age = 42 };
         IDictionary<string, object> dico = ToDictionary(obj);
 
-        _ = dico.Should().NotBeNull();
-        _ = dico.Should().HaveCount(2);
-        _ = dico.Should().ContainKey("Name");
-        _ = dico.Should().ContainKey("Age");
-        _ = dico["Name"].Should().Be("John");
-        _ = dico["Age"].Should().Be(42);
+        dico.ShouldNotBeNull();
+        dico.Count.ShouldBe(2);
+        dico.ShouldContainKey("Name");
+        dico.ShouldContainKey("Age");
+        dico["Name"].ShouldBe("John");
+        dico["Age"].ShouldBe(42);
     }
 
     private static IDictionary<string, object> ToDictionary(object obj)

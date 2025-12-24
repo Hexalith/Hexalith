@@ -5,7 +5,9 @@
       "Bash(dotnet build:*)",
       "Bash(xxd:*)",
       "Bash(dotnet test:*)",
-      "Bash(dotnet list:*)"
+      "Bash(dotnet list:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }

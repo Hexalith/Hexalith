@@ -5,7 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Common.Configuration;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.TestMocks;
 
@@ -29,6 +29,9 @@ public class ConfigureSettingsTest
         Microsoft.Extensions.Options.IOptions<TestSettings> settings = new OptionsBuilder<TestSettings>()
             .WithValueFromConfiguration<ConfigureSettingsTest>()
             .Build();
-        _ = settings.Value.Should().BeEquivalentTo(expected);
+        settings.Value.TestLong.ShouldBe(expected.TestLong);
+        settings.Value.TestString.ShouldBe(expected.TestString);
+        settings.Value.TestClass.TestLong.ShouldBe(expected.TestClass.TestLong);
+        settings.Value.TestClass.TestString.ShouldBe(expected.TestClass.TestString);
     }
 }

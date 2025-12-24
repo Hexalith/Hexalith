@@ -5,13 +5,14 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprHandlers;
 
+using System.Runtime.Serialization;
 using System.Text.Json;
-
-using FluentAssertions;
 
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.PolymorphicSerializations;
 using Hexalith.UnitTests.Core.Application.Commands;
+
+using Shouldly;
 
 /// <summary>
 /// Class ActorMessageEnvelopeTest.
@@ -30,7 +31,7 @@ public class ActorMessageEnvelopeTest
         ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(c1, c1.CreateMetadata());
         string json = JsonSerializer.Serialize(envelope);
         ActorMessageEnvelope result = JsonSerializer.Deserialize<ActorMessageEnvelope>(json);
-        _ = result.Should().BeEquivalentTo(envelope);
+        result.ShouldBeEquivalentTo(envelope);
     }
 
     /// <summary>
@@ -41,7 +42,12 @@ public class ActorMessageEnvelopeTest
     {
         DummyCommand1 c1 = DummyCommand1.Create();
         ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(c1, c1.CreateMetadata());
-        _ = envelope.Should().BeDataContractSerializable();
+        DataContractSerializer serializer = new(typeof(ActorMessageEnvelope));
+        using MemoryStream stream = new();
+        serializer.WriteObject(stream, envelope);
+        stream.Position = 0;
+        ActorMessageEnvelope result = (ActorMessageEnvelope)serializer.ReadObject(stream);
+        result.ShouldBeEquivalentTo(envelope);
     }
 
     /// <summary>
@@ -53,8 +59,8 @@ public class ActorMessageEnvelopeTest
         DummyCommand1 c1 = DummyCommand1.Create();
         ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(c1, c1.CreateMetadata());
         string json = JsonSerializer.Serialize(envelope, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = json.Should().NotBeNullOrWhiteSpace();
-        _ = json.Should().Contain(nameof(envelope.Message));
-        _ = json.Should().Contain(nameof(envelope.Metadata));
+        json.ShouldNotBeNullOrWhiteSpace();
+        json.ShouldContain(nameof(envelope.Message));
+        json.ShouldContain(nameof(envelope.Metadata));
     }
 }

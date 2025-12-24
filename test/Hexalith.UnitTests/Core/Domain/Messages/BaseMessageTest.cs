@@ -7,10 +7,10 @@ namespace Hexalith.UnitTests.Core.Domain.Messages;
 
 using System.Text.Json;
 
-using FluentAssertions;
-
 using Hexalith.PolymorphicSerializations;
 using Hexalith.UnitTests.Extensions;
+
+using Shouldly;
 
 public class BaseMessageTest
 {
@@ -22,9 +22,9 @@ public class BaseMessageTest
         DummyMessage1 original = new("IB2343213FR", 655463);
         string json = JsonSerializer.Serialize<Polymorphic>(original, PolymorphicHelper.DefaultJsonSerializerOptions);
         object result = JsonSerializer.Deserialize<Polymorphic>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeOfType<DummyMessage1>();
-        _ = result.Should().BeEquivalentTo(original);
+        result.ShouldNotBeNull();
+        result.ShouldBeOfType<DummyMessage1>();
+        result.ShouldBeEquivalentTo(original);
     }
 
     [Fact]
@@ -33,7 +33,7 @@ public class BaseMessageTest
         DummyMessage1 original = new("IB2343213FR", 1256);
         string json = JsonSerializer.Serialize(original, PolymorphicHelper.DefaultJsonSerializerOptions);
         DummyMessage1 result = JsonSerializer.Deserialize<DummyMessage1>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeEquivalentTo(original);
+        result.ShouldNotBeNull();
+        result.ShouldBeEquivalentTo(original);
     }
 }

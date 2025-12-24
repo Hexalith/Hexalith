@@ -7,10 +7,10 @@ namespace Hexalith.UnitTests.Core.Common.Helpers;
 
 using System;
 
-using FluentAssertions;
-
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
+
+using Shouldly;
 
 /// <summary>
 /// Class ExampleTest.
@@ -23,7 +23,7 @@ public class ExampleTest
     public void BasePropertyWithAttributeShouldHaveValue()
     {
         BasePropertyExample example = ExampleHelper.CreateExample<BasePropertyExample>();
-        _ = example.Value.Should().Be("Hello");
+        example.Value.ShouldBe("Hello");
     }
 
     /// <summary>
@@ -33,8 +33,8 @@ public class ExampleTest
     public void BaseReadOnlyPropertyAndPropertyWithAttributeShouldHaveValue()
     {
         BaseReadOnlyPropertyExample example = ExampleHelper.CreateExample<BaseReadOnlyPropertyExample>();
-        _ = BaseReadOnlyProperty.ReadOnlyValue.Should().Be("Read");
-        _ = example.Value.Should().Be("Hello");
+        BaseReadOnlyProperty.ReadOnlyValue.ShouldBe("Read");
+        example.Value.ShouldBe("Hello");
     }
 
     /// <summary>
@@ -44,9 +44,9 @@ public class ExampleTest
     public void ExampleCreatedIsValid()
     {
         TestExample example = ExampleHelper.CreateExample<TestExample>();
-        _ = example.StringValue.Should().Be("Hello");
-        _ = example.StringDefault.Should().Be("string");
-        _ = example.IntValue.Should().Be(10);
+        example.StringValue.ShouldBe("Hello");
+        example.StringDefault.ShouldBe("string");
+        example.IntValue.ShouldBe(10);
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public class ExampleTest
     public void ExampleCreationShouldNotThrowExceptions()
     {
         Action action = () => ExampleHelper.CreateExample<TestExample>();
-        _ = action.Should().NotThrow();
+        Should.NotThrow(action);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class ExampleTest
     public void IntegerWithAttributeShouldHaveValue()
     {
         IntegerExample example = ExampleHelper.CreateExample<IntegerExample>();
-        _ = example.Value.Should().Be(129);
+        example.Value.ShouldBe(129);
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public class ExampleTest
     public void IntegerWithNoAttributeShouldHaveValue()
     {
         IntegerDefaultExample example = ExampleHelper.CreateExample<IntegerDefaultExample>();
-        _ = example.Value.Should().Be(101);
+        example.Value.ShouldBe(101);
     }
 
     /// <summary>
@@ -86,7 +86,7 @@ public class ExampleTest
     public void StringWithAttributeShouldHaveValue()
     {
         StringExample example = ExampleHelper.CreateExample<StringExample>();
-        _ = example.Value.Should().Be("Hello");
+        example.Value.ShouldBe("Hello");
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public class ExampleTest
     public void StringWithNoAttributeShouldHaveValue()
     {
         StringDefaultExample example = ExampleHelper.CreateExample<StringDefaultExample>();
-        _ = example.Value.Should().Be("string");
+        example.Value.ShouldBe("string");
     }
 
     /// <summary>

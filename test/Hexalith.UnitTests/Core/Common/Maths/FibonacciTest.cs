@@ -5,7 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Common.Maths;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Extensions.Helpers;
 
@@ -27,6 +27,6 @@ public class FibonacciTest
     public void CheckFirstFibonacciValues(long sequence, long value)
     {
         long result = FibonacciSequence.Number(sequence);
-        _ = result.Should().Be(value);
+        result.ShouldBe(value);
     }
 }
