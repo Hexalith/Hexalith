@@ -13,6 +13,7 @@ using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Commons.Metadatas;
+using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.PolymorphicSerializations;
 
@@ -41,14 +42,15 @@ public class ActorCommandProcessorTest
     public async Task SubmittingACommandShouldSucceed()
     {
         IActorProxyFactory factory = Substitute.For<IActorProxyFactory>();
-        ActorProxy actor = Substitute.For<ActorProxy>();
-        factory.Create(Arg.Any<ActorId>(), Arg.Any<string>(), Arg.Any<ActorProxyOptions>())
+        IDomainAggregateActor actor = Substitute.For<IDomainAggregateActor>();
+        factory.CreateActorProxy<IDomainAggregateActor>(Arg.Any<ActorId>(), Arg.Any<string>(), Arg.Any<ActorProxyOptions>())
             .Returns(actor);
         PolymorphicSerializationResolver.TryAddDefaultMapper(new TestCommandMapper());
         DomainActorCommandProcessor processor = new(factory, false, Substitute.For<ILogger<DomainActorCommandProcessor>>());
         TestCommand command = new("123", "Hello");
 
-        Func<Task> submit = async () => await processor.SubmitAsync(
+        // Submit the command
+        await processor.SubmitAsync(
             command,
             new Metadata(
                     command.CreateMessageMetadata(DateTimeOffset.UtcNow),
@@ -64,8 +66,7 @@ public class ActorCommandProcessorTest
                     [])),
             CancellationToken.None);
 
-        // The InvokeMethodAsync on the actor is not virtual and cannot be mocked to return a Task. The mock object returned task will be null.
-        InvalidOperationException exception = await Should.ThrowAsync<InvalidOperationException>(submit);
-        exception.InnerException.ShouldBeOfType<NullReferenceException>();
+        // Verify the actor received the command
+        await actor.Received(1).SubmitCommandAsJsonAsync(Arg.Any<string>());
     }
 }
