@@ -5,7 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Common.Exceptions;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Extensions.Configuration;
 
@@ -32,10 +32,10 @@ public class SettingsExceptionTest
     {
         IOptions<DummySettings> options = Options.Create<DummySettings>(new DummySettings());
         Action a = () => SettingsException<DummySettings>.ThrowIfUndefined(options.Value.Name);
-        _ = a
-            .Should()
-            .Throw<SettingsException<DummySettings>>()
-            .Where(p => p.ParamName == "options.Value.Name" && p.Message.Contains("Dummy") && p.Message.Contains("Name"));
+        SettingsException<DummySettings> ex = Should.Throw<SettingsException<DummySettings>>(a);
+        ex.ParamName.ShouldBe("options.Value.Name");
+        ex.Message.ShouldContain("Dummy");
+        ex.Message.ShouldContain("Name");
     }
 
     [Fact]
@@ -43,10 +43,10 @@ public class SettingsExceptionTest
     {
         DummySettings settings = new();
         Action a = () => SettingsException<DummySettings>.ThrowIfUndefined(settings.Name);
-        _ = a
-            .Should()
-            .Throw<SettingsException<DummySettings>>()
-            .Where(p => p.ParamName == "settings.Name" && p.Message.Contains("Dummy") && p.Message.Contains("Name"));
+        SettingsException<DummySettings> ex = Should.Throw<SettingsException<DummySettings>>(a);
+        ex.ParamName.ShouldBe("settings.Name");
+        ex.Message.ShouldContain("Dummy");
+        ex.Message.ShouldContain("Name");
     }
 
     [Fact]
@@ -54,10 +54,10 @@ public class SettingsExceptionTest
     {
         DummySettings settings = new() { SubConfig = new SubConfiguration() };
         Action a = () => SettingsException<DummySettings>.ThrowIfUndefined(settings.SubConfig.Hello);
-        _ = a
-            .Should()
-            .Throw<SettingsException<DummySettings>>()
-            .Where(p => p.ParamName == "settings.SubConfig.Hello" && p.Message.Contains("Dummy") && p.Message.Contains("Hello"));
+        SettingsException<DummySettings> ex = Should.Throw<SettingsException<DummySettings>>(a);
+        ex.ParamName.ShouldBe("settings.SubConfig.Hello");
+        ex.Message.ShouldContain("Dummy");
+        ex.Message.ShouldContain("Hello");
     }
 
     internal class DummySettings : ISettings

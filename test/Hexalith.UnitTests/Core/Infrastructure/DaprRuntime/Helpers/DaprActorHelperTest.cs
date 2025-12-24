@@ -7,9 +7,9 @@ namespace Hexalith.UnitTests.Core.Infrastructure.DaprRuntime.Helpers;
 
 using Dapr.Actors;
 
-using FluentAssertions;
-
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
+
+using Shouldly;
 
 public class DaprActorHelperTest
 {
@@ -25,8 +25,8 @@ public class DaprActorHelperTest
         ActorId result = id.ToActorId();
 
         // Assert
-        _ = result.Should().NotBeNull();
-        _ = result.ToString().Should().Be(escapedString);
+        result.ShouldNotBeNull();
+        result.ToString().ShouldBe(escapedString);
     }
 
     [Theory]
@@ -41,8 +41,8 @@ public class DaprActorHelperTest
         ActorId result = id.ToActorId();
 
         // Assert
-        _ = result.Should().NotBeNull();
-        _ = result.ToString().Should().Be(escapedString);
+        result.ShouldNotBeNull();
+        result.ToString().ShouldBe(escapedString);
     }
 
     [Fact]
@@ -55,8 +55,8 @@ public class DaprActorHelperTest
         ActorId result = id.ToActorId();
 
         // Assert
-        _ = result.Should().NotBeNull();
-        _ = result.ToString().Should().Be(id);
+        result.ShouldNotBeNull();
+        result.ToString().ShouldBe(id);
     }
 
     [Fact]
@@ -69,8 +69,8 @@ public class DaprActorHelperTest
         Dapr.Actors.ActorId result = actorIdString.ToActorId();
 
         // Assert
-        _ = result.Should().NotBeNull();
-        _ = result.ToString().Should().Be(actorIdString);
+        result.ShouldNotBeNull();
+        result.ToString().ShouldBe(actorIdString);
     }
 
     [Fact]
@@ -83,7 +83,7 @@ public class DaprActorHelperTest
         Action act = () => actorIdString.ToActorId();
 
         // Assert
-        _ = act.Should().Throw<ArgumentException>();
+        Should.Throw<ArgumentException>(act);
     }
 
     [Fact]
@@ -96,7 +96,7 @@ public class DaprActorHelperTest
         Action act = () => actorIdString.ToActorId();
 
         // Assert
-        _ = act.Should().Throw<ArgumentNullException>();
+        Should.Throw<ArgumentNullException>(act);
     }
 
     [Theory]
@@ -109,7 +109,7 @@ public class DaprActorHelperTest
         string result = aggregateName.ToAggregateActorName();
 
         // Assert
-        _ = result.Should().Be(expected);
+        result.ShouldBe(expected);
     }
 
     [Theory]
@@ -125,7 +125,7 @@ public class DaprActorHelperTest
         string result = aggregateName.ToAggregateActorName();
 
         // Assert
-        _ = result.Should().Be(actorName);
+        result.ShouldBe(actorName);
     }
 
     [Theory]
@@ -138,7 +138,7 @@ public class DaprActorHelperTest
         Action act = () => aggregateName.ToAggregateActorName();
 
         // Assert
-        _ = act.Should().Throw<ArgumentException>();
+        Should.Throw<ArgumentException>(act);
     }
 
     [Fact]
@@ -151,7 +151,7 @@ public class DaprActorHelperTest
         Action act = () => aggregateName.ToAggregateActorName();
 
         // Assert
-        _ = act.Should().Throw<ArgumentNullException>();
+        Should.Throw<ArgumentNullException>(act);
     }
 
     [Theory]
@@ -167,7 +167,7 @@ public class DaprActorHelperTest
         string result = DaprActorHelper.ToAggregateName(actorName);
 
         // Assert
-        _ = result.Should().Be(aggregateName);
+        result.ShouldBe(aggregateName);
     }
 
     [Theory]
@@ -182,8 +182,8 @@ public class DaprActorHelperTest
         string result = new ActorId(escapedString).ToUnescapeString();
 
         // Assert
-        _ = result.Should().NotBeNull();
-        _ = result.Should().Be(id);
+        result.ShouldNotBeNull();
+        result.ShouldBe(id);
     }
 
     [Fact]
@@ -196,7 +196,7 @@ public class DaprActorHelperTest
         Action act = () => new ActorId(escapedString).ToUnescapeString();
 
         // Assert
-        _ = act.Should().Throw<ArgumentException>();
+        Should.Throw<ArgumentException>(act);
     }
 
     [Fact]
@@ -209,7 +209,7 @@ public class DaprActorHelperTest
         string result = new ActorId(escapedString).ToUnescapeString();
 
         // Assert
-        _ = result.Should().NotBeNull();
-        _ = result.Should().Be("123/4");
+        result.ShouldNotBeNull();
+        result.ShouldBe("123/4");
     }
 }

@@ -7,7 +7,7 @@ namespace Hexalith.UnitTests.Core.Application.Tasks;
 
 using System;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Application.Tasks;
 
@@ -18,11 +18,11 @@ public class TaskProcessingHistoryTest
     {
         TaskProcessingHistory history = new TaskProcessingHistory(DateTimeOffset.UtcNow, null, null, null, null)
             .Canceled();
-        _ = history.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
-        _ = history.CanceledDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
-        _ = history.CompletedDate.Should().BeNull();
-        _ = history.ProcessingStartDate.Should().BeNull();
-        _ = history.SuspendedDate.Should().BeNull();
+        (DateTimeOffset.UtcNow - history.CreatedDate).TotalSeconds.ShouldBeLessThan(1);
+        (DateTimeOffset.UtcNow - history.CanceledDate.Value).TotalSeconds.ShouldBeLessThan(1);
+        history.CompletedDate.ShouldBeNull();
+        history.ProcessingStartDate.ShouldBeNull();
+        history.SuspendedDate.ShouldBeNull();
     }
 
     [Fact]
@@ -30,22 +30,22 @@ public class TaskProcessingHistoryTest
     {
         TaskProcessingHistory history = new TaskProcessingHistory(DateTimeOffset.UtcNow, null, null, null, null)
             .Completed();
-        _ = history.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
-        _ = history.CompletedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
-        _ = history.ProcessingStartDate.Should().BeNull();
-        _ = history.CanceledDate.Should().BeNull();
-        _ = history.SuspendedDate.Should().BeNull();
+        (DateTimeOffset.UtcNow - history.CreatedDate).TotalSeconds.ShouldBeLessThan(1);
+        (DateTimeOffset.UtcNow - history.CompletedDate.Value).TotalSeconds.ShouldBeLessThan(1);
+        history.ProcessingStartDate.ShouldBeNull();
+        history.CanceledDate.ShouldBeNull();
+        history.SuspendedDate.ShouldBeNull();
     }
 
     [Fact]
     public void CreatedHistoryDateShouldBeNow()
     {
         TaskProcessingHistory history = new(DateTimeOffset.UtcNow, null, null, null, null);
-        _ = history.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
-        _ = history.CanceledDate.Should().BeNull();
-        _ = history.CompletedDate.Should().BeNull();
-        _ = history.ProcessingStartDate.Should().BeNull();
-        _ = history.SuspendedDate.Should().BeNull();
+        (DateTimeOffset.UtcNow - history.CreatedDate).TotalSeconds.ShouldBeLessThan(1);
+        history.CanceledDate.ShouldBeNull();
+        history.CompletedDate.ShouldBeNull();
+        history.ProcessingStartDate.ShouldBeNull();
+        history.SuspendedDate.ShouldBeNull();
     }
 
     [Fact]
@@ -53,10 +53,10 @@ public class TaskProcessingHistoryTest
     {
         TaskProcessingHistory history = new TaskProcessingHistory(DateTimeOffset.UtcNow, null, null, null, null)
             .ProcessingStarted();
-        _ = history.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(100));
-        _ = history.ProcessingStartDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(10));
-        _ = history.CompletedDate.Should().BeNull();
-        _ = history.CanceledDate.Should().BeNull();
-        _ = history.SuspendedDate.Should().BeNull();
+        (DateTimeOffset.UtcNow - history.CreatedDate).TotalMilliseconds.ShouldBeLessThan(100);
+        (DateTimeOffset.UtcNow - history.ProcessingStartDate.Value).TotalMilliseconds.ShouldBeLessThan(10);
+        history.CompletedDate.ShouldBeNull();
+        history.CanceledDate.ShouldBeNull();
+        history.SuspendedDate.ShouldBeNull();
     }
 }

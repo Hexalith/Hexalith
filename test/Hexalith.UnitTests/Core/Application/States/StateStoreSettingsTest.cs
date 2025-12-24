@@ -5,7 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Application.States;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Application.States;
 using Hexalith.TestMocks;
@@ -16,7 +16,7 @@ public class StateStoreSettingsTest
     public void CheckDefaultNameIsNotNullOrEmpty()
     {
         string name = new StateStoreSettings().Name;
-        _ = name.Should().NotBeNullOrEmpty();
+        name.ShouldNotBeNullOrEmpty();
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public class StateStoreSettingsTest
     {
         StateStoreSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new StateStoreSettings());
-        _ = result.IsValid.Should().BeTrue();
+        result.IsValid.ShouldBeTrue();
     }
 
     [Fact]
@@ -34,7 +34,7 @@ public class StateStoreSettingsTest
             .WithValueFromConfiguration<StateStoreSettingsTest>();
         string name = settings.Build().Value.Name;
 
-        _ = name.Should().Be("my-statestore");
+        name.ShouldBe("my-statestore");
     }
 
     [Fact]
@@ -42,6 +42,6 @@ public class StateStoreSettingsTest
     {
         StateStoreSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new StateStoreSettings() { Name = string.Empty });
-        _ = result.IsValid.Should().BeFalse();
+        result.IsValid.ShouldBeFalse();
     }
 }

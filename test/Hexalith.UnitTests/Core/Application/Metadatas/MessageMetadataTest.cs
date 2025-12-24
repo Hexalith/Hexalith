@@ -7,10 +7,10 @@ namespace Hexalith.UnitTests.Core.Application.Metadatas;
 
 using System.Text.Json;
 
-using FluentAssertions;
-
 using Hexalith.Commons.Metadatas;
 using Hexalith.UnitTests.Core.Domain.Messages;
+
+using Shouldly;
 
 public class MessageMetadataTest
 {
@@ -20,31 +20,31 @@ public class MessageMetadataTest
         MessageMetadata meta = new("ID123", "Message 123", 123, new DomainMetadata("101", "Dummy"), TimeProvider.System.GetLocalNow());
         string json = JsonSerializer.Serialize(meta);
         Metadata result = JsonSerializer.Deserialize<Metadata>(json);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeEquivalentTo(result);
+        result.ShouldNotBeNull();
+        result.ShouldBeEquivalentTo(result);
     }
 
     [Fact]
     public void MetadataShouldContainMessageNameAndVersion1()
     {
         MessageMetadata meta = new MyDummyMessage("123", "Hello", 124).CreateMessageMetadata(TimeProvider.System.GetLocalNow());
-        _ = meta.Name.Should().Be(nameof(MyDummyMessage));
-        _ = meta.Version.Should().Be(1);
+        meta.Name.ShouldBe(nameof(MyDummyMessage));
+        meta.Version.ShouldBe(1);
     }
 
     [Fact]
     public void MetadataShouldContainMessageNameAndVersionInAttribute()
     {
         MessageMetadata meta = new MyDummyMessage3("123", "Hello", 124).CreateMessageMetadata(TimeProvider.System.GetLocalNow());
-        _ = meta.Name.Should().Be("MyMessage");
-        _ = meta.Version.Should().Be(3);
+        meta.Name.ShouldBe("MyMessage");
+        meta.Version.ShouldBe(3);
     }
 
     [Fact]
     public void MetadataShouldContainMessageVersionInAttribute()
     {
         MessageMetadata meta = new MyDummyMessage2("123", "Hello", 124).CreateMessageMetadata(TimeProvider.System.GetLocalNow());
-        _ = meta.Name.Should().Be(nameof(MyDummyMessage2));
-        _ = meta.Version.Should().Be(2);
+        meta.Name.ShouldBe(nameof(MyDummyMessage2));
+        meta.Version.ShouldBe(2);
     }
 }

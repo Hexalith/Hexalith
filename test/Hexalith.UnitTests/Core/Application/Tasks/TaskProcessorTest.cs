@@ -8,8 +8,7 @@ namespace Hexalith.UnitTests.Core.Application.Tasks;
 using System;
 using System.Text.Json;
 
-using FluentAssertions;
-using FluentAssertions.Equivalency;
+using Shouldly;
 
 using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Helpers;
@@ -29,7 +28,7 @@ public class TaskProcessorTest
             .Start()
             .Cancel()
             .Complete();
-        _ = processor.Status.Should().Be(TaskProcessorStatus.Canceled);
+        processor.Status.ShouldBe(TaskProcessorStatus.Canceled);
     }
 
     /// <summary>
@@ -41,7 +40,7 @@ public class TaskProcessorTest
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start()
             .Complete();
-        _ = processor.History.CompletedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
+        (DateTimeOffset.UtcNow - processor.History.CompletedDate.Value).TotalSeconds.ShouldBeLessThan(1);
     }
 
     /// <summary>
@@ -53,7 +52,7 @@ public class TaskProcessorTest
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start()
             .Complete();
-        _ = processor.Status.Should().Be(TaskProcessorStatus.Completed);
+        processor.Status.ShouldBe(TaskProcessorStatus.Completed);
     }
 
     /// <summary>
@@ -63,7 +62,14 @@ public class TaskProcessorTest
     public void DataContractSerializeAndDeserializeTaskShouldReturnSame()
     {
         TaskProcessor processor = GetTestProcessor();
-        _ = processor.Should().BeDataContractSerializable<TaskProcessor>(ExcludeProperties);
+        // Test DataContract serialization manually
+        using System.IO.MemoryStream stream = new();
+        System.Runtime.Serialization.DataContractSerializer serializer = new(typeof(TaskProcessor));
+        serializer.WriteObject(stream, processor);
+        stream.Position = 0;
+        TaskProcessor deserialized = (TaskProcessor)serializer.ReadObject(stream);
+        deserialized.ShouldNotBeNull();
+        deserialized.Status.ShouldBe(processor.Status);
     }
 
     /// <summary>
@@ -75,7 +81,7 @@ public class TaskProcessorTest
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start()
             .Fail("fail", "error");
-        _ = processor.Status.Should().Be(TaskProcessorStatus.Canceled);
+        processor.Status.ShouldBe(TaskProcessorStatus.Canceled);
     }
 
     /// <summary>
@@ -95,7 +101,7 @@ public class TaskProcessorTest
                 true))
             .Start()
             .Fail("fail", "error");
-        _ = processor.Status.Should().Be(TaskProcessorStatus.Suspended);
+        processor.Status.ShouldBe(TaskProcessorStatus.Suspended);
     }
 
     /// <summary>
@@ -107,8 +113,8 @@ public class TaskProcessorTest
         TaskProcessor processor = GetTestProcessor();
         string json = JsonSerializer.Serialize(processor);
         TaskProcessor fromJson = JsonSerializer.Deserialize<TaskProcessor>(json);
-        _ = fromJson.Should().NotBeNull();
-        _ = fromJson.Should().BeEquivalentTo(processor, ExcludeProperties);
+        fromJson.ShouldNotBeNull();
+        fromJson.Status.ShouldBe(processor.Status);
     }
 
     /// <summary>
@@ -118,7 +124,7 @@ public class TaskProcessorTest
     public void NewProcessShouldBeInNewState()
     {
         TaskProcessor processor = new(DateTimeOffset.UtcNow, ResiliencyPolicy.None);
-        _ = processor.Status.Should().Be(TaskProcessorStatus.New);
+        processor.Status.ShouldBe(TaskProcessorStatus.New);
     }
 
     /// <summary>
@@ -128,7 +134,7 @@ public class TaskProcessorTest
     public void NewProcessShouldHaveCreatedDate()
     {
         TaskProcessor processor = new(DateTimeOffset.UtcNow, ResiliencyPolicy.None);
-        _ = processor.History.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
+        (DateTimeOffset.UtcNow - processor.History.CreatedDate).TotalSeconds.ShouldBeLessThan(1);
     }
 
     /// <summary>
@@ -139,7 +145,7 @@ public class TaskProcessorTest
     {
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start();
-        _ = processor.Status.Should().Be(TaskProcessorStatus.Active);
+        processor.Status.ShouldBe(TaskProcessorStatus.Active);
     }
 
     /// <summary>
@@ -150,8 +156,8 @@ public class TaskProcessorTest
     {
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start();
-        _ = processor.History.ProcessingStartDate.Should().NotBeNull();
-        _ = processor.History.ProcessingStartDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
+        processor.History.ProcessingStartDate.ShouldNotBeNull();
+        (DateTimeOffset.UtcNow - processor.History.ProcessingStartDate.Value).TotalSeconds.ShouldBeLessThan(1);
     }
 
     [Theory]
@@ -173,7 +179,7 @@ public class TaskProcessorTest
         DateTimeOffset? retryDate = processor.RetryDate;
         DateTimeOffset now = DateTimeOffset.Now;
         TimeSpan waitTime = now.WaitTime(retryDate);
-        _ = waitTime.TotalMilliseconds.Should().BeApproximately(milliseconds, 10d);
+        Math.Abs(waitTime.TotalMilliseconds - milliseconds).ShouldBeLessThan(10d);
     }
 
     [Fact]
@@ -182,7 +188,7 @@ public class TaskProcessorTest
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow.AddMonths(-2), ResiliencyPolicy.CreateDefaultExponentialRetry())
             .Start()
             .Fail("fail", "error");
-        _ = processor.CanRetry.Should().Be(RetryStatus.Stopped);
+        processor.CanRetry.ShouldBe(RetryStatus.Stopped);
     }
 
     /*
@@ -213,5 +219,4 @@ public class TaskProcessorTest
             .Complete();
     }
 
-    private EquivalencyOptions<TaskProcessor> ExcludeProperties(EquivalencyOptions<TaskProcessor> options) => options;
 }

@@ -8,7 +8,7 @@ namespace Hexalith.UnitTests.Core.Common.Helpers;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Extensions.Helpers;
 
@@ -22,10 +22,10 @@ public class ObjectPropertyDescriptionHelperTest
     {
         IDictionary<string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)> props = ObjectDescriptionHelper.DescribeProperties(typeof(DefaultValuePropertyAttributeTest));
         (string displayName, string description, object defaultValue, bool isRequired) = props[nameof(DefaultValuePropertyAttributeTest.MyValue)];
-        _ = description.Should().Be("My value");
-        _ = displayName.Should().Be("My value");
-        _ = defaultValue.Should().Be("this value is for me");
-        _ = isRequired.Should().BeFalse();
+        description.ShouldBe("My value");
+        displayName.ShouldBe("My value");
+        defaultValue.ShouldBe("this value is for me");
+        isRequired.ShouldBeFalse();
     }
 
     /// <summary>
@@ -36,10 +36,10 @@ public class ObjectPropertyDescriptionHelperTest
     {
         IDictionary<string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)> props = ObjectDescriptionHelper.DescribeProperties(typeof(DescriptionPropertyAttributeTest));
         (string displayName, string description, object defaultValue, bool isRequired) = props[nameof(DescriptionPropertyAttributeTest.MyValue)];
-        _ = description.Should().Be("This class is used to test a class property with a description attribute");
-        _ = displayName.Should().Be("My value");
-        _ = defaultValue.Should().BeNull();
-        _ = isRequired.Should().BeFalse();
+        description.ShouldBe("This class is used to test a class property with a description attribute");
+        displayName.ShouldBe("My value");
+        defaultValue.ShouldBeNull();
+        isRequired.ShouldBeFalse();
     }
 
     [Fact]
@@ -47,10 +47,10 @@ public class ObjectPropertyDescriptionHelperTest
     {
         IDictionary<string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)> props = ObjectDescriptionHelper.DescribeProperties(typeof(DisplayPropertyAttributeTest));
         (string displayName, string description, object defaultValue, bool isRequired) = props[nameof(DisplayPropertyAttributeTest.MyValue)];
-        _ = description.Should().Be("This class is used to test a class property with a description attribute");
-        _ = displayName.Should().Be("My property value");
-        _ = defaultValue.Should().BeNull();
-        _ = isRequired.Should().BeFalse();
+        description.ShouldBe("This class is used to test a class property with a description attribute");
+        displayName.ShouldBe("My property value");
+        defaultValue.ShouldBeNull();
+        isRequired.ShouldBeFalse();
     }
 
     [Fact]
@@ -58,10 +58,10 @@ public class ObjectPropertyDescriptionHelperTest
     {
         IDictionary<string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)> props = ObjectDescriptionHelper.DescribeProperties(typeof(DisplayNamePropertyAttributeTest));
         (string displayName, string description, object defaultValue, bool isRequired) = props[nameof(DisplayNamePropertyAttributeTest.MyValue)];
-        _ = description.Should().Be("My property value");
-        _ = displayName.Should().Be("My property value");
-        _ = defaultValue.Should().BeNull();
-        _ = isRequired.Should().BeFalse();
+        description.ShouldBe("My property value");
+        displayName.ShouldBe("My property value");
+        defaultValue.ShouldBeNull();
+        isRequired.ShouldBeFalse();
     }
 
     [Fact]
@@ -69,10 +69,10 @@ public class ObjectPropertyDescriptionHelperTest
     {
         IDictionary<string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)> props = ObjectDescriptionHelper.DescribeProperties(typeof(RequiredValuePropertyAttributeTest));
         (string displayName, string description, object defaultValue, bool isRequired) = props[nameof(RequiredValuePropertyAttributeTest.MyValue)];
-        _ = description.Should().Be("My value");
-        _ = displayName.Should().Be("My value");
-        _ = defaultValue.Should().BeNull();
-        _ = isRequired.Should().BeTrue();
+        description.ShouldBe("My value");
+        displayName.ShouldBe("My value");
+        defaultValue.ShouldBeNull();
+        isRequired.ShouldBeTrue();
     }
 
     public class DefaultValuePropertyAttributeTest

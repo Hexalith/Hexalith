@@ -5,11 +5,12 @@
 
 namespace Hexalith.UnitTests.Core.Application.Commands;
 
+using System.Runtime.Serialization;
 using System.Text.Json;
 
-using FluentAssertions;
-
 using Hexalith.PolymorphicSerializations;
+
+using Shouldly;
 
 public class BaseCommandTest
 {
@@ -19,7 +20,12 @@ public class BaseCommandTest
     public void DataContractSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyCommand1 original = new("IB2343213FR", 1256);
-        _ = original.Should().BeDataContractSerializable();
+        DataContractSerializer serializer = new(typeof(DummyCommand1));
+        using MemoryStream stream = new();
+        serializer.WriteObject(stream, original);
+        stream.Position = 0;
+        DummyCommand1 result = (DummyCommand1)serializer.ReadObject(stream);
+        result.ShouldBeEquivalentTo(original);
     }
 
     [Fact]
@@ -28,9 +34,9 @@ public class BaseCommandTest
         DummyCommand1 original = new("IB2343213FR", 655463);
         string json = JsonSerializer.Serialize<Polymorphic>(original, PolymorphicHelper.DefaultJsonSerializerOptions);
         object result = JsonSerializer.Deserialize<Polymorphic>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeOfType<DummyCommand1>();
-        _ = result.Should().BeEquivalentTo(original);
+        result.ShouldNotBeNull();
+        result.ShouldBeOfType<DummyCommand1>();
+        result.ShouldBeEquivalentTo(original);
     }
 
     [Fact]
@@ -38,8 +44,8 @@ public class BaseCommandTest
     {
         DummyCommand1 original = new("IB2343213FR", 655463);
         string json = JsonSerializer.Serialize<Polymorphic>(original, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = json.Should().NotBeNull();
-        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"{nameof(DummyCommand1)}\"");
+        json.ShouldNotBeNull();
+        json.ShouldContain($"\"{PolymorphicHelper.Discriminator}\": \"{nameof(DummyCommand1)}\"");
     }
 
     [Fact]
@@ -48,7 +54,7 @@ public class BaseCommandTest
         DummyCommand1 original = new("IB2343213FR", 1256);
         string json = JsonSerializer.Serialize(original);
         DummyCommand1 result = JsonSerializer.Deserialize<DummyCommand1>(json);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeEquivalentTo(original);
+        result.ShouldNotBeNull();
+        result.ShouldBeEquivalentTo(original);
     }
 }

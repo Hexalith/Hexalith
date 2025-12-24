@@ -5,7 +5,7 @@
 
 namespace Hexalith.UnitTests.Core.Common.Common;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Extensions.Helpers;
 
@@ -16,7 +16,7 @@ public class AreSameTest
     {
         DummyEmbeddedEquatable a = new();
         DummyEmbeddedEquatable b = new() { Property4 = a.Property4 };
-        _ = a.AreSame(b).Should().BeTrue();
+        a.AreSame(b).ShouldBeTrue();
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public class AreSameTest
     {
         DummyEquatable a = new();
         DummyEquatable b = new() { Property2 = "Hello" };
-        _ = a.AreSame(b).Should().BeFalse();
+        a.AreSame(b).ShouldBeFalse();
     }
 
     [Fact]
@@ -32,7 +32,7 @@ public class AreSameTest
     {
         DummyEquatable a = new();
         DummyEquatable b = new();
-        _ = a.AreSame(b).Should().BeTrue();
+        a.AreSame(b).ShouldBeTrue();
     }
 
     [Fact]
@@ -40,13 +40,13 @@ public class AreSameTest
     {
         DummyNonEquatable a = new();
         DummyNonEquatable b = new();
-        _ = a.AreSame(b).Should().BeFalse();
+        a.AreSame(b).ShouldBeFalse();
     }
 
     [Fact]
     public void NonEquatableAreSameShouldReturnTrue()
     {
         DummyNonEquatable a = new();
-        _ = a.AreSame(a).Should().BeTrue();
+        a.AreSame(a).ShouldBeTrue();
     }
 }

@@ -8,7 +8,7 @@
 // using Dapr.Actors;
 // using Dapr.Actors.Runtime;
 
-// using FluentAssertions;
+// using Shouldly;
 
 // using Hexalith.Application.Aggregates;
 // using Hexalith.Application.Commands;
@@ -127,10 +127,10 @@
 //            resiliencyPolicyProvider.Object,
 //            actorStateManager.Object);
 //        await actor.SubmitCommandAsync(ActorMessageEnvelope.Create(command, metadata));
-//        _ = timerManager.Reminders.Count.Should().Be(1);
-//        _ = timerManager.Timers.Count.Should().Be(1);
-//        _ = timerManager.Reminders[ActorConstants.ProcessReminderName].DueTime.Should().Be(TimeSpan.FromMinutes(1));
-//        _ = timerManager.Timers[ActorConstants.ProcessTimerName].DueTime.Should().Be(TimeSpan.FromMilliseconds(1));
+//        timerManager.Reminders.Count.ShouldBe(1);
+//        timerManager.Timers.Count.ShouldBe(1);
+//        timerManager.Reminders[ActorConstants.ProcessReminderName].DueTime.ShouldBe(TimeSpan.FromMinutes(1));
+//        timerManager.Timers[ActorConstants.ProcessTimerName].DueTime.ShouldBe(TimeSpan.FromMilliseconds(1));
 //        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
 //    }
 
@@ -291,8 +291,8 @@
 //            resiliencyPolicyProvider.Object,
 //            actorStateManager.Object);
 //        await actor.SubmitCommandAsync(ActorMessageEnvelope.Create(command, metadata));
-//        _ = timerManager.Reminders.Count.Should().Be(1);
-//        _ = timerManager.Timers.Count.Should().Be(1);
+//        timerManager.Reminders.Count.ShouldBe(1);
+//        timerManager.Timers.Count.ShouldBe(1);
 //        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
 //    }
 

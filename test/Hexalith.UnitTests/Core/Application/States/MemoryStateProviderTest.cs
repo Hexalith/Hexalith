@@ -5,12 +5,12 @@
 
 namespace Hexalith.UnitTests.Core.Application.States;
 
-using FluentAssertions;
-
 using Hexalith.Application.States;
 using Hexalith.Commons.Errors;
 using Hexalith.Commons.Objects;
 using Hexalith.Extensions.Common;
+
+using Shouldly;
 
 public class MemoryStateProviderTest
 {
@@ -20,8 +20,8 @@ public class MemoryStateProviderTest
         MemoryStateProvider provider = new();
         DummyState state = new("5354323", 123, "one two three");
         await provider.SetStateAsync(state.IdempotencyId, state, CancellationToken.None);
-        _ = provider.UncommittedState.Should().HaveCount(1);
-        _ = provider.UncommittedState[state.IdempotencyId].Should().Be(state);
+        provider.UncommittedState.Count.ShouldBe(1);
+        provider.UncommittedState[state.IdempotencyId].ShouldBe(state);
     }
 
     [Fact]
@@ -30,8 +30,8 @@ public class MemoryStateProviderTest
         DummyState state = new("5354323", 123, "one two three");
         MemoryStateProvider provider = new(new Dictionary<string, object> { { state.IdempotencyId, state } });
         DummyState result = await provider.GetStateAsync<DummyState>(state.IdempotencyId, CancellationToken.None);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeEquivalentTo(state);
+        result.ShouldNotBeNull();
+        result.ShouldBeEquivalentTo(state);
     }
 
     [Fact]
@@ -40,9 +40,9 @@ public class MemoryStateProviderTest
         DummyState state = new("5354323", 123, "one two three");
         MemoryStateProvider provider = new(new Dictionary<string, object> { { state.IdempotencyId, state } });
         ConditionalValue<DummyState> result = await provider.TryGetStateAsync<DummyState>(state.IdempotencyId, CancellationToken.None);
-        _ = result.Should().NotBeNull();
-        _ = result.HasValue.Should().BeTrue();
-        _ = result.Value.Should().BeEquivalentTo(state);
+        result.ShouldNotBeNull();
+        result.HasValue.ShouldBeTrue();
+        result.Value.ShouldBeEquivalentTo(state);
     }
 
     [Fact]
@@ -51,9 +51,9 @@ public class MemoryStateProviderTest
         DummyState state = new("5354323", 123, "one two three");
         MemoryStateProvider provider = new(new Dictionary<string, object> { { state.IdempotencyId, state } });
         ConditionalValue<DummyState> result = await provider.TryGetStateAsync<DummyState>(state.IdempotencyId, CancellationToken.None);
-        _ = result.Should().NotBeNull();
-        _ = result.HasValue.Should().BeTrue();
-        _ = result.Value.Should().BeEquivalentTo(state);
+        result.ShouldNotBeNull();
+        result.HasValue.ShouldBeTrue();
+        result.Value.ShouldBeEquivalentTo(state);
     }
 
     private record DummyState(string IdempotencyId, int Id, string Name) : IIdempotent

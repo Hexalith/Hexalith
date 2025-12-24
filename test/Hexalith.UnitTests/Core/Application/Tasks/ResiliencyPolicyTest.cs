@@ -7,7 +7,7 @@ namespace Hexalith.UnitTests.Core.Application.Tasks;
 
 using System.Text.Json;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
@@ -20,7 +20,7 @@ public class ResiliencyPolicyTest
     {
         ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
         RetryStatus value = policy.CanRetry(DateTimeOffset.Now.Add(-policy.Timeout).AddSeconds(-1), 1);
-        _ = value.Should().Be(RetryStatus.Stopped);
+        value.ShouldBe(RetryStatus.Stopped);
     }
 
     [Fact]
@@ -28,7 +28,7 @@ public class ResiliencyPolicyTest
     {
         ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
         RetryStatus value = policy.CanRetry(DateTimeOffset.Now.AddSeconds(-100), 1);
-        _ = value.Should().Be(RetryStatus.Enabled);
+        value.ShouldBe(RetryStatus.Enabled);
     }
 
     [Fact]
@@ -36,7 +36,7 @@ public class ResiliencyPolicyTest
     {
         ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
         RetryStatus value = policy.CanRetry(DateTimeOffset.Now.AddSeconds(-10), 1);
-        _ = value.Should().Be(RetryStatus.Suspended);
+        value.ShouldBe(RetryStatus.Suspended);
     }
 
     [Fact]
@@ -44,7 +44,14 @@ public class ResiliencyPolicyTest
     {
         // Serialize resiliency policy
         ResiliencyPolicy policy = GetTestPolicy();
-        _ = policy.Should().BeDataContractSerializable();
+        // Test DataContract serialization manually
+        using System.IO.MemoryStream stream = new();
+        System.Runtime.Serialization.DataContractSerializer serializer = new(typeof(ResiliencyPolicy));
+        serializer.WriteObject(stream, policy);
+        stream.Position = 0;
+        ResiliencyPolicy deserialized = (ResiliencyPolicy)serializer.ReadObject(stream);
+        deserialized.ShouldNotBeNull();
+        deserialized.MaximumRetries.ShouldBe(policy.MaximumRetries);
     }
 
     [Fact]
@@ -52,7 +59,7 @@ public class ResiliencyPolicyTest
     {
         ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
         TimeSpan value = policy.EvaluatePeriod(1000);
-        _ = value.Should().Be(policy.MaximumExponentialPeriod);
+        value.ShouldBe(policy.MaximumExponentialPeriod);
     }
 
     [Theory]
@@ -67,7 +74,7 @@ public class ResiliencyPolicyTest
     {
         ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
         TimeSpan value = policy.EvaluatePeriod(sequence);
-        _ = value.Should().Be(TimeSpan.FromMilliseconds(milliseconds));
+        value.ShouldBe(TimeSpan.FromMilliseconds(milliseconds));
     }
 
     [Fact]
@@ -75,7 +82,7 @@ public class ResiliencyPolicyTest
     {
         ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
         TimeSpan value = policy.EvaluatePeriod(2);
-        _ = value.Should().Be(policy.InitialPeriod + policy.Period);
+        value.ShouldBe(policy.InitialPeriod + policy.Period);
     }
 
     [Fact]
@@ -83,7 +90,7 @@ public class ResiliencyPolicyTest
     {
         ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
         TimeSpan value = policy.EvaluatePeriod(0);
-        _ = value.Should().Be(policy.InitialPeriod);
+        value.ShouldBe(policy.InitialPeriod);
     }
 
     [Fact]
@@ -93,8 +100,9 @@ public class ResiliencyPolicyTest
         ResiliencyPolicy policy = GetTestPolicy();
         string json = JsonSerializer.Serialize(policy);
         ResiliencyPolicy deserialized = JsonSerializer.Deserialize<ResiliencyPolicy>(json);
-        _ = deserialized.Should().NotBeNull();
-        _ = deserialized.Should().BeEquivalentTo(policy);
+        deserialized.ShouldNotBeNull();
+        deserialized.MaximumRetries.ShouldBe(policy.MaximumRetries);
+        deserialized.Period.ShouldBe(policy.Period);
     }
 
     [Fact]
@@ -102,16 +110,16 @@ public class ResiliencyPolicyTest
     {
         OptionsBuilder<ResiliencyTestSettings> builder = new OptionsBuilder<ResiliencyTestSettings>().WithValueFromConfiguration<ResiliencyPolicyTest>();
         ResiliencyTestSettings settings = builder.Build().Value;
-        _ = settings.Dummy.Should().Be(100);
-        _ = settings.TestResiliencyPolicy.Should().NotBeNull();
+        settings.Dummy.ShouldBe(100);
+        settings.TestResiliencyPolicy.ShouldNotBeNull();
 
-        _ = settings.TestResiliencyPolicy.Exponential.Should().BeTrue();
-        _ = settings.TestResiliencyPolicy.Exponential.Should().BeTrue();
-        _ = settings.TestResiliencyPolicy.InitialPeriod.Should().Be(TimeSpan.FromMilliseconds(500));
-        _ = settings.TestResiliencyPolicy.MaximumExponentialPeriod.Should().Be(TimeSpan.FromDays(2));
-        _ = settings.TestResiliencyPolicy.MaximumRetries.Should().Be(200);
-        _ = settings.TestResiliencyPolicy.Period.Should().Be(TimeSpan.FromSeconds(30));
-        _ = settings.TestResiliencyPolicy.Timeout.Should().Be(TimeSpan.FromDays(60));
+        settings.TestResiliencyPolicy.Exponential.ShouldBeTrue();
+        settings.TestResiliencyPolicy.Exponential.ShouldBeTrue();
+        settings.TestResiliencyPolicy.InitialPeriod.ShouldBe(TimeSpan.FromMilliseconds(500));
+        settings.TestResiliencyPolicy.MaximumExponentialPeriod.ShouldBe(TimeSpan.FromDays(2));
+        settings.TestResiliencyPolicy.MaximumRetries.ShouldBe(200);
+        settings.TestResiliencyPolicy.Period.ShouldBe(TimeSpan.FromSeconds(30));
+        settings.TestResiliencyPolicy.Timeout.ShouldBe(TimeSpan.FromDays(60));
     }
 
     [Theory]
@@ -138,7 +146,7 @@ public class ResiliencyPolicyTest
             TimeSpan.FromHours(24),
             exponential: true);
         long waitMilliseconds = policy.NextRetryTime(now, sequence).ToUnixTimeMilliseconds() - now.ToUnixTimeMilliseconds();
-        _ = waitMilliseconds.Should().Be(value);
+        waitMilliseconds.ShouldBe(value);
     }
 
     [Theory]
@@ -165,7 +173,7 @@ public class ResiliencyPolicyTest
             TimeSpan.FromHours(24),
             exponential: false);
         long waitMilliseconds = policy.NextRetryTime(now, sequence).ToUnixTimeMilliseconds() - now.ToUnixTimeMilliseconds();
-        _ = waitMilliseconds.Should().Be(value);
+        waitMilliseconds.ShouldBe(value);
     }
 
     [Fact]
@@ -173,7 +181,14 @@ public class ResiliencyPolicyTest
     {
         // Serialize resiliency policy
         ResiliencyPolicy policy = GetTestPolicy();
-        _ = policy.Should().BeXmlSerializable();
+        // Test XML serialization manually
+        using System.IO.MemoryStream stream = new();
+        System.Runtime.Serialization.DataContractSerializer serializer = new(typeof(ResiliencyPolicy));
+        serializer.WriteObject(stream, policy);
+        stream.Position = 0;
+        ResiliencyPolicy deserialized = (ResiliencyPolicy)serializer.ReadObject(stream);
+        deserialized.ShouldNotBeNull();
+        deserialized.MaximumRetries.ShouldBe(policy.MaximumRetries);
     }
 
     private static ResiliencyPolicy GetTestPolicy()

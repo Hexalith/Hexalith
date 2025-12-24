@@ -5,9 +5,9 @@
 
 namespace Hexalith.UnitTests.Core.UI.Components;
 
-using FluentAssertions;
-
 using Hexalith.UI.Components;
+
+using Shouldly;
 
 public class MenuItemInformationTest
 {
@@ -29,8 +29,8 @@ public class MenuItemInformationTest
         (bool found, int last) = menuItem.GetMenuItemIndex(0, new MenuItemInformation("Not Found", "/not-found", null, false, 0, null, []));
 
         // Assert
-        _ = found.Should().BeFalse();
-        _ = last.Should().Be(2);
+        found.ShouldBeFalse();
+        last.ShouldBe(2);
     }
 
     [Fact]
@@ -64,7 +64,7 @@ public class MenuItemInformationTest
         (bool found, int last) = menuItem.GetMenuItemIndex(0, foundItem);
 
         // Assert
-        _ = found.Should().BeTrue();
-        _ = last.Should().Be(10);
+        found.ShouldBeTrue();
+        last.ShouldBe(10);
     }
 }

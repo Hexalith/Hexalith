@@ -8,7 +8,7 @@ namespace Hexalith.UnitTests.Core.Application.TopologicalSort;
 using System.Collections.Generic;
 using System.Linq;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Application.TopologicalSorting;
 
@@ -36,18 +36,18 @@ public class Resources
 
         IEnumerable<IEnumerable<OrderedProcess>> s = g.CalculateSort();
 
-        _ = s.Count().Should().Be(3);
+        s.Count().ShouldBe(3);
 
-        _ = s.Skip(0).First().Count().Should().Be(1);
-        _ = s.Skip(0).First().First().Should().Be(a);
+        s.Skip(0).First().Count().ShouldBe(1);
+        s.Skip(0).First().First().ShouldBe(a);
 
-        _ = s.Skip(1).First().Count().Should().Be(1);
-        _ = (s.Skip(1).First().First() == b || s.Skip(1).First().First() == c).Should().BeTrue();
+        s.Skip(1).First().Count().ShouldBe(1);
+        (s.Skip(1).First().First() == b || s.Skip(1).First().First() == c).ShouldBeTrue();
 
-        _ = s.Skip(0).First().Count().Should().Be(1);
-        _ = (s.Skip(2).First().First() == b || s.Skip(2).First().First() == c).Should().BeTrue();
+        s.Skip(0).First().Count().ShouldBe(1);
+        (s.Skip(2).First().First() == b || s.Skip(2).First().First() == c).ShouldBeTrue();
 
-        _ = s.Skip(1).First().First().Should().NotBe(s.Skip(2).First().First());
+        s.Skip(1).First().First().ShouldNotBe(s.Skip(2).First().First());
     }
 
     /// <summary>
@@ -75,14 +75,14 @@ public class Resources
         IEnumerable<IEnumerable<OrderedProcess>> s = g.CalculateSort();
 
         // check that A comes first
-        _ = s.Skip(0).First().Count().Should().Be(1);
-        _ = s.Skip(0).First().First().Should().Be(a);
+        s.Skip(0).First().Count().ShouldBe(1);
+        s.Skip(0).First().First().ShouldBe(a);
 
         // check that D comes last
-        _ = s.Skip(4).First().Count().Should().Be(1);
-        _ = s.Skip(4).First().First().Should().Be(d);
+        s.Skip(4).First().Count().ShouldBe(1);
+        s.Skip(4).First().First().ShouldBe(d);
 
         // check that no set contains both c1 and c3
-        _ = s.Count(set => set.Contains(c1) && set.Contains(c3)).Should().Be(0);
+        s.Count(set => set.Contains(c1) && set.Contains(c3)).ShouldBe(0);
     }
 }

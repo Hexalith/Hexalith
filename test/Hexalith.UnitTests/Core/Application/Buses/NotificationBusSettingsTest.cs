@@ -5,10 +5,10 @@
 
 namespace Hexalith.UnitTests.Core.Application.Buses;
 
-using FluentAssertions;
-
 using Hexalith.Application.Buses;
 using Hexalith.TestMocks;
+
+using Shouldly;
 
 public class NotificationBusSettingsTest
 {
@@ -16,7 +16,7 @@ public class NotificationBusSettingsTest
     public void CheckDefaultNameIsNotNullOrEmpty()
     {
         string name = new NotificationBusSettings().Name;
-        _ = name.Should().NotBeNullOrEmpty();
+        name.ShouldNotBeNullOrEmpty();
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public class NotificationBusSettingsTest
     {
         NotificationBusSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new NotificationBusSettings());
-        _ = result.IsValid.Should().BeTrue();
+        result.IsValid.ShouldBeTrue();
     }
 
     [Fact]
@@ -34,7 +34,7 @@ public class NotificationBusSettingsTest
             .WithValueFromConfiguration<NotificationBusSettingsTest>();
         string name = settings.Build().Value.Name;
 
-        _ = name.Should().Be("my-notification-bus");
+        name.ShouldBe("my-notification-bus");
     }
 
     [Fact]
@@ -42,6 +42,6 @@ public class NotificationBusSettingsTest
     {
         NotificationBusSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new NotificationBusSettings() { Name = string.Empty });
-        _ = result.IsValid.Should().BeFalse();
+        result.IsValid.ShouldBeFalse();
     }
 }

@@ -5,10 +5,10 @@
 
 namespace Hexalith.UnitTests.Core.Application.Buses;
 
-using FluentAssertions;
-
 using Hexalith.Application.Buses;
 using Hexalith.TestMocks;
+
+using Shouldly;
 
 public class EventBusSettingsTest
 {
@@ -16,7 +16,7 @@ public class EventBusSettingsTest
     public void CheckDefaultNameIsNotNullOrEmpty()
     {
         string name = new EventBusSettings().Name;
-        _ = name.Should().NotBeNullOrEmpty();
+        name.ShouldNotBeNullOrEmpty();
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public class EventBusSettingsTest
     {
         EventBusSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new EventBusSettings());
-        _ = result.IsValid.Should().BeTrue();
+        result.IsValid.ShouldBeTrue();
     }
 
     [Fact]
@@ -34,7 +34,7 @@ public class EventBusSettingsTest
             .WithValueFromConfiguration<EventBusSettingsTest>();
         string name = settings.Build().Value.Name;
 
-        _ = name.Should().Be("my-event-bus");
+        name.ShouldBe("my-event-bus");
     }
 
     [Fact]
@@ -42,6 +42,6 @@ public class EventBusSettingsTest
     {
         EventBusSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new EventBusSettings() { Name = string.Empty });
-        _ = result.IsValid.Should().BeFalse();
+        result.IsValid.ShouldBeFalse();
     }
 }

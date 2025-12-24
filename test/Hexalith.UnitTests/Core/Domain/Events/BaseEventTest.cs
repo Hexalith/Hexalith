@@ -7,9 +7,9 @@ namespace Hexalith.UnitTests.Core.Domain.Events;
 
 using System.Text.Json;
 
-using FluentAssertions;
-
 using Hexalith.PolymorphicSerializations;
+
+using Shouldly;
 
 public class BaseEventTest
 {
@@ -21,9 +21,9 @@ public class BaseEventTest
         DummyEvent1 original = new("IB2343213FR", 655463);
         string json = JsonSerializer.Serialize<Polymorphic>(original, PolymorphicHelper.DefaultJsonSerializerOptions);
         Polymorphic result = JsonSerializer.Deserialize<Polymorphic>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeOfType<DummyEvent1>();
-        _ = result.Should().BeEquivalentTo(original);
+        result.ShouldNotBeNull();
+        result.ShouldBeOfType<DummyEvent1>();
+        result.ShouldBeEquivalentTo(original);
     }
 
     [Fact]
@@ -32,7 +32,7 @@ public class BaseEventTest
         DummyEvent1 original = new("IB2343213FR", 1256);
         string json = JsonSerializer.Serialize(original);
         DummyEvent1 result = JsonSerializer.Deserialize<DummyEvent1>(json);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeEquivalentTo(original);
+        result.ShouldNotBeNull();
+        result.ShouldBeEquivalentTo(original);
     }
 }

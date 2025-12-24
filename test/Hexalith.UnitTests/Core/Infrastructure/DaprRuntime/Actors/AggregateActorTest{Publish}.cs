@@ -8,7 +8,7 @@
 // using Dapr.Actors;
 // using Dapr.Actors.Runtime;
 
-// using FluentAssertions;
+// using Shouldly;
 
 // using Hexalith.Application.Aggregates;
 // using Hexalith.Application.Commands;
@@ -105,9 +105,9 @@
 //            resiliencyPolicyProvider.Object,
 //            actorStateManager.Object);
 //        bool result = await actor.PublishNextMessageAsync();
-//        _ = result.Should().BeFalse();
-//        _ = timerManager.Reminders.Should().BeEmpty();
-//        _ = timerManager.Timers.Should().BeEmpty();
+//        result.ShouldBeFalse();
+//        timerManager.Reminders.ShouldBeEmpty();
+//        timerManager.Timers.ShouldBeEmpty();
 //        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
 //    }
 
@@ -192,11 +192,11 @@
 //            resiliencyPolicyProvider.Object,
 //            actorStateManager.Object);
 //        bool result = await actor.PublishNextMessageAsync();
-//        _ = result.Should().BeTrue();
-//        _ = timerManager.Reminders.Should().HaveCount(1);
-//        _ = timerManager.Reminders[ActorConstants.PublishReminderName].Period.Should().Be(TimeSpan.FromMinutes(1));
-//        _ = timerManager.Timers.Should().HaveCount(1);
-//        _ = timerManager.Timers.First().Key.Should().Be(ActorConstants.PublishTimerName);
+//        result.ShouldBeTrue();
+//        timerManager.Reminders.Count.ShouldBe(1);
+//        timerManager.Reminders[ActorConstants.PublishReminderName].Period.ShouldBe(TimeSpan.FromMinutes(1));
+//        timerManager.Timers.Count.ShouldBe(1);
+//        timerManager.Timers.First().Key.ShouldBe(ActorConstants.PublishTimerName);
 //        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
 //    }
 
@@ -278,11 +278,11 @@
 //            resiliencyPolicyProvider.Object,
 //            actorStateManager.Object);
 //        bool result = await actor.PublishNextMessageAsync();
-//        _ = result.Should().BeTrue();
-//        _ = timerManager.Reminders.Should().HaveCount(1);
-//        _ = timerManager.Reminders[ActorConstants.PublishReminderName].Period.Should().Be(TimeSpan.FromMinutes(1));
-//        _ = timerManager.Timers.Should().HaveCount(1);
-//        _ = timerManager.Timers.First().Key.Should().Be(ActorConstants.PublishTimerName);
+//        result.ShouldBeTrue();
+//        timerManager.Reminders.Count.ShouldBe(1);
+//        timerManager.Reminders[ActorConstants.PublishReminderName].Period.ShouldBe(TimeSpan.FromMinutes(1));
+//        timerManager.Timers.Count.ShouldBe(1);
+//        timerManager.Timers.First().Key.ShouldBe(ActorConstants.PublishTimerName);
 //        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
 //    }
 // }

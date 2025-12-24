@@ -7,11 +7,11 @@ namespace Hexalith.UnitTests.Core.Infrastructure.DaprHandlers;
 
 using System.Text.Json;
 
-using FluentAssertions;
-
 using Hexalith.Application.States;
 using Hexalith.Applications.States;
 using Hexalith.UnitTests.Core.Application.Commands;
+
+using Shouldly;
 
 public class CommandStateTest
 {
@@ -26,9 +26,12 @@ public class CommandStateTest
             command.CreateMetadata());
         string json = JsonSerializer.Serialize(original);
         MessageState result = JsonSerializer.Deserialize<MessageState>(json);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeOfType<MessageState>();
-        _ = result.MessageObject.Should().BeOfType<DummyCommand1>();
-        _ = result.Should().BeEquivalentTo(original);
+        result.ShouldNotBeNull();
+        result.ShouldBeOfType<MessageState>();
+        result.MessageObject.ShouldBeOfType<DummyCommand1>();
+
+        // Compare by re-serializing (avoids array/list type mismatch from polymorphic serialization)
+        string resultJson = JsonSerializer.Serialize(result);
+        resultJson.ShouldBe(json);
     }
 }

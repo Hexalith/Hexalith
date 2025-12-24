@@ -8,13 +8,13 @@ namespace Hexalith.UnitTests.Core.Infrastructure.States;
 using System;
 using System.Text.Json;
 
-using FluentAssertions;
-
 using Hexalith.Applications.States;
 using Hexalith.Commons.Metadatas;
 using Hexalith.Commons.Strings;
 using Hexalith.PolymorphicSerializations;
 using Hexalith.UnitTests.Core.Application.Commands;
+
+using Shouldly;
 
 public class MessageStateTest
 {
@@ -52,20 +52,21 @@ public class MessageStateTest
     public void DeserializeShouldSucceed()
     {
         MessageState state = JsonSerializer.Deserialize<MessageState>(_json, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = state.Should().NotBeNull();
-        _ = state.Message.Should().NotBeNull();
-        _ = state.MessageObject.Should().NotBeNull();
-        _ = state.MessageObject.Should().BeOfType<DummyCommand1>();
-        _ = state.MessageObject.As<DummyCommand1>().Value1.Should().Be(123456);
-        _ = state.MessageObject.As<DummyCommand1>().BaseValue.Should().Be("Test");
-        _ = state.Metadata.Should().NotBeNull();
-        _ = state.Metadata!.Context.Should().NotBeNull();
-        _ = state.Metadata.Context!.CorrelationId.Should().Be("COR1234566");
-        _ = state.Metadata.Context.UserId.Should().Be("TestUser");
-        _ = state.Metadata.Message.Should().NotBeNull();
-        _ = state.Metadata.Message.Id.Should().Be("23rZSlC-ukyRtjuSQfI6BQ");
-        _ = state.Metadata.Message.Name.Should().Be("DummyCommand1");
-        _ = state.Metadata.Message.Version.Should().Be(1);
+        state.ShouldNotBeNull();
+        state.Message.ShouldNotBeNull();
+        state.MessageObject.ShouldNotBeNull();
+        state.MessageObject.ShouldBeOfType<DummyCommand1>();
+        DummyCommand1 cmd = (DummyCommand1)state.MessageObject;
+        cmd.Value1.ShouldBe(123456);
+        cmd.BaseValue.ShouldBe("Test");
+        state.Metadata.ShouldNotBeNull();
+        state.Metadata!.Context.ShouldNotBeNull();
+        state.Metadata.Context!.CorrelationId.ShouldBe("COR1234566");
+        state.Metadata.Context.UserId.ShouldBe("TestUser");
+        state.Metadata.Message.ShouldNotBeNull();
+        state.Metadata.Message.Id.ShouldBe("23rZSlC-ukyRtjuSQfI6BQ");
+        state.Metadata.Message.Name.ShouldBe("DummyCommand1");
+        state.Metadata.Message.Version.ShouldBe(1);
     }
 
     [Fact]
@@ -87,14 +88,14 @@ public class MessageStateTest
                         "session-56",
                         [])));
         string json = JsonSerializer.Serialize(messageState, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = json.Should().NotBeEmpty();
-        _ = json.Should().Contain(PolymorphicHelper.Discriminator);
-        _ = json.Should().Contain(nameof(DummyCommand1));
-        _ = json.Should().Contain(messageState.Metadata.Context.CorrelationId);
-        _ = json.Should().Contain(nameof(DummyCommand1.Value1));
-        _ = json.Should().Contain(command.Value1.ToInvariantString());
-        _ = json.Should().Contain(nameof(DummyCommand1.BaseValue));
-        _ = json.Should().Contain(command.BaseValue);
-        _ = json.Should().Contain(messageState.Metadata.Message.Id);
+        json.ShouldNotBeEmpty();
+        json.ShouldContain(PolymorphicHelper.Discriminator);
+        json.ShouldContain(nameof(DummyCommand1));
+        json.ShouldContain(messageState.Metadata.Context.CorrelationId);
+        json.ShouldContain(nameof(DummyCommand1.Value1));
+        json.ShouldContain(command.Value1.ToInvariantString());
+        json.ShouldContain(nameof(DummyCommand1.BaseValue));
+        json.ShouldContain(command.BaseValue);
+        json.ShouldContain(messageState.Metadata.Message.Id);
     }
 }

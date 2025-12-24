@@ -8,15 +8,13 @@ namespace Hexalith.UnitTests.Core.Application.Metadatas;
 using System;
 using System.Text.Json;
 
-using FluentAssertions;
-
 using Hexalith.Applications.States;
 using Hexalith.Commons.Metadatas;
 using Hexalith.Commons.Strings;
 using Hexalith.PolymorphicSerializations;
 using Hexalith.UnitTests.Core.Domain.Messages;
 
-using Xunit;
+using Shouldly;
 
 public class MessageStateTest
 {
@@ -40,10 +38,13 @@ public class MessageStateTest
                 ["scope1", "scope9"]));
         MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = json.Should().NotBeNullOrEmpty();
+        json.ShouldNotBeNullOrEmpty();
         MessageState result = JsonSerializer.Deserialize<MessageState>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeEquivalentTo(state);
+        result.ShouldNotBeNull();
+
+        // Compare by re-serializing (avoids array/list type mismatch from polymorphic serialization)
+        string resultJson = JsonSerializer.Serialize(result, PolymorphicHelper.DefaultJsonSerializerOptions);
+        resultJson.ShouldBe(json);
     }
 
     [Fact]
@@ -64,12 +65,12 @@ public class MessageStateTest
                 ["scope1", "scope9"]));
         MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"MyMessageV3");
-        _ = json.Should().Contain($"\"{nameof(meta.Message.Name)}\": \"MyMessage\"");
-        _ = json.Should().Contain($"\"{nameof(meta.Message.Version)}\": 3");
-        _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
-        _ = json.Should().Contain(message.Value.ToInvariantString());
+        json.ShouldNotBeNullOrEmpty();
+        json.ShouldContain($"MyMessageV3");
+        json.ShouldContain($"\"{nameof(meta.Message.Name)}\": \"MyMessage\"");
+        json.ShouldContain($"\"{nameof(meta.Message.Version)}\": 3");
+        json.ShouldContain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
+        json.ShouldContain(message.Value.ToInvariantString());
     }
 
     [Fact]
@@ -90,13 +91,13 @@ public class MessageStateTest
                 ["scope1", "scope9"]));
         MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = state.Message.Should().Contain($"MyDummyMessage2V2");
-        _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"MyDummyMessage2V2");
-        _ = json.Should().Contain($"\"{nameof(meta.Message.Version)}\": 2");
-        _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
-        _ = json.Should().Contain(message.Name);
-        _ = json.Should().Contain(message.Value.ToInvariantString());
+        state.Message.ShouldContain($"MyDummyMessage2V2");
+        json.ShouldNotBeNullOrEmpty();
+        json.ShouldContain($"MyDummyMessage2V2");
+        json.ShouldContain($"\"{nameof(meta.Message.Version)}\": 2");
+        json.ShouldContain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
+        json.ShouldContain(message.Name);
+        json.ShouldContain(message.Value.ToInvariantString());
     }
 
     [Fact]
@@ -117,10 +118,13 @@ public class MessageStateTest
                 ["scope1", "scope9"]));
         MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = json.Should().NotBeNullOrEmpty();
+        json.ShouldNotBeNullOrEmpty();
         MessageState result = JsonSerializer.Deserialize<MessageState>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeEquivalentTo(state);
+        result.ShouldNotBeNull();
+
+        // Compare by re-serializing (avoids array/list type mismatch from polymorphic serialization)
+        string resultJson = JsonSerializer.Serialize(result, PolymorphicHelper.DefaultJsonSerializerOptions);
+        resultJson.ShouldBe(json);
     }
 
     [Fact]
@@ -141,9 +145,12 @@ public class MessageStateTest
                 ["scope1", "scope9"]));
         MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = json.Should().NotBeNullOrEmpty();
+        json.ShouldNotBeNullOrEmpty();
         MessageState result = JsonSerializer.Deserialize<MessageState>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeEquivalentTo(state);
+        result.ShouldNotBeNull();
+
+        // Compare by re-serializing (avoids array/list type mismatch from polymorphic serialization)
+        string resultJson = JsonSerializer.Serialize(result, PolymorphicHelper.DefaultJsonSerializerOptions);
+        resultJson.ShouldBe(json);
     }
 }

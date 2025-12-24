@@ -8,7 +8,7 @@ namespace Hexalith.UnitTests.Core.Common.Helpers;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-using FluentAssertions;
+using Shouldly;
 
 using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Reflections;
@@ -25,9 +25,9 @@ public class ObjectDescriptionHelperTest
     public void MappableTypeObjectShouldReturnMapperValue()
     {
         (string type, string name, string description) = ObjectDescriptionHelper.Describe(typeof(MappableTypeTestV2));
-        _ = type.Should().Be("MappableTest");
-        _ = name.Should().Be("Mappable test");
-        _ = description.Should().Be("Mappable test");
+        type.ShouldBe("MappableTest");
+        name.ShouldBe("Mappable test");
+        description.ShouldBe("Mappable test");
     }
 
     /// <summary>
@@ -37,9 +37,9 @@ public class ObjectDescriptionHelperTest
     public void ObjectWithDescriptionAttributeShouldReturnDefinedValue()
     {
         (string type, string name, string description) = ObjectDescriptionHelper.Describe(typeof(DescriptionAttributeTest));
-        _ = type.Should().Be(nameof(DescriptionAttributeTest));
-        _ = name.Should().Be("Description attribute test");
-        _ = description.Should().Be("This class is used to test a class with a description attribute");
+        type.ShouldBe(nameof(DescriptionAttributeTest));
+        name.ShouldBe("Description attribute test");
+        description.ShouldBe("This class is used to test a class with a description attribute");
     }
 
     /// <summary>
@@ -49,9 +49,9 @@ public class ObjectDescriptionHelperTest
     public void ObjectWithDisplayAttributeShouldReturnDefinedValue()
     {
         (string type, string name, string description) = ObjectDescriptionHelper.Describe(typeof(DisplayAttributeTest));
-        _ = type.Should().Be(nameof(DisplayAttributeTest));
-        _ = name.Should().Be("Display attribute example");
-        _ = description.Should().Be("Example of using the display attribute to defined name and description");
+        type.ShouldBe(nameof(DisplayAttributeTest));
+        name.ShouldBe("Display attribute example");
+        description.ShouldBe("Example of using the display attribute to defined name and description");
     }
 
     /// <summary>
@@ -61,9 +61,9 @@ public class ObjectDescriptionHelperTest
     public void ObjectWithDisplayNameAttributeShouldReturnDefinedValue()
     {
         (string type, string name, string description) = ObjectDescriptionHelper.Describe(typeof(DisplayNameAttributeTest));
-        _ = type.Should().Be(nameof(DisplayNameAttributeTest));
-        _ = name.Should().Be("Display name attribute example");
-        _ = description.Should().Be("Display name attribute example");
+        type.ShouldBe(nameof(DisplayNameAttributeTest));
+        name.ShouldBe("Display name attribute example");
+        description.ShouldBe("Display name attribute example");
     }
 
     /// <summary>
@@ -73,9 +73,9 @@ public class ObjectDescriptionHelperTest
     public void ObjectWithNoAttributesShouldReturnTypeName()
     {
         (string type, string name, string description) = ObjectDescriptionHelper.Describe(typeof(NoAttributesTest));
-        _ = type.Should().Be(nameof(NoAttributesTest));
-        _ = name.Should().Be("No attributes test");
-        _ = description.Should().Be("No attributes test");
+        type.ShouldBe(nameof(NoAttributesTest));
+        name.ShouldBe("No attributes test");
+        description.ShouldBe("No attributes test");
     }
 
     /// <summary>
